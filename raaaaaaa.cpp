@@ -106,6 +106,7 @@ void menu(){
     cout<<"[4]: Transferir a Camiones o Furgoneta (por caja)"<<endl;
     cout<<"[5]: Mostrar contenedor Perecible "<<endl;
     cout<<"[6]: Mostrar contenedor No Perecible "<<endl;
+    cout<<"[7]: F pos"<<endl;
     cout<<"[0]: SALIR"<<endl;
     cout<<"Opcion: ";
     
