@@ -29,7 +29,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
 
         Fondo = new javax.swing.JPanel();
         IngresoDatos = new javax.swing.JPanel();
-        CampoUsuario1 = new javax.swing.JTextField();
+        CampoUsuario = new javax.swing.JTextField();
         etiquetaUsuario = new javax.swing.JLabel();
         etiquetaContraseña = new javax.swing.JLabel();
         CampoContraseña = new javax.swing.JPasswordField();
@@ -40,9 +40,9 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
 
         Fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        CampoUsuario1.addActionListener(new java.awt.event.ActionListener() {
+        CampoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoUsuario1ActionPerformed(evt);
+                CampoUsuarioActionPerformed(evt);
             }
         });
 
@@ -57,6 +57,11 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
         });
 
         botonIngresar.setText("Ingresar");
+        botonIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonIngresarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout IngresoDatosLayout = new javax.swing.GroupLayout(IngresoDatos);
         IngresoDatos.setLayout(IngresoDatosLayout);
@@ -67,7 +72,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
                 .addGroup(IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, IngresoDatosLayout.createSequentialGroup()
                         .addGroup(IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CampoUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CampoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(etiquetaContraseña)
                             .addComponent(etiquetaUsuario)
                             .addComponent(CampoContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -82,7 +87,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addComponent(etiquetaUsuario)
                 .addGap(18, 18, 18)
-                .addComponent(CampoUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CampoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(etiquetaContraseña)
                 .addGap(18, 18, 18)
@@ -121,14 +126,80 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CampoUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoUsuario1ActionPerformed
+    private void CampoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CampoUsuario1ActionPerformed
+    }//GEN-LAST:event_CampoUsuarioActionPerformed
 
     private void CampoContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoContraseñaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CampoContraseñaActionPerformed
+    
+    private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
+    /*   
+        String usuario= CampoUsuario.getText();
+        String contraseña = CampoContraseña.getText();
+        
+        Inspeccion.usuarioActual = Inspeccion.personas.validar(usuario, contraseña);
 
+        //Cliente
+
+        if(Inspeccion.usuarioActual != null){
+            JOptionPane.showMessageDialog(null, "Bienvenido");
+            int tUsuario = Inspeccion.usuarioActual.getTipoFuncion();
+
+            switch (tUsuario) {
+                case 1:
+                    //Cliente
+                    Inspeccion.clienteActual = (Cliente) Inspeccion.personas.getPersona(Inspeccion.usuarioActual);
+                    
+                    
+                    
+                    FrmCliente form = new FrmCliente();
+                    ConCliente cc = new ConCliente(form);
+                    cc.iniciar_vista();
+                    frml.dispose();
+                    
+                    
+                    
+                    break;
+                case 2:
+                    //Mecanico
+                    
+                    Inspeccion.mecanicoActual = (Mecanico) Inspeccion.personas.getPersona(Inspeccion.usuarioActual);
+                    
+                    FrmMecanico formM = new FrmMecanico();
+                    ConMecanico cm = new ConMecanico(formM);
+                    cm.iniciar_vista();
+                    
+                    frml.dispose();
+                    
+                    
+                    break;
+                case 3:
+                    //IngMecanico
+                    
+                    Inspeccion.ingMecanicoActual = (Ingeniero_Mecanico) Inspeccion.personas.getPersona(Inspeccion.usuarioActual);
+                    
+                    FrmIngenieroSupervisor formIS = new FrmIngenieroSupervisor();
+                    ConIngenieroSupervisor cis = new ConIngenieroSupervisor(formIS);
+                    cis.iniciar_vista();
+                    
+                    frml.dispose();
+                    
+                    break;
+                default:
+                    break;
+            }
+
+        }else{//datos erroneos
+            JOptionPane.showMessageDialog(null,"ERROR");
+
+            frml.campoUsuario.setText("");
+            frml.campoContraseña.setText("");
+        }
+    */
+    }//GEN-LAST:event_botonIngresarActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -166,7 +237,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField CampoContraseña;
-    private javax.swing.JTextField CampoUsuario1;
+    private javax.swing.JTextField CampoUsuario;
     private javax.swing.JPanel Fondo;
     private javax.swing.JPanel FondoMarca;
     private javax.swing.JPanel IngresoDatos;
