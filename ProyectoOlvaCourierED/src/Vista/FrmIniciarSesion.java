@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Vista;
-
 /**
  *
  * @author Alex
@@ -135,7 +134,9 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_CampoContraseñaActionPerformed
     
     private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
-    /*   
+
+        
+        /*   
         String usuario= CampoUsuario.getText();
         String contraseña = CampoContraseña.getText();
         
@@ -226,13 +227,16 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FrmIniciarSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FrmIniciarSesion().setVisible(true);
             }
         });
+        
+        //Colocarlo en el main principal 
+        Conexion.Conexion.getConexion();
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
