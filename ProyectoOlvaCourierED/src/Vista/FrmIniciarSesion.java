@@ -4,19 +4,29 @@
  * and open the template in the editor.
  */
 package Vista;
+
+import Estructura.ListaUsuario;
+import Sistema.OlvaCourier;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Alex
  */
 public class FrmIniciarSesion extends javax.swing.JFrame {
-
     /**
      * Creates new form FrmIniciarSesion
+     * 
      */
+    ListaUsuario l = new ListaUsuario();
+    
     public FrmIniciarSesion() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -134,7 +144,18 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_CampoContraseñaActionPerformed
     
     private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
-
+        OlvaCourier.CargarListas(l);
+        l.desplegarLista();
+        String usuario1 = CampoUsuario.getText();
+        String contra = CampoContraseña.getText();
+        if(l.BuscarElemeto(usuario1, contra) == 1){
+            Prueba pb = new Prueba();
+            pb.setVisible(true);
+            this.dispose();
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "Usuario y contraseña incorrectos");
+        }
         
         /*   
         String usuario= CampoUsuario.getText();
@@ -237,6 +258,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
         
         //Colocarlo en el main principal 
         Conexion.Conexion.getConexion();
+     
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
