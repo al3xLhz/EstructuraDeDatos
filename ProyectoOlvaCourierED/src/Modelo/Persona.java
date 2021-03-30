@@ -15,6 +15,7 @@ public class Persona {
         this.dni = dni;
         this.email = email;
         this.usuario = usuario;
+        
     }
 
     

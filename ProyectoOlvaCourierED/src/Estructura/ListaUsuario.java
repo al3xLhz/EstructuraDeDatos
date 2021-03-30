@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Estructura;
-import java.util.Scanner;
 /**
  *
  * @author ricar
@@ -12,7 +11,6 @@ import java.util.Scanner;
 public class ListaUsuario {
     NodoUsuario primero = new NodoUsuario();
     NodoUsuario ultimo = new NodoUsuario();
-    Scanner teclado = new Scanner(System.in);
     
     public ListaUsuario(){
         primero = null;
@@ -68,4 +66,10 @@ public class ListaUsuario {
         return encontrado;
     }
     
+}
+
+class NodoUsuario {
+    String usuario;
+    String contraseña;
+    NodoUsuario siguiente;
 }

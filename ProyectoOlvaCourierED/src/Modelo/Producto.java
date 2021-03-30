@@ -7,18 +7,18 @@ public class Producto {
     private final double alto;
     private final double ancho;
     private final double largo;
-    private final int cantidad;
-    private final String codigo;
+    private String codigo;
     private String estado;
-
-    public Producto(String nombreProducto, double peso, double alto, double ancho, double largo, int cantidad, String codigo) {
+    private static int codigoProductos= 1000000000;
+    
+    public Producto(String nombreProducto, double peso, double alto, double ancho, double largo) {
         this.nombreProducto = nombreProducto;
         this.peso = peso;
         this.alto = alto;
         this.ancho = ancho;
         this.largo = largo;
-        this.cantidad = cantidad;
-        this.codigo = codigo;
+        this.codigo = String.valueOf(codigoProductos);
+        codigoProductos++;
     }
     
 

@@ -31,7 +31,7 @@ public class Conexion {
             "Error de Conexion ",JOptionPane.ERROR_MESSAGE);
         }
         try{
-            contacto = DriverManager.getConnection(url,"sa","1234");
+            contacto = DriverManager.getConnection(url,"sa","123");
             
         }catch(SQLException e){
             JOptionPane.showMessageDialog(null, "Error" + e.getMessage(),

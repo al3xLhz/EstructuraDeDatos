@@ -6,16 +6,16 @@
 package Vista;
 
 import Estructura.ListaUsuario;
+import Modelo.Administrador;
+import Modelo.Cliente;
+import Modelo.RRHH;
 import Sistema.OlvaCourier;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Alex
- */
+
 public class FrmIniciarSesion extends javax.swing.JFrame {
     /**
      * Creates new form FrmIniciarSesion
@@ -25,6 +25,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
     
     public FrmIniciarSesion() {
         initComponents();
+        setVisible(true);
     }
     
     /**
@@ -46,8 +47,6 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
         FondoMarca = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        Fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         CampoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -106,26 +105,43 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
                 .addGap(56, 56, 56))
         );
 
-        Fondo.add(IngresoDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 373, -1, -1));
-
         javax.swing.GroupLayout FondoMarcaLayout = new javax.swing.GroupLayout(FondoMarca);
         FondoMarca.setLayout(FondoMarcaLayout);
         FondoMarcaLayout.setHorizontalGroup(
             FondoMarcaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 358, Short.MAX_VALUE)
         );
         FondoMarcaLayout.setVerticalGroup(
             FondoMarcaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 349, Short.MAX_VALUE)
         );
 
-        Fondo.add(FondoMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 358, -1));
+        javax.swing.GroupLayout FondoLayout = new javax.swing.GroupLayout(Fondo);
+        Fondo.setLayout(FondoLayout);
+        FondoLayout.setHorizontalGroup(
+            FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FondoLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(IngresoDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FondoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(FondoMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        FondoLayout.setVerticalGroup(
+            FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FondoLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(FondoMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(IngresoDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
+            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -144,82 +160,58 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_CampoContraseñaActionPerformed
     
     private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
-        OlvaCourier.CargarListas(l);
-        l.desplegarLista();
-        String usuario1 = CampoUsuario.getText();
-        String contra = CampoContraseña.getText();
-        if(l.BuscarElemeto(usuario1, contra) == 1){
-            Prueba pb = new Prueba();
-            pb.setVisible(true);
-            this.dispose();
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "Usuario y contraseña incorrectos");
-        }
+        //OlvaCourier.CargarListas(l);
+        //l.desplegarLista();
         
-        /*   
-        String usuario= CampoUsuario.getText();
-        String contraseña = CampoContraseña.getText();
+        String usuario = CampoUsuario.getText();
+        String contrasenha = CampoContraseña.getText();
         
-        Inspeccion.usuarioActual = Inspeccion.personas.validar(usuario, contraseña);
+        OlvaCourier.usuarioActual = OlvaCourier.personas.validar(usuario, contrasenha);
 
-        //Cliente
 
-        if(Inspeccion.usuarioActual != null){
+        if(OlvaCourier.usuarioActual != null){
             JOptionPane.showMessageDialog(null, "Bienvenido");
-            int tUsuario = Inspeccion.usuarioActual.getTipoFuncion();
+            int tUsuario = OlvaCourier.usuarioActual.getTipoFuncion();
 
             switch (tUsuario) {
                 case 1:
+                    
                     //Cliente
-                    Inspeccion.clienteActual = (Cliente) Inspeccion.personas.getPersona(Inspeccion.usuarioActual);
-                    
-                    
-                    
+                    OlvaCourier.clienteActual = (Cliente) OlvaCourier.personas.getPersona(OlvaCourier.usuarioActual);
                     FrmCliente form = new FrmCliente();
-                    ConCliente cc = new ConCliente(form);
-                    cc.iniciar_vista();
-                    frml.dispose();
-                    
-                    
-                    
+                    this.dispose();
                     break;
+                    
                 case 2:
-                    //Mecanico
+                    //Administrador
                     
-                    Inspeccion.mecanicoActual = (Mecanico) Inspeccion.personas.getPersona(Inspeccion.usuarioActual);
+                    OlvaCourier.administradorActual = (Administrador) OlvaCourier.personas.getPersona(OlvaCourier.usuarioActual);
                     
-                    FrmMecanico formM = new FrmMecanico();
-                    ConMecanico cm = new ConMecanico(formM);
-                    cm.iniciar_vista();
+                    FrmAdministrador fa = new FrmAdministrador();
                     
-                    frml.dispose();
+                    this.dispose();
                     
                     
                     break;
                 case 3:
-                    //IngMecanico
+                    //RRHH
+                    OlvaCourier.rrhhActual = (RRHH) OlvaCourier.personas.getPersona(OlvaCourier.usuarioActual);
                     
-                    Inspeccion.ingMecanicoActual = (Ingeniero_Mecanico) Inspeccion.personas.getPersona(Inspeccion.usuarioActual);
+                    FrmRRHH frh = new FrmRRHH();
                     
-                    FrmIngenieroSupervisor formIS = new FrmIngenieroSupervisor();
-                    ConIngenieroSupervisor cis = new ConIngenieroSupervisor(formIS);
-                    cis.iniciar_vista();
+                    this.dispose();
                     
-                    frml.dispose();
-                    
-                    break;
-                default:
                     break;
             }
 
         }else{//datos erroneos
             JOptionPane.showMessageDialog(null,"ERROR");
 
-            frml.campoUsuario.setText("");
-            frml.campoContraseña.setText("");
+            this.CampoUsuario.setText("");
+            this.CampoContraseña.setText("");
         }
-    */
+        
+       
     }//GEN-LAST:event_botonIngresarActionPerformed
     
     /**
@@ -257,7 +249,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
         });
         
         //Colocarlo en el main principal 
-        Conexion.Conexion.getConexion();
+        /*Conexion.Conexion.getConexion();*/
      
     }
 
