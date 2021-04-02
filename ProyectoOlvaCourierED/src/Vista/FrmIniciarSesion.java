@@ -5,19 +5,29 @@
  */
 package Vista;
 
-/**
- *
- * @author Alex
- */
-public class FrmIniciarSesion extends javax.swing.JFrame {
+import Estructura.ListaUsuario;
+import Modelo.Administrador;
+import Modelo.Cliente;
+import Modelo.RRHH;
+import Sistema.OlvaCourier;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Vector;
+import javax.swing.JOptionPane;
 
+
+public class FrmIniciarSesion extends javax.swing.JFrame {
     /**
      * Creates new form FrmIniciarSesion
+     * 
      */
+    ListaUsuario l = new ListaUsuario();
+    
     public FrmIniciarSesion() {
         initComponents();
+        setVisible(true);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,7 +39,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
 
         Fondo = new javax.swing.JPanel();
         IngresoDatos = new javax.swing.JPanel();
-        CampoUsuario1 = new javax.swing.JTextField();
+        CampoUsuario = new javax.swing.JTextField();
         etiquetaUsuario = new javax.swing.JLabel();
         etiquetaContraseña = new javax.swing.JLabel();
         CampoContraseña = new javax.swing.JPasswordField();
@@ -38,11 +48,9 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        Fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        CampoUsuario1.addActionListener(new java.awt.event.ActionListener() {
+        CampoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CampoUsuario1ActionPerformed(evt);
+                CampoUsuarioActionPerformed(evt);
             }
         });
 
@@ -57,6 +65,11 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
         });
 
         botonIngresar.setText("Ingresar");
+        botonIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonIngresarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout IngresoDatosLayout = new javax.swing.GroupLayout(IngresoDatos);
         IngresoDatos.setLayout(IngresoDatosLayout);
@@ -67,7 +80,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
                 .addGroup(IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, IngresoDatosLayout.createSequentialGroup()
                         .addGroup(IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CampoUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CampoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(etiquetaContraseña)
                             .addComponent(etiquetaUsuario)
                             .addComponent(CampoContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -82,7 +95,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addComponent(etiquetaUsuario)
                 .addGap(18, 18, 18)
-                .addComponent(CampoUsuario1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CampoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addComponent(etiquetaContraseña)
                 .addGap(18, 18, 18)
@@ -92,20 +105,37 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
                 .addGap(56, 56, 56))
         );
 
-        Fondo.add(IngresoDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 373, -1, -1));
-
         javax.swing.GroupLayout FondoMarcaLayout = new javax.swing.GroupLayout(FondoMarca);
         FondoMarca.setLayout(FondoMarcaLayout);
         FondoMarcaLayout.setHorizontalGroup(
             FondoMarcaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 358, Short.MAX_VALUE)
         );
         FondoMarcaLayout.setVerticalGroup(
             FondoMarcaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 349, Short.MAX_VALUE)
         );
 
-        Fondo.add(FondoMarca, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 358, -1));
+        javax.swing.GroupLayout FondoLayout = new javax.swing.GroupLayout(Fondo);
+        Fondo.setLayout(FondoLayout);
+        FondoLayout.setHorizontalGroup(
+            FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FondoLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(IngresoDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FondoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(FondoMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        FondoLayout.setVerticalGroup(
+            FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FondoLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(FondoMarca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(IngresoDatos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -121,14 +151,69 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CampoUsuario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoUsuario1ActionPerformed
+    private void CampoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CampoUsuario1ActionPerformed
+    }//GEN-LAST:event_CampoUsuarioActionPerformed
 
     private void CampoContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CampoContraseñaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CampoContraseñaActionPerformed
+    
+    private void botonIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIngresarActionPerformed
+        //OlvaCourier.CargarListas(l);
+        //l.desplegarLista();
+        
+        String usuario = CampoUsuario.getText();
+        String contrasenha = CampoContraseña.getText();
+        
+        OlvaCourier.usuarioActual = OlvaCourier.personas.validar(usuario, contrasenha);
 
+
+        if(OlvaCourier.usuarioActual != null){
+            JOptionPane.showMessageDialog(null, "Bienvenido");
+            int tUsuario = OlvaCourier.usuarioActual.getTipoFuncion();
+
+            switch (tUsuario) {
+                case 1:
+                    
+                    //Cliente
+                    OlvaCourier.clienteActual = (Cliente) OlvaCourier.personas.getPersona(OlvaCourier.usuarioActual);
+                    FrmCliente form = new FrmCliente();
+                    this.dispose();
+                    break;
+                    
+                case 2:
+                    //Administrador
+                    
+                    OlvaCourier.administradorActual = (Administrador) OlvaCourier.personas.getPersona(OlvaCourier.usuarioActual);
+                    
+                    FrmAdministrador fa = new FrmAdministrador();
+                    
+                    this.dispose();
+                    
+                    
+                    break;
+                case 3:
+                    //RRHH
+                    OlvaCourier.rrhhActual = (RRHH) OlvaCourier.personas.getPersona(OlvaCourier.usuarioActual);
+                    
+                    FrmRRHH frh = new FrmRRHH();
+                    
+                    this.dispose();
+                    
+                    break;
+            }
+
+        }else{//datos erroneos
+            JOptionPane.showMessageDialog(null,"ERROR");
+
+            this.CampoUsuario.setText("");
+            this.CampoContraseña.setText("");
+        }
+        
+       
+    }//GEN-LAST:event_botonIngresarActionPerformed
+    
     /**
      * @param args the command line arguments
      */
@@ -155,18 +240,22 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(FrmIniciarSesion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FrmIniciarSesion().setVisible(true);
             }
         });
+        
+        //Colocarlo en el main principal 
+        /*Conexion.Conexion.getConexion();*/
+     
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPasswordField CampoContraseña;
-    private javax.swing.JTextField CampoUsuario1;
+    private javax.swing.JTextField CampoUsuario;
     private javax.swing.JPanel Fondo;
     private javax.swing.JPanel FondoMarca;
     private javax.swing.JPanel IngresoDatos;
