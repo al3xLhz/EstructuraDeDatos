@@ -3,7 +3,7 @@ package Estructura;
 
 import Modelo.*;
 
-public class ListaCliente {
+public class ListaCliente { //implements Lista
     
     NodoCliente primero = new NodoCliente();
     NodoCliente ultimo = new NodoCliente();
@@ -26,6 +26,7 @@ public class ListaCliente {
             ultimo = nuevo;
             
         }
+        
     }
     
     public void MostrarLista(){

@@ -5,7 +5,7 @@ import Estructura.ListaProducto;
 import java.util.Calendar;
 
 public class Boleta {
-    private String codigo;
+    private int codigo;
     private Calendar fechaEmision;
     private Calendar fechadeEntrega;
     private double importeTotal;
@@ -13,10 +13,12 @@ public class Boleta {
     private double total;
     private Agencia agenciaInicial;
     private Agencia agenciaFinal;
+    private static int codigoM = 1000000000;
     private ListaProducto listaProductos = new ListaProducto();
 
-    public Boleta(String codigo, Calendar fechaEmision, Calendar fechadeEntrega, double importeTotal, double total, Agencia agenciaInicial, Agencia agenciaFinal) {
-        this.codigo = codigo;
+    public Boleta(Calendar fechaEmision, Calendar fechadeEntrega, double importeTotal, double total, Agencia agenciaInicial, Agencia agenciaFinal) {
+        this.codigo = codigoM;
+        codigoM++;
         this.fechaEmision = fechaEmision;
         this.fechadeEntrega = fechadeEntrega;
         this.importeTotal = importeTotal;
