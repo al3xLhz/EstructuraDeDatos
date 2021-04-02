@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Sistema.OlvaCourier;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +20,7 @@ public class FrmCliente extends javax.swing.JFrame {
     public FrmCliente() {
         initComponents();
         setVisible(true);
+        etiquetaBienvenida.setText("Bienvenido "+OlvaCourier.clienteActual.getNombres());
     }
 
     /**
@@ -179,6 +181,7 @@ public class FrmCliente extends javax.swing.JFrame {
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
         FrmIniciarSesion fr= new FrmIniciarSesion();
+        this.dispose();
     }//GEN-LAST:event_botonSalirActionPerformed
 
     /**

@@ -5,6 +5,13 @@
  */
 package Vista;
 
+import Estructura.ListaBoleta;
+import Modelo.Agencia;
+import Modelo.Boleta;
+import Modelo.Producto;
+import Sistema.OlvaCourier;
+import java.util.Calendar;
+
 /**
  *
  * @author Alex
@@ -17,8 +24,28 @@ public class FrmRegistroEnvio extends javax.swing.JFrame {
     public FrmRegistroEnvio() {
         initComponents();
         setVisible(true);
+        Calendar hoy = Calendar.getInstance();
+        etiquetaHora.setText(hoy.getTime().toString());
+        etiquetaNombre.setText("Hola, "+OlvaCourier.clienteActual.getNombres());
+        
+        Producto p1 = new Producto("", 0, 0, 0, 0);
+        Producto p2 = new Producto("", 0, 0, 0, 0);
+        Producto p3 = new Producto("", 0, 0, 0, 0);
+        Producto p4 = new Producto("", 0, 0, 0, 0);
+        Producto p5 = new Producto("", 0, 0, 0, 0);
+        //if(ComboNProductos.getSelectedItem().toString())
+        
+        
+        
+        //Boleta auxBoleta1 = new Boleta(hoy, hoy/*.add(Calendar.DAY_OF_YEAR, 5)*/, 0, 0, new Agencia("",0, null), new Agencia("",0, null));
+        //Boleta auxBoleta2 = new Boleta(hoy, hoy/*.add(Calendar.DAY_OF_YEAR, 5)*/, 0, 0, new Agencia("",0, null), new Agencia("",0, null));
+        //Boleta auxBoleta3 = new Boleta(hoy, hoy/*.add(Calendar.DAY_OF_YEAR, 5)*/, 0, 0, new Agencia("",0, null), new Agencia("",0, null));
+        //Boleta auxBoleta4 = new Boleta(hoy, hoy/*.add(Calendar.DAY_OF_YEAR, 5)*/, 0, 0, new Agencia("",0, null), new Agencia("",0, null));
+        //Boleta auxBoleta5 = new Boleta(hoy, hoy/*.add(Calendar.DAY_OF_YEAR, 5)*/, 0, 0, new Agencia("",0, null), new Agencia("",0, null));
     }
-
+    
+    
+      
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
