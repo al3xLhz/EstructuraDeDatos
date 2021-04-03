@@ -136,7 +136,7 @@
           <SubComponents>
             <Component class="javax.swing.JButton" name="botonRegistroEnvio">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Registro de envio"/>
+                <Property name="text" type="java.lang.String" value="Registro de productos"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonRegistroEnvioActionPerformed"/>

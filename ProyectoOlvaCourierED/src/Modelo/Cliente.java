@@ -10,4 +10,15 @@ public class Cliente extends Persona{
     }
     
     private ListaBoleta listaBoletas;
+
+    public ListaBoleta getListaBoletas() {
+        return listaBoletas;
+    }
+
+    public void setListaBoletas(ListaBoleta listaBoletas) {
+        this.listaBoletas = listaBoletas;
+    }
+    
+    
+    
 }

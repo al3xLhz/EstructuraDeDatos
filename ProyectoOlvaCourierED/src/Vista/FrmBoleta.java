@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import Sistema.OlvaCourier;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +21,10 @@ public class FrmBoleta extends javax.swing.JFrame {
     public FrmBoleta() {
         initComponents();
         setVisible(true);
+        respuestaOrigen.setText(OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion());
+        respuestaDestino.setText(OlvaCourier.boletaActual.getAgenciaFinal().getUbicacion());
+        respuestaCliente.setText(OlvaCourier.clienteActual.getNombres());
+        respuestaDNI.setText(OlvaCourier.clienteActual.getDni());
     }
 
     /**
@@ -177,10 +183,11 @@ public class FrmBoleta extends javax.swing.JFrame {
             .addGroup(etiquetaFechaLlegadaLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(respuestaFechaEmision, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(etiquetaCliente)
-                        .addComponent(etiquetaFechaEmision))
+                    .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(respuestaFechaEmision, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(etiquetaCliente)
+                            .addComponent(etiquetaFechaEmision)))
                     .addComponent(respuestaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

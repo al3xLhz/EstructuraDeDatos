@@ -10,14 +10,8 @@ import Modelo.Administrador;
 import Modelo.Cliente;
 import Modelo.RRHH;
 import Sistema.OlvaCourier;
-import java.awt.Color;
 import java.awt.event.KeyEvent;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Vector;
 import javax.swing.JOptionPane;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
 
 
 public class FrmIniciarSesion extends javax.swing.JFrame {
@@ -29,22 +23,21 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
     
     public FrmIniciarSesion() {
         initComponents();
-        setVisible(true);
         setLocationRelativeTo(null);
+        setVisible(true);
     }
     
     
     public void iniciarSesion(){
-        String usuario = CampoUsuario.getText();
-        String contrasenha = CampoContraseña.getText();
+        String user = CampoUsuario.getText();
+        String password = CampoContraseña.getText();
         
-        OlvaCourier.usuarioActual = OlvaCourier.personas.validar(usuario, contrasenha);
-
+        OlvaCourier.usuarioActual = OlvaCourier.personas.validar(user, password);
 
         if(OlvaCourier.usuarioActual != null){
             JOptionPane.showMessageDialog(null, "Bienvenido");
             int tUsuario = OlvaCourier.usuarioActual.getTipoFuncion();
-
+            
             switch (tUsuario) {
                 case 1:
                     
@@ -58,11 +51,8 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
                     //Administrador
                     
                     OlvaCourier.administradorActual = (Administrador) OlvaCourier.personas.getPersona(OlvaCourier.usuarioActual);
-                    
                     FrmAdministrador fa = new FrmAdministrador();
-                    
                     this.dispose();
-                    
                     
                     break;
                 case 3:

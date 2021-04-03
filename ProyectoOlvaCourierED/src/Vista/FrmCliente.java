@@ -64,7 +64,7 @@ public class FrmCliente extends javax.swing.JFrame {
                 .addContainerGap(53, Short.MAX_VALUE))
         );
 
-        botonRegistroEnvio.setText("Registro de envio");
+        botonRegistroEnvio.setText("Registro de productos");
         botonRegistroEnvio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonRegistroEnvioActionPerformed(evt);
