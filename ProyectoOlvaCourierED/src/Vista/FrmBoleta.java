@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import Sistema.OlvaCourier;
+import java.util.Calendar;
 import javax.swing.JOptionPane;
 
 /**
@@ -19,6 +21,10 @@ public class FrmBoleta extends javax.swing.JFrame {
     public FrmBoleta() {
         initComponents();
         setVisible(true);
+        respuestaOrigen.setText(OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion());
+        respuestaDestino.setText(OlvaCourier.boletaActual.getAgenciaFinal().getUbicacion());
+        respuestaCliente.setText(OlvaCourier.clienteActual.getNombres());
+        respuestaDNI.setText(OlvaCourier.clienteActual.getDni());
     }
 
     /**

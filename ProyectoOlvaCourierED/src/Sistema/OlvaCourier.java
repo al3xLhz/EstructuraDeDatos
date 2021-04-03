@@ -13,13 +13,15 @@ public class OlvaCourier {
     public static ListaCliente clientes = new ListaCliente();
     public static Cliente clienteActual;
     public static ListaBoleta boletas = new ListaBoleta();
-    public static Boleta boletaActual;
+    public static Boleta boletaActual = new Boleta(null, null, 0, 0, null, null);
     public static Login usuarioActual;
     public static ListaPersonas personas = new ListaPersonas();
     public static ListaAdministrador administradores = new ListaAdministrador();
     public static Administrador administradorActual;
     public static ListaRRHH rrhhs = new ListaRRHH();
     public static RRHH rrhhActual;
+    public static ListaProducto listaProductoActual = new ListaProducto();
+    public static ListaAgencia agencias = new ListaAgencia();
     
     
     
@@ -37,4 +39,7 @@ public class OlvaCourier {
         }catch(SQLException e){
         }
     }
+   
+    
+        
 }

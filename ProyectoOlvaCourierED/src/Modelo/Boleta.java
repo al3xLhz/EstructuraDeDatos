@@ -26,6 +26,87 @@ public class Boleta {
         this.agenciaInicial = agenciaInicial;
         this.agenciaFinal = agenciaFinal;
     }
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public Calendar getFechaEmision() {
+        return fechaEmision;
+    }
+
+    public void setFechaEmision(Calendar fechaEmision) {
+        this.fechaEmision = fechaEmision;
+    }
+
+    public Calendar getFechadeEntrega() {
+        return fechadeEntrega;
+    }
+
+    public void setFechadeEntrega(Calendar fechadeEntrega) {
+        this.fechadeEntrega = fechadeEntrega;
+    }
+
+    public double getImporteTotal() {
+        return importeTotal;
+    }
+
+    public void setImporteTotal(double importeTotal) {
+        this.importeTotal = importeTotal;
+    }
+
+    public double getIGV() {
+        return IGV;
+    }
+
+    public void setIGV(double IGV) {
+        this.IGV = IGV;
+    }
+
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
+    public Agencia getAgenciaInicial() {
+        return agenciaInicial;
+    }
+
+    public void setAgenciaInicial(Agencia agenciaInicial) {
+        this.agenciaInicial = agenciaInicial;
+    }
+
+    public Agencia getAgenciaFinal() {
+        return agenciaFinal;
+    }
+
+    public void setAgenciaFinal(Agencia agenciaFinal) {
+        this.agenciaFinal = agenciaFinal;
+    }
+
+    public static int getCodigoM() {
+        return codigoM;
+    }
+
+    public static void setCodigoM(int codigoM) {
+        Boleta.codigoM = codigoM;
+    }
+
+    public ListaProducto getListaProductos() {
+        return listaProductos;
+    }
+
+    public void setListaProductos(ListaProducto listaProductos) {
+        this.listaProductos = listaProductos;
+    }
+    
     
     
     

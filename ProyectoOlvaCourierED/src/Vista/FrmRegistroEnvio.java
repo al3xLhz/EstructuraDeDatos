@@ -5,12 +5,15 @@
  */
 package Vista;
 
-import Estructura.ListaBoleta;
+import Estructura.ListaAgencia;
+import Estructura.ListaProducto;
 import Modelo.Agencia;
 import Modelo.Boleta;
 import Modelo.Producto;
 import Sistema.OlvaCourier;
 import java.util.Calendar;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -18,33 +21,43 @@ import java.util.Calendar;
  */
 public class FrmRegistroEnvio extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RegistroEnvio
-     */
+    
     public FrmRegistroEnvio() {
         initComponents();
         setVisible(true);
         Calendar hoy = Calendar.getInstance();
         etiquetaHora.setText(hoy.getTime().toString());
         etiquetaNombre.setText("Hola, "+OlvaCourier.clienteActual.getNombres());
+        instanciarValores(p1);
+        instanciarValores(p2);
+        instanciarValores(p3);
+        instanciarValores(p4);
+        instanciarValores(p5);
         
-        Producto p1 = new Producto("", 0, 0, 0, 0);
-        Producto p2 = new Producto("", 0, 0, 0, 0);
-        Producto p3 = new Producto("", 0, 0, 0, 0);
-        Producto p4 = new Producto("", 0, 0, 0, 0);
-        Producto p5 = new Producto("", 0, 0, 0, 0);
-        //if(ComboNProductos.getSelectedItem().toString())
-        
-        
-        
-        //Boleta auxBoleta1 = new Boleta(hoy, hoy/*.add(Calendar.DAY_OF_YEAR, 5)*/, 0, 0, new Agencia("",0, null), new Agencia("",0, null));
-        //Boleta auxBoleta2 = new Boleta(hoy, hoy/*.add(Calendar.DAY_OF_YEAR, 5)*/, 0, 0, new Agencia("",0, null), new Agencia("",0, null));
-        //Boleta auxBoleta3 = new Boleta(hoy, hoy/*.add(Calendar.DAY_OF_YEAR, 5)*/, 0, 0, new Agencia("",0, null), new Agencia("",0, null));
-        //Boleta auxBoleta4 = new Boleta(hoy, hoy/*.add(Calendar.DAY_OF_YEAR, 5)*/, 0, 0, new Agencia("",0, null), new Agencia("",0, null));
-        //Boleta auxBoleta5 = new Boleta(hoy, hoy/*.add(Calendar.DAY_OF_YEAR, 5)*/, 0, 0, new Agencia("",0, null), new Agencia("",0, null));
     }
     
+    Producto p1 = new Producto("", 0, 0, 0, 0);
+    Producto p2 = new Producto("", 0, 0, 0, 0);
+    Producto p3 = new Producto("", 0, 0, 0, 0);
+    Producto p4 = new Producto("", 0, 0, 0, 0);
+    Producto p5 = new Producto("", 0, 0, 0, 0);
     
+    public void instanciarValores(Producto p){
+        campoNombreProducto.setText(p.getNombreProducto());
+        campoPeso.setText(String.valueOf(p.getPeso()));
+        campoLargo.setText(String.valueOf(p.getLargo()));
+        campoAlto.setText(String.valueOf(p.getAlto()));
+        campoAncho.setText(String.valueOf(p.getAncho()));
+         
+    }
+    
+    public void guardarValores(Producto p){
+        p.setNombreProducto(campoNombreProducto.getText());
+        p.setPeso(Double.parseDouble(campoPeso.getText()));
+        p.setLargo(Double.parseDouble(campoLargo.getText()));
+        p.setAlto(Double.parseDouble(campoAlto.getText()));
+        p.setPeso(Double.parseDouble(campoPeso.getText()));
+    }
       
     /**
      * This method is called from within the constructor to initialize the form.
@@ -80,8 +93,9 @@ public class FrmRegistroEnvio extends javax.swing.JFrame {
         etiquetacmL = new javax.swing.JLabel();
         comboDestino = new javax.swing.JComboBox<>();
         etiquetaDestino = new javax.swing.JLabel();
-        etiquetaOrigen = new javax.swing.JComboBox<>();
-        botonConfirmar = new javax.swing.JButton();
+        comboOrigen = new javax.swing.JComboBox<>();
+        botonSiguiente = new javax.swing.JButton();
+        botonGuardar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -153,12 +167,24 @@ public class FrmRegistroEnvio extends javax.swing.JFrame {
 
         etiquetaDestino.setText("Agencia Destino");
 
-        etiquetaOrigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Amazonas", "Ancash", "Apurimac", "Arequipa", "Ayacucho", "Cajamarca", "Callao", "Cusco", "Huancavelica", "Huanuco", "Ica", "Junín", "La Libertad", "Lambayeque", "Lima", "Loreto", "Madre de Dios", "Moquegua", "Pasco", "Piura", "Puno", "San Martín", "Tacna", "Tumbes", "Ucayali" }));
-
-        botonConfirmar.setText("Confirmar");
-        botonConfirmar.addActionListener(new java.awt.event.ActionListener() {
+        comboOrigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Amazonas", "Ancash", "Apurimac", "Arequipa", "Ayacucho", "Cajamarca", "Callao", "Cusco", "Huancavelica", "Huanuco", "Ica", "Junín", "La Libertad", "Lambayeque", "Lima", "Loreto", "Madre de Dios", "Moquegua", "Pasco", "Piura", "Puno", "San Martín", "Tacna", "Tumbes", "Ucayali" }));
+        comboOrigen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonConfirmarActionPerformed(evt);
+                comboOrigenActionPerformed(evt);
+            }
+        });
+
+        botonSiguiente.setText("Siguiente");
+        botonSiguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSiguienteActionPerformed(evt);
+            }
+        });
+
+        botonGuardar.setText("Guardar");
+        botonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGuardarActionPerformed(evt);
             }
         });
 
@@ -169,9 +195,11 @@ public class FrmRegistroEnvio extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BodyLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(N)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(ComboNProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(152, 152, 152))
+                .addGap(18, 18, 18)
+                .addComponent(botonGuardar)
+                .addGap(86, 86, 86))
             .addGroup(BodyLayout.createSequentialGroup()
                 .addGap(51, 51, 51)
                 .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,13 +224,13 @@ public class FrmRegistroEnvio extends javax.swing.JFrame {
                     .addGroup(BodyLayout.createSequentialGroup()
                         .addComponent(etiquetaAgenciaOrigen)
                         .addGap(18, 18, 18)
-                        .addComponent(etiquetaOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(comboOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
                         .addComponent(etiquetaDestino)
                         .addGap(18, 18, 18)
                         .addComponent(comboDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(botonConfirmar)
+                        .addComponent(botonSiguiente)
                         .addGroup(BodyLayout.createSequentialGroup()
                             .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(BodyLayout.createSequentialGroup()
@@ -214,15 +242,16 @@ public class FrmRegistroEnvio extends javax.swing.JFrame {
                             .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(campoNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(etiquetaKg)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(100, Short.MAX_VALUE))
         );
         BodyLayout.setVerticalGroup(
             BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BodyLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(36, 36, 36)
                 .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ComboNProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(N))
+                    .addComponent(N)
+                    .addComponent(botonGuardar))
                 .addGap(18, 18, 18)
                 .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etiquetaNompreProducto)
@@ -248,9 +277,9 @@ public class FrmRegistroEnvio extends javax.swing.JFrame {
                     .addComponent(etiquetaAgenciaOrigen)
                     .addComponent(comboDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(etiquetaDestino)
-                    .addComponent(etiquetaOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
-                .addComponent(botonConfirmar)
+                    .addComponent(comboOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addComponent(botonSiguiente)
                 .addGap(63, 63, 63))
         );
 
@@ -284,14 +313,62 @@ public class FrmRegistroEnvio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ComboNProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboNProductosActionPerformed
-        // TODO add your handling code here:
+        int index= ComboNProductos.getSelectedIndex()+1;
+        
+        switch(index){
+            case 1: instanciarValores(p1);break;
+            case 2: instanciarValores(p2);break;
+            case 3: instanciarValores(p3);break;
+            case 4: instanciarValores(p4);break;
+            case 5: instanciarValores(p5);break;
+        }
+        
     }//GEN-LAST:event_ComboNProductosActionPerformed
 
-    private void botonConfirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConfirmarActionPerformed
-        FrmBoleta boleta = new FrmBoleta();
-        this.dispose();
+    private void botonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguienteActionPerformed
         
-    }//GEN-LAST:event_botonConfirmarActionPerformed
+        if(comboDestino.getSelectedItem().equals(comboOrigen.getSelectedItem())){
+            JOptionPane.showMessageDialog(null, "No puedes colocar el mismo ORIGEN Y DESTINO ");
+        }else{
+            int input = JOptionPane.showConfirmDialog(null, "¿Estás seguro de los cambios establecidos?");
+            // 0=yes, 1=no, 2=cancel
+            if(input==0){
+                
+                OlvaCourier.listaProductoActual.InsertarNodo(p1);
+                OlvaCourier.listaProductoActual.InsertarNodo(p2);
+                OlvaCourier.listaProductoActual.InsertarNodo(p3);
+                OlvaCourier.listaProductoActual.InsertarNodo(p4);
+                OlvaCourier.listaProductoActual.InsertarNodo(p5);
+                
+                OlvaCourier.boletaActual.setAgenciaInicial(OlvaCourier.agencias.getAgencia(comboOrigen.getSelectedItem().toString()));
+                OlvaCourier.boletaActual.setAgenciaFinal(OlvaCourier.agencias.getAgencia(comboDestino.getSelectedItem().toString()));
+                
+                
+            FrmBoleta boleta = new FrmBoleta();
+            this.dispose();
+       }
+            
+        }
+        
+        
+    }//GEN-LAST:event_botonSiguienteActionPerformed
+
+    private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
+        int index = ComboNProductos.getSelectedIndex()+1;
+        
+        switch(index){
+            case 1: guardarValores(p1);break;
+            case 2: guardarValores(p2);break;
+            case 3: guardarValores(p3);break;
+            case 4: guardarValores(p4);break;//25
+            case 5: guardarValores(p5);break;
+            
+        }
+    }//GEN-LAST:event_botonGuardarActionPerformed
+
+    private void comboOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOrigenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboOrigenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -335,13 +412,15 @@ public class FrmRegistroEnvio extends javax.swing.JFrame {
     private javax.swing.JPanel Header;
     private javax.swing.JLabel N;
     private javax.swing.JLabel TituloRegistroEnvio;
-    private javax.swing.JButton botonConfirmar;
+    private javax.swing.JButton botonGuardar;
+    private javax.swing.JButton botonSiguiente;
     private javax.swing.JTextField campoAlto;
     private javax.swing.JTextField campoAncho;
     private javax.swing.JTextField campoLargo;
     private javax.swing.JTextField campoNombreProducto;
     private javax.swing.JTextField campoPeso;
     private javax.swing.JComboBox<String> comboDestino;
+    private javax.swing.JComboBox<String> comboOrigen;
     private javax.swing.JLabel etiquetaAgenciaOrigen;
     private javax.swing.JLabel etiquetaAlto;
     private javax.swing.JLabel etiquetaAncho;
@@ -351,7 +430,6 @@ public class FrmRegistroEnvio extends javax.swing.JFrame {
     private javax.swing.JLabel etiquetaLargo;
     private javax.swing.JLabel etiquetaNombre;
     private javax.swing.JLabel etiquetaNompreProducto;
-    private javax.swing.JComboBox<String> etiquetaOrigen;
     private javax.swing.JLabel etiquetaPeso;
     private javax.swing.JLabel etiquetacmAl;
     private javax.swing.JLabel etiquetacmAn;

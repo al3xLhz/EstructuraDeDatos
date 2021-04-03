@@ -34,8 +34,8 @@ public class ListaPersonas {
         while(np!=null){
             if(np.p.getUsuario()== usuario){
                 p=np.p;
-                break;
             }
+            np=np.siguiente;
         }
         return p;
         
@@ -55,6 +55,18 @@ public class ListaPersonas {
         }
         
         return result;
+        
+    }
+    
+    public void MostrarLista(){
+        NodoPersona aux=primero;
+        if(aux!=null){
+            while(aux!=null){
+                System.out.println(aux.p.getNombres());
+                aux = aux.siguiente;
+            }
+            
+        }
         
     }
 }

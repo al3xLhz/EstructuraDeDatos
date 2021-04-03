@@ -5,12 +5,12 @@ public class Agencia {
     
     private final String ubicacion; //Departamento
     private final int telefono;
-    private final Empleado empleado;
+    //private final Empleado empleado;
 
-    public Agencia(String ubicacion, int telefono, Empleado empleado) {
+    public Agencia(String ubicacion, int telefono) {
         this.ubicacion = ubicacion;
         this.telefono = telefono;
-        this.empleado = empleado;
+        //this.empleado = empleado;
     }
 
     
@@ -22,10 +22,7 @@ public class Agencia {
     public int getTelefono() {
         return telefono;
     }
-
-    public Empleado getEmpleado() {
-        return empleado;
-    }
+    
     
     
 }
