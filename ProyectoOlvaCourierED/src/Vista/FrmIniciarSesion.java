@@ -93,6 +93,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
         Fondo = new javax.swing.JPanel();
         IngresoDatos = new javax.swing.JPanel();
         CampoUsuario = new javax.swing.JTextField();
@@ -101,6 +102,8 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
         CampoContraseña = new javax.swing.JPasswordField();
         botonIngresar = new javax.swing.JButton();
         FondoMarca = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addKeyListener(new java.awt.event.KeyAdapter() {
@@ -110,6 +113,8 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
         });
 
         Fondo.setLayout(new java.awt.BorderLayout());
+
+        IngresoDatos.setBackground(new java.awt.Color(64, 170, 173));
 
         CampoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,6 +148,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
             }
         });
 
+        botonIngresar.setBackground(new java.awt.Color(204, 204, 204));
         botonIngresar.setText("Ingresar");
         botonIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,7 +161,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
         IngresoDatosLayout.setHorizontalGroup(
             IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(IngresoDatosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(58, Short.MAX_VALUE)
                 .addGroup(IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, IngresoDatosLayout.createSequentialGroup()
                         .addGroup(IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,7 +172,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
                         .addGap(41, 41, 41))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, IngresoDatosLayout.createSequentialGroup()
                         .addComponent(botonIngresar)
-                        .addGap(136, 136, 136))))
+                        .addGap(137, 137, 137))))
         );
         IngresoDatosLayout.setVerticalGroup(
             IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,22 +185,46 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
                 .addComponent(etiquetaContraseña)
                 .addGap(18, 18, 18)
                 .addComponent(CampoContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(42, 42, 42)
                 .addComponent(botonIngresar)
-                .addGap(56, 56, 56))
+                .addGap(54, 54, 54))
         );
 
         Fondo.add(IngresoDatos, java.awt.BorderLayout.CENTER);
+
+        FondoMarca.setBackground(new java.awt.Color(64, 170, 173));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\laura\\Pictures\\olva-courier.png")); // NOI18N
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Historic", 3, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(87, 86, 86));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("\" El courier más grande del Perú\"");
+        jLabel2.setToolTipText("");
 
         javax.swing.GroupLayout FondoMarcaLayout = new javax.swing.GroupLayout(FondoMarca);
         FondoMarca.setLayout(FondoMarcaLayout);
         FondoMarcaLayout.setHorizontalGroup(
             FondoMarcaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 364, Short.MAX_VALUE)
+            .addGroup(FondoMarcaLayout.createSequentialGroup()
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 334, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 12, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FondoMarcaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         FondoMarcaLayout.setVerticalGroup(
             FondoMarcaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 349, Short.MAX_VALUE)
+            .addGroup(FondoMarcaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         Fondo.add(FondoMarca, java.awt.BorderLayout.NORTH);
@@ -207,7 +237,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 694, Short.MAX_VALUE)
+            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
         );
 
         pack();
@@ -307,5 +337,8 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
     private javax.swing.JButton botonIngresar;
     private javax.swing.JLabel etiquetaContraseña;
     private javax.swing.JLabel etiquetaUsuario;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
