@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Modelo.Producto;
 import Sistema.OlvaCourier;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
@@ -20,11 +21,34 @@ public class FrmBoleta extends javax.swing.JFrame {
      */
     public FrmBoleta() {
         initComponents();
-        setVisible(true);
         respuestaOrigen.setText(OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion());
         respuestaDestino.setText(OlvaCourier.boletaActual.getAgenciaFinal().getUbicacion());
         respuestaCliente.setText(OlvaCourier.clienteActual.getNombres());
         respuestaDNI.setText(OlvaCourier.clienteActual.getDni());
+        respuestaFechaEmision.setText(Calendar.getInstance().getTime().toString());
+        llenarTabla();
+        
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
+    
+    public void llenarTabla(){
+        String matriz[][] = new String[5][3];
+        
+        for(int i=0;i<5;i++){
+            if(OlvaCourier.listaProductoActual.getProductoXPos(i).getNombreProducto()!=""){
+                matriz[i][0]=String.valueOf(OlvaCourier.listaProductoActual.getProductoXPos(i).getCodigo());
+                matriz[i][1]=String.valueOf(OlvaCourier.listaProductoActual.getProductoXPos(i).getNombreProducto());
+                matriz[i][2]=String.valueOf(OlvaCourier.listaProductoActual.getProductoXPos(i).getValor());
+                tabla.setValueAt(matriz[i][0], i, 0);
+                tabla.setValueAt(matriz[i][1], i, 1);
+                tabla.setValueAt(matriz[i][2], i, 2);
+            }else{
+                Producto.codigoProductos--;
+            }
+            
+        }
+        
     }
 
     /**
@@ -59,7 +83,7 @@ public class FrmBoleta extends javax.swing.JFrame {
         etiquetaTotal = new javax.swing.JLabel();
         respuestaTotal = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabla = new javax.swing.JTable();
         botonAceptar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -105,7 +129,7 @@ public class FrmBoleta extends javax.swing.JFrame {
         etiquetaTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         etiquetaTotal.setText("Importe Total:");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -117,7 +141,7 @@ public class FrmBoleta extends javax.swing.JFrame {
                 "Código", "Nombre Producto", "Valor unitario"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tabla);
 
         botonAceptar.setText("Acepto");
         botonAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -158,9 +182,9 @@ public class FrmBoleta extends javax.swing.JFrame {
                             .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(etiquetaFechaLlegadaLayout.createSequentialGroup()
                                     .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(respuestaFechaEmision, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(respuestaFechaLlegada, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(123, 123, 123)
+                                        .addComponent(respuestaFechaLlegada, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(respuestaFechaEmision, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(54, 54, 54)
                                     .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addGroup(etiquetaFechaLlegadaLayout.createSequentialGroup()
                                             .addComponent(etiquetaCliente)
@@ -181,14 +205,17 @@ public class FrmBoleta extends javax.swing.JFrame {
         etiquetaFechaLlegadaLayout.setVerticalGroup(
             etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(etiquetaFechaLlegadaLayout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(respuestaFechaEmision, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(etiquetaCliente)
-                            .addComponent(etiquetaFechaEmision)))
-                    .addComponent(respuestaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(etiquetaFechaLlegadaLayout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(etiquetaCliente)
+                                .addComponent(etiquetaFechaEmision))
+                            .addComponent(respuestaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, etiquetaFechaLlegadaLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(respuestaFechaEmision, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -263,6 +290,10 @@ public class FrmBoleta extends javax.swing.JFrame {
        int input = JOptionPane.showConfirmDialog(null, "¿Estás seguro de los cambios establecidos?");
         // 0=yes, 1=no, 2=cancel
        if(input==0){
+           OlvaCourier.clientes.InsertarNodo(c);
+           
+           
+           OlvaCourier.listaProductoActual.vaciarLista();
            FrmCliente cliente = new FrmCliente();
            this.dispose();
        }
@@ -319,7 +350,6 @@ public class FrmBoleta extends javax.swing.JFrame {
     private javax.swing.JLabel etiquetaTotal;
     private javax.swing.JLabel etiquetaValorTotal;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel respuestaCliente;
     private javax.swing.JLabel respuestaDNI;
     private javax.swing.JLabel respuestaDestino;
@@ -329,5 +359,6 @@ public class FrmBoleta extends javax.swing.JFrame {
     private javax.swing.JLabel respuestaOrigen;
     private javax.swing.JLabel respuestaTotal;
     private javax.swing.JLabel respuestaValorTotal;
+    private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 }

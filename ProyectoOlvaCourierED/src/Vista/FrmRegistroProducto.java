@@ -19,28 +19,32 @@ import javax.swing.JOptionPane;
  *
  * @author Alex
  */
-public class FrmRegistroEnvio extends javax.swing.JFrame {
+public class FrmRegistroProducto extends javax.swing.JFrame {
 
+    private Producto p1;
+    private Producto p2;
+    private Producto p3;
+    private Producto p4;
+    private Producto p5;
     
-    public FrmRegistroEnvio() {
+    public FrmRegistroProducto() {
         initComponents();
-        setVisible(true);
+        
         Calendar hoy = Calendar.getInstance();
         etiquetaHora.setText(hoy.getTime().toString());
         etiquetaNombre.setText("Hola, "+OlvaCourier.clienteActual.getNombres());
-        instanciarValores(p1);
-        instanciarValores(p2);
-        instanciarValores(p3);
-        instanciarValores(p4);
-        instanciarValores(p5);
+        p1 = new Producto("", 0, 0, 0, 0, 0);
+        p2 = new Producto("", 0, 0, 0, 0, 0);
+        p3 = new Producto("", 0, 0, 0, 0, 0);
+        p4 = new Producto("", 0, 0, 0, 0, 0);
+        p5 = new Producto("", 0, 0, 0, 0, 0);
+        
+        setLocationRelativeTo(null);
+        setVisible(true);
         
     }
     
-    Producto p1 = new Producto("", 0, 0, 0, 0);
-    Producto p2 = new Producto("", 0, 0, 0, 0);
-    Producto p3 = new Producto("", 0, 0, 0, 0);
-    Producto p4 = new Producto("", 0, 0, 0, 0);
-    Producto p5 = new Producto("", 0, 0, 0, 0);
+    
     
     public void instanciarValores(Producto p){
         campoNombreProducto.setText(p.getNombreProducto());
@@ -52,11 +56,15 @@ public class FrmRegistroEnvio extends javax.swing.JFrame {
     }
     
     public void guardarValores(Producto p){
+        try{
         p.setNombreProducto(campoNombreProducto.getText());
         p.setPeso(Double.parseDouble(campoPeso.getText()));
         p.setLargo(Double.parseDouble(campoLargo.getText()));
         p.setAlto(Double.parseDouble(campoAlto.getText()));
         p.setPeso(Double.parseDouble(campoPeso.getText()));
+        }catch(Exception e){
+            //OE TE NO HAY NADA EN LOS CAMPOS DE PESO Y BALA BLLBALBALBA
+        }
     }
       
     /**
@@ -329,10 +337,19 @@ public class FrmRegistroEnvio extends javax.swing.JFrame {
         
         if(comboDestino.getSelectedItem().equals(comboOrigen.getSelectedItem())){
             JOptionPane.showMessageDialog(null, "No puedes colocar el mismo ORIGEN Y DESTINO ");
+        }
+        else if(p1.getNombreProducto()==""){
+            JOptionPane.showMessageDialog(null, "No se colocó ningun producto ");
         }else{
             int input = JOptionPane.showConfirmDialog(null, "¿Estás seguro de los cambios establecidos?");
             // 0=yes, 1=no, 2=cancel
             if(input==0){
+                
+                //darPreciosALosProductos()
+                //darPreciosALosProductos()
+                //darPreciosALosProductos()
+                //darPreciosALosProductos()
+                //darPreciosALosProductos()
                 
                 OlvaCourier.listaProductoActual.InsertarNodo(p1);
                 OlvaCourier.listaProductoActual.InsertarNodo(p2);
@@ -346,8 +363,7 @@ public class FrmRegistroEnvio extends javax.swing.JFrame {
                 
             FrmBoleta boleta = new FrmBoleta();
             this.dispose();
-       }
-            
+            }
         }
         
         
@@ -360,7 +376,7 @@ public class FrmRegistroEnvio extends javax.swing.JFrame {
             case 1: guardarValores(p1);break;
             case 2: guardarValores(p2);break;
             case 3: guardarValores(p3);break;
-            case 4: guardarValores(p4);break;//25
+            case 4: guardarValores(p4);break;
             case 5: guardarValores(p5);break;
             
         }
@@ -387,21 +403,23 @@ public class FrmRegistroEnvio extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmRegistroEnvio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmRegistroProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmRegistroEnvio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmRegistroProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmRegistroEnvio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmRegistroProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmRegistroEnvio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmRegistroProducto.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmRegistroEnvio().setVisible(true);
+                new FrmRegistroProducto().setVisible(true);
             }
         });
     }

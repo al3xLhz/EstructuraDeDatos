@@ -19,8 +19,10 @@ public class FrmCliente extends javax.swing.JFrame {
      */
     public FrmCliente() {
         initComponents();
-        setVisible(true);
         etiquetaBienvenida.setText("Bienvenido "+OlvaCourier.clienteActual.getNombres());
+        
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     /**
@@ -166,7 +168,7 @@ public class FrmCliente extends javax.swing.JFrame {
 
     private void botonRegistroEnvioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistroEnvioActionPerformed
         
-        FrmRegistroEnvio formularioRegistroEnvio= new FrmRegistroEnvio();
+        FrmRegistroProducto formularioRegistroEnvio= new FrmRegistroProducto();
         this.dispose();
         
     }//GEN-LAST:event_botonRegistroEnvioActionPerformed

@@ -7,17 +7,19 @@ public class Producto {
     private double alto;
     private double ancho;
     private double largo;
-    private String codigo;
+    private int codigo;
     private String estado;
-    private static int codigoProductos= 1000000000;
+    public static int codigoProductos= 1000000000;
+    private int valor;
     
-    public Producto(String nombreProducto, double peso, double alto, double ancho, double largo) {
+    public Producto(String nombreProducto, double peso, double alto, double ancho, double largo, int valor) {
         this.nombreProducto = nombreProducto;
         this.peso = peso;
         this.alto = alto;
         this.ancho = ancho;
         this.largo = largo;
-        this.codigo = String.valueOf(codigoProductos);
+        this.codigo = codigoProductos;
+        this.valor = valor;
         codigoProductos++;
     }
 
@@ -41,9 +43,15 @@ public class Producto {
         return largo;
     }
 
-    public String getCodigo() {
-        return codigo;
+    public int getValor() {
+        return valor;
     }
+
+    public void setValor(int valor) {
+        this.valor = valor;
+    }
+
+        
 
     public String getEstado() {
         return estado;
@@ -53,9 +61,15 @@ public class Producto {
         return codigoProductos;
     }
 
-    public void setCodigo(String codigo) {
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
         this.codigo = codigo;
     }
+
+    
 
     public void setEstado(String estado) {
         this.estado = estado;
