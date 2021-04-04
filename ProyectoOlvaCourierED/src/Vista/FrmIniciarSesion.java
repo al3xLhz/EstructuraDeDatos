@@ -25,6 +25,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setVisible(true);
+        rsscalelabel.RSScaleLabel.setScaleLabel(jLabel1, "Images/olva-courier.png");
     }
     
     
@@ -186,7 +187,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\laura\\Pictures\\olva-courier.png")); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/olva-courier.png"))); // NOI18N
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Historic", 3, 14)); // NOI18N
