@@ -290,7 +290,7 @@ public class FrmBoleta extends javax.swing.JFrame {
        int input = JOptionPane.showConfirmDialog(null, "¿Estás seguro de los cambios establecidos?");
         // 0=yes, 1=no, 2=cancel
        if(input==0){
-           OlvaCourier.clientes.InsertarNodo(c);
+           
            
            
            OlvaCourier.listaProductoActual.vaciarLista();
