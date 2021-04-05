@@ -12,6 +12,8 @@ import Modelo.RRHH;
 import Sistema.OlvaCourier;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 
 public class FrmIniciarSesion extends javax.swing.JFrame {
@@ -23,9 +25,10 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
     
     public FrmIniciarSesion() {
         initComponents();
+        jLabel1.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/olva-courier.png")).getImage().getScaledInstance(250, 140, Image.SCALE_SMOOTH)));
         setLocationRelativeTo(null);
         setVisible(true);
-        //rsscalelabel.RSScaleLabel.setScaleLabel(jLabel1, "src/olva-courier.png");
+        //rsscalelabel.RSScaleLabel.setScaleLabel(jLabel1, "Images/olva-courier.png");
     }
     
     
@@ -109,6 +112,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
 
         IngresoDatos.setBackground(new java.awt.Color(64, 170, 173));
 
+        CampoUsuario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         CampoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CampoUsuarioActionPerformed(evt);
@@ -132,6 +136,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
         etiquetaContraseña.setForeground(new java.awt.Color(56, 56, 55));
         etiquetaContraseña.setText("Contraseña");
 
+        CampoContraseña.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         CampoContraseña.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CampoContraseñaActionPerformed(evt);
@@ -146,7 +151,9 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
             }
         });
 
-        botonIngresar.setBackground(new java.awt.Color(204, 204, 204));
+        botonIngresar.setBackground(new java.awt.Color(64, 170, 173));
+        botonIngresar.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        botonIngresar.setForeground(new java.awt.Color(56, 56, 55));
         botonIngresar.setText("Ingresar");
         botonIngresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -164,7 +171,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
         IngresoDatosLayout.setHorizontalGroup(
             IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(IngresoDatosLayout.createSequentialGroup()
-                .addContainerGap(58, Short.MAX_VALUE)
+                .addContainerGap(35, Short.MAX_VALUE)
                 .addGroup(IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, IngresoDatosLayout.createSequentialGroup()
                         .addGroup(IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -172,12 +179,13 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
                             .addComponent(jLabel5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(etiquetaUsuario)
-                            .addGroup(IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(CampoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(etiquetaContraseña)
-                                    .addComponent(CampoContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(IngresoDatosLayout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addComponent(etiquetaContraseña))
+                            .addGroup(IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(CampoUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                                .addComponent(etiquetaUsuario, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(CampoContraseña, javax.swing.GroupLayout.Alignment.LEADING)))
                         .addGap(48, 48, 48))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, IngresoDatosLayout.createSequentialGroup()
                         .addComponent(botonIngresar)
@@ -186,20 +194,18 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
         IngresoDatosLayout.setVerticalGroup(
             IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, IngresoDatosLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(etiquetaUsuario)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, IngresoDatosLayout.createSequentialGroup()
-                        .addGap(0, 6, Short.MAX_VALUE)
-                        .addComponent(jLabel5))
-                    .addComponent(CampoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(CampoUsuario))
+                .addGap(28, 28, 28)
                 .addComponent(etiquetaContraseña)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CampoContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CampoContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addComponent(botonIngresar)
                 .addGap(60, 60, 60))
@@ -211,14 +217,19 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
         FondoMarca.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/olva-courier.png"))); // NOI18N
+        jLabel1.setLabelFor(jLabel1);
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jLabel1.setMaximumSize(new java.awt.Dimension(300, 300));
+        jLabel1.setMinimumSize(new java.awt.Dimension(219, 82));
+        jLabel1.setPreferredSize(new java.awt.Dimension(230, 93));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Historic", 3, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(87, 86, 86));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("\" El courier más grande del Perú\"");
+        jLabel2.setText("\" El courier más grande del Perú\"    ");
         jLabel2.setToolTipText("");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -227,18 +238,18 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
         FondoMarca.setLayout(FondoMarcaLayout);
         FondoMarcaLayout.setHorizontalGroup(
             FondoMarcaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(FondoMarcaLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 132, Short.MAX_VALUE))
+            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FondoMarcaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         FondoMarcaLayout.setVerticalGroup(
             FondoMarcaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FondoMarcaLayout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         Fondo.add(FondoMarca, java.awt.BorderLayout.NORTH);
@@ -251,7 +262,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE)
+            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
         );
 
         pack();
