@@ -40,6 +40,11 @@ public class FrmAdministrador extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        Fondo.setBackground(new java.awt.Color(64, 170, 173));
+
+        Bienvenida.setBackground(new java.awt.Color(64, 170, 173));
+
+        etiquetaBienvenida.setFont(new java.awt.Font("Yu Gothic UI", 1, 26)); // NOI18N
         etiquetaBienvenida.setText("Bienvenido Admin.getNombre()");
 
         javax.swing.GroupLayout BienvenidaLayout = new javax.swing.GroupLayout(Bienvenida);
@@ -47,8 +52,8 @@ public class FrmAdministrador extends javax.swing.JFrame {
         BienvenidaLayout.setHorizontalGroup(
             BienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BienvenidaLayout.createSequentialGroup()
-                .addGap(207, 207, 207)
-                .addComponent(etiquetaBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24)
+                .addComponent(etiquetaBienvenida)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         BienvenidaLayout.setVerticalGroup(
@@ -58,6 +63,8 @@ public class FrmAdministrador extends javax.swing.JFrame {
                 .addComponent(etiquetaBienvenida)
                 .addContainerGap(53, Short.MAX_VALUE))
         );
+
+        PanelOpciones.setBackground(new java.awt.Color(64, 170, 173));
 
         jButton1.setText("Registro de envio");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -84,43 +91,51 @@ public class FrmAdministrador extends javax.swing.JFrame {
         PanelOpcionesLayout.setHorizontalGroup(
             PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                .addGap(62, 62, 62)
-                .addComponent(jButton1)
-                .addGap(57, 57, 57)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 198, Short.MAX_VALUE)
+                .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addComponent(jButton5)
+                        .addGap(72, 72, 72)
+                        .addComponent(jButton4))
+                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3)
-                .addGap(76, 76, 76))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelOpcionesLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton5)
-                .addGap(88, 88, 88)
-                .addComponent(jButton4)
-                .addGap(150, 150, 150))
+                .addGap(117, 117, 117))
         );
         PanelOpcionesLayout.setVerticalGroup(
             PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                .addGap(67, 67, 67)
+                .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(jButton3))
+                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(jButton2))
+                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
+                        .addGap(92, 92, 92)
+                        .addComponent(jButton1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addGap(40, 40, 40)
-                .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
-                .addContainerGap(270, Short.MAX_VALUE))
+                    .addComponent(jButton5)
+                    .addComponent(jButton4))
+                .addGap(137, 137, 137))
         );
 
         javax.swing.GroupLayout FondoLayout = new javax.swing.GroupLayout(Fondo);
         Fondo.setLayout(FondoLayout);
         FondoLayout.setHorizontalGroup(
             FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PanelOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(FondoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Bienvenida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(FondoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(Bienvenida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(PanelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 582, Short.MAX_VALUE))
                 .addContainerGap())
         );
         FondoLayout.setVerticalGroup(
@@ -128,9 +143,9 @@ public class FrmAdministrador extends javax.swing.JFrame {
             .addGroup(FondoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Bienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
-                .addComponent(PanelOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PanelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
