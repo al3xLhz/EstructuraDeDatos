@@ -90,7 +90,8 @@ public class FrmBoleta extends javax.swing.JFrame {
 
         Header.setBackground(new java.awt.Color(64, 170, 173));
 
-        TituloBoleta.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        TituloBoleta.setFont(new java.awt.Font("Yu Gothic", 1, 26)); // NOI18N
+        TituloBoleta.setForeground(new java.awt.Color(34, 35, 34));
         TituloBoleta.setText("Boleta");
 
         etiquetaFechaLlegada.setBackground(new java.awt.Color(64, 170, 173));
@@ -231,9 +232,9 @@ public class FrmBoleta extends javax.swing.JFrame {
                             .addComponent(respuestaIGV, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(etiquetaTotal)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(botonAceptar)
-                .addGap(23, 23, 23))
+                .addGap(66, 66, 66))
         );
 
         javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
@@ -254,7 +255,8 @@ public class FrmBoleta extends javax.swing.JFrame {
                 .addGap(38, 38, 38)
                 .addComponent(TituloBoleta)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(etiquetaFechaLlegada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(etiquetaFechaLlegada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout FondoLayout = new javax.swing.GroupLayout(Fondo);
