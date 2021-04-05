@@ -63,22 +63,21 @@ public class FrmAdministrador extends javax.swing.JFrame {
                 .addContainerGap(53, Short.MAX_VALUE))
         );
 
-<<<<<<< HEAD
-        jButton1.setText("Inventario de Agencia");
-=======
         PanelOpciones.setBackground(new java.awt.Color(64, 170, 173));
 
-        jButton1.setText("Registro de envio");
->>>>>>> a6284269e1c9565e0bd71714e2787813d341a6de
+        jButton1.setText("Inventario de Agencia");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        PanelOpciones.add(jButton1);
 
         jButton2.setText("Consulta de ordenes");
+        PanelOpciones.add(jButton2);
 
         jButton3.setText("Historial");
+        PanelOpciones.add(jButton3);
 
         jButton5.setText("Seguimiento de envios");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -86,70 +85,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
                 jButton5ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout PanelOpcionesLayout = new javax.swing.GroupLayout(PanelOpciones);
-        PanelOpciones.setLayout(PanelOpcionesLayout);
-        PanelOpcionesLayout.setHorizontalGroup(
-            PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelOpcionesLayout.createSequentialGroup()
-<<<<<<< HEAD
-                .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(jButton1)
-                        .addGap(71, 71, 71)
-                        .addComponent(jButton2)
-                        .addGap(93, 93, 93)
-                        .addComponent(jButton3))
-                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addComponent(jButton5)))
-                .addContainerGap(143, Short.MAX_VALUE))
-=======
-                .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(jButton5)
-                        .addGap(72, 72, 72)
-                        .addComponent(jButton4))
-                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(117, 117, 117))
->>>>>>> a6284269e1c9565e0bd71714e2787813d341a6de
-        );
-        PanelOpcionesLayout.setVerticalGroup(
-            PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(jButton3))
-                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(jButton2))
-                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                        .addGap(92, 92, 92)
-                        .addComponent(jButton1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-<<<<<<< HEAD
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addGap(31, 31, 31)
-                .addComponent(jButton5)
-                .addContainerGap(279, Short.MAX_VALUE))
-=======
-                    .addComponent(jButton5)
-                    .addComponent(jButton4))
-                .addGap(137, 137, 137))
->>>>>>> a6284269e1c9565e0bd71714e2787813d341a6de
-        );
+        PanelOpciones.add(jButton5);
 
         javax.swing.GroupLayout FondoLayout = new javax.swing.GroupLayout(Fondo);
         Fondo.setLayout(FondoLayout);
@@ -160,7 +96,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
                     .addGroup(FondoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(Bienvenida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(PanelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, 582, Short.MAX_VALUE))
+                    .addComponent(PanelOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, 630, Short.MAX_VALUE))
                 .addContainerGap())
         );
         FondoLayout.setVerticalGroup(
@@ -170,7 +106,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
                 .addComponent(Bienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(207, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
