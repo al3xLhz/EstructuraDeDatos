@@ -5,14 +5,10 @@
  */
 package Vista;
 
-import Estructura.ListaAgencia;
-import Estructura.ListaProducto;
-import Modelo.Agencia;
-import Modelo.Boleta;
+import Modelo.Pedido;
 import Modelo.Producto;
 import Sistema.OlvaCourier;
 import java.util.Calendar;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 /**
@@ -62,7 +58,8 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
         p.setLargo(Double.parseDouble(campoLargo.getText()));
         p.setAlto(Double.parseDouble(campoAlto.getText()));
         p.setPeso(Double.parseDouble(campoPeso.getText()));
-        }catch(Exception e){
+        p.setAncho(Double.parseDouble(campoAncho.getText()));
+        }catch(NumberFormatException e){
             //OE TE NO HAY NADA EN LOS CAMPOS DE PESO Y BALA BLLBALBALBA
         }
     }
@@ -373,15 +370,15 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                 //darPreciosALosProductos()
                 //darPreciosALosProductos()
                 //darPreciosALosProductos()
-                
-                OlvaCourier.listaProductoActual.InsertarNodo(p1);
-                OlvaCourier.listaProductoActual.InsertarNodo(p2);
-                OlvaCourier.listaProductoActual.InsertarNodo(p3);
-                OlvaCourier.listaProductoActual.InsertarNodo(p4);
-                OlvaCourier.listaProductoActual.InsertarNodo(p5);
+                OlvaCourier.pedidosActuales.InsertarNodo(new Pedido(p1));
+                OlvaCourier.pedidosActuales.InsertarNodo(new Pedido(p2));
+                OlvaCourier.pedidosActuales.InsertarNodo(new Pedido(p3));
+                OlvaCourier.pedidosActuales.InsertarNodo(new Pedido(p4));
+                OlvaCourier.pedidosActuales.InsertarNodo(new Pedido(p5));
                 
                 OlvaCourier.boletaActual.setAgenciaInicial(OlvaCourier.agencias.getAgencia(comboOrigen.getSelectedItem().toString()));
                 OlvaCourier.boletaActual.setAgenciaFinal(OlvaCourier.agencias.getAgencia(comboDestino.getSelectedItem().toString()));
+                OlvaCourier.boletaActual.setListaPedidos(OlvaCourier.pedidosActuales);
                 
                 
             FrmBoleta boleta = new FrmBoleta();

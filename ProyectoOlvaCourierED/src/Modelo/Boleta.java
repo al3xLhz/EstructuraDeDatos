@@ -1,30 +1,26 @@
 
 package Modelo;
 
-import Estructura.ListaProducto;
+import Estructura.*;
 import java.util.Calendar;
 
 public class Boleta {
     private int codigo;
-    private Calendar fechaEmision;
     private Calendar fechadeEntrega;
+    private Agencia agenciaInicial;
+    private Agencia agenciaFinal;
     private double importeTotal;
     private double IGV=importeTotal*0.18;
     private double total;
-    private Agencia agenciaInicial;
-    private Agencia agenciaFinal;
     private static int codigoM = 1000000000;
-    private ListaProducto listaProductos = new ListaProducto();
+    private ListaPedidos listaPedidos;
 
     public Boleta(Calendar fechaEmision, Calendar fechadeEntrega, double importeTotal, double total, Agencia agenciaInicial, Agencia agenciaFinal) {
         this.codigo = codigoM;
         codigoM++;
-        this.fechaEmision = fechaEmision;
         this.fechadeEntrega = fechadeEntrega;
         this.importeTotal = importeTotal;
         this.total = total;
-        this.agenciaInicial = agenciaInicial;
-        this.agenciaFinal = agenciaFinal;
     }
 
     public int getCodigo() {
@@ -33,14 +29,6 @@ public class Boleta {
 
     public void setCodigo(int codigo) {
         this.codigo = codigo;
-    }
-
-    public Calendar getFechaEmision() {
-        return fechaEmision;
-    }
-
-    public void setFechaEmision(Calendar fechaEmision) {
-        this.fechaEmision = fechaEmision;
     }
 
     public Calendar getFechadeEntrega() {
@@ -75,6 +63,15 @@ public class Boleta {
         this.total = total;
     }
 
+
+    public static int getCodigoM() {
+        return codigoM;
+    }
+
+    public static void setCodigoM(int codigoM) {
+        Boleta.codigoM = codigoM;
+    }
+
     public Agencia getAgenciaInicial() {
         return agenciaInicial;
     }
@@ -91,20 +88,12 @@ public class Boleta {
         this.agenciaFinal = agenciaFinal;
     }
 
-    public static int getCodigoM() {
-        return codigoM;
+    public ListaPedidos getListaPedidos() {
+        return listaPedidos;
     }
 
-    public static void setCodigoM(int codigoM) {
-        Boleta.codigoM = codigoM;
-    }
-
-    public ListaProducto getListaProductos() {
-        return listaProductos;
-    }
-
-    public void setListaProductos(ListaProducto listaProductos) {
-        this.listaProductos = listaProductos;
+    public void setListaPedidos(ListaPedidos listaPedidos) {
+        this.listaPedidos = listaPedidos;
     }
     
     

@@ -22,8 +22,6 @@ public class FrmCliente extends javax.swing.JFrame {
     public FrmCliente() {
         initComponents();
         etiquetaBienvenida.setText("Bienvenido "+OlvaCourier.clienteActual.getNombres());
-        jLabel7.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exit.png")).getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH)));
-        
         setLocationRelativeTo(null);
         setVisible(true);
     }

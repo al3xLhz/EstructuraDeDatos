@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Modelo.Pedido;
 import Modelo.Producto;
 import Sistema.OlvaCourier;
 import java.util.Calendar;
@@ -36,15 +37,15 @@ public class FrmBoleta extends javax.swing.JFrame {
         String matriz[][] = new String[5][3];
         
         for(int i=0;i<5;i++){
-            if(OlvaCourier.listaProductoActual.getProductoXPos(i).getNombreProducto()!=""){
-                matriz[i][0]=String.valueOf(OlvaCourier.listaProductoActual.getProductoXPos(i).getCodigo());
-                matriz[i][1]=String.valueOf(OlvaCourier.listaProductoActual.getProductoXPos(i).getNombreProducto());
-                matriz[i][2]=String.valueOf(OlvaCourier.listaProductoActual.getProductoXPos(i).getValor());
+            if(OlvaCourier.pedidosActuales.getPedidoXPos(i).getProducto().getNombreProducto()!=""){
+                matriz[i][0]=String.valueOf(OlvaCourier.pedidosActuales.getPedidoXPos(i).getCodigo());
+                matriz[i][1]=String.valueOf(OlvaCourier.pedidosActuales.getPedidoXPos(i).getProducto().getNombreProducto());
+                matriz[i][2]=String.valueOf(OlvaCourier.pedidosActuales.getPedidoXPos(i).getValor());
                 tabla.setValueAt(matriz[i][0], i, 0);
                 tabla.setValueAt(matriz[i][1], i, 1);
                 tabla.setValueAt(matriz[i][2], i, 2);
             }else{
-                Producto.codigoProductos--;
+                Pedido.codigoPedido--;
             }
             
         }
@@ -293,7 +294,7 @@ public class FrmBoleta extends javax.swing.JFrame {
            
            
            
-           OlvaCourier.listaProductoActual.vaciarLista();
+           OlvaCourier.pedidosActuales.vaciarLista();
            FrmCliente cliente = new FrmCliente();
            this.dispose();
        }
