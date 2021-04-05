@@ -7,10 +7,6 @@ public class Producto {
     private double alto;
     private double ancho;
     private double largo;
-    private int codigo;
-    private String estado;
-    public static int codigoProductos= 1000000000;
-    private int valor;
     
     public Producto(String nombreProducto, double peso, double alto, double ancho, double largo, int valor) {
         this.nombreProducto = nombreProducto;
@@ -18,9 +14,6 @@ public class Producto {
         this.alto = alto;
         this.ancho = ancho;
         this.largo = largo;
-        this.codigo = codigoProductos;
-        this.valor = valor;
-        codigoProductos++;
     }
 
     public String getNombreProducto() {
@@ -43,46 +36,6 @@ public class Producto {
         return largo;
     }
 
-    public int getValor() {
-        return valor;
-    }
-
-    public void setValor(int valor) {
-        this.valor = valor;
-    }
-
-        
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public static int getCodigoProductos() {
-        return codigoProductos;
-    }
-
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
-    
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public static void setCodigoProductos(int codigoProductos) {
-        Producto.codigoProductos = codigoProductos;
-    }
-
-    public void setNombreProducto(String nombreProducto) {
-        this.nombreProducto = nombreProducto;
-    }
-
     public void setPeso(double peso) {
         this.peso = peso;
     }
@@ -98,6 +51,12 @@ public class Producto {
     public void setLargo(double largo) {
         this.largo = largo;
     }
+
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
+    }
+
+    
     
     
     
