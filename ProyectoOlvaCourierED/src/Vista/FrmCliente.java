@@ -7,6 +7,7 @@ package Vista;
 
 import Sistema.OlvaCourier;
 import javax.swing.JOptionPane;
+import java.awt.Image;
 
 /**
  *
@@ -19,6 +20,7 @@ public class FrmCliente extends javax.swing.JFrame {
      */
     public FrmCliente() {
         initComponents();
+        
         etiquetaBienvenida.setText("Bienvenido "+OlvaCourier.clienteActual.getNombres());
         
         setLocationRelativeTo(null);
@@ -47,25 +49,17 @@ public class FrmCliente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        Fondo.setBackground(new java.awt.Color(87, 86, 86));
+
+        Bienvenida.setBackground(new java.awt.Color(64, 170, 173));
+
+        etiquetaBienvenida.setFont(new java.awt.Font("Yu Gothic UI", 1, 24)); // NOI18N
+        etiquetaBienvenida.setForeground(new java.awt.Color(34, 35, 34));
         etiquetaBienvenida.setText("Bienvenido Cliente.getNombre()");
 
-        javax.swing.GroupLayout BienvenidaLayout = new javax.swing.GroupLayout(Bienvenida);
-        Bienvenida.setLayout(BienvenidaLayout);
-        BienvenidaLayout.setHorizontalGroup(
-            BienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BienvenidaLayout.createSequentialGroup()
-                .addGap(207, 207, 207)
-                .addComponent(etiquetaBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        BienvenidaLayout.setVerticalGroup(
-            BienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BienvenidaLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(etiquetaBienvenida)
-                .addContainerGap(53, Short.MAX_VALUE))
-        );
+        PanelOpciones.setBackground(new java.awt.Color(64, 170, 173));
 
+        botonRegistroEnvio.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         botonRegistroEnvio.setText("Registro de productos");
         botonRegistroEnvio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,6 +67,7 @@ public class FrmCliente extends javax.swing.JFrame {
             }
         });
 
+        botonConsultarOrden.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         botonConsultarOrden.setText("Consultar orden");
         botonConsultarOrden.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,10 +75,13 @@ public class FrmCliente extends javax.swing.JFrame {
             }
         });
 
+        botonHistorial.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         botonHistorial.setText("Historial");
 
+        botonCalcularEnvio.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         botonCalcularEnvio.setText("Calcular envio");
 
+        botonSeguimientoEnvio.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         botonSeguimientoEnvio.setText("Seguimiento de envios");
         botonSeguimientoEnvio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,6 +89,7 @@ public class FrmCliente extends javax.swing.JFrame {
             }
         });
 
+        botonSalir.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         botonSalir.setText("Salir");
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -103,37 +102,53 @@ public class FrmCliente extends javax.swing.JFrame {
         PanelOpcionesLayout.setHorizontalGroup(
             PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                .addGap(62, 62, 62)
+                .addGap(41, 41, 41)
                 .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botonRegistroEnvio)
                     .addComponent(botonSeguimientoEnvio))
-                .addGap(27, 27, 27)
+                .addGap(54, 54, 54)
+                .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(botonConsultarOrden, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(botonCalcularEnvio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                        .addComponent(botonConsultarOrden)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
-                        .addComponent(botonHistorial)
-                        .addGap(76, 76, 76))
-                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                        .addComponent(botonCalcularEnvio)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonSalir)
-                        .addGap(88, 88, 88))))
+                    .addComponent(botonSalir)
+                    .addComponent(botonHistorial))
+                .addGap(76, 76, 76))
         );
         PanelOpcionesLayout.setVerticalGroup(
             PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                .addGap(67, 67, 67)
+                .addGap(84, 84, 84)
                 .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonRegistroEnvio)
                     .addComponent(botonConsultarOrden)
+                    .addComponent(botonRegistroEnvio)
                     .addComponent(botonHistorial))
-                .addGap(40, 40, 40)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
                 .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonCalcularEnvio)
                     .addComponent(botonSeguimientoEnvio)
+                    .addComponent(botonCalcularEnvio)
                     .addComponent(botonSalir))
-                .addContainerGap(295, Short.MAX_VALUE))
+                .addGap(105, 105, 105))
+        );
+
+        javax.swing.GroupLayout BienvenidaLayout = new javax.swing.GroupLayout(Bienvenida);
+        Bienvenida.setLayout(BienvenidaLayout);
+        BienvenidaLayout.setHorizontalGroup(
+            BienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(PanelOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(BienvenidaLayout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(etiquetaBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        BienvenidaLayout.setVerticalGroup(
+            BienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BienvenidaLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(etiquetaBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(PanelOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout FondoLayout = new javax.swing.GroupLayout(Fondo);
@@ -141,15 +156,12 @@ public class FrmCliente extends javax.swing.JFrame {
         FondoLayout.setHorizontalGroup(
             FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(Bienvenida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(PanelOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         FondoLayout.setVerticalGroup(
             FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FondoLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FondoLayout.createSequentialGroup()
                 .addComponent(Bienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(PanelOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(0, 0, 0))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -160,18 +172,16 @@ public class FrmCliente extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botonRegistroEnvioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistroEnvioActionPerformed
-        
-        FrmRegistroProducto formularioRegistroEnvio= new FrmRegistroProducto();
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+        FrmIniciarSesion fr= new FrmIniciarSesion();
         this.dispose();
-        
-    }//GEN-LAST:event_botonRegistroEnvioActionPerformed
+    }//GEN-LAST:event_botonSalirActionPerformed
 
     private void botonSeguimientoEnvioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSeguimientoEnvioActionPerformed
         // TODO add your handling code here:
@@ -181,10 +191,11 @@ public class FrmCliente extends javax.swing.JFrame {
         JOptionPane.showInputDialog("Digite el código a buscar");
     }//GEN-LAST:event_botonConsultarOrdenActionPerformed
 
-    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
-        FrmIniciarSesion fr= new FrmIniciarSesion();
+    private void botonRegistroEnvioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistroEnvioActionPerformed
+
+        FrmRegistroProducto formularioRegistroEnvio= new FrmRegistroProducto();
         this.dispose();
-    }//GEN-LAST:event_botonSalirActionPerformed
+    }//GEN-LAST:event_botonRegistroEnvioActionPerformed
 
     /**
      * @param args the command line arguments
