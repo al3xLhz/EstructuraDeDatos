@@ -33,15 +33,12 @@ public class FrmAdministrador extends javax.swing.JFrame {
         etiquetaBienvenida = new javax.swing.JLabel();
         PanelOpciones = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Fondo.setBackground(new java.awt.Color(64, 170, 173));
         Fondo.setPreferredSize(new java.awt.Dimension(650, 520));
-
         Bienvenida.setBackground(new java.awt.Color(64, 170, 173));
 
         etiquetaBienvenida.setFont(new java.awt.Font("Yu Gothic", 1, 26)); // NOI18N
@@ -68,16 +65,11 @@ public class FrmAdministrador extends javax.swing.JFrame {
                 .addContainerGap(55, Short.MAX_VALUE))
         );
 
+        Fondo.add(Bienvenida, java.awt.BorderLayout.NORTH);
+
         PanelOpciones.setBackground(new java.awt.Color(64, 170, 173));
 
         jButton2.setText("Consulta de ordenes");
-
-        jButton5.setText("Seguimiento de envios");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
 
         jButton3.setText("Historial");
 
@@ -102,9 +94,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
             .addGroup(FondoLayout.createSequentialGroup()
                 .addGap(42, 42, 42)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton5)
-                .addGap(114, 114, 114))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FondoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton3)
@@ -124,10 +114,11 @@ public class FrmAdministrador extends javax.swing.JFrame {
                         .addComponent(jButton2))
                     .addGroup(FondoLayout.createSequentialGroup()
                         .addComponent(jButton3)
-                        .addGap(51, 51, 51)
-                        .addComponent(jButton5)))
+                        .addGap(51, 51, 51)))
                 .addContainerGap(233, Short.MAX_VALUE))
         );
+
+        Fondo.add(PanelOpciones, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -147,9 +138,9 @@ public class FrmAdministrador extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void botonSeguimientoEnvioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSeguimientoEnvioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_botonSeguimientoEnvioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,10 +181,11 @@ public class FrmAdministrador extends javax.swing.JFrame {
     private javax.swing.JPanel Bienvenida;
     private javax.swing.JPanel Fondo;
     private javax.swing.JPanel PanelOpciones;
+    private javax.swing.JButton botonSeguimientoEnvio;
     private javax.swing.JLabel etiquetaBienvenida;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel6;
     // End of variables declaration//GEN-END:variables
 }

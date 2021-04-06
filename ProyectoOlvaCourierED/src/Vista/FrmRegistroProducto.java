@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Modelo.Boleta;
 import Modelo.Pedido;
 import Modelo.Producto;
 import Sistema.OlvaCourier;
@@ -34,12 +35,11 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
         p3 = new Producto("", 0, 0, 0, 0, 0);
         p4 = new Producto("", 0, 0, 0, 0, 0);
         p5 = new Producto("", 0, 0, 0, 0, 0);
-        
+        OlvaCourier.boletaActual = new Boleta(null, null, "");
         setLocationRelativeTo(null);
         setVisible(true);
         
     }
-    
     
     
     public void instanciarValores(Producto p){
@@ -311,8 +311,49 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                 .addComponent(botonSiguiente)
                 .addGap(41, 41, 41))
         );
+       
+        Header.setLayout(HeaderLayout);
+        HeaderLayout.setHorizontalGroup(
+            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HeaderLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(TituloRegistroEnvio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(etiquetaNombre)
+                .addGap(89, 89, 89)
+                .addComponent(etiquetaHora)
+                .addGap(100, 100, 100))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeaderLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(Body, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        HeaderLayout.setVerticalGroup(
+            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HeaderLayout.createSequentialGroup()
+                .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(HeaderLayout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(etiquetaNombre)
+                            .addComponent(etiquetaHora)))
+                    .addGroup(HeaderLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(TituloRegistroEnvio)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Body, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
-        fondo.add(Body, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout fondoLayout = new javax.swing.GroupLayout(fondo);
+        fondo.setLayout(fondoLayout);
+        fondoLayout.setHorizontalGroup(
+            fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Header, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        fondoLayout.setVerticalGroup(
+            fondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(Header, javax.swing.GroupLayout.PREFERRED_SIZE, 478, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -348,30 +389,25 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
         if(comboDestino.getSelectedItem().equals(comboOrigen.getSelectedItem())){
             JOptionPane.showMessageDialog(null, "No puedes colocar el mismo ORIGEN Y DESTINO ");
         }
-        else if(p1.getNombreProducto()==""){
+        else if("".equals(p1.getNombreProducto())){
             JOptionPane.showMessageDialog(null, "No se colocó ningun producto ");
         }else{
             int input = JOptionPane.showConfirmDialog(null, "¿Estás seguro de los cambios establecidos?");
             // 0=yes, 1=no, 2=cancel
             if(input==0){
                 
-                //darPreciosALosProductos()
-                //darPreciosALosProductos()
-                //darPreciosALosProductos()
-                //darPreciosALosProductos()
-                //darPreciosALosProductos()
-                OlvaCourier.pedidosActuales.InsertarNodo(new Pedido(p1));
-                OlvaCourier.pedidosActuales.InsertarNodo(new Pedido(p2));
-                OlvaCourier.pedidosActuales.InsertarNodo(new Pedido(p3));
-                OlvaCourier.pedidosActuales.InsertarNodo(new Pedido(p4));
-                OlvaCourier.pedidosActuales.InsertarNodo(new Pedido(p5));
-                
                 OlvaCourier.boletaActual.setAgenciaInicial(OlvaCourier.agencias.getAgencia(comboOrigen.getSelectedItem().toString()));
                 OlvaCourier.boletaActual.setAgenciaFinal(OlvaCourier.agencias.getAgencia(comboDestino.getSelectedItem().toString()));
-                OlvaCourier.boletaActual.setListaPedidos(OlvaCourier.pedidosActuales);
+                OlvaCourier.boletaActual.getListaPedidos().InsertarNodo(new Pedido(p1));
+                OlvaCourier.boletaActual.getListaPedidos().InsertarNodo(new Pedido(p2));
+                OlvaCourier.boletaActual.getListaPedidos().InsertarNodo(new Pedido(p3));
+                OlvaCourier.boletaActual.getListaPedidos().InsertarNodo(new Pedido(p4));
+                OlvaCourier.boletaActual.getListaPedidos().InsertarNodo(new Pedido(p5));
+                OlvaCourier.boletaActual.setPrecioTotal();
+                OlvaCourier.boletaActual.setPropietarioDNI(OlvaCourier.clienteActual.getDni());
+                OlvaCourier.boletaActual.getFechadeEntrega().add(Calendar.DAY_OF_MONTH, 5);
                 
-                
-            FrmBoleta boleta = new FrmBoleta();
+            FrmBoletaLlenar boleta = new FrmBoletaLlenar();
             this.dispose();
             }
         }

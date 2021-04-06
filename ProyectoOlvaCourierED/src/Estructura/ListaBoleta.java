@@ -30,6 +30,37 @@ public class ListaBoleta {
         }
     }
     
+    public Boleta getBoleta(int nroBoleta){
+        NodoBoleta aux=primero;
+        Boleta boletaR = null;
+        
+        while(aux!=null){
+            if(aux.b.getCodigo()==nroBoleta){
+                boletaR=aux.b;
+            }
+            aux=aux.siguiente;
+        }
+        
+        return boletaR;
+        
+    }
+    
+    public Boleta getBoletaXPos(int pos){
+        NodoBoleta aux=primero;
+        Boleta boletaR = null;
+        int contador =0;
+        while(aux!=null){
+            if(contador==pos){
+                boletaR=aux.b;
+            }
+            aux=aux.siguiente;
+            contador++;
+        }
+        
+        return boletaR;
+        
+    }
+    
 }
 
 class NodoBoleta{

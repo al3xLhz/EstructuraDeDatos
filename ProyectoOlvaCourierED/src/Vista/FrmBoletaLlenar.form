@@ -311,6 +311,13 @@
                     </Property>
                   </Properties>
                 </Component>
+                <Component class="javax.swing.JLabel" name="etiquetaNroBoleta">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Nro Boleta: "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="respuestaNroBoleta">
+                </Component>
               </SubComponents>
             </Container>
             <Component class="javax.swing.JButton" name="botonAceptar">

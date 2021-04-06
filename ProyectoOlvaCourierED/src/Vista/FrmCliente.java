@@ -7,8 +7,6 @@ package Vista;
 
 import Sistema.OlvaCourier;
 import javax.swing.JOptionPane;
-import java.awt.Image;
-import javax.swing.ImageIcon;
 
 /**
  *
@@ -45,11 +43,9 @@ public class FrmCliente extends javax.swing.JFrame {
         botonRegistroEnvio = new javax.swing.JButton();
         botonHistorial = new javax.swing.JButton();
         botonCalcularEnvio = new javax.swing.JButton();
-        botonSeguimientoEnvio = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -105,14 +101,6 @@ public class FrmCliente extends javax.swing.JFrame {
         botonCalcularEnvio.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         botonCalcularEnvio.setText("Calcular envio");
 
-        botonSeguimientoEnvio.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        botonSeguimientoEnvio.setText("Seguimiento de envios");
-        botonSeguimientoEnvio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonSeguimientoEnvioActionPerformed(evt);
-            }
-        });
-
         botonSalir.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         botonSalir.setText("Salir");
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -130,11 +118,6 @@ public class FrmCliente extends javax.swing.JFrame {
         jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel5.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/camioneta.png"))); // NOI18N
-        jLabel6.setFocusable(false);
-        jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/pago.png"))); // NOI18N
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -150,13 +133,11 @@ public class FrmCliente extends javax.swing.JFrame {
             .addGroup(PanelOpcionesLayout.createSequentialGroup()
                 .addGap(66, 66, 66)
                 .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonSeguimientoEnvio, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(PanelOpcionesLayout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel6))
+                        .addGap(13, 13, 13))
                     .addComponent(botonRegistroEnvio))
                 .addGap(39, 39, 39)
                 .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,8 +159,7 @@ public class FrmCliente extends javax.swing.JFrame {
                                     .addComponent(botonSalir, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(botonHistorial))
                                 .addComponent(jLabel7)))))
-                .addContainerGap(62, Short.MAX_VALUE))
-        );
+                .addContainerGap(62, Short.MAX_VALUE)));
         PanelOpcionesLayout.setVerticalGroup(
             PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelOpcionesLayout.createSequentialGroup()
@@ -204,8 +184,7 @@ public class FrmCliente extends javax.swing.JFrame {
                                         .addComponent(botonRegistroEnvio)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                                 .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jLabel4)))
                             .addGroup(PanelOpcionesLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jLabel8)
@@ -213,12 +192,9 @@ public class FrmCliente extends javax.swing.JFrame {
                                 .addComponent(jLabel7)))
                         .addGap(18, 18, 18)
                         .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(botonSeguimientoEnvio)
                             .addComponent(botonCalcularEnvio))))
                 .addGap(48, 48, 48))
         );
-
-        jLabel6.getAccessibleContext().setAccessibleParent(jLabel6);
 
         Fondo.add(PanelOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 650, 410));
 
@@ -249,12 +225,22 @@ public class FrmCliente extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_botonSalirActionPerformed
 
-    private void botonSeguimientoEnvioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSeguimientoEnvioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonSeguimientoEnvioActionPerformed
-
     private void botonConsultarOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarOrdenActionPerformed
-        JOptionPane.showInputDialog("Digite el código a buscar");
+        
+        //try{
+            int codigoABuscar = Integer.parseInt(JOptionPane.showInputDialog("Digite el código a buscar"));
+            OlvaCourier.boletaActual.actualizarDatos(OlvaCourier.clienteActual.getListaBoletas().getBoleta(codigoABuscar));
+            //System.out.println(OlvaCourier.boletaActual.getCodigo()); // si encontro
+            FrmConsultarOrden frmCO = new  FrmConsultarOrden();
+            
+            this.dispose();
+        /*}catch(Exception e){
+            JOptionPane.showMessageDialog(null, "No se encontró el código buscado");
+        }*/
+            
+        
+        
+        
     }//GEN-LAST:event_botonConsultarOrdenActionPerformed
 
     private void botonRegistroEnvioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistroEnvioActionPerformed
@@ -307,7 +293,6 @@ public class FrmCliente extends javax.swing.JFrame {
     private javax.swing.JButton botonHistorial;
     private javax.swing.JButton botonRegistroEnvio;
     private javax.swing.JButton botonSalir;
-    private javax.swing.JButton botonSeguimientoEnvio;
     private javax.swing.JLabel etiquetaBienvenida;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -315,7 +300,6 @@ public class FrmCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
