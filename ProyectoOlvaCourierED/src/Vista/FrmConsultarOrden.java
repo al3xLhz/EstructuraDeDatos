@@ -63,6 +63,7 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
         etiquetaNroBoleta2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
+        botonRetroceder = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,6 +135,13 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Tabla);
 
+        botonRetroceder.setText("Retroceder");
+        botonRetroceder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonRetrocederActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout BodyLayout = new javax.swing.GroupLayout(Body);
         Body.setLayout(BodyLayout);
         BodyLayout.setHorizontalGroup(
@@ -151,8 +159,10 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
                             .addComponent(respuestaEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)))
                     .addGroup(BodyLayout.createSequentialGroup()
                         .addGap(61, 61, 61)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(62, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(botonRetroceder)))
+                .addContainerGap(11, Short.MAX_VALUE))
         );
         BodyLayout.setVerticalGroup(
             BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,9 +175,15 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
                 .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(respuestaEstado)
                     .addComponent(etiquetaNroBoleta2))
-                .addGap(26, 26, 26)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BodyLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(35, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BodyLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonRetroceder)
+                        .addContainerGap())))
         );
 
         fondo.add(Body, java.awt.BorderLayout.CENTER);
@@ -176,17 +192,22 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonRetrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRetrocederActionPerformed
+        FrmCliente frmc= new FrmCliente();
+        this.dispose();
+    }//GEN-LAST:event_botonRetrocederActionPerformed
 
     /**
      * @param args the command line arguments
@@ -243,6 +264,7 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
     private javax.swing.JPanel Header;
     private javax.swing.JTable Tabla;
     private javax.swing.JLabel TituloRegistroEnvio;
+    private javax.swing.JButton botonRetroceder;
     private javax.swing.JLabel etiquetaHora;
     private javax.swing.JLabel etiquetaNombre;
     private javax.swing.JLabel etiquetaNroBoleta;
