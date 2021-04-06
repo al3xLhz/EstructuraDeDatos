@@ -104,6 +104,8 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        fondo.setLayout(new java.awt.BorderLayout());
+
         Header.setBackground(new java.awt.Color(64, 170, 173));
 
         TituloRegistroEnvio.setFont(new java.awt.Font("Yu Gothic UI", 1, 26)); // NOI18N
@@ -113,6 +115,36 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
         etiquetaNombre.setText("Nombre del cliente");
 
         etiquetaHora.setText("Hora actual");
+
+        javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
+        Header.setLayout(HeaderLayout);
+        HeaderLayout.setHorizontalGroup(
+            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HeaderLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addComponent(TituloRegistroEnvio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(etiquetaNombre)
+                .addGap(89, 89, 89)
+                .addComponent(etiquetaHora)
+                .addGap(100, 100, 100))
+        );
+        HeaderLayout.setVerticalGroup(
+            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HeaderLayout.createSequentialGroup()
+                .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(HeaderLayout.createSequentialGroup()
+                        .addGap(44, 44, 44)
+                        .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(etiquetaNombre)
+                            .addComponent(etiquetaHora)))
+                    .addGroup(HeaderLayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(TituloRegistroEnvio)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        fondo.add(Header, java.awt.BorderLayout.NORTH);
 
         Body.setBackground(new java.awt.Color(64, 170, 173));
 
@@ -175,7 +207,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
             }
         });
 
-        botonGuardar.setFont(new java.awt.Font("Yu Gothic UI", 1, 15)); // NOI18N
+        botonGuardar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         botonGuardar.setText("Guardar");
         botonGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -252,7 +284,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                 .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(etiquetaNompreProducto)
                     .addComponent(campoNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etiquetaPeso)
                     .addComponent(campoPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -279,8 +311,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                 .addComponent(botonSiguiente)
                 .addGap(41, 41, 41))
         );
-
-        javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
+       
         Header.setLayout(HeaderLayout);
         HeaderLayout.setHorizontalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

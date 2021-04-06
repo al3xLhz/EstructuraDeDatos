@@ -32,21 +32,21 @@ public class FrmAdministrador extends javax.swing.JFrame {
         Bienvenida = new javax.swing.JPanel();
         etiquetaBienvenida = new javax.swing.JLabel();
         PanelOpciones = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        botonSeguimientoEnvio = new javax.swing.JButton();
-
+        jButton1 = new javax.swing.JButton();
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Fondo.setBackground(new java.awt.Color(64, 170, 173));
-        Fondo.setLayout(new java.awt.BorderLayout());
-
+        Fondo.setPreferredSize(new java.awt.Dimension(650, 520));
         Bienvenida.setBackground(new java.awt.Color(64, 170, 173));
 
-        etiquetaBienvenida.setFont(new java.awt.Font("Yu Gothic UI", 1, 26)); // NOI18N
+        etiquetaBienvenida.setFont(new java.awt.Font("Yu Gothic", 1, 26)); // NOI18N
+        etiquetaBienvenida.setForeground(new java.awt.Color(34, 35, 34));
         etiquetaBienvenida.setText("Bienvenido Admin.getNombre()");
+        etiquetaBienvenida.setMaximumSize(new java.awt.Dimension(402, 43));
+        etiquetaBienvenida.setMinimumSize(new java.awt.Dimension(402, 43));
+        etiquetaBienvenida.setPreferredSize(new java.awt.Dimension(402, 43));
 
         javax.swing.GroupLayout BienvenidaLayout = new javax.swing.GroupLayout(Bienvenida);
         Bienvenida.setLayout(BienvenidaLayout);
@@ -54,20 +54,24 @@ public class FrmAdministrador extends javax.swing.JFrame {
             BienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BienvenidaLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
-                .addComponent(etiquetaBienvenida)
+                .addComponent(etiquetaBienvenida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         BienvenidaLayout.setVerticalGroup(
             BienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BienvenidaLayout.createSequentialGroup()
                 .addGap(37, 37, 37)
-                .addComponent(etiquetaBienvenida)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(etiquetaBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(55, Short.MAX_VALUE))
         );
 
         Fondo.add(Bienvenida, java.awt.BorderLayout.NORTH);
 
         PanelOpciones.setBackground(new java.awt.Color(64, 170, 173));
+
+        jButton2.setText("Consulta de ordenes");
+
+        jButton3.setText("Historial");
 
         jButton1.setText("Inventario de Agencia");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -76,54 +80,42 @@ public class FrmAdministrador extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Consulta de ordenes");
-
-        jButton3.setText("Historial");
-
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/camioneta.png"))); // NOI18N
-        jLabel6.setFocusable(false);
-        jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
-        botonSeguimientoEnvio.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        botonSeguimientoEnvio.setText("Seguimiento de envios");
-        botonSeguimientoEnvio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonSeguimientoEnvioActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout PanelOpcionesLayout = new javax.swing.GroupLayout(PanelOpciones);
-        PanelOpciones.setLayout(PanelOpcionesLayout);
-        PanelOpcionesLayout.setHorizontalGroup(
-            PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
+        javax.swing.GroupLayout FondoLayout = new javax.swing.GroupLayout(Fondo);
+        Fondo.setLayout(FondoLayout);
+        FondoLayout.setHorizontalGroup(
+            FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FondoLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jButton1)
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PanelOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
+                .addContainerGap())
+            .addComponent(Bienvenida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(FondoLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
                 .addComponent(jButton2)
-                .addGap(5, 5, 5)
-                .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botonSeguimientoEnvio, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(jLabel6))
-                    .addComponent(jButton3))
-                .addGap(53, 53, 53))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FondoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(157, 157, 157))
         );
-        PanelOpcionesLayout.setVerticalGroup(
-            PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+        FondoLayout.setVerticalGroup(
+            FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(FondoLayout.createSequentialGroup()
+                .addComponent(Bienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PanelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(botonSeguimientoEnvio)
-                .addGap(29, 29, 29))
+                .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(FondoLayout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addGap(63, 63, 63)
+                        .addComponent(jButton2))
+                    .addGroup(FondoLayout.createSequentialGroup()
+                        .addComponent(jButton3)
+                        .addGap(51, 51, 51)))
+                .addContainerGap(233, Short.MAX_VALUE))
         );
 
         Fondo.add(PanelOpciones, java.awt.BorderLayout.CENTER);
@@ -132,11 +124,11 @@ public class FrmAdministrador extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE)
         );
 
         pack();

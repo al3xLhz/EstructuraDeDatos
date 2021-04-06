@@ -103,11 +103,32 @@ import javax.swing.JOptionPane;
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        Fondo.setLayout(new java.awt.BorderLayout());
+
         Header.setBackground(new java.awt.Color(64, 170, 173));
 
         TituloBoleta.setFont(new java.awt.Font("Yu Gothic", 1, 26)); // NOI18N
         TituloBoleta.setForeground(new java.awt.Color(34, 35, 34));
         TituloBoleta.setText("Boleta");
+
+        javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
+        Header.setLayout(HeaderLayout);
+        HeaderLayout.setHorizontalGroup(
+            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HeaderLayout.createSequentialGroup()
+                .addGap(287, 287, 287)
+                .addComponent(TituloBoleta)
+                .addContainerGap(306, Short.MAX_VALUE))
+        );
+        HeaderLayout.setVerticalGroup(
+            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HeaderLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(TituloBoleta)
+                .addContainerGap(27, Short.MAX_VALUE))
+        );
+
+        Fondo.add(Header, java.awt.BorderLayout.NORTH);
 
         etiquetaFechaLlegada.setBackground(new java.awt.Color(64, 170, 173));
 
@@ -205,9 +226,11 @@ import javax.swing.JOptionPane;
                                             .addComponent(respuestaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(etiquetaFechaLlegadaLayout.createSequentialGroup()
                                             .addComponent(etiquetaDNI)
-                                            .addGap(26, 26, 26)
-                                            .addComponent(respuestaDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
-                .addContainerGap(69, Short.MAX_VALUE))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(respuestaDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(respuestaOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(respuestaDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         etiquetaFechaLlegadaLayout.setVerticalGroup(
             etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -257,45 +280,12 @@ import javax.swing.JOptionPane;
                             .addComponent(respuestaIGV, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(etiquetaTotal)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addComponent(botonAceptar)
-                .addGap(66, 66, 66))
+                .addGap(68, 68, 68))
         );
 
-        javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
-        Header.setLayout(HeaderLayout);
-        HeaderLayout.setHorizontalGroup(
-            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeaderLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(TituloBoleta)
-                .addGap(319, 319, 319))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeaderLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(etiquetaFechaLlegada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        HeaderLayout.setVerticalGroup(
-            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HeaderLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(TituloBoleta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(etiquetaFechaLlegada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
-        );
-
-        javax.swing.GroupLayout FondoLayout = new javax.swing.GroupLayout(Fondo);
-        Fondo.setLayout(FondoLayout);
-        FondoLayout.setHorizontalGroup(
-            FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        FondoLayout.setVerticalGroup(
-            FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FondoLayout.createSequentialGroup()
-                .addComponent(Header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        Fondo.add(etiquetaFechaLlegada, java.awt.BorderLayout.PAGE_END);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
