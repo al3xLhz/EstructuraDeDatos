@@ -13,7 +13,7 @@ public class OlvaCourier {
     public static ListaCliente clientes = new ListaCliente();
     public static Cliente clienteActual;
     public static ListaBoleta boletas = new ListaBoleta();
-    public static Boleta boletaActual = new Boleta(null, null, 0, 0, null, null);
+    public static Boleta boletaActual;
     public static Login usuarioActual;
     public static ListaPersonas personas = new ListaPersonas();
     public static ListaAdministrador administradores = new ListaAdministrador();

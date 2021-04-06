@@ -9,7 +9,7 @@ public class Cliente extends Persona{
         super(nombres, apellidos, dni, email, usuario);
     }
     
-    private ListaBoleta listaBoletas;
+    private ListaBoleta listaBoletas= new ListaBoleta();
 
     public ListaBoleta getListaBoletas() {
         return listaBoletas;

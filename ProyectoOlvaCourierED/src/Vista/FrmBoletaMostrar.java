@@ -9,12 +9,12 @@ package Vista;
  *
  * @author Alex
  */
-public class FrmConsultarOrdenes extends javax.swing.JFrame {
+public class FrmBoletaMostrar extends javax.swing.JFrame {
 
     /**
-     * Creates new form RegistroEnvio
+     * Creates new form FrmBoletaMostrar
      */
-    public FrmConsultarOrdenes() {
+    public FrmBoletaMostrar() {
         initComponents();
     }
 
@@ -27,7 +27,6 @@ public class FrmConsultarOrdenes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
         fondo = new javax.swing.JPanel();
         Header = new javax.swing.JPanel();
         TituloRegistroEnvio = new javax.swing.JLabel();
@@ -36,6 +35,8 @@ public class FrmConsultarOrdenes extends javax.swing.JFrame {
         Body = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
+        etiquetaNro = new javax.swing.JLabel();
+        etiquetaCodigoBoleta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,7 +44,7 @@ public class FrmConsultarOrdenes extends javax.swing.JFrame {
 
         TituloRegistroEnvio.setFont(new java.awt.Font("Yu Gothic UI", 1, 26)); // NOI18N
         TituloRegistroEnvio.setForeground(new java.awt.Color(34, 35, 34));
-        TituloRegistroEnvio.setText("Ordenes");
+        TituloRegistroEnvio.setText("Boleta");
 
         etiquetaNombre.setText("Nombre del cliente");
 
@@ -64,20 +65,33 @@ public class FrmConsultarOrdenes extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(Tabla);
 
+        etiquetaNro.setText("Nro:");
+
         javax.swing.GroupLayout BodyLayout = new javax.swing.GroupLayout(Body);
         Body.setLayout(BodyLayout);
         BodyLayout.setHorizontalGroup(
             BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BodyLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 582, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
             .addGroup(BodyLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(79, 79, 79)
+                .addComponent(etiquetaNro)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(etiquetaCodigoBoleta, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         BodyLayout.setVerticalGroup(
             BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BodyLayout.createSequentialGroup()
-                .addGap(0, 12, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(etiquetaNro)
+                    .addComponent(etiquetaCodigoBoleta, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62))
         );
 
         javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
@@ -87,7 +101,7 @@ public class FrmConsultarOrdenes extends javax.swing.JFrame {
             .addGroup(HeaderLayout.createSequentialGroup()
                 .addGap(76, 76, 76)
                 .addComponent(TituloRegistroEnvio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
                 .addComponent(etiquetaNombre)
                 .addGap(89, 89, 89)
                 .addComponent(etiquetaHora)
@@ -149,27 +163,20 @@ public class FrmConsultarOrdenes extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmConsultarOrdenes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmBoletaMostrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmConsultarOrdenes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmBoletaMostrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmConsultarOrdenes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmBoletaMostrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmConsultarOrdenes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmBoletaMostrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmConsultarOrdenes().setVisible(true);
+                new FrmBoletaMostrar().setVisible(true);
             }
         });
     }
@@ -179,9 +186,10 @@ public class FrmConsultarOrdenes extends javax.swing.JFrame {
     private javax.swing.JPanel Header;
     private javax.swing.JTable Tabla;
     private javax.swing.JLabel TituloRegistroEnvio;
+    private javax.swing.JLabel etiquetaCodigoBoleta;
     private javax.swing.JLabel etiquetaHora;
     private javax.swing.JLabel etiquetaNombre;
-    private javax.swing.Box.Filler filler1;
+    private javax.swing.JLabel etiquetaNro;
     private javax.swing.JPanel fondo;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables

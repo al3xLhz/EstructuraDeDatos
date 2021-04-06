@@ -6,7 +6,6 @@
 package Vista;
 
 import Modelo.Pedido;
-import Modelo.Producto;
 import Sistema.OlvaCourier;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
@@ -15,18 +14,29 @@ import javax.swing.JOptionPane;
  *
  * @author Alex
  */
-public class FrmBoleta extends javax.swing.JFrame {
+public class FrmBoletaLlenar extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmBoleta
      */
-    public FrmBoleta() {
+    public FrmBoletaLlenar() {
         initComponents();
+        //Uso de los atributos de la boletaActual para mostrar en el FrmBoletaLlenar
         respuestaOrigen.setText(OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion());
         respuestaDestino.setText(OlvaCourier.boletaActual.getAgenciaFinal().getUbicacion());
-        respuestaCliente.setText(OlvaCourier.clienteActual.getNombres());
+        respuestaCliente.setText(OlvaCourier.clienteActual.getNombres()+" "+OlvaCourier.clienteActual.getApellidos());
         respuestaDNI.setText(OlvaCourier.clienteActual.getDni());
         respuestaFechaEmision.setText(Calendar.getInstance().getTime().toString());
+        respuestaFechaLlegada.setText(OlvaCourier.boletaActual.getFechadeEntrega().getTime().toString());
+        respuestaValorTotal.setText(String.valueOf(OlvaCourier.boletaActual.getImporteTotal()));
+        respuestaIGV.setText(String.valueOf(OlvaCourier.boletaActual.getIGV()));
+        respuestaTotal.setText(String.valueOf(OlvaCourier.boletaActual.getTotal()));
+        respuestaNroBoleta.setText(String.valueOf(OlvaCourier.boletaActual.getCodigo()));
+        
+        //Guarda la boleta creada al cliente que ha iniciado sesion
+        
+        OlvaCourier.clienteActual.getListaBoletas().InsertarNodo(OlvaCourier.boletaActual);
+        OlvaCourier.boletas.InsertarNodo(OlvaCourier.boletaActual);
         llenarTabla();
         
         setLocationRelativeTo(null);
@@ -86,6 +96,8 @@ public class FrmBoleta extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         botonAceptar = new javax.swing.JButton();
+        etiquetaNroBoleta = new javax.swing.JLabel();
+        respuestaNroBoleta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -139,6 +151,8 @@ public class FrmBoleta extends javax.swing.JFrame {
             }
         });
 
+        etiquetaNroBoleta.setText("Nro Boleta: ");
+
         javax.swing.GroupLayout etiquetaFechaLlegadaLayout = new javax.swing.GroupLayout(etiquetaFechaLlegada);
         etiquetaFechaLlegada.setLayout(etiquetaFechaLlegadaLayout);
         etiquetaFechaLlegadaLayout.setHorizontalGroup(
@@ -170,38 +184,43 @@ public class FrmBoleta extends javax.swing.JFrame {
                                 .addComponent(etiquetaDestino))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                             .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(respuestaDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(etiquetaFechaLlegadaLayout.createSequentialGroup()
                                     .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(respuestaFechaLlegada, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(respuestaFechaEmision, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(54, 54, 54)
-                                    .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(respuestaFechaLlegada, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                            .addComponent(respuestaFechaEmision, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(respuestaOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(64, 64, 64)
+                                    .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(etiquetaFechaLlegadaLayout.createSequentialGroup()
+                                            .addComponent(etiquetaNroBoleta)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(respuestaNroBoleta, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(etiquetaFechaLlegadaLayout.createSequentialGroup()
                                             .addComponent(etiquetaCliente)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(respuestaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(respuestaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(etiquetaFechaLlegadaLayout.createSequentialGroup()
                                             .addComponent(etiquetaDNI)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(respuestaDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addComponent(respuestaOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(respuestaDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                            .addGap(26, 26, 26)
+                                            .addComponent(respuestaDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
                 .addContainerGap(69, Short.MAX_VALUE))
         );
         etiquetaFechaLlegadaLayout.setVerticalGroup(
             etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(etiquetaFechaLlegadaLayout.createSequentialGroup()
                 .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(etiquetaFechaLlegadaLayout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(etiquetaFechaLlegadaLayout.createSequentialGroup()
+                            .addGap(19, 19, 19)
                             .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(etiquetaCliente)
-                                .addComponent(etiquetaFechaEmision))
-                            .addComponent(respuestaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, etiquetaFechaLlegadaLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(respuestaFechaEmision, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(etiquetaFechaEmision)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, etiquetaFechaLlegadaLayout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(respuestaFechaEmision, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(respuestaCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -212,8 +231,11 @@ public class FrmBoleta extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(etiquetaOrigen)
-                    .addComponent(respuestaOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(respuestaOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(etiquetaNroBoleta)
+                        .addComponent(respuestaNroBoleta, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(etiquetaDestino)
                     .addComponent(respuestaDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -317,20 +339,21 @@ public class FrmBoleta extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmBoleta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmBoletaLlenar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmBoleta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmBoletaLlenar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmBoleta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmBoletaLlenar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmBoleta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FrmBoletaLlenar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FrmBoleta().setVisible(true);
+                new FrmBoletaLlenar().setVisible(true);
             }
         });
     }
@@ -347,6 +370,7 @@ public class FrmBoleta extends javax.swing.JFrame {
     private javax.swing.JLabel etiquetaFechaLlegad;
     private javax.swing.JPanel etiquetaFechaLlegada;
     private javax.swing.JLabel etiquetaIGV;
+    private javax.swing.JLabel etiquetaNroBoleta;
     private javax.swing.JLabel etiquetaOrigen;
     private javax.swing.JLabel etiquetaTotal;
     private javax.swing.JLabel etiquetaValorTotal;
@@ -357,6 +381,7 @@ public class FrmBoleta extends javax.swing.JFrame {
     private javax.swing.JLabel respuestaFechaEmision;
     private javax.swing.JLabel respuestaFechaLlegada;
     private javax.swing.JLabel respuestaIGV;
+    private javax.swing.JLabel respuestaNroBoleta;
     private javax.swing.JLabel respuestaOrigen;
     private javax.swing.JLabel respuestaTotal;
     private javax.swing.JLabel respuestaValorTotal;

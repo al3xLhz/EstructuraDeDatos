@@ -7,7 +7,7 @@ import java.util.Calendar;
 public class Pedido {
     private int codigo;
     private String estado;
-    private int valor;
+    private double valor;
     private Producto producto;
     public static int codigoPedido=1000000000;
     
@@ -17,6 +17,7 @@ public class Pedido {
         this.producto=producto;
         this.estado="SinEntregar";
         codigoPedido++;
+        setPrecioPedido(producto);
     }
 
     public int getCodigo() {
@@ -51,12 +52,28 @@ public class Pedido {
         this.producto = producto;
     }
 
-    public int getValor() {
+    public double getValor() {
         return valor;
     }
 
     public void setValor(int valor) {
         this.valor = valor;
+    }
+    
+    public void setPrecioPedido(Producto p){
+       double pesoVolumen;
+       pesoVolumen = (p.getAlto()*p.getAncho()*p.getLargo())/6000;
+       
+       if(pesoVolumen>p.getPeso()){
+          valor=pesoVolumen;
+       }else{
+           valor=p.getPeso();
+       }
+       
+       valor*=1000;
+       valor=Math.round(valor);
+       valor=valor/1000;
+       
     }
     
     
