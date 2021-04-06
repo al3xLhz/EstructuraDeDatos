@@ -20,7 +20,7 @@ public class App {
         Administrador a2 = new Administrador("Bruno", "Principe", "18200045", "bruno@gmail.com", new Login("b", "b", 2));
         
         
-        RRHH rh1 = new RRHH("Junior", "Palomino", "18200045", "junior@gmail.com", new Login("j", "j", 3));
+        //RRHH rh1 = new RRHH("Junior", "Palomino", "18200045", "junior@gmail.com", new Login("j", "j", 3));
         
         
         OlvaCourier.clientes.InsertarNodo(c1);
@@ -29,14 +29,14 @@ public class App {
         OlvaCourier.administradores.InsertarNodo(a1);
         OlvaCourier.administradores.InsertarNodo(a2);
         
-        OlvaCourier.rrhhs.InsertarNodo(rh1);
+        //OlvaCourier.rrhhs.InsertarNodo(rh1);
         
         
         OlvaCourier.personas.InsertarNodo(c1);
         OlvaCourier.personas.InsertarNodo(c2);
         OlvaCourier.personas.InsertarNodo(a1);
         OlvaCourier.personas.InsertarNodo(a2);
-        OlvaCourier.personas.InsertarNodo(rh1);
+        //OlvaCourier.personas.InsertarNodo(rh1);
         
         FrmIniciarSesion login = new FrmIniciarSesion();
         

@@ -8,12 +8,9 @@ package Vista;
 import Estructura.ListaUsuario;
 import Modelo.Administrador;
 import Modelo.Cliente;
-import Modelo.RRHH;
 import Sistema.OlvaCourier;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
-import java.awt.Image;
-import javax.swing.ImageIcon;
 
 
 public class FrmIniciarSesion extends javax.swing.JFrame {
@@ -21,7 +18,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
      * Creates new form FrmIniciarSesion
      * 
      */
-    ListaUsuario l = new ListaUsuario();
+    //ListaUsuario l = new ListaUsuario();
     
     public FrmIniciarSesion() {
         initComponents();

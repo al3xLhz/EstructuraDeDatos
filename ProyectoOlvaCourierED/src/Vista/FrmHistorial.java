@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import Estructura.ListaBoleta;
+import Modelo.Boleta;
 import Sistema.OlvaCourier;
 import java.util.Calendar;
 
@@ -48,6 +50,32 @@ public class FrmHistorial extends javax.swing.JFrame {
         
     }
     
+    
+    public void ordenarDeInserccion(ListaBoleta boletas){
+  
+    Boleta aux;
+    int pos;
+    int longitud = boletas.cantidadBoletas(); //tamaño de un vector
+    
+    for(int i=0;i<longitud;i++){
+        
+	pos=i;
+	aux=OlvaCourier.boletas.getBoletaXPos(i);
+		
+	while(pos>0 && (OlvaCourier.boletas.getBoletaXPos(pos-1).getCodigo() > aux.getCodigo())){
+            OlvaCourier.boletas.getBoletaXPos(pos).setCodigo(OlvaCourier.boletas.getBoletaXPos(pos-1).getCodigo());
+            pos--;
+	}
+        OlvaCourier.boletas.getBoletaXPos(pos).setCodigo(OlvaCourier.boletas.getBoletaXPos(pos-1).getCodigo());
+    }
+    
+    System.out.println("Orden ascendente: \n");
+        
+    for(int i=0;i<longitud;i++){
+                System.out.println(OlvaCourier.boletas.getBoletaXPos(i).getCodigo());
+    } 
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,6 +93,7 @@ public class FrmHistorial extends javax.swing.JFrame {
         Body = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -87,11 +116,11 @@ public class FrmHistorial extends javax.swing.JFrame {
             .addGroup(HeaderLayout.createSequentialGroup()
                 .addGap(70, 70, 70)
                 .addComponent(TituloRegistroEnvio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
+                .addGap(212, 212, 212)
                 .addComponent(etiquetaNombre)
-                .addGap(135, 135, 135)
+                .addGap(152, 152, 152)
                 .addComponent(etiquetaHora)
-                .addGap(111, 111, 111))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
         HeaderLayout.setVerticalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,6 +161,13 @@ public class FrmHistorial extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Tabla);
 
+        jButton1.setText("Ordenar por codigo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout BodyLayout = new javax.swing.GroupLayout(Body);
         Body.setLayout(BodyLayout);
         BodyLayout.setHorizontalGroup(
@@ -139,13 +175,17 @@ public class FrmHistorial extends javax.swing.JFrame {
             .addGroup(BodyLayout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(59, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         BodyLayout.setVerticalGroup(
             BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BodyLayout.createSequentialGroup()
                 .addGap(58, 58, 58)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(61, Short.MAX_VALUE))
         );
 
@@ -164,6 +204,10 @@ public class FrmHistorial extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -208,6 +252,7 @@ public class FrmHistorial extends javax.swing.JFrame {
     private javax.swing.JLabel etiquetaHora;
     private javax.swing.JLabel etiquetaNombre;
     private javax.swing.JPanel fondo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }
