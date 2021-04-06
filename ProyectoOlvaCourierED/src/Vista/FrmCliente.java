@@ -85,6 +85,11 @@ public class FrmCliente extends javax.swing.JFrame {
 
         botonHistorial.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         botonHistorial.setText("Historial");
+        botonHistorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonHistorialActionPerformed(evt);
+            }
+        });
 
         botonCalcularEnvio.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         botonCalcularEnvio.setText("Calcular envio");
@@ -193,9 +198,7 @@ public class FrmCliente extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelOpcionesLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7)))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(18, 18, 18)
                 .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonCalcularEnvio)
@@ -246,16 +249,15 @@ public class FrmCliente extends javax.swing.JFrame {
 
     private void botonConsultarOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarOrdenActionPerformed
         
-        //try{
+        try{
             int codigoABuscar = Integer.parseInt(JOptionPane.showInputDialog("Digite el código a buscar"));
             OlvaCourier.boletaActual.actualizarDatos(OlvaCourier.clienteActual.getListaBoletas().getBoleta(codigoABuscar));
-            //System.out.println(OlvaCourier.boletaActual.getCodigo()); // si encontro
             FrmConsultarOrden frmCO = new  FrmConsultarOrden();
             
             this.dispose();
-        /*}catch(Exception e){
+        }catch(Exception e){
             JOptionPane.showMessageDialog(null, "No se encontró el código buscado");
-        }*/
+        }
             
         
         
@@ -267,6 +269,12 @@ public class FrmCliente extends javax.swing.JFrame {
         FrmRegistroProducto formularioRegistroEnvio= new FrmRegistroProducto();
         this.dispose();
     }//GEN-LAST:event_botonRegistroEnvioActionPerformed
+
+    private void botonHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonHistorialActionPerformed
+        
+        FrmHistorial frmh = new FrmHistorial();
+        this.dispose();
+    }//GEN-LAST:event_botonHistorialActionPerformed
 
     /**
      * @param args the command line arguments

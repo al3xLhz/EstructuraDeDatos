@@ -61,6 +61,16 @@ public class ListaBoleta {
         
     }
     
+    public int cantidadBoletas(){
+        NodoBoleta aux= primero;
+        int contador=0;
+        while(aux!=null){
+            contador++;
+            aux=aux.siguiente;
+        }
+        
+        return contador;
+    }
 }
 
 class NodoBoleta{
