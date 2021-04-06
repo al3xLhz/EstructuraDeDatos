@@ -25,7 +25,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
     
     public FrmIniciarSesion() {
         initComponents();
-        jLabel1.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/olva-courier.png")).getImage().getScaledInstance(250, 140, Image.SCALE_SMOOTH)));
+        //jLabel1.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/olva-courier.png")).getImage().getScaledInstance(250, 140, Image.SCALE_SMOOTH)));
         setLocationRelativeTo(null);
         setVisible(true);
         //rsscalelabel.RSScaleLabel.setScaleLabel(jLabel1, "Images/olva-courier.png");
@@ -218,7 +218,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/olva-courier.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/olva_logo.png"))); // NOI18N
         jLabel1.setLabelFor(jLabel1);
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
@@ -239,16 +239,14 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
         FondoMarcaLayout.setHorizontalGroup(
             FondoMarcaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FondoMarcaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         FondoMarcaLayout.setVerticalGroup(
             FondoMarcaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(FondoMarcaLayout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
