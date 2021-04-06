@@ -42,7 +42,6 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
     }
     
     
-    
     public void instanciarValores(Producto p){
         campoNombreProducto.setText(p.getNombreProducto());
         campoPeso.setText(String.valueOf(p.getPeso()));
@@ -365,15 +364,14 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
             int input = JOptionPane.showConfirmDialog(null, "¿Estás seguro de los cambios establecidos?");
             // 0=yes, 1=no, 2=cancel
             if(input==0){
-                OlvaCourier.pedidosActuales.InsertarNodo(new Pedido(p1));
-                OlvaCourier.pedidosActuales.InsertarNodo(new Pedido(p2));
-                OlvaCourier.pedidosActuales.InsertarNodo(new Pedido(p3));
-                OlvaCourier.pedidosActuales.InsertarNodo(new Pedido(p4));
-                OlvaCourier.pedidosActuales.InsertarNodo(new Pedido(p5));
                 
                 OlvaCourier.boletaActual.setAgenciaInicial(OlvaCourier.agencias.getAgencia(comboOrigen.getSelectedItem().toString()));
                 OlvaCourier.boletaActual.setAgenciaFinal(OlvaCourier.agencias.getAgencia(comboDestino.getSelectedItem().toString()));
-                OlvaCourier.boletaActual.setListaPedidos(OlvaCourier.pedidosActuales);
+                OlvaCourier.boletaActual.getListaPedidos().InsertarNodo(new Pedido(p1));
+                OlvaCourier.boletaActual.getListaPedidos().InsertarNodo(new Pedido(p2));
+                OlvaCourier.boletaActual.getListaPedidos().InsertarNodo(new Pedido(p3));
+                OlvaCourier.boletaActual.getListaPedidos().InsertarNodo(new Pedido(p4));
+                OlvaCourier.boletaActual.getListaPedidos().InsertarNodo(new Pedido(p5));
                 OlvaCourier.boletaActual.setPrecioTotal();
                 OlvaCourier.boletaActual.setPropietarioDNI(OlvaCourier.clienteActual.getDni());
                 OlvaCourier.boletaActual.getFechadeEntrega().add(Calendar.DAY_OF_MONTH, 5);

@@ -7,8 +7,6 @@ package Vista;
 
 import Sistema.OlvaCourier;
 import javax.swing.JOptionPane;
-import java.awt.Image;
-import javax.swing.ImageIcon;
 
 /**
  *
@@ -45,12 +43,10 @@ public class FrmCliente extends javax.swing.JFrame {
         botonConsultarOrden = new javax.swing.JButton();
         botonHistorial = new javax.swing.JButton();
         botonCalcularEnvio = new javax.swing.JButton();
-        botonSeguimientoEnvio = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         etiquetaBienvenida = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -93,14 +89,6 @@ public class FrmCliente extends javax.swing.JFrame {
         botonCalcularEnvio.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         botonCalcularEnvio.setText("Calcular envio");
 
-        botonSeguimientoEnvio.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        botonSeguimientoEnvio.setText("Seguimiento de envios");
-        botonSeguimientoEnvio.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonSeguimientoEnvioActionPerformed(evt);
-            }
-        });
-
         botonSalir.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         botonSalir.setText("Salir");
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -122,11 +110,6 @@ public class FrmCliente extends javax.swing.JFrame {
         etiquetaBienvenida.setForeground(new java.awt.Color(34, 35, 34));
         etiquetaBienvenida.setText("Bienvenido Cliente.getNombre()");
 
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/camioneta.png"))); // NOI18N
-        jLabel6.setFocusable(false);
-        jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/pago.png"))); // NOI18N
 
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -145,23 +128,32 @@ public class FrmCliente extends javax.swing.JFrame {
                 .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelOpcionesLayout.createSequentialGroup()
                         .addGap(38, 38, 38)
-                        .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botonRegistroEnvio)
-                            .addComponent(botonSeguimientoEnvio, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(botonRegistroEnvio))
                     .addGroup(PanelOpcionesLayout.createSequentialGroup()
                         .addGap(69, 69, 69)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addComponent(jLabel6)))
-                .addGap(39, 39, 39)
-                .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(jLabel5)
+                        .addGap(72, 72, 72)
+                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelOpcionesLayout.createSequentialGroup()
+                        .addGap(42, 42, 42)
                         .addComponent(botonConsultarOrden)
                         .addGap(49, 49, 49)
                         .addComponent(botonHistorial)
-                        .addGap(168, 168, 168))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelOpcionesLayout.createSequentialGroup()
+                        .addGap(168, 168, 168))))
+            .addGroup(PanelOpcionesLayout.createSequentialGroup()
+                .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(etiquetaBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
+                        .addGap(153, 153, 153)
                         .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelOpcionesLayout.createSequentialGroup()
                                 .addComponent(botonCalcularEnvio, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -169,21 +161,9 @@ public class FrmCliente extends javax.swing.JFrame {
                                 .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PanelOpcionesLayout.createSequentialGroup()
                                 .addGap(9, 9, 9)
-                                .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addGap(57, 57, 57)
-                                        .addComponent(jLabel7))
-                                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                                        .addComponent(jLabel5)
-                                        .addGap(72, 72, 72)
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(etiquetaBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
-                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4)
+                                .addGap(57, 57, 57)
+                                .addComponent(jLabel7)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelOpcionesLayout.setVerticalGroup(
@@ -210,24 +190,18 @@ public class FrmCliente extends javax.swing.JFrame {
                     .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(botonConsultarOrden)
                         .addComponent(botonHistorial)))
+                .addGap(18, 18, 18)
                 .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel4)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelOpcionesLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel7)))
                 .addGap(18, 18, 18)
                 .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonSeguimientoEnvio)
                     .addComponent(botonCalcularEnvio)
                     .addComponent(botonSalir))
-                .addGap(38, 38, 38))
+                .addGap(48, 48, 48))
         );
-
-        jLabel6.getAccessibleContext().setAccessibleParent(jLabel6);
 
         javax.swing.GroupLayout BienvenidaLayout = new javax.swing.GroupLayout(Bienvenida);
         Bienvenida.setLayout(BienvenidaLayout);
@@ -270,19 +244,18 @@ public class FrmCliente extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_botonSalirActionPerformed
 
-    private void botonSeguimientoEnvioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSeguimientoEnvioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_botonSeguimientoEnvioActionPerformed
-
     private void botonConsultarOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarOrdenActionPerformed
         
-        try{
-            int codigoABuscar = Integer.getInteger(JOptionPane.showInputDialog("Digite el código a buscar"));
-            OlvaCourier.boletaActual=OlvaCourier.boletas.getBoleta(codigoABuscar);
+        //try{
+            int codigoABuscar = Integer.parseInt(JOptionPane.showInputDialog("Digite el código a buscar"));
+            OlvaCourier.boletaActual.actualizarDatos(OlvaCourier.clienteActual.getListaBoletas().getBoleta(codigoABuscar));
+            //System.out.println(OlvaCourier.boletaActual.getCodigo()); // si encontro
+            FrmConsultarOrden frmCO = new  FrmConsultarOrden();
             
-        }catch(Exception e){
+            this.dispose();
+        /*}catch(Exception e){
             JOptionPane.showMessageDialog(null, "No se encontró el código buscado");
-        }
+        }*/
             
         
         
@@ -339,7 +312,6 @@ public class FrmCliente extends javax.swing.JFrame {
     private javax.swing.JButton botonHistorial;
     private javax.swing.JButton botonRegistroEnvio;
     private javax.swing.JButton botonSalir;
-    private javax.swing.JButton botonSeguimientoEnvio;
     private javax.swing.JLabel etiquetaBienvenida;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -347,7 +319,6 @@ public class FrmCliente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;

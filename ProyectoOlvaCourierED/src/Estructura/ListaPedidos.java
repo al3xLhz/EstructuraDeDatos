@@ -28,12 +28,12 @@ public class ListaPedidos {
         }
     }
     
-    public Pedido getPedidoXPos(int i){
+    public Pedido getPedidoXPos(int pos){
         Pedido pe=null;
         NodoPedido aux= primero;
         int contador=0;
         while(aux!=null){
-            if(contador==i){
+            if(contador==pos){
                 pe = aux.p;
             }
             aux=aux.siguiente;

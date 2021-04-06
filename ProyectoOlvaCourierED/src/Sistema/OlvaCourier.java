@@ -21,7 +21,6 @@ public class OlvaCourier {
     public static ListaRRHH rrhhs = new ListaRRHH();
     public static RRHH rrhhActual;
     public static ListaAgencia agencias = new ListaAgencia();
-    public static ListaPedidos pedidosActuales= new ListaPedidos();
     
     
     

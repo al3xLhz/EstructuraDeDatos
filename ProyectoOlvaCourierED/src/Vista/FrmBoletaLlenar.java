@@ -13,8 +13,7 @@ import javax.swing.JOptionPane;
 /**
  *
  * @author Alex
- */
-public class FrmBoletaLlenar extends javax.swing.JFrame {
+ */public class FrmBoletaLlenar extends javax.swing.JFrame {
 
     /**
      * Creates new form FrmBoleta
@@ -36,6 +35,9 @@ public class FrmBoletaLlenar extends javax.swing.JFrame {
         //Guarda la boleta creada al cliente que ha iniciado sesion
         
         OlvaCourier.clienteActual.getListaBoletas().InsertarNodo(OlvaCourier.boletaActual);
+        
+        //System.out.println(OlvaCourier.clienteActual.getListaBoletas().getBoletaXPos(0).getListaPedidos().getPedidoXPos(0).getProducto().getNombreProducto()); Funciona
+        //asegurar que el cliente actual guarde la informacion donde se comenzo
         OlvaCourier.boletas.InsertarNodo(OlvaCourier.boletaActual);
         llenarTabla();
         
@@ -47,10 +49,10 @@ public class FrmBoletaLlenar extends javax.swing.JFrame {
         String matriz[][] = new String[5][3];
         
         for(int i=0;i<5;i++){
-            if(OlvaCourier.pedidosActuales.getPedidoXPos(i).getProducto().getNombreProducto()!=""){
-                matriz[i][0]=String.valueOf(OlvaCourier.pedidosActuales.getPedidoXPos(i).getCodigo());
-                matriz[i][1]=String.valueOf(OlvaCourier.pedidosActuales.getPedidoXPos(i).getProducto().getNombreProducto());
-                matriz[i][2]=String.valueOf(OlvaCourier.pedidosActuales.getPedidoXPos(i).getValor());
+            if(OlvaCourier.boletaActual.getListaPedidos().getPedidoXPos(i).getProducto().getNombreProducto()!=""){
+                matriz[i][0]=String.valueOf(OlvaCourier.boletaActual.getListaPedidos().getPedidoXPos(i).getCodigo());
+                matriz[i][1]=String.valueOf(OlvaCourier.boletaActual.getListaPedidos().getPedidoXPos(i).getProducto().getNombreProducto());
+                matriz[i][2]=String.valueOf(OlvaCourier.boletaActual.getListaPedidos().getPedidoXPos(i).getValor());
                 tabla.setValueAt(matriz[i][0], i, 0);
                 tabla.setValueAt(matriz[i][1], i, 1);
                 tabla.setValueAt(matriz[i][2], i, 2);
@@ -314,9 +316,7 @@ public class FrmBoletaLlenar extends javax.swing.JFrame {
         // 0=yes, 1=no, 2=cancel
        if(input==0){
            
-           
-           
-           OlvaCourier.pedidosActuales.vaciarLista();
+         
            FrmCliente cliente = new FrmCliente();
            this.dispose();
        }

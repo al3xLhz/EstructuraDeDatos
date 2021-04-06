@@ -45,6 +45,22 @@ public class ListaBoleta {
         
     }
     
+    public Boleta getBoletaXPos(int pos){
+        NodoBoleta aux=primero;
+        Boleta boletaR = null;
+        int contador =0;
+        while(aux!=null){
+            if(contador==pos){
+                boletaR=aux.b;
+            }
+            aux=aux.siguiente;
+            contador++;
+        }
+        
+        return boletaR;
+        
+    }
+    
 }
 
 class NodoBoleta{

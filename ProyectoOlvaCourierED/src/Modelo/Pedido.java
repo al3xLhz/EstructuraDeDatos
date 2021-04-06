@@ -6,16 +6,14 @@ import java.util.Calendar;
 
 public class Pedido {
     private int codigo;
-    private String estado;
     private double valor;
     private Producto producto;
-    public static int codigoPedido=1000000000;
+    public static int codigoPedido=1000;
     
 
     public Pedido(Producto producto) {
         this.codigo = codigoPedido;
         this.producto=producto;
-        this.estado="SinEntregar";
         codigoPedido++;
         setPrecioPedido(producto);
     }
@@ -34,14 +32,6 @@ public class Pedido {
 
     public static void setCodigoPedido(int codigoPedido) {
         Pedido.codigoPedido = codigoPedido;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
     }
 
     public Producto getProducto() {

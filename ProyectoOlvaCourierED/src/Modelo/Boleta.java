@@ -13,9 +13,10 @@ public class Boleta {
     private double importeTotal;
     private double IGV;
     private double total;
-    private static int codigoM = 1000000000;
+    private static int codigoM = 1000;
     private String propietarioDNI;
-    private ListaPedidos listaPedidos;
+    private String estado;
+    private ListaPedidos listaPedidos = new ListaPedidos();
 
     public Boleta(Agencia agenciaInicial, Agencia agenciaFinal,String propietarioDNI) {
         this.codigo = codigoM;
@@ -23,6 +24,7 @@ public class Boleta {
         this.propietarioDNI=propietarioDNI;
         this.fechaEmision=Calendar.getInstance();
         this.fechadeEntrega=fechaEmision;
+        this.estado= "Sin entregar";
     }
 
     public String getPropietarioDNI() {
@@ -33,6 +35,15 @@ public class Boleta {
         this.propietarioDNI = propietarioDNI;
     }
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    
     public void setPrecioTotal(){
         importeTotal = montoAgenciaAgencia()+sumarPedido();
         IGV=importeTotal*0.18;
@@ -60,9 +71,19 @@ public class Boleta {
         return fechadeEntrega;
     }
 
+    
     public void setFechadeEntrega(Calendar fechadeEntrega) {
         this.fechadeEntrega = fechadeEntrega;
     }
+
+    public Calendar getFechaEmision() {
+        return fechaEmision;
+    }
+
+    public void setFechaEmision(Calendar fechaEmision) {
+        this.fechaEmision = fechaEmision;
+    }
+    
 
     public double getImporteTotal() {
         return importeTotal;
@@ -134,6 +155,20 @@ public class Boleta {
         return 0;
     }
     
+    public void actualizarDatos(Boleta b){
+        codigo=b.getCodigo();
+        fechadeEntrega=b.getFechadeEntrega();
+        fechaEmision=b.getFechaEmision();
+        agenciaInicial=b.getAgenciaInicial();
+        agenciaFinal=b.getAgenciaFinal();
+        importeTotal=b.getImporteTotal();
+        IGV=b.getIGV();
+        total=b.getTotal();
+        propietarioDNI=b.getPropietarioDNI();
+        listaPedidos=b.getListaPedidos();
+    }
+    
+  
     
     
     
