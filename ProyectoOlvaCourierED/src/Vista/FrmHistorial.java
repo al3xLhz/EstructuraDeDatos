@@ -6,6 +6,7 @@
 package Vista;
 
 import Sistema.OlvaCourier;
+import java.util.Calendar;
 
 /**
  *
@@ -20,14 +21,14 @@ public class FrmHistorial extends javax.swing.JFrame {
         initComponents();
         llenarTabla();
         setVisible(true);
+        etiquetaNombre.setText(OlvaCourier.clienteActual.getNombres()+OlvaCourier.clienteActual.getApellidos());
+        etiquetaHora.setText(Calendar.getInstance().getTime().toString());
     }
 
     public void llenarTabla(){
-        String matriz[][] = new String[OlvaCourier.clienteActual.getListaBoletas().cantidadBoletas()][7];//Que me devulva la cantidad max de la lista de boletas
-        System.out.println("SALE");
-        for(int i=0;i<OlvaCourier.clienteActual.getListaBoletas().cantidadBoletas();i++){
-            System.out.println(i);
-            if(OlvaCourier.clienteActual.getListaBoletas().getBoletaXPos(i).getListaPedidos().getPedidoXPos(i).getProducto().getNombreProducto()!=""){
+        String matriz[][] = new String[OlvaCourier.clienteActual.getListaBoletas().cantidadBoletas()+1][7];//Que me devulva la cantidad max de la lista de boletas
+        for(int i=0;i<OlvaCourier.clienteActual.getListaBoletas().cantidadBoletas()+1;i++){
+            if(OlvaCourier.clienteActual.getListaBoletas().getBoletaXPos(i)!=null){
                 matriz[i][0]=String.valueOf(OlvaCourier.clienteActual.getListaBoletas().getBoletaXPos(i).getCodigo());
                 matriz[i][1]=String.valueOf(OlvaCourier.clienteActual.getListaBoletas().getBoletaXPos(i).getAgenciaInicial().getUbicacion());
                 matriz[i][2]=String.valueOf(OlvaCourier.clienteActual.getListaBoletas().getBoletaXPos(i).getAgenciaFinal().getUbicacion());

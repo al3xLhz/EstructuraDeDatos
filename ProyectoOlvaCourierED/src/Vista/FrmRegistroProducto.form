@@ -23,7 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="fondo" alignment="0" max="32767" attributes="0"/>
+          <Component id="fondo" alignment="0" pref="647" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -55,43 +55,41 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="TituloRegistroEnvio" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       <Component id="etiquetaNombre" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
                       <Component id="etiquetaHora" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="Body" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="etiquetaNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="etiquetaHora" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                              <Component id="TituloRegistroEnvio" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="TituloRegistroEnvio" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaHora" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
+            <Component class="javax.swing.JLabel" name="etiquetaNombre">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nombre del cliente"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaHora">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Hora actual"/>
+              </Properties>
+            </Component>
             <Component class="javax.swing.JLabel" name="TituloRegistroEnvio">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -101,16 +99,6 @@
                   <Color blue="22" green="23" red="22" type="rgb"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Registro de Envio"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="etiquetaNombre">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Nombre del cliente"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="etiquetaHora">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Hora actual"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -130,97 +118,118 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="etiquetaLargo" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="etiquetaNompreProducto" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="campoNombreProducto" min="-2" pref="312" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="N" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="ComboNProductos" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                          <Component id="botonGuardar" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="etiquetaLargo" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="campoLargo" max="32767" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="etiquetaPeso" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="campoPeso" min="-2" pref="88" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="etiquetaKg" min="-2" max="-2" attributes="0"/>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="etiquetacmL" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                              <Component id="etiquetaAlto" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="campoAlto" min="-2" pref="85" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="etiquetacmAl" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                              <Component id="etiquetaAncho" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                                              <Component id="campoAncho" min="-2" pref="96" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <Component id="botonSiguiente" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="campoLargo" min="-2" pref="78" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                              <Component id="etiquetacmL" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="etiquetaAlto" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="campoAlto" min="-2" pref="88" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="etiquetacmAl" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="etiquetaAncho" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="campoAncho" min="-2" pref="88" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="etiquetacmAn" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
                               <Component id="etiquetaAgenciaOrigen" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="comboOrigen" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="etiquetaDestino" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="comboDestino" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="etiquetaPeso" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="campoPeso" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Component id="etiquetaNompreProducto" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="etiquetaKg" min="-2" max="-2" attributes="0"/>
-                                  <Component id="campoNombreProducto" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="104" max="-2" attributes="0"/>
+                      <EmptySpace pref="73" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Component id="N" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="ComboNProductos" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                              <Component id="botonGuardar" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="campoLargo" alignment="1" min="-2" pref="22" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="etiquetaLargo" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="etiquetacmL" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="etiquetaAlto" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="campoAlto" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="etiquetacmAl" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="etiquetaAncho" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="campoAncho" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="etiquetacmAn" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="etiquetaAgenciaOrigen" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="comboDestino" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="etiquetaDestino" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="comboOrigen" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="etiquetaAgenciaOrigen" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="N" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="ComboNProductos" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="botonGuardar" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="etiquetaNompreProducto" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="campoNombreProducto" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="etiquetaPeso" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="campoPeso" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaKg" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="etiquetaLargo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="campoLargo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaAlto" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="campoAlto" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetacmL" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaAncho" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="campoAncho" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetacmAn" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetacmAl" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="comboDestino" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="etiquetaDestino" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="comboOrigen" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaAgenciaOrigen" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                       <Component id="botonSiguiente" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                      <EmptySpace pref="97" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -423,17 +432,6 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="botonSiguiente">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Yu Gothic UI Semibold" size="15" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Siguiente"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonSiguienteActionPerformed"/>
-              </Events>
-            </Component>
             <Component class="javax.swing.JButton" name="botonGuardar">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -443,6 +441,17 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonGuardarActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="botonSiguiente">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Yu Gothic UI Semibold" size="15" style="1"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Siguiente"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonSiguienteActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

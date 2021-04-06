@@ -97,6 +97,11 @@ public class FrmCliente extends javax.swing.JFrame {
 
         botonHistorial.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         botonHistorial.setText("Historial");
+        botonHistorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonHistorialActionPerformed(evt);
+            }
+        });
 
         botonCalcularEnvio.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         botonCalcularEnvio.setText("Calcular envio");

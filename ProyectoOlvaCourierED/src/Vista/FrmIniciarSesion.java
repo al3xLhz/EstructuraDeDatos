@@ -59,15 +59,6 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
                     this.dispose();
                     
                     break;
-                case 3:
-                    //RRHH
-                    OlvaCourier.rrhhActual = (RRHH) OlvaCourier.personas.getPersona(OlvaCourier.usuarioActual);
-                    
-                    FrmRRHH frh = new FrmRRHH();
-                    
-                    this.dispose();
-                    
-                    break;
             }
 
         }else{//datos erroneos
