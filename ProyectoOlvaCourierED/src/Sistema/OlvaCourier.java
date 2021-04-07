@@ -2,6 +2,7 @@
 package Sistema;
 
 import Estructura.*;
+import EstructurasPlantillas.Lista;
 import Modelo.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,17 +11,15 @@ import java.sql.SQLException;
 
 public class OlvaCourier {
     
-    public static ListaCliente clientes = new ListaCliente();
+    public static Lista<Cliente> clientes = new Lista<>();
     public static Cliente clienteActual;
-    public static ListaBoleta boletas = new ListaBoleta();
+    public static Lista<Boleta> boletas = new Lista<>();
     public static Boleta boletaActual;
     public static Login usuarioActual;
-    public static ListaPersonas personas = new ListaPersonas();
-    public static ListaAdministrador administradores = new ListaAdministrador();
+    public static Lista<Persona> personas = new Lista<>();
+    public static Lista<Administrador> administradores = new Lista<>();
     public static Administrador administradorActual;
-    public static ListaRRHH rrhhs = new ListaRRHH();
-    public static RRHH rrhhActual;
-    public static ListaAgencia agencias = new ListaAgencia();
+    public static Lista<Agencia> agencias = new Lista<>();
     
     
     
