@@ -34,11 +34,11 @@ import javax.swing.JOptionPane;
         
         //Guarda la boleta creada al cliente que ha iniciado sesion
         
-        OlvaCourier.clienteActual.getListaBoletas().InsertarNodo(OlvaCourier.boletaActual);
+        OlvaCourier.clienteActual.getListaBoletas().insertarNodoPorFinal(OlvaCourier.boletaActual);
         
         //System.out.println(OlvaCourier.clienteActual.getListaBoletas().getBoletaXPos(0).getListaPedidos().getPedidoXPos(0).getProducto().getNombreProducto()); Funciona
         //asegurar que el cliente actual guarde la informacion donde se comenzo
-        OlvaCourier.boletas.InsertarNodo(OlvaCourier.boletaActual);
+        OlvaCourier.boletas.insertarNodoPorFinal(OlvaCourier.boletaActual);
         llenarTabla();
         
         setLocationRelativeTo(null);
@@ -49,10 +49,11 @@ import javax.swing.JOptionPane;
         String matriz[][] = new String[5][3];
         
         for(int i=0;i<5;i++){
-            if(OlvaCourier.boletaActual.getListaPedidos().getPedidoXPos(i).getProducto().getNombreProducto()!=""){
-                matriz[i][0]=String.valueOf(OlvaCourier.boletaActual.getListaPedidos().getPedidoXPos(i).getCodigo());
-                matriz[i][1]=String.valueOf(OlvaCourier.boletaActual.getListaPedidos().getPedidoXPos(i).getProducto().getNombreProducto());
-                matriz[i][2]=String.valueOf(OlvaCourier.boletaActual.getListaPedidos().getPedidoXPos(i).getValor());
+            Pedido pe = (Pedido) OlvaCourier.boletaActual.getListaPedidos().getXPos(i);
+            if(pe.getProducto().getNombreProducto()!=""){
+                matriz[i][0]=String.valueOf(pe.getCodigo());
+                matriz[i][1]=String.valueOf(pe.getProducto().getNombreProducto());
+                matriz[i][2]=String.valueOf(pe.getValor());
                 tabla.setValueAt(matriz[i][0], i, 0);
                 tabla.setValueAt(matriz[i][1], i, 1);
                 tabla.setValueAt(matriz[i][2], i, 2);

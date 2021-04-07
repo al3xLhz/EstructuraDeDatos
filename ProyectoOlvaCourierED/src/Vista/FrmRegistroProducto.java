@@ -353,11 +353,11 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                 
                 OlvaCourier.boletaActual.setAgenciaInicial(OlvaCourier.agencias.getAgencia(comboOrigen.getSelectedItem().toString()));
                 OlvaCourier.boletaActual.setAgenciaFinal(OlvaCourier.agencias.getAgencia(comboDestino.getSelectedItem().toString()));
-                OlvaCourier.boletaActual.getListaPedidos().InsertarNodo(new Pedido(p1));
-                OlvaCourier.boletaActual.getListaPedidos().InsertarNodo(new Pedido(p2));
-                OlvaCourier.boletaActual.getListaPedidos().InsertarNodo(new Pedido(p3));
-                OlvaCourier.boletaActual.getListaPedidos().InsertarNodo(new Pedido(p4));
-                OlvaCourier.boletaActual.getListaPedidos().InsertarNodo(new Pedido(p5));
+                OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p1));
+                OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p2));
+                OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p3));
+                OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p4));
+                OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p5));
                 OlvaCourier.boletaActual.setPrecioTotal();
                 OlvaCourier.boletaActual.setPropietarioDNI(OlvaCourier.clienteActual.getDni());
                 OlvaCourier.boletaActual.getFechadeEntrega().add(Calendar.DAY_OF_MONTH, 5);

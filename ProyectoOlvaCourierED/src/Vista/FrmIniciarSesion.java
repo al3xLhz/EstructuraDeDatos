@@ -5,7 +5,6 @@
  */
 package Vista;
 
-import Estructura.ListaUsuario;
 import Modelo.Administrador;
 import Modelo.Cliente;
 import Sistema.OlvaCourier;

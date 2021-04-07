@@ -1,8 +1,7 @@
 
 package Sistema;
 
-import Estructura.*;
-import EstructurasPlantillas.Lista;
+import Estructuras.Lista;
 import Modelo.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,7 +24,7 @@ public class OlvaCourier {
     
     
     static ResultSet res;
-    
+    /*
     public static void CargarListas(ListaUsuario l){
         
         res = Conexion.Conexion.Consulta("select * from Usuario");
@@ -37,7 +36,7 @@ public class OlvaCourier {
         }catch(SQLException e){
         }
     }
-   
+    */
     
         
 }

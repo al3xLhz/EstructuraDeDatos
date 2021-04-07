@@ -5,7 +5,6 @@
  */
 package Vista;
 
-import Estructura.ListaBoleta;
 import Modelo.Boleta;
 import Sistema.OlvaCourier;
 import java.util.Calendar;
@@ -28,16 +27,18 @@ public class FrmHistorial extends javax.swing.JFrame {
     }
 
     public void llenarTabla(){
-        String matriz[][] = new String[OlvaCourier.clienteActual.getListaBoletas().cantidadBoletas()+1][7];//Que me devulva la cantidad max de la lista de boletas
-        for(int i=0;i<OlvaCourier.clienteActual.getListaBoletas().cantidadBoletas()+1;i++){
-            if(OlvaCourier.clienteActual.getListaBoletas().getBoletaXPos(i)!=null){
-                matriz[i][0]=String.valueOf(OlvaCourier.clienteActual.getListaBoletas().getBoletaXPos(i).getCodigo());
-                matriz[i][1]=String.valueOf(OlvaCourier.clienteActual.getListaBoletas().getBoletaXPos(i).getAgenciaInicial().getUbicacion());
-                matriz[i][2]=String.valueOf(OlvaCourier.clienteActual.getListaBoletas().getBoletaXPos(i).getAgenciaFinal().getUbicacion());
-                matriz[i][3]=String.valueOf(OlvaCourier.clienteActual.getListaBoletas().getBoletaXPos(i).getEstado());
-                matriz[i][4]=String.valueOf(OlvaCourier.clienteActual.getListaBoletas().getBoletaXPos(i).getFechaEmision().getTime().toString());
-                matriz[i][5]=String.valueOf(OlvaCourier.clienteActual.getListaBoletas().getBoletaXPos(i).getFechadeEntrega().getTime().toString());
-                matriz[i][6]=String.valueOf(OlvaCourier.clienteActual.getListaBoletas().getBoletaXPos(i).getTotal());
+        String matriz[][] = new String[OlvaCourier.clienteActual.getListaBoletas().getTamaño()+1][7];//Que me devulva la cantidad max de la lista de boletas
+        for(int i=0;i<OlvaCourier.clienteActual.getListaBoletas().getTamaño()+1;i++){
+            Boleta b = (Boleta) OlvaCourier.clienteActual.getListaBoletas().getXPos(i);
+            
+            if(b!=null){
+                matriz[i][0]=String.valueOf(b.getCodigo());
+                matriz[i][1]=String.valueOf(b.getAgenciaInicial().getUbicacion());
+                matriz[i][2]=String.valueOf(b.getAgenciaFinal().getUbicacion());
+                matriz[i][3]=String.valueOf(b.getEstado());
+                matriz[i][4]=String.valueOf(b.getFechaEmision().getTime().toString());
+                matriz[i][5]=String.valueOf(b.getFechadeEntrega().getTime().toString());
+                matriz[i][6]=String.valueOf(b.getTotal());
                 Tabla.setValueAt(matriz[i][0], i, 0);
                 Tabla.setValueAt(matriz[i][1], i, 1);
                 Tabla.setValueAt(matriz[i][2], i, 2);
@@ -51,30 +52,8 @@ public class FrmHistorial extends javax.swing.JFrame {
     }
     
     
-    public void ordenarDeInserccion(ListaBoleta boletas){
-  
-    Boleta aux;
-    int pos;
-    int longitud = boletas.cantidadBoletas(); //tamaño de un vector
     
-    for(int i=0;i<longitud;i++){
-        
-	pos=i;
-	aux=OlvaCourier.boletas.getBoletaXPos(i);
-		
-	while(pos>0 && (OlvaCourier.boletas.getBoletaXPos(pos-1).getCodigo() > aux.getCodigo())){
-            OlvaCourier.boletas.getBoletaXPos(pos).setCodigo(OlvaCourier.boletas.getBoletaXPos(pos-1).getCodigo());
-            pos--;
-	}
-        OlvaCourier.boletas.getBoletaXPos(pos).setCodigo(OlvaCourier.boletas.getBoletaXPos(pos-1).getCodigo());
-    }
     
-    System.out.println("Orden ascendente: \n");
-        
-    for(int i=0;i<longitud;i++){
-                System.out.println(OlvaCourier.boletas.getBoletaXPos(i).getCodigo());
-    } 
-    }
     
     /**
      * This method is called from within the constructor to initialize the form.

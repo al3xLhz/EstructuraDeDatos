@@ -1,6 +1,8 @@
 
-package EstructurasPlantillas;
+package Estructuras;
 
+import Modelo.Agencia;
+import Modelo.Boleta;
 import Modelo.Login;
 import Modelo.Persona;
 
@@ -287,9 +289,104 @@ public class Lista<E>{
     
     }
     
-    //public LogigetPersona(Login l){
+    public Persona getPersona(Login usuario){
+        Persona p = null;
+        Nodo<E> aux=inicio;
+        while(aux!=null){
+            if(aux.objeto instanceof Persona){
+                Persona np = (Persona) aux.objeto;
+                
+                if(np.getUsuario()==usuario){
+                    p=np;
+                }
+            }
+            aux=aux.siguiente;
+        }
+        return p;
+    }
+    
+    //Instanciar Agencias
+    public void setAgencias(){
         
-    //}
+        insertarNodoPorFinal((E) new Agencia("Amazonas", 1));
+        insertarNodoPorFinal((E) new Agencia("Ancash", 2));
+        insertarNodoPorFinal((E) new Agencia("Apurimac", 3));
+        insertarNodoPorFinal((E) new Agencia("Arequipa", 4));
+        insertarNodoPorFinal((E) new Agencia("Ayacucho", 5));
+        insertarNodoPorFinal((E) new Agencia("Cajamarca", 6));
+        insertarNodoPorFinal((E) new Agencia("Cusco", 7));
+        insertarNodoPorFinal((E) new Agencia("Huancavelica", 8));
+        insertarNodoPorFinal((E) new Agencia("Huanuco", 9));
+        insertarNodoPorFinal((E) new Agencia("Ica", 10));
+        insertarNodoPorFinal((E) new Agencia("Junín", 11));
+        insertarNodoPorFinal((E) new Agencia("La Libertad", 12));
+        insertarNodoPorFinal((E) new Agencia("Lambayeque", 13));
+        insertarNodoPorFinal((E) new Agencia("Lima", 14));
+        insertarNodoPorFinal((E) new Agencia("Loreto", 15));
+        insertarNodoPorFinal((E) new Agencia("Madre de Dios", 16));
+        insertarNodoPorFinal((E) new Agencia("Moquegua", 17));
+        insertarNodoPorFinal((E) new Agencia("Pasco", 18));
+        insertarNodoPorFinal((E) new Agencia("Piura", 19));
+        insertarNodoPorFinal((E) new Agencia("Puno", 20));
+        insertarNodoPorFinal((E) new Agencia("San Martín", 21));
+        insertarNodoPorFinal((E) new Agencia("Tacna", 22));
+        insertarNodoPorFinal((E) new Agencia("Tumbes", 23));
+        insertarNodoPorFinal((E) new Agencia("Ucayali", 24));
+        
+    }
+    
+    //Obtener agencias mediante su nombre
+    public Agencia getAgencia(String name){
+        Nodo<E> aux=inicio;
+        Agencia aR=null;
+        
+        while(aux!=null){
+            if(aux.objeto instanceof Agencia){
+                Agencia a = (Agencia) aux.objeto;
+                if(name.equals(a.getUbicacion())){
+                    aR=a;
+                }
+            }
+            aux=aux.siguiente;
+        }
+        
+        return aR;
+    }
+    
+    public Object getXPos(int pos){
+        Object ob=null;
+        Nodo<E> aux = inicio;
+        int contador = 0;
+        while(aux!=null){
+            if(contador==pos){
+                ob=aux.objeto;
+            }
+            aux=aux.siguiente;
+            contador++;
+        }
+        return ob;
+    }
+    
+    public Boleta getBoleta(int nroBoleta){
+        Nodo<E> aux = inicio;
+        Boleta boletaR = null;
+        
+        while(aux!=null){
+            if(aux.objeto instanceof Boleta){
+                Boleta b = (Boleta) aux.objeto;
+                if(b.getCodigo()==nroBoleta){
+                    boletaR=b;
+                }
+            }
+            aux=aux.siguiente;
+        }
+        
+        return boletaR;
+    }
+    
+    
+    
+    
     
     
     

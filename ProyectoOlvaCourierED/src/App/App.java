@@ -1,7 +1,7 @@
 
 package App;
 
-import EstructurasPlantillas.Lista;
+import Estructuras.Lista;
 import Modelo.*;
 import Sistema.OlvaCourier;
 import Vista.FrmIniciarSesion;
@@ -14,7 +14,7 @@ public class App {
         
         //Conexion.Conexion.getConexion();
         
-        
+        OlvaCourier.agencias.setAgencias();
         
         Cliente c1 = new Cliente("Alex", "Lizarazo", "72182942", "alex@gmail.com", new Login("a", "a", 1));
         Cliente c2 = new Cliente("Ricardo", "Gonzales", "18200061", "ricardo@gmail.com", new Login("r", "r", 1));

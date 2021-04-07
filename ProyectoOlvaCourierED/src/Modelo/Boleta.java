@@ -1,7 +1,7 @@
 
 package Modelo;
 
-import Estructura.*;
+import Estructuras.Lista;
 import java.util.Calendar;
 
 public class Boleta {
@@ -16,7 +16,7 @@ public class Boleta {
     private static int codigoM = 1000;
     private String propietarioDNI;
     private String estado;
-    private ListaPedidos listaPedidos = new ListaPedidos();
+    private Lista<Pedido> listaPedidos = new Lista<>();
 
     public Boleta(Agencia agenciaInicial, Agencia agenciaFinal,String propietarioDNI) {
         this.codigo = codigoM;
@@ -134,21 +134,24 @@ public class Boleta {
         this.agenciaFinal = agenciaFinal;
     }
 
-    public ListaPedidos getListaPedidos() {
+    public Lista<Pedido> getListaPedidos() {
         return listaPedidos;
     }
 
-    public void setListaPedidos(ListaPedidos listaPedidos) {
+    public void setListaPedidos(Lista<Pedido> listaPedidos) {
         this.listaPedidos = listaPedidos;
     }
 
+    
+
     private double sumarPedido() {
-        double total=0;
+        double sumaTotalPedido=0;
         for(int i=0;i<5;i++){
-            total+=listaPedidos.getPedidoXPos(i).getValor();
+            Pedido pe = (Pedido) listaPedidos.getXPos(i);
+            sumaTotalPedido+=pe.getValor();
         }
         
-        return total;
+        return sumaTotalPedido;
     }
 
     private double montoAgenciaAgencia() {

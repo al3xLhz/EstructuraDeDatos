@@ -1,7 +1,6 @@
 
 package Modelo;
 
-import Estructura.ListaProducto;
 import java.util.Calendar;
 
 public class Pedido {

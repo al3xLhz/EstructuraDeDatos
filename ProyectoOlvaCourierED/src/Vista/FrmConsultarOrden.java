@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Modelo.Pedido;
 import Sistema.OlvaCourier;
 
 /**
@@ -29,9 +30,10 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
         String matriz[][] = new String[5][2];
         
         for(int i=0;i<5;i++){
-            if(OlvaCourier.boletaActual.getListaPedidos().getPedidoXPos(i).getProducto().getNombreProducto()!=""){
-                matriz[i][0]=String.valueOf(OlvaCourier.boletaActual.getListaPedidos().getPedidoXPos(i).getCodigo());
-                matriz[i][1]=String.valueOf(OlvaCourier.boletaActual.getListaPedidos().getPedidoXPos(i).getProducto().getNombreProducto());
+            Pedido pe = (Pedido) OlvaCourier.boletaActual.getListaPedidos().getXPos(i);
+            if(pe.getProducto().getNombreProducto()!=""){
+                matriz[i][0]=String.valueOf(pe.getCodigo());
+                matriz[i][1]=String.valueOf(pe.getProducto().getNombreProducto());
                 Tabla.setValueAt(matriz[i][0], i, 0);
                 Tabla.setValueAt(matriz[i][1], i, 1);
             }
