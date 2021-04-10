@@ -9,16 +9,21 @@ import java.sql.SQLException;
 
 
 public class OlvaCourier {
+    //Representa como una base de datos donde se maneja la información de todo el sistema
     
+    //Aquí están las listas generales que abarcaran tales y como dice su clase Lista<>
     public static Lista<Cliente> clientes = new Lista<>();
-    public static Cliente clienteActual;
     public static Lista<Boleta> boletas = new Lista<>();
-    public static Boleta boletaActual;
-    public static Login usuarioActual;
     public static Lista<Persona> personas = new Lista<>();
     public static Lista<Administrador> administradores = new Lista<>();
-    public static Administrador administradorActual;
     public static Lista<Agencia> agencias = new Lista<>();
+    
+    //Estos objetos auxiliares nos ayuda a trabajar en casos de creacion o uso de los objetos dados
+    public static Cliente clienteActual;
+    public static Boleta boletaActual;
+    public static Login usuarioActual;
+    public static Administrador administradorActual;
+    
     
     
     

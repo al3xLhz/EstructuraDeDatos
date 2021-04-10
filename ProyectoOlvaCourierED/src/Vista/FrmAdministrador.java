@@ -123,7 +123,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
         etiquetaBienvenida.setMaximumSize(new java.awt.Dimension(402, 43));
         etiquetaBienvenida.setMinimumSize(new java.awt.Dimension(402, 43));
         etiquetaBienvenida.setPreferredSize(new java.awt.Dimension(402, 43));
-        Fondo.add(etiquetaBienvenida, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 250, -1));
+        Fondo.add(etiquetaBienvenida, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 400, -1));
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondo_olva 4.0.png"))); // NOI18N
         fondo.setText("jLabel1");

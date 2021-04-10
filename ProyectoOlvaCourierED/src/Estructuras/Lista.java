@@ -3,6 +3,7 @@ package Estructuras;
 
 import Modelo.Agencia;
 import Modelo.Boleta;
+import Modelo.Cliente;
 import Modelo.Login;
 import Modelo.Persona;
 
@@ -32,7 +33,7 @@ public class Lista<E>{
         else{
             inicio = new Nodo<>(objeto,inicio);
         }
-        tamaño += 1;
+        tamaño++;
     }
     
     public void insertarNodoPorFinal(E objeto){
@@ -43,7 +44,7 @@ public class Lista<E>{
             fin.siguiente = new Nodo<>(objeto);
             fin = fin.siguiente;
         }
-        tamaño += 1;
+        tamaño++;
     }
     
     public void insertarNodoAntesDe(E objeto,E dato)throws NullPointerException{
@@ -76,7 +77,7 @@ public class Lista<E>{
                     T.siguiente = R;
                     R.siguiente = Q;
                 }
-                tamaño += 1;
+                tamaño++;
             }
         }
         catch(NullPointerException e){
@@ -123,7 +124,7 @@ public class Lista<E>{
             else{
                 inicio = inicio.siguiente;
             }
-            tamaño-=1;
+            tamaño--;
             return objeto;//ExceptionNullPointer-Agregar
         }
         catch(NullPointerException e){
@@ -267,8 +268,22 @@ public class Lista<E>{
         return fin.objeto;
     }
     
-    //Esto es para Personas
-    public Login validar(String usuario, String contraseña){
+    public E getXPos(int pos){
+        E ob=null;
+        Nodo<E> aux = inicio;
+        int contador = 0;
+        while(aux!=null){
+            if(contador==pos){
+                ob=aux.objeto;
+            }
+            aux=aux.siguiente;
+            contador++;
+        }
+        return ob;
+    }
+    
+    /*<<<Esto es para Personas*/
+    public Login validar(String usuario, String contraseña){ //Nos permite hacer una busqueda si existe en las personas enlistadas
         Login result = null;
         Nodo<E> aux = inicio;
         
@@ -280,16 +295,14 @@ public class Lista<E>{
                 result=p.getUsuario();
                 }
             }
-            
             aux=aux.siguiente;
         }
-        
         
         return result;
     
     }
     
-    public Persona getPersona(Login usuario){
+    public Persona getPersona(Login usuario){//Mediante el objeto Login se extrae los datos completo de la Persona
         Persona p = null;
         Nodo<E> aux=inicio;
         while(aux!=null){
@@ -304,6 +317,10 @@ public class Lista<E>{
         }
         return p;
     }
+    
+    /*>>>*/
+    
+    /*<<<Esto es para Agencias*/
     
     //Instanciar Agencias
     public void setAgencias(){
@@ -353,20 +370,12 @@ public class Lista<E>{
         return aR;
     }
     
-    public Object getXPos(int pos){
-        Object ob=null;
-        Nodo<E> aux = inicio;
-        int contador = 0;
-        while(aux!=null){
-            if(contador==pos){
-                ob=aux.objeto;
-            }
-            aux=aux.siguiente;
-            contador++;
-        }
-        return ob;
-    }
+    /*>>>*/
     
+    
+    /*<<<Esto es para Boleta*/
+    
+    //Obtener Boleta mediante su numero deboleta
     public Boleta getBoleta(int nroBoleta){
         Nodo<E> aux = inicio;
         Boleta boletaR = null;
@@ -384,11 +393,37 @@ public class Lista<E>{
         return boletaR;
     }
     
+    /*>>>*/
+    
+    
+    /*<<<Esto es para Clientes*/
+    
+    public void actualizarCliente(Cliente c){
+        Nodo<E> aux =inicio;
+        while(aux!=null){
+            if(aux.objeto instanceof Cliente){
+                Cliente cl = (Cliente) aux.objeto;//Lo convierto en Cliente para que pueda compararlo con el argumento que reciba
+                if(cl.getDni().equals(c.getDni())){
+                    aux.objeto=(E) c;
+                }
+            }
+            aux=aux.siguiente;
+            
+        }
+    }
+    
+    
+    /*>>>*/
     
     
     
     
     
+    
+    
+    
+    
+    /*ignora de aqui para abajo*/
     
     /*//Primera Forma con interfaz
     @Override
