@@ -2,6 +2,7 @@
 package Sistema;
 
 import Estructuras.Lista;
+import Grafo.*;
 import Modelo.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,6 +11,7 @@ import java.sql.SQLException;
 
 public class OlvaCourier {
     //Representa como una base de datos donde se maneja la información de todo el sistema
+    
     
     //Aquí están las listas generales que abarcaran tales y como dice su clase Lista<>
     public static Lista<Cliente> clientes = new Lista<>();
@@ -23,12 +25,12 @@ public class OlvaCourier {
     public static Boleta boletaActual;
     public static Login usuarioActual;
     public static Administrador administradorActual;
+    public static GrafoMapa miGrafo = new GrafoMapa();
     
     
     
     
-    
-    static ResultSet res;
+    //static ResultSet res;
     /*
     public static void CargarListas(ListaUsuario l){
         
@@ -43,5 +45,11 @@ public class OlvaCourier {
     }
     */
     
-        
+    
+    
+    
+    
+    
+    
+            
 }

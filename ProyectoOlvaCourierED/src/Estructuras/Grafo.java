@@ -5,33 +5,36 @@
  */
 package Estructuras;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.PriorityQueue;
 
-/**
- *
- * @author Alex
- */
+
 public class Grafo {
     
-    final int nMax=100; //maximo #Vertices
-    final int infinito= 9999; //La distancia inicial para cada conexion
-    int V;//#Vertices
-    List<List<Node>> listaAdyacencias = new ArrayList<>();//Lista de adyacencia
-    public  Grafo(int V,int E,int relacionAristas[][]){
-        this.V=V;
-        for(int i =0;i<=V;i++){
+    final int MAX = 100; //máximo numero de vértices
+    final int INFINITO = 1<<30; //definimos un valor grande que represente 
+    //la distancia infinita inicial, basta conque sea superior al maximo valor del peso en alguna de las aristas
+    int V; //n° de vertices
+    List<List<Node>> listaAdyacencias = new ArrayList<>(); //Lista de adyacencia  
+    public Grafo(int V,int E,int relacionAristas[][]){
+        //n° de aristas(origen,destino,peso)
+        this.V = V;
+        for(int i = 0;i <= V;i++){
             listaAdyacencias.add(new ArrayList<>());
         }
-        for(int i=0;i<E;i++){
+        for(int i = 0;i < E;i++){//49=E
             agregarArista(relacionAristas[i][0],relacionAristas[i][1],relacionAristas[i][2]);
         }
     }
 
-    private void agregarArista(int origen, int destino, int peso) {
-        listaAdyacencias.get(origen).add(new Node(destino, peso));
+    void agregarArista(int origen,int destino,int peso){
+        listaAdyacencias.get(origen).add(new Node(destino,peso));//grafo diridigo
+        //get(origen):Obtiene la dirección del vertice 
+        //add(new Node(destino,peso)):Se le agrega al nodo una arista
     }
     
-    class Node implements Comparable<Node>{ //Aqui aplicaría especifico para vertice = agencia
+    class Node implements Comparable<Node>{
         //se puede agregar objetos
         int destino, peso;
         Node(int destino,int peso ){                          
@@ -44,6 +47,14 @@ public class Grafo {
             this.destino = destino;
             this.peso = 0;
         }
+        @Override
+        public int compareTo(Node otro){              
+        //definición de un comparador para garantizar el funcionamiento 
+        //de la PriorityQueue
+            if(peso > otro.peso) return 1;
+            if(peso == otro.peso) return 0;
+            return -1;
+        }
 
         int getDestino() {
             return destino;
@@ -52,25 +63,16 @@ public class Grafo {
        int getPeso() {
             return peso;
         }
-
-        @Override
-        public int compareTo(Node otro) {
-            //definición de un comparador para garantizar el funcionamiento 
-        //de la PriorityQueue
-            if(peso > otro.peso) return 1;
-            if(peso == otro.peso) return 0;
-            return -1;
-        }
     }
     
     public void Dijkstra(int inicio,int fin){
-        int distancia[] = new int[ nMax ];//distancia[ u ] distancia de vértice inicial a vértice con ID = u
-        boolean visitado[ ] = new boolean[ nMax ];//para vértices visitados
-        int previo[] = new int[ nMax ];//para la impresion de caminos
+        int distancia[ ] = new int[ MAX ];//distancia[ u ] distancia de vértice inicial a vértice con ID = u
+        boolean visitado[ ] = new boolean[ MAX ];//para vértices visitados
+        int previo[] = new int[ MAX ];//para la impresion de caminos
         PriorityQueue< Node > ColaPrioritaria = new PriorityQueue<>();
         
         for( int i = 0 ; i <= V ; ++i ){
-            distancia[i] = infinito;  //inicializamos todas las distancias con valor infinito
+            distancia[i] = INFINITO;  //inicializamos todas las distancias con valor infinito
             visitado[i] = false; //inicializamos todos los vértices como no visitados
             previo[i] = -1;      //inicializamos el previo del vertice i con -1
         }
@@ -105,12 +107,45 @@ public class Grafo {
         for( int i = 1 ; i <= V ; ++i ){
             System.out.printf("Vertice %d , distancia mas corta = %d\n" , i , distancia[ i ] );
         }*/
+
         imprimirRuta(fin,previo);
     }
-    
     void imprimirRuta(int destino,int previo[]){
             if( previo[destino]!= -1)    //si aun poseo un vertice previo
                 imprimirRuta(previo[destino],previo);  //recursivamente sigo explorando
             System.out.printf("%d " , destino ); 
         }
+    /*
+    public int llenarAdyacencia(){
+        int[] linea1 = new int[]{0, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] linea2 = new int[]{55, 0, 32, 0, 0, 80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] linea3 = new int[]{0, 32, 0, 0, 0, 46, 85, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] linea4 = new int[]{0, 0, 0, 0, 140, 40, 110, 70, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] linea5 = new int[]{0, 0, 0, 140, 0, 0, 0, 100, 0, 0, 0, 215, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        int[] linea6 = new int[]{0, 80, 46, 40, 0, 0, 70, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] linea7 = new int[]{0, 0, 85, 110, 0, 70, 0, 85, 50, 70, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] linea8 = new int[]{0, 0, 0, 70, 100, 0, 85, 0, 0, 110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] linea9 = new int[]{0, 0, 0, 0, 0, 0, 50, 0, 0, 95, 0, 0, 80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        int[] linea10 = new int[]{0, 0, 0, 0, 0, 0, 70, 110, 95, 0, 42, 75, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] linea11 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 42, 0, 75, 60, 45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] linea12 = new int[]{0, 0, 0, 0, 215, 0, 0, 0, 0, 75, 75, 0, 0, 62, 0, 0, 96, 112, 0, 0, 0, 0, 0, 0};
+        int[] linea13 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 80, 0, 60, 0, 0, 60, 74, 75, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] linea14 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 45, 62, 60, 0, 0, 59, 121, 0, 0, 122, 0, 0, 0, 0};
+        int[] linea15 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 74, 0, 0, 32, 0, 0, 0, 63, 81, 0, 0, 0};
+        int[] linea16 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 75, 59, 32, 0, 0, 0, 0, 55, 0, 0, 0, 0};
+        int[] linea17 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 96, 0, 121, 0, 0, 0, 98, 47, 130, 105, 91, 0, 0};
+        int[] linea18 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 112, 0, 0, 0, 0, 98, 0, 0, 0, 0, 101, 0, 0};
+        int[] linea19 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 47, 0, 0, 44, 67, 0, 0, 0};
+        int[] linea20 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 122, 63, 55, 130, 0, 44, 0, 82, 0, 0, 0};
+        int[] linea21 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 81, 0, 105, 0, 67, 82, 0, 92, 60, 0};
+        int[] linea22 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 91, 101, 0, 0, 92, 0, 72, 89};
+        int[] linea23 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60, 72, 0, 26};
+        int[] linea24 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 89, 26, 0};
+        int[][] lineaVertical = new int[][]{linea1, linea2, linea3, linea4, linea5, linea6, linea7, linea8, linea9, linea10, linea11, linea12, linea13, linea14, linea15, linea16, linea17, linea18, linea19, linea20, linea21,linea22,linea23,linea24};
+    }
+    */
+    
 }
+
+
+

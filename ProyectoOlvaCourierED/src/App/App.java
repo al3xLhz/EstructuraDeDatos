@@ -1,6 +1,7 @@
 
 package App;
 
+import Estructuras.Grafo;
 import Modelo.*;
 import Sistema.OlvaCourier;
 import Vista.FrmIniciarSesion;
@@ -39,12 +40,31 @@ public class App {
         OlvaCourier.personas.insertarNodoPorFinal(c2);
         OlvaCourier.personas.insertarNodoPorFinal(a1);
         OlvaCourier.personas.insertarNodoPorFinal(a2);
+        //int[][] mAdyacencia = new int[][]{{0,1,20},{0,2,30},{1,2,20}};
+        //Grafo miGrafo= new Grafo(2, 3, mAdyacencia);
+        
+       // miGrafo.Dijkstra(0, 1);
         
         //De esta forma ingresa Formulario Iniciar sesion
         FrmIniciarSesion login = new FrmIniciarSesion();
         
         login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        
+        
     }
+    
+     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
 }
 
