@@ -65,6 +65,7 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
         Tabla = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(64, 170, 173));
 
         fondo.setLayout(new java.awt.BorderLayout());
 

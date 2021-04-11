@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import Sistema.OlvaCourier;
+
 /**
  *
  * @author Alex
@@ -16,6 +18,8 @@ public class FrmAdministrador extends javax.swing.JFrame {
      */
     public FrmAdministrador() {
         initComponents();
+        etiquetaBienvenida.setText("Bienvenido "+OlvaCourier.administradorActual.getNombres());
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
@@ -131,10 +135,10 @@ public class FrmAdministrador extends javax.swing.JFrame {
                 ClienteActionPerformed(evt);
             }
         });
-        PanelOpciones.add(Cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 160, -1, -1));
+        PanelOpciones.add(Cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, -1, -1));
 
-        cliente.setText("jLabel7");
-        PanelOpciones.add(cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 110, -1, -1));
+        cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/clientes.png"))); // NOI18N
+        PanelOpciones.add(cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, 120, -1));
 
         Fondo.add(PanelOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 640, 410));
 
@@ -174,6 +178,9 @@ public class FrmAdministrador extends javax.swing.JFrame {
 
     private void ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClienteActionPerformed
         // TODO add your handdffling code here:
+        FrmDatosCliente tablaClientes= new FrmDatosCliente();
+        //FrmRegistroProducto formularioRegistroEnvio= new FrmRegistroProducto();
+        this.dispose();
     }//GEN-LAST:event_ClienteActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
