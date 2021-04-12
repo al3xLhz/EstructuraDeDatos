@@ -5,19 +5,48 @@
  */
 package Vista;
 
+import Sistema.OlvaCourier;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author laura
  */
 public class FrmDatosCliente extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form FrmDatosCliente
      */
     public FrmDatosCliente() {
         initComponents();
+        tablaCompleta();
+        /*modelo= new DefaultTableModel();
+        /*modelo.addColumn("DNI");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("e-mail");
+        this.Table1.setModel(modelo);*/
+        setVisible(true);
     }
-
+    
+    public void tablaCompleta(){
+        String []tablet= new String [4];
+        for(int i=0;i<5;i++){
+           // if(OlvaCourier.clienteActual.toString() != ""){
+                tablet[0]=String.valueOf(OlvaCourier.clienteActual.getDni());
+                tablet[1]=String.valueOf(OlvaCourier.clienteActual.getNombres());
+                tablet[2]=String.valueOf(OlvaCourier.clienteActual.getApellidos());
+                tablet[3]=String.valueOf(OlvaCourier.clienteActual.getEmail());
+   
+                Table1.setValueAt(tablet, i, 0);
+                Table1.setValueAt(tablet, i, 1);
+                Table1.setValueAt(tablet, i, 2);
+                Table1.setValueAt(tablet, i, 3);
+                
+           // }
+            
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,7 +60,7 @@ public class FrmDatosCliente extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Table1 = new javax.swing.JTable();
         jComboBox1 = new javax.swing.JComboBox<>();
         ascendente = new javax.swing.JButton();
         descentente = new javax.swing.JButton();
@@ -56,7 +85,7 @@ public class FrmDatosCliente extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(64, 170, 173));
         jPanel3.setForeground(new java.awt.Color(64, 170, 173));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Table1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -64,20 +93,27 @@ public class FrmDatosCliente extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "DNI", "Nombres", "Apellidos", "e-mail"
+                "DNI", "Nombre", "Apellido", "e-mail"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
-        });
-        jScrollPane1.setViewportView(jTable1);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(Table1);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "Nombres", "Apellidos", "e-mail" }));
 
         ascendente.setText("Ascendente");
         ascendente.addActionListener(new java.awt.event.ActionListener() {
@@ -187,6 +223,7 @@ public class FrmDatosCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable Table1;
     private javax.swing.JButton ascendente;
     private javax.swing.JButton descentente;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -194,6 +231,5 @@ public class FrmDatosCliente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
 }

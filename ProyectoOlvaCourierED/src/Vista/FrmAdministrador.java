@@ -114,6 +114,11 @@ public class FrmAdministrador extends javax.swing.JFrame {
 
         salir.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         salir.setText("salir");
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
         PanelOpciones.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, -1, -1));
 
         inventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/inventario_agencia.png"))); // NOI18N
@@ -177,15 +182,18 @@ public class FrmAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_botonSeguimientoEnvioActionPerformed
 
     private void ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClienteActionPerformed
-        // TODO add your handdffling code here:
         FrmDatosCliente tablaClientes= new FrmDatosCliente();
-        //FrmRegistroProducto formularioRegistroEnvio= new FrmRegistroProducto();
+        tablaClientes.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_ClienteActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_salirActionPerformed
 
     /**
      * @param args the command line arguments
