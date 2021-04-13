@@ -5,11 +5,10 @@
  */
 package Grafo;
 import Estructuras.*;
-import java.io.Serializable;
 
 
-public class DijkstraMapa implements Serializable {
-    private final GrafoMapa grafo;
+public class DijkstraMapa {
+    private GrafoMapa grafo;
     private int subTope;
     private int auxAcumulado;
     private int subAcumulado;
@@ -18,17 +17,71 @@ public class DijkstraMapa implements Serializable {
     private int permanente;
     private int nodoFin;
     private int nodoInicio;
+    private Pila pila;
     
-    public DijkstraMapa(GrafoMapa grafo,int nodoInicio, int nodoFin){//Tope numero de vertices
+    public DijkstraMapa(GrafoMapa grafo){//Tope numero de vertices
         this.grafo = grafo;        
         this.tope = grafo.getCantidadMax();
-        this.nodos= new NodoGrafo[tope]; 
-        this.permanente = nodoInicio;
-        this.nodoInicio = nodoInicio;
-        this.nodoFin = nodoFin; 
+        this.nodos= new NodoGrafo[tope];
     }
+
+    public GrafoMapa getGrafo() {
+        return grafo;
+    }
+
+    public void setGrafo(GrafoMapa grafo) {
+        this.grafo = grafo;
+    }
+
+    public int getNodoFin() {
+        return nodoFin;
+    }
+
+    public void setNodoFin(int nodoFin) {
+        this.nodoFin = nodoFin;
+    }
+
+    public int getNodoInicio() {
+        return nodoInicio;
+    }
+
+    public void setNodoInicio(int nodoInicio) {
+        this.permanente = nodoInicio;
+        this.nodoInicio= nodoInicio;
+    }
+
+    public Pila getPila() {
+        return pila;
+    }
+
+    public void setPila(Pila pila) {
+        this.pila = pila;
+    }
+
+    public int getTope() {
+        return tope;
+    }
+
+    public void setTope(int tope) {
+        this.tope = tope;
+    }
+
+    public void getNodos() {
+        /*for(int i=0;i<tope;i++){
+           System.out.println(i+" "+nodos[i].getNombre()); 
+        }*/
+        
+    }
+
+    public void setNodos(NodoGrafo[] nodos) {
+        this.nodos = nodos;
+    }
+
+    
+    
     
     public void dijkstra(){
+        subTope=0;
         for (int i = 0; i < tope; i++){  // creamos el vector nodo del tamaño de tope el cual tiene el numero de nodo pintados 
             nodos[i]= new NodoGrafo();
         } 
@@ -71,24 +124,22 @@ public class DijkstraMapa implements Serializable {
         
     }
     
-    public void imprimirRuta(){
-        
-        Pila<NodoGrafo> pila= new Pila<>();
+    public void empilar(){
+        pila = new Pila();
         NodoGrafo auxL = nodos[nodoFin];
         
         do{
-           // System.out.println(auxL.getNombre());
-            pila.Apilar(auxL);; 
-            auxL=auxL.getPredecesor();
-           
+            System.out.println(auxL.getNombre());
+            
+            pila.Apilar(auxL.getNombre());
+            auxL=auxL.getPredecesor();  
         }while(auxL.getNombre()!=nodoInicio);
-        System.out.println(nodoInicio);
-        while(!pila.pilaVacia()){
-            
-            System.out.println(pila.Desempilar().getNombre());
-            
-        }
+        System.out.println(auxL.getNombre());
+        pila.Apilar(nodoInicio);
     }
+    
+    
+   
     
     
 }
