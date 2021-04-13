@@ -66,12 +66,7 @@ public class DijkstraMapa {
         this.tope = tope;
     }
 
-    public void getNodos() {
-        /*for(int i=0;i<tope;i++){
-           System.out.println(i+" "+nodos[i].getNombre()); 
-        }*/
-        
-    }
+   
 
     public void setNodos(NodoGrafo[] nodos) {
         this.nodos = nodos;
@@ -121,7 +116,6 @@ public class DijkstraMapa {
             }while(subTope<tope+1);
         }
             
-        
     }
     
     public void empilar(){

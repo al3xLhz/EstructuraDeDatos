@@ -12,6 +12,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.util.Calendar;
 import javax.sound.midi.MidiEvent;
 import javax.swing.JOptionPane;
 
@@ -289,6 +290,7 @@ public class FrmElegirMapa extends javax.swing.JFrame {
             miD.dijkstra();
             //miD.getNodos();
             miD.empilar();
+            OlvaCourier.boletaActual.getFechadeEntrega().add(Calendar.DAY_OF_YEAR,(miD.getPila().getLongitud()-1));
             opc = 1;
             repaint();
             botonSiguiente.setEnabled(true);
