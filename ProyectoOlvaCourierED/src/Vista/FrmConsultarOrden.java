@@ -53,10 +53,6 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
     private void initComponents() {
 
         fondo = new javax.swing.JPanel();
-        Header = new javax.swing.JPanel();
-        TituloRegistroEnvio = new javax.swing.JLabel();
-        etiquetaNombre = new javax.swing.JLabel();
-        etiquetaHora = new javax.swing.JLabel();
         Body = new javax.swing.JPanel();
         etiquetaNroBoleta = new javax.swing.JLabel();
         respuestaNroBoleta = new javax.swing.JLabel();
@@ -65,47 +61,15 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
         botonRetroceder = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
+        Header = new javax.swing.JPanel();
+        TituloRegistroEnvio = new javax.swing.JLabel();
+        etiquetaNombre = new javax.swing.JLabel();
+        etiquetaHora = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         fondo.setBackground(new java.awt.Color(64, 170, 173));
         fondo.setLayout(new java.awt.BorderLayout());
-
-        Header.setBackground(new java.awt.Color(64, 170, 173));
-
-        TituloRegistroEnvio.setFont(new java.awt.Font("Yu Gothic UI", 1, 26)); // NOI18N
-        TituloRegistroEnvio.setForeground(new java.awt.Color(34, 35, 34));
-        TituloRegistroEnvio.setText("Orden");
-
-        etiquetaNombre.setText("Nombre del cliente");
-
-        etiquetaHora.setText("Hora actual");
-
-        javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
-        Header.setLayout(HeaderLayout);
-        HeaderLayout.setHorizontalGroup(
-            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HeaderLayout.createSequentialGroup()
-                .addGap(76, 76, 76)
-                .addComponent(TituloRegistroEnvio)
-                .addGap(78, 78, 78)
-                .addComponent(etiquetaNombre)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addComponent(etiquetaHora)
-                .addGap(100, 100, 100))
-        );
-        HeaderLayout.setVerticalGroup(
-            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HeaderLayout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(etiquetaNombre)
-                    .addComponent(etiquetaHora)
-                    .addComponent(TituloRegistroEnvio))
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-
-        fondo.add(Header, java.awt.BorderLayout.NORTH);
 
         Body.setBackground(new java.awt.Color(64, 170, 173));
 
@@ -185,19 +149,53 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
                 .addContainerGap(67, Short.MAX_VALUE))
         );
 
+        fondo.add(Body, java.awt.BorderLayout.CENTER);
+
+        Header.setBackground(new java.awt.Color(64, 170, 173));
+
+        TituloRegistroEnvio.setFont(new java.awt.Font("Yu Gothic UI", 1, 26)); // NOI18N
+        TituloRegistroEnvio.setForeground(new java.awt.Color(34, 35, 34));
+        TituloRegistroEnvio.setText("Orden");
+
+        etiquetaNombre.setText("Nombre del cliente");
+
+        etiquetaHora.setText("Hora actual");
+
+        javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
+        Header.setLayout(HeaderLayout);
+        HeaderLayout.setHorizontalGroup(
+            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HeaderLayout.createSequentialGroup()
+                .addGap(76, 76, 76)
+                .addComponent(TituloRegistroEnvio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addComponent(etiquetaNombre)
+                .addGap(89, 89, 89)
+                .addComponent(etiquetaHora)
+                .addGap(100, 100, 100))
+        );
+        HeaderLayout.setVerticalGroup(
+            HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(HeaderLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(etiquetaNombre)
+                    .addComponent(etiquetaHora)
+                    .addComponent(TituloRegistroEnvio))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        fondo.add(Header, java.awt.BorderLayout.NORTH);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
-            .addComponent(Body, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Body, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

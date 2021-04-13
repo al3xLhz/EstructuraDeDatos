@@ -5,6 +5,9 @@
  */
 package Vista;
 
+import Sistema.OlvaCourier;
+import java.io.IOException;
+
 /**
  *
  * @author Alex
@@ -16,6 +19,8 @@ public class FrmAdministrador extends javax.swing.JFrame {
      */
     public FrmAdministrador() {
         initComponents();
+        etiquetaBienvenida.setText("Bienvenido "+OlvaCourier.administradorActual.getNombres());
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 
@@ -29,6 +34,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
     private void initComponents() {
 
         Bienvenida = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
         Fondo = new javax.swing.JPanel();
         PanelOpciones = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -37,10 +43,12 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         botonSeguimientoEnvio = new javax.swing.JButton();
         salir = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        inventario = new javax.swing.JLabel();
+        consulta = new javax.swing.JLabel();
+        historial = new javax.swing.JLabel();
+        exit = new javax.swing.JLabel();
+        Cliente = new javax.swing.JButton();
+        cliente = new javax.swing.JLabel();
         etiquetaBienvenida = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
 
@@ -56,6 +64,8 @@ public class FrmAdministrador extends javax.swing.JFrame {
             BienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 135, Short.MAX_VALUE)
         );
+
+        jLabel5.setText("jLabel5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,10 +83,15 @@ public class FrmAdministrador extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        PanelOpciones.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, -1, -1));
+        PanelOpciones.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
         jButton2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         jButton2.setText("Consulta de ordenes");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         PanelOpciones.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, -1, -1));
 
         jButton3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
@@ -87,7 +102,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/camioneta.png"))); // NOI18N
         jLabel6.setFocusable(false);
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        PanelOpciones.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, -1, 102));
+        PanelOpciones.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, 102));
 
         botonSeguimientoEnvio.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         botonSeguimientoEnvio.setText("Seguimiento de envios");
@@ -96,24 +111,40 @@ public class FrmAdministrador extends javax.swing.JFrame {
                 botonSeguimientoEnvioActionPerformed(evt);
             }
         });
-        PanelOpciones.add(botonSeguimientoEnvio, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 187, -1));
+        PanelOpciones.add(botonSeguimientoEnvio, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 187, -1));
 
         salir.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         salir.setText("salir");
+        salir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirActionPerformed(evt);
+            }
+        });
         PanelOpciones.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, -1, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/inventario_agencia.png"))); // NOI18N
-        PanelOpciones.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
+        inventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/inventario_agencia.png"))); // NOI18N
+        PanelOpciones.add(inventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/consulta_orden.png"))); // NOI18N
-        PanelOpciones.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
+        consulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/consulta_orden.png"))); // NOI18N
+        PanelOpciones.add(consulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/registro2.png"))); // NOI18N
-        PanelOpciones.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, -1, -1));
+        historial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/registro2.png"))); // NOI18N
+        PanelOpciones.add(historial, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, -1, -1));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/salir.png"))); // NOI18N
-        jLabel4.setToolTipText("");
-        PanelOpciones.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, -1, -1));
+        exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/salir.png"))); // NOI18N
+        exit.setToolTipText("");
+        PanelOpciones.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, -1, -1));
+
+        Cliente.setText("Clientes");
+        Cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClienteActionPerformed(evt);
+            }
+        });
+        PanelOpciones.add(Cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, -1, -1));
+
+        cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/clientes.png"))); // NOI18N
+        PanelOpciones.add(cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, 120, -1));
 
         Fondo.add(PanelOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 640, 410));
 
@@ -150,6 +181,23 @@ public class FrmAdministrador extends javax.swing.JFrame {
     private void botonSeguimientoEnvioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSeguimientoEnvioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botonSeguimientoEnvioActionPerformed
+
+    private void ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClienteActionPerformed
+        //FrmDatosCliente tablaClientes= new FrmDatosCliente();
+        //tablaClientes.setVisible(true);
+       
+            new FrmDatosCliente().setVisible(true);
+        
+        //this.dispose();
+    }//GEN-LAST:event_ClienteActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_salirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,18 +236,21 @@ public class FrmAdministrador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Bienvenida;
+    private javax.swing.JButton Cliente;
     private javax.swing.JPanel Fondo;
     private javax.swing.JPanel PanelOpciones;
     private javax.swing.JButton botonSeguimientoEnvio;
+    private javax.swing.JLabel cliente;
+    private javax.swing.JLabel consulta;
     private javax.swing.JLabel etiquetaBienvenida;
+    private javax.swing.JLabel exit;
     private javax.swing.JLabel fondo;
+    private javax.swing.JLabel historial;
+    private javax.swing.JLabel inventario;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
