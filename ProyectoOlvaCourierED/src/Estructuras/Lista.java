@@ -325,30 +325,30 @@ public class Lista<E>{
     //Instanciar Agencias
     public void setAgencias(){
         
-        insertarNodoPorFinal((E) new Agencia("Amazonas", 1));
-        insertarNodoPorFinal((E) new Agencia("Ancash", 2));
-        insertarNodoPorFinal((E) new Agencia("Apurimac", 3));
-        insertarNodoPorFinal((E) new Agencia("Arequipa", 4));
-        insertarNodoPorFinal((E) new Agencia("Ayacucho", 5));
-        insertarNodoPorFinal((E) new Agencia("Cajamarca", 6));
-        insertarNodoPorFinal((E) new Agencia("Cusco", 7));
-        insertarNodoPorFinal((E) new Agencia("Huancavelica", 8));
-        insertarNodoPorFinal((E) new Agencia("Huanuco", 9));
-        insertarNodoPorFinal((E) new Agencia("Ica", 10));
-        insertarNodoPorFinal((E) new Agencia("Junín", 11));
-        insertarNodoPorFinal((E) new Agencia("La Libertad", 12));
-        insertarNodoPorFinal((E) new Agencia("Lambayeque", 13));
-        insertarNodoPorFinal((E) new Agencia("Lima", 14));
-        insertarNodoPorFinal((E) new Agencia("Loreto", 15));
-        insertarNodoPorFinal((E) new Agencia("Madre de Dios", 16));
-        insertarNodoPorFinal((E) new Agencia("Moquegua", 17));
-        insertarNodoPorFinal((E) new Agencia("Pasco", 18));
-        insertarNodoPorFinal((E) new Agencia("Piura", 19));
-        insertarNodoPorFinal((E) new Agencia("Puno", 20));
-        insertarNodoPorFinal((E) new Agencia("San Martín", 21));
-        insertarNodoPorFinal((E) new Agencia("Tacna", 22));
-        insertarNodoPorFinal((E) new Agencia("Tumbes", 23));
-        insertarNodoPorFinal((E) new Agencia("Ucayali", 24));
+        insertarNodoPorFinal((E) new Agencia("Amazonas", 0));
+        insertarNodoPorFinal((E) new Agencia("Ancash", 1));
+        insertarNodoPorFinal((E) new Agencia("Apurimac", 2));
+        insertarNodoPorFinal((E) new Agencia("Arequipa", 3));
+        insertarNodoPorFinal((E) new Agencia("Ayacucho", 4));
+        insertarNodoPorFinal((E) new Agencia("Cajamarca", 5));
+        insertarNodoPorFinal((E) new Agencia("Cusco", 6));
+        insertarNodoPorFinal((E) new Agencia("Huancavelica", 7));
+        insertarNodoPorFinal((E) new Agencia("Huanuco", 8));
+        insertarNodoPorFinal((E) new Agencia("Ica", 9));
+        insertarNodoPorFinal((E) new Agencia("Junín", 10));
+        insertarNodoPorFinal((E) new Agencia("La Libertad", 11));
+        insertarNodoPorFinal((E) new Agencia("Lambayeque", 12));
+        insertarNodoPorFinal((E) new Agencia("Lima", 13));
+        insertarNodoPorFinal((E) new Agencia("Loreto", 14));
+        insertarNodoPorFinal((E) new Agencia("Madre de Dios", 15));
+        insertarNodoPorFinal((E) new Agencia("Moquegua", 16));
+        insertarNodoPorFinal((E) new Agencia("Pasco", 17));
+        insertarNodoPorFinal((E) new Agencia("Piura", 18));
+        insertarNodoPorFinal((E) new Agencia("Puno", 19));
+        insertarNodoPorFinal((E) new Agencia("San Martín", 20));
+        insertarNodoPorFinal((E) new Agencia("Tacna", 21));
+        insertarNodoPorFinal((E) new Agencia("Tumbes", 22));
+        insertarNodoPorFinal((E) new Agencia("Ucayali", 23));
         
     }
     

@@ -13,6 +13,7 @@ public class NodoGrafo{
     public NodoGrafo(){
        this.nombre =-1;
        this.visitado = false;
+       this.etiqueta = false;
        this.predecesor  = null;
        this.acumulado =0;       
     }

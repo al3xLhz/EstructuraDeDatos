@@ -5,9 +5,16 @@
  */
 package Vista;
 
+import Grafo.DijkstraMapa;
 import Grafo.GrafoMapa;
+import Modelo.Pedido;
+import Sistema.OlvaCourier;
+import java.awt.Color;
+import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,18 +22,15 @@ import java.util.List;
  */
 public class FrmElegirMapa extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FrmElegirMapa
-     */
+    int opc=0;
+    int c=0;
     public FrmElegirMapa() {
         initComponents();
+        setResizable(false);
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
-    public void dibujarMapa(){
-        
-        
-       
-    }
     
     
     
@@ -36,94 +40,177 @@ public class FrmElegirMapa extends javax.swing.JFrame {
 
         fondo = new javax.swing.JPanel();
         Head = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        Body = new javax.swing.JPanel();
+        LateralIzquierdo = new javax.swing.JPanel();
         panelMapa = new javax.swing.JPanel();
         MapaImagen = new javax.swing.JLabel();
-        Foot = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         LateralDerecho = new javax.swing.JPanel();
+        panelLateralDerecho = new javax.swing.JPanel();
+        comboOrigen = new javax.swing.JComboBox<>();
+        comboDestino = new javax.swing.JComboBox<>();
+        etiquetaDestino = new javax.swing.JLabel();
+        etiquetaAgenciaOrigen = new javax.swing.JLabel();
+        botonSiguiente = new javax.swing.JButton();
+        botonAplicar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1000, 800));
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                formMousePressed(evt);
+            }
+        });
 
+        fondo.setBackground(new java.awt.Color(34, 44, 61));
         fondo.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setText("MAPA");
+        Head.setBackground(new java.awt.Color(34, 44, 61));
 
         javax.swing.GroupLayout HeadLayout = new javax.swing.GroupLayout(Head);
         Head.setLayout(HeadLayout);
         HeadLayout.setHorizontalGroup(
             HeadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HeadLayout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(jLabel1)
-                .addContainerGap(811, Short.MAX_VALUE))
+            .addGap(0, 1090, Short.MAX_VALUE)
         );
         HeadLayout.setVerticalGroup(
             HeadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HeadLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(jLabel1)
-                .addContainerGap(15, Short.MAX_VALUE))
+            .addGap(0, 37, Short.MAX_VALUE)
         );
 
         fondo.add(Head, java.awt.BorderLayout.NORTH);
 
-        Body.setBackground(new java.awt.Color(255, 51, 51));
-        Body.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        LateralIzquierdo.setBackground(new java.awt.Color(34, 44, 61));
+        LateralIzquierdo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelMapa.setBackground(new java.awt.Color(255, 255, 204));
-        panelMapa.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panelMapa.setBackground(new java.awt.Color(34, 44, 61));
 
         MapaImagen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/MAPAPERU.png"))); // NOI18N
+        MapaImagen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                MapaImagenMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelMapaLayout = new javax.swing.GroupLayout(panelMapa);
         panelMapa.setLayout(panelMapaLayout);
         panelMapaLayout.setHorizontalGroup(
             panelMapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelMapaLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(MapaImagen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(2, 2, 2))
         );
         panelMapaLayout.setVerticalGroup(
             panelMapaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(MapaImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 660, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelMapaLayout.createSequentialGroup()
+                .addGap(0, 1, Short.MAX_VALUE)
+                .addComponent(MapaImagen, javax.swing.GroupLayout.PREFERRED_SIZE, 659, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        Body.add(panelMapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 580, 660));
+        LateralIzquierdo.add(panelMapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 580, 660));
 
-        fondo.add(Body, java.awt.BorderLayout.CENTER);
+        fondo.add(LateralIzquierdo, java.awt.BorderLayout.WEST);
 
-        jButton1.setText("jButton1");
+        LateralDerecho.setBackground(new java.awt.Color(34, 44, 61));
 
-        javax.swing.GroupLayout FootLayout = new javax.swing.GroupLayout(Foot);
-        Foot.setLayout(FootLayout);
-        FootLayout.setHorizontalGroup(
-            FootLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FootLayout.createSequentialGroup()
-                .addGap(471, 471, 471)
-                .addComponent(jButton1)
-                .addContainerGap(391, Short.MAX_VALUE))
+        panelLateralDerecho.setBackground(new java.awt.Color(255, 255, 255));
+        panelLateralDerecho.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Seleccion de Agencias", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        panelLateralDerecho.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        comboOrigen.setFont(new java.awt.Font("Yu Gothic UI", 0, 13)); // NOI18N
+        comboOrigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Amazonas", "Ancash", "Apurimac", "Arequipa", "Ayacucho", "Cajamarca", "Callao", "Cusco", "Huancavelica", "Huanuco", "Ica", "Junín", "La Libertad", "Lambayeque", "Lima", "Loreto", "Madre de Dios", "Moquegua", "Pasco", "Piura", "Puno", "San Martín", "Tacna", "Tumbes", "Ucayali" }));
+        comboOrigen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboOrigenActionPerformed(evt);
+            }
+        });
+
+        comboDestino.setFont(new java.awt.Font("Yu Gothic UI", 0, 13)); // NOI18N
+        comboDestino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Amazonas", "Ancash", "Apurimac", "Arequipa", "Ayacucho", "Cajamarca", "Callao", "Cusco", "Huancavelica", "Huanuco", "Ica", "Junín", "La Libertad", "Lambayeque", "Lima", "Loreto", "Madre de Dios", "Moquegua", "Pasco", "Piura", "Puno", "San Martín", "Tacna", "Tumbes", "Ucayali" }));
+
+        etiquetaDestino.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        etiquetaDestino.setForeground(new java.awt.Color(0, 0, 0));
+        etiquetaDestino.setText("Agencia Destino");
+
+        etiquetaAgenciaOrigen.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        etiquetaAgenciaOrigen.setForeground(new java.awt.Color(0, 0, 0));
+        etiquetaAgenciaOrigen.setText("Agencia Origen");
+
+        botonSiguiente.setBackground(new java.awt.Color(255, 255, 255));
+        botonSiguiente.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 15)); // NOI18N
+        botonSiguiente.setForeground(new java.awt.Color(0, 0, 0));
+        botonSiguiente.setText("Siguiente");
+        botonSiguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSiguienteActionPerformed(evt);
+            }
+        });
+
+        botonAplicar.setBackground(new java.awt.Color(255, 255, 255));
+        botonAplicar.setForeground(new java.awt.Color(0, 0, 0));
+        botonAplicar.setText("Aplicar");
+        botonAplicar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAplicarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelLateralDerechoLayout = new javax.swing.GroupLayout(panelLateralDerecho);
+        panelLateralDerecho.setLayout(panelLateralDerechoLayout);
+        panelLateralDerechoLayout.setHorizontalGroup(
+            panelLateralDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLateralDerechoLayout.createSequentialGroup()
+                .addGroup(panelLateralDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelLateralDerechoLayout.createSequentialGroup()
+                        .addGap(129, 129, 129)
+                        .addComponent(botonAplicar))
+                    .addGroup(panelLateralDerechoLayout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(panelLateralDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(etiquetaAgenciaOrigen)
+                            .addComponent(etiquetaDestino))
+                        .addGap(34, 34, 34)
+                        .addGroup(panelLateralDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(comboDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLateralDerechoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(botonSiguiente)
+                .addGap(91, 91, 91))
         );
-        FootLayout.setVerticalGroup(
-            FootLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FootLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(jButton1)
-                .addContainerGap(35, Short.MAX_VALUE))
+        panelLateralDerechoLayout.setVerticalGroup(
+            panelLateralDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLateralDerechoLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(panelLateralDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(etiquetaAgenciaOrigen)
+                    .addComponent(comboOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelLateralDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(etiquetaDestino)
+                    .addComponent(comboDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(botonAplicar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 379, Short.MAX_VALUE)
+                .addComponent(botonSiguiente)
+                .addGap(64, 64, 64))
         );
-
-        fondo.add(Foot, java.awt.BorderLayout.SOUTH);
 
         javax.swing.GroupLayout LateralDerechoLayout = new javax.swing.GroupLayout(LateralDerecho);
         LateralDerecho.setLayout(LateralDerechoLayout);
         LateralDerechoLayout.setHorizontalGroup(
             LateralDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 187, Short.MAX_VALUE)
+            .addGroup(LateralDerechoLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(panelLateralDerecho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         LateralDerechoLayout.setVerticalGroup(
             LateralDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 704, Short.MAX_VALUE)
+            .addGroup(LateralDerechoLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(panelLateralDerecho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         fondo.add(LateralDerecho, java.awt.BorderLayout.EAST);
@@ -132,15 +219,63 @@ public class FrmElegirMapa extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, 761, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void comboOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOrigenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboOrigenActionPerformed
+
+    private void botonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguienteActionPerformed
+
+        if(comboDestino.getSelectedItem().equals(comboOrigen.getSelectedItem())){
+            JOptionPane.showMessageDialog(null, "No puedes colocar el mismo ORIGEN Y DESTINO ");
+        }else{
+            int input = JOptionPane.showConfirmDialog(null, "¿Estás seguro de los cambios establecidos?");
+            // 0=yes, 1=no, 2=cancel
+            if(input==0){
+
+                OlvaCourier.boletaActual.setAgenciaInicial(OlvaCourier.agencias.getAgencia(comboOrigen.getSelectedItem().toString()));
+                OlvaCourier.boletaActual.setAgenciaFinal(OlvaCourier.agencias.getAgencia(comboDestino.getSelectedItem().toString()));
+
+                FrmBoletaLlenar boleta = new FrmBoletaLlenar();
+                this.dispose();
+            }
+        }
+
+    }//GEN-LAST:event_botonSiguienteActionPerformed
+
+    private void MapaImagenMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MapaImagenMousePressed
+        System.out.println(evt.getX());
+        System.out.println(evt.getY());
+    }//GEN-LAST:event_MapaImagenMousePressed
+
+    private void botonAplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAplicarActionPerformed
+
+        //if(comboDestino.getSelectedItem().equals(comboOrigen.getSelectedItem())){
+        //    JOptionPane.showMessageDialog(null, "No puedes colocar el mismo ORIGEN Y DESTINO ");
+        //}else{
+            
+            DijkstraMapa miD = new DijkstraMapa(OlvaCourier.miGrafo, comboOrigen.getSelectedIndex(), comboDestino.getSelectedIndex());
+            miD.dijkstra();
+            opc = 1;
+            repaint();
+            miD.imprimirRuta();
+        //}
+    }//GEN-LAST:event_botonAplicarActionPerformed
+
+    private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
+        
+    }//GEN-LAST:event_formMousePressed
 
     /**
      * @param args the command line arguments
@@ -176,16 +311,31 @@ public class FrmElegirMapa extends javax.swing.JFrame {
             }
         });
     }
-
+    
+    @Override
+    public void paint(Graphics g){
+        super.paint(g);
+        switch(opc){
+            case 0: break;
+            case 1: g.drawLine(OlvaCourier.miGrafo.getCoordeX(comboOrigen.getSelectedIndex()), OlvaCourier.miGrafo.getCoordeY(comboOrigen.getSelectedIndex()), OlvaCourier.miGrafo.getCoordeX(comboDestino.getSelectedIndex()), OlvaCourier.miGrafo.getCoordeY(comboDestino.getSelectedIndex()));
+        }
+        
+    }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Body;
-    private javax.swing.JPanel Foot;
     private javax.swing.JPanel Head;
     private javax.swing.JPanel LateralDerecho;
+    private javax.swing.JPanel LateralIzquierdo;
     private javax.swing.JLabel MapaImagen;
+    private javax.swing.JButton botonAplicar;
+    private javax.swing.JButton botonSiguiente;
+    private javax.swing.JComboBox<String> comboDestino;
+    private javax.swing.JComboBox<String> comboOrigen;
+    private javax.swing.JLabel etiquetaAgenciaOrigen;
+    private javax.swing.JLabel etiquetaDestino;
     private javax.swing.JPanel fondo;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel panelLateralDerecho;
     private javax.swing.JPanel panelMapa;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,27 +4,27 @@
  * and open the template in the editor.
  */
 package Grafo;
-import java.awt.Color;
+import Estructuras.*;
 import java.io.Serializable;
-import javax.swing.JOptionPane;
 
 
 public class DijkstraMapa implements Serializable {
     private final GrafoMapa grafo;
     private int subTope;
-    private NodoGrafo aux = null;
     private int auxAcumulado;
     private int subAcumulado;
     private NodoGrafo nodos[];
     private int tope;
     private int permanente;
     private int nodoFin;
+    private int nodoInicio;
     
-    public DijkstraMapa(GrafoMapa grafo, int tope,int nodoInicio, int nodoFin){//Tope numero de vertices
+    public DijkstraMapa(GrafoMapa grafo,int nodoInicio, int nodoFin){//Tope numero de vertices
         this.grafo = grafo;        
-        this.tope = tope;
+        this.tope = grafo.getCantidadMax();
         this.nodos= new NodoGrafo[tope]; 
         this.permanente = nodoInicio;
+        this.nodoInicio = nodoInicio;
         this.nodoFin = nodoFin; 
     }
     
@@ -33,9 +33,6 @@ public class DijkstraMapa implements Serializable {
             nodos[i]= new NodoGrafo();
         } 
         if(permanente != nodoFin){
-            //panelRuta.paint(panelRuta.getGraphics());
-            //R_repaint(tope, grafo);   
-            //Pintar.clickSobreNodo(panelRuta.getGraphics(), grafo.getCoordeX(permanente), grafo.getCoordeY(permanente), null,Color.GREEN); // pinta de color GREEN los nodos
             nodos[permanente].setVisitado(true);        
             nodos[permanente].setNombre(permanente);
             do{            
@@ -43,8 +40,8 @@ public class DijkstraMapa implements Serializable {
                 auxAcumulado=9999; // lo igualamos a esta cifra ya q el acomulado de los nodos, supuestamente  nunca sera mayor 
                 nodos[permanente].setEtiqueta(true); 
                 for (int j = 0; j < tope; j++) {
-                    if(grafo.getmAdyacencia(j, permanente)==1){
-                        subAcumulado= (nodos[permanente].getAcumulado()+grafo.getmAdyacencia(j,permanente));                                
+                    if(grafo.getmAdyacencia(permanente, j)>=1){
+                        subAcumulado= nodos[permanente].getAcumulado()+grafo.getmAdyacencia(permanente,j);                                
                         if(subAcumulado <= nodos[j].getAcumulado() && nodos[j].isVisitado()==true && nodos[j].isEtiqueta()== false){
                             nodos[j].setAcumulado(subAcumulado);
                             nodos[j].setVisitado(true);
@@ -64,30 +61,34 @@ public class DijkstraMapa implements Serializable {
                         if(nodos[i].getAcumulado()<=auxAcumulado){
                             permanente= nodos[i].getNombre();
                             auxAcumulado= nodos[i].getAcumulado();
-                            }
-                        }               
-                    }
+                        }
+                    }               
+                }
                     subTope++;                
-            }while(subTope<tope+1);          
-            aux= nodos[nodoFin]; 
-            //if(aux.getPredecesor() == null )JOptionPane.showMessageDialog(null,"No se Pudo LLegar Al Nodo "+nodoFin);          
-            //while(aux.getPredecesor() != null){           
-            //    Pintar.pintarCamino(panelRuta.getGraphics(), grafo.getCoordeX(aux.getNombre()), grafo.getCoordeY(aux.getNombre()), grafo.getCoordeX(aux.getPredecesor().getNombre()), grafo.getCoordeY(aux.getPredecesor().getNombre()),Color.GREEN);
-             //   Pintar.clickSobreNodo(panelRuta.getGraphics(), grafo.getCoordeX(aux.getNombre()), grafo.getCoordeY(aux.getNombre()), null,Color.GREEN);
-            //    aux=aux.getPredecesor();              
-            //}  
-            //Pintar.clickSobreNodo(panelRuta.getGraphics(), grafo.getCoordeX(nodoFin), grafo.getCoordeY(nodoFin), null,Color.GREEN);     
+            }while(subTope<tope+1);
         }
-            //else{Pintar.clickSobreNodo(panelRuta.getGraphics(), grafo.getCoordeX(nodoFin), grafo.getCoordeY(nodoFin), null,Color.GREEN);}
+            
         
     }
     
+    public void imprimirRuta(){
+        
+        Pila<NodoGrafo> pila= new Pila<>();
+        NodoGrafo auxL = nodos[nodoFin];
+        
+        do{
+           // System.out.println(auxL.getNombre());
+            pila.Apilar(auxL);; 
+            auxL=auxL.getPredecesor();
+           
+        }while(auxL.getNombre()!=nodoInicio);
+        System.out.println(nodoInicio);
+        while(!pila.pilaVacia()){
+            
+            System.out.println(pila.Desempilar().getNombre());
+            
+        }
+    }
     
     
-    public int getAcumulado(){
-        return nodos[nodoFin].getAcumulado(); 
-    }
-    public NodoGrafo[] getNodos(){
-        return this.nodos;
-    }
 }
