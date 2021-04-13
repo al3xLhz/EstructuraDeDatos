@@ -24,6 +24,4 @@ public class Lista {
             fin.siguiente = new Nodo(valor);
         }
     }
-   
-    
 }

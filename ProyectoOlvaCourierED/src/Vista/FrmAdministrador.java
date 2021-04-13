@@ -6,6 +6,7 @@
 package Vista;
 
 import Sistema.OlvaCourier;
+import java.io.IOException;
 
 /**
  *
@@ -182,9 +183,12 @@ public class FrmAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_botonSeguimientoEnvioActionPerformed
 
     private void ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClienteActionPerformed
-        FrmDatosCliente tablaClientes= new FrmDatosCliente();
-        tablaClientes.setVisible(true);
-        this.dispose();
+        //FrmDatosCliente tablaClientes= new FrmDatosCliente();
+        //tablaClientes.setVisible(true);
+       
+            new FrmDatosCliente().setVisible(true);
+        
+        //this.dispose();
     }//GEN-LAST:event_ClienteActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

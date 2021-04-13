@@ -19,7 +19,7 @@ public class FrmDatosCliente extends javax.swing.JFrame {
      */
     public FrmDatosCliente() {
         initComponents();
-        tablaCompleta();
+        //tablaCompleta();
         /*modelo= new DefaultTableModel();
         /*modelo.addColumn("DNI");
         modelo.addColumn("Nombre");
@@ -29,24 +29,25 @@ public class FrmDatosCliente extends javax.swing.JFrame {
         setVisible(true);
     }
     
-    public void tablaCompleta(){
+    public void tablaCompleta(){  
         String []tablet= new String [4];
-        for(int i=0;i<5;i++){
-           // if(OlvaCourier.clienteActual.toString() != ""){
-                tablet[0]=String.valueOf(OlvaCourier.clienteActual.getDni());
+        DefaultTableModel modelo= new DefaultTableModel();
+        modelo.setColumnIdentifiers(new Object[]{"DNI","Nombre","Apellido","e-mail"});
+        
+                tablet[0]= OlvaCourier.clienteActual.getDni();
+                tablet[1]= OlvaCourier.clienteActual.getNombres();
+                tablet[2]= OlvaCourier.clienteActual.getApellidos();
+                tablet[3]= OlvaCourier.clienteActual.getEmail();
+                modelo.addRow(tablet);
+                
+                Table1.setModel(modelo);
+    
+    }
+               /* tablet[0]=String.valueOf(OlvaCourier.clienteActual.getDni());
                 tablet[1]=String.valueOf(OlvaCourier.clienteActual.getNombres());
                 tablet[2]=String.valueOf(OlvaCourier.clienteActual.getApellidos());
                 tablet[3]=String.valueOf(OlvaCourier.clienteActual.getEmail());
-   
-                Table1.setValueAt(tablet, i, 0);
-                Table1.setValueAt(tablet, i, 1);
-                Table1.setValueAt(tablet, i, 2);
-                Table1.setValueAt(tablet, i, 3);
-                
-           // }
-            
-        }
-    }
+               
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
