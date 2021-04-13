@@ -3,19 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package EstructurasPlantillas;
+package Estructuras;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.PriorityQueue;
-import java.util.Queue;
 
-/**
 
- * @author Miguel
- */
 public class Grafo {
     
     final int MAX = 100; //máximo numero de vértices
@@ -29,7 +23,7 @@ public class Grafo {
         for(int i = 0;i <= V;i++){
             listaAdyacencias.add(new ArrayList<>());
         }
-        for(int i = 0;i < E;i++){
+        for(int i = 0;i < E;i++){//49=E
             agregarArista(relacionAristas[i][0],relacionAristas[i][1],relacionAristas[i][2]);
         }
     }
@@ -113,6 +107,7 @@ public class Grafo {
         for( int i = 1 ; i <= V ; ++i ){
             System.out.printf("Vertice %d , distancia mas corta = %d\n" , i , distancia[ i ] );
         }*/
+
         imprimirRuta(fin,previo);
     }
     void imprimirRuta(int destino,int previo[]){
@@ -120,65 +115,37 @@ public class Grafo {
                 imprimirRuta(previo[destino],previo);  //recursivamente sigo explorando
             System.out.printf("%d " , destino ); 
         }
-    //Revisar
-    public void BFS(int nodo){
-        boolean visitado[] = new boolean[V];
-        LinkedList<Integer> lista = new LinkedList();
-        visitado[nodo] = true;
-        lista.add(nodo);
-        while(lista.size() != 0){
-            nodo = lista.poll();
-            System.out.println(nodo + " ");
-            Iterator<Node> i = listaAdyacencias.get(nodo).listIterator();
-            while(i.hasNext()){
-                Node n = i.next();
-                if(!visitado[n.destino]){
-                    visitado[n.destino]=true;
-                    lista.add(n.destino);
-                }
-            }
-        }
+    /*
+    public int llenarAdyacencia(){
+        int[] linea1 = new int[]{0, 55, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] linea2 = new int[]{55, 0, 32, 0, 0, 80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] linea3 = new int[]{0, 32, 0, 0, 0, 46, 85, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] linea4 = new int[]{0, 0, 0, 0, 140, 40, 110, 70, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] linea5 = new int[]{0, 0, 0, 140, 0, 0, 0, 100, 0, 0, 0, 215, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        int[] linea6 = new int[]{0, 80, 46, 40, 0, 0, 70, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] linea7 = new int[]{0, 0, 85, 110, 0, 70, 0, 85, 50, 70, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] linea8 = new int[]{0, 0, 0, 70, 100, 0, 85, 0, 0, 110, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] linea9 = new int[]{0, 0, 0, 0, 0, 0, 50, 0, 0, 95, 0, 0, 80, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
+        int[] linea10 = new int[]{0, 0, 0, 0, 0, 0, 70, 110, 95, 0, 42, 75, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] linea11 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 42, 0, 75, 60, 45, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] linea12 = new int[]{0, 0, 0, 0, 215, 0, 0, 0, 0, 75, 75, 0, 0, 62, 0, 0, 96, 112, 0, 0, 0, 0, 0, 0};
+        int[] linea13 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 80, 0, 60, 0, 0, 60, 74, 75, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] linea14 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 45, 62, 60, 0, 0, 59, 121, 0, 0, 122, 0, 0, 0, 0};
+        int[] linea15 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 74, 0, 0, 32, 0, 0, 0, 63, 81, 0, 0, 0};
+        int[] linea16 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 75, 59, 32, 0, 0, 0, 0, 55, 0, 0, 0, 0};
+        int[] linea17 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 96, 0, 121, 0, 0, 0, 98, 47, 130, 105, 91, 0, 0};
+        int[] linea18 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 112, 0, 0, 0, 0, 98, 0, 0, 0, 0, 101, 0, 0};
+        int[] linea19 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 47, 0, 0, 44, 67, 0, 0, 0};
+        int[] linea20 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 122, 63, 55, 130, 0, 44, 0, 82, 0, 0, 0};
+        int[] linea21 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 81, 0, 105, 0, 67, 82, 0, 92, 60, 0};
+        int[] linea22 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 91, 101, 0, 0, 92, 0, 72, 89};
+        int[] linea23 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 60, 72, 0, 26};
+        int[] linea24 = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 89, 26, 0};
+        int[][] lineaVertical = new int[][]{linea1, linea2, linea3, linea4, linea5, linea6, linea7, linea8, linea9, linea10, linea11, linea12, linea13, linea14, linea15, linea16, linea17, linea18, linea19, linea20, linea21,linea22,linea23,linea24};
     }
-    public void BFSpruebita(int nodo){
-        boolean estado[] = new boolean[V];
-        int distancia[] = new int[V] ;
-        int padre[] = new int[V];
-        for (int i=0;i<V;i+=i){
-            estado[i] = false; //No visitado
-            distancia[i] = 1<<30; //Infinito
-            padre[i] = -1; //null
-        }
-        estado[nodo] = true;
-        distancia[nodo] = 0;
-        padre[nodo] = -1;
-        Queue<Integer> cola = new LinkedList<>();
-        cola.offer(nodo);
-        while(!cola.isEmpty()){
-            nodo = cola.poll();
-            //obtenemos el enlace a los
-            //nodos adyacentes del "nodo"
-            for(int v=0;v<listaAdyacencias.get(nodo).size();v+=1){
-                if(estado[v] == false){
-                    estado[v] = true;
-                    distancia[v] = distancia[nodo]+1;
-                    padre[v] = nodo;
-                    cola.offer(v);
-                }
-            }
-        }
-    }
-    //Revisar
-    public void DFS(int nodo){
-        boolean visitado[] = new boolean[V+1];
-        visitado[nodo] = true;
-        System.out.print(nodo + " ");
-
-        Iterator<Node> i = listaAdyacencias.get(nodo).listIterator();
-        while(i.hasNext()) {
-            Node adj = i.next();
-            if (!visitado[adj.destino]){
-                DFS(adj.destino);
-            }
-        }
-    }
+    */
+    
 }
+
+
+

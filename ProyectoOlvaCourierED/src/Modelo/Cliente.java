@@ -1,7 +1,7 @@
 
 package Modelo;
 
-import Estructura.*;
+import Estructuras.Lista;
 
 public class Cliente extends Persona{
     
@@ -9,16 +9,16 @@ public class Cliente extends Persona{
         super(nombres, apellidos, dni, email, usuario);
     }
     
-    private ListaBoleta listaBoletas= new ListaBoleta();
+    private Lista<Boleta> listaBoletas = new Lista<>();
 
-    public ListaBoleta getListaBoletas() {
+
+    public Lista<Boleta> getListaBoletas() {
         return listaBoletas;
     }
 
-    public void setListaBoletas(ListaBoleta listaBoletas) {
+    public void setListaBoletas(Lista<Boleta> listaBoletas) {
         this.listaBoletas = listaBoletas;
     }
-    
     
     
 }

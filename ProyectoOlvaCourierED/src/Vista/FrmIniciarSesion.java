@@ -5,7 +5,6 @@
  */
 package Vista;
 
-import Estructura.ListaUsuario;
 import Modelo.Administrador;
 import Modelo.Cliente;
 import Sistema.OlvaCourier;
@@ -14,37 +13,30 @@ import javax.swing.JOptionPane;
 
 
 public class FrmIniciarSesion extends javax.swing.JFrame {
-    /**
-     * Creates new form FrmIniciarSesion
-     * 
-     */
-    //ListaUsuario l = new ListaUsuario();
-    
+ 
     public FrmIniciarSesion() {
         initComponents();
-        //jLabel1.setIcon(new ImageIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/olva-courier.png")).getImage().getScaledInstance(250, 140, Image.SCALE_SMOOTH)));
-        setLocationRelativeTo(null);
-        setVisible(true);
-        //rsscalelabel.RSScaleLabel.setScaleLabel(jLabel1, "Images/olva-courier.png");
+        setLocationRelativeTo(null);//Coloca la ventana en el centro
+        setVisible(true);//Hace visible la ventana, porque por default no lo hace
     }
     
-    
+    //Funcion iniciar sesion
     public void iniciarSesion(){
-        String user = CampoUsuario.getText();
-        String password = CampoContraseña.getText();
+        String user = CampoUsuario.getText();//Mediante el getText() extraemos lo que está en el CampoUsuario
+        String password = CampoContraseña.getText();//En este caso es algo distinto. Aparece rayado porque es una funcion desactualizada pero sirve aún
         
         OlvaCourier.usuarioActual = OlvaCourier.personas.validar(user, password);
 
         if(OlvaCourier.usuarioActual != null){
             JOptionPane.showMessageDialog(null, "Bienvenido");
-            int tUsuario = OlvaCourier.usuarioActual.getTipoFuncion();
+            int tUsuario = OlvaCourier.usuarioActual.getTipoFuncion(); //La funcion como se estableció tUsuario 1=cliente 2=administrador
             
             switch (tUsuario) {
                 case 1:
                     
                     //Cliente
-                    OlvaCourier.clienteActual = (Cliente) OlvaCourier.personas.getPersona(OlvaCourier.usuarioActual);
-                    FrmCliente form = new FrmCliente();
+                    OlvaCourier.clienteActual = (Cliente) OlvaCourier.personas.getPersona(OlvaCourier.usuarioActual); //Convierte la persona conseguida en el cliente actual
+                    FrmCliente form = new FrmCliente(); //Ingresamos al formulario del cliente
                     this.dispose();
                     break;
                     

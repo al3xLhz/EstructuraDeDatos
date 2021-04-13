@@ -23,7 +23,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="fondo" alignment="0" pref="647" max="32767" attributes="0"/>
+          <Component id="fondo" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -119,71 +119,57 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="etiquetaNompreProducto" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="campoNombreProducto" min="-2" pref="312" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <Component id="N" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="ComboNProductos" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                          <Component id="botonGuardar" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="etiquetaLargo" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="campoLargo" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" attributes="0">
-                                              <Component id="etiquetaPeso" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="campoPeso" min="-2" pref="88" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="etiquetaKg" min="-2" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="etiquetacmL" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                                              <Component id="etiquetaAlto" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="campoAlto" min="-2" pref="85" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="etiquetacmAl" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                                              <Component id="etiquetaAncho" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="campoAncho" min="-2" pref="96" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <Component id="botonSiguiente" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="etiquetaNompreProducto" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="campoNombreProducto" min="-2" pref="312" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="etiquetacmAn" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="N" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="ComboNProductos" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                  <Component id="botonGuardar" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                              <Component id="etiquetaAgenciaOrigen" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="etiquetaLargo" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="campoLargo" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="etiquetaPeso" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="campoPeso" min="-2" pref="88" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="comboOrigen" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="etiquetaDestino" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="comboDestino" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="etiquetaKg" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="etiquetacmL" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                      <Component id="etiquetaAlto" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="campoAlto" min="-2" pref="85" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="etiquetacmAl" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                      <Component id="etiquetaAncho" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="campoAncho" min="-2" pref="96" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
+                          <Component id="botonSiguiente" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="etiquetacmAn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="73" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -220,14 +206,7 @@
                           <Component id="etiquetacmAn" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="etiquetacmAl" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="comboDestino" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="etiquetaDestino" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="comboOrigen" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="etiquetaAgenciaOrigen" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
                       <Component id="botonSiguiente" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="97" max="32767" attributes="0"/>
                   </Group>
@@ -315,14 +294,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="campoLargo">
             </Component>
-            <Component class="javax.swing.JLabel" name="etiquetaAgenciaOrigen">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Yu Gothic UI" size="14" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Agencia Origen"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="etiquetaKg">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Kg."/>
@@ -342,95 +313,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="cm."/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="comboDestino">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Yu Gothic UI" size="13" style="0"/>
-                </Property>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="25">
-                    <StringItem index="0" value="Amazonas"/>
-                    <StringItem index="1" value="Ancash"/>
-                    <StringItem index="2" value="Apurimac"/>
-                    <StringItem index="3" value="Arequipa"/>
-                    <StringItem index="4" value="Ayacucho"/>
-                    <StringItem index="5" value="Cajamarca"/>
-                    <StringItem index="6" value="Callao"/>
-                    <StringItem index="7" value="Cusco"/>
-                    <StringItem index="8" value="Huancavelica"/>
-                    <StringItem index="9" value="Huanuco"/>
-                    <StringItem index="10" value="Ica"/>
-                    <StringItem index="11" value="Jun&#xed;n"/>
-                    <StringItem index="12" value="La Libertad"/>
-                    <StringItem index="13" value="Lambayeque"/>
-                    <StringItem index="14" value="Lima"/>
-                    <StringItem index="15" value="Loreto"/>
-                    <StringItem index="16" value="Madre de Dios"/>
-                    <StringItem index="17" value="Moquegua"/>
-                    <StringItem index="18" value="Pasco"/>
-                    <StringItem index="19" value="Piura"/>
-                    <StringItem index="20" value="Puno"/>
-                    <StringItem index="21" value="San Mart&#xed;n"/>
-                    <StringItem index="22" value="Tacna"/>
-                    <StringItem index="23" value="Tumbes"/>
-                    <StringItem index="24" value="Ucayali"/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="etiquetaDestino">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Yu Gothic UI" size="14" style="1"/>
-                </Property>
-                <Property name="text" type="java.lang.String" value="Agencia Destino"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="comboOrigen">
-              <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Yu Gothic UI" size="13" style="0"/>
-                </Property>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="25">
-                    <StringItem index="0" value="Amazonas"/>
-                    <StringItem index="1" value="Ancash"/>
-                    <StringItem index="2" value="Apurimac"/>
-                    <StringItem index="3" value="Arequipa"/>
-                    <StringItem index="4" value="Ayacucho"/>
-                    <StringItem index="5" value="Cajamarca"/>
-                    <StringItem index="6" value="Callao"/>
-                    <StringItem index="7" value="Cusco"/>
-                    <StringItem index="8" value="Huancavelica"/>
-                    <StringItem index="9" value="Huanuco"/>
-                    <StringItem index="10" value="Ica"/>
-                    <StringItem index="11" value="Jun&#xed;n"/>
-                    <StringItem index="12" value="La Libertad"/>
-                    <StringItem index="13" value="Lambayeque"/>
-                    <StringItem index="14" value="Lima"/>
-                    <StringItem index="15" value="Loreto"/>
-                    <StringItem index="16" value="Madre de Dios"/>
-                    <StringItem index="17" value="Moquegua"/>
-                    <StringItem index="18" value="Pasco"/>
-                    <StringItem index="19" value="Piura"/>
-                    <StringItem index="20" value="Puno"/>
-                    <StringItem index="21" value="San Mart&#xed;n"/>
-                    <StringItem index="22" value="Tacna"/>
-                    <StringItem index="23" value="Tumbes"/>
-                    <StringItem index="24" value="Ucayali"/>
-                  </StringArray>
-                </Property>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboOrigenActionPerformed"/>
-              </Events>
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-              </AuxValues>
             </Component>
             <Component class="javax.swing.JButton" name="botonGuardar">
               <Properties>

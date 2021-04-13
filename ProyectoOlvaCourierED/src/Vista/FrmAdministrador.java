@@ -28,18 +28,94 @@ public class FrmAdministrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Fondo = new javax.swing.JPanel();
         Bienvenida = new javax.swing.JPanel();
-        etiquetaBienvenida = new javax.swing.JLabel();
+        Fondo = new javax.swing.JPanel();
         PanelOpciones = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        botonSeguimientoEnvio = new javax.swing.JButton();
+        salir = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        etiquetaBienvenida = new javax.swing.JLabel();
+        fondo = new javax.swing.JLabel();
+
+        Bienvenida.setBackground(new java.awt.Color(64, 170, 173));
+
+        javax.swing.GroupLayout BienvenidaLayout = new javax.swing.GroupLayout(Bienvenida);
+        Bienvenida.setLayout(BienvenidaLayout);
+        BienvenidaLayout.setHorizontalGroup(
+            BienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 438, Short.MAX_VALUE)
+        );
+        BienvenidaLayout.setVerticalGroup(
+            BienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 135, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Fondo.setBackground(new java.awt.Color(64, 170, 173));
         Fondo.setPreferredSize(new java.awt.Dimension(650, 520));
-        Bienvenida.setBackground(new java.awt.Color(64, 170, 173));
+        Fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        PanelOpciones.setBackground(new java.awt.Color(64, 170, 173));
+        PanelOpciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        jButton1.setText("Inventario de Agencia");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        PanelOpciones.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 150, -1, -1));
+
+        jButton2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        jButton2.setText("Consulta de ordenes");
+        PanelOpciones.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, -1, -1));
+
+        jButton3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        jButton3.setText("Historial");
+        PanelOpciones.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, -1, -1));
+
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/camioneta.png"))); // NOI18N
+        jLabel6.setFocusable(false);
+        jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        PanelOpciones.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 50, -1, 102));
+
+        botonSeguimientoEnvio.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        botonSeguimientoEnvio.setText("Seguimiento de envios");
+        botonSeguimientoEnvio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSeguimientoEnvioActionPerformed(evt);
+            }
+        });
+        PanelOpciones.add(botonSeguimientoEnvio, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 187, -1));
+
+        salir.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        salir.setText("salir");
+        PanelOpciones.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, -1, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/inventario_agencia.png"))); // NOI18N
+        PanelOpciones.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 20, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/consulta_orden.png"))); // NOI18N
+        PanelOpciones.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/registro2.png"))); // NOI18N
+        PanelOpciones.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, -1, -1));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/salir.png"))); // NOI18N
+        jLabel4.setToolTipText("");
+        PanelOpciones.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, -1, -1));
+
+        Fondo.add(PanelOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 640, 410));
 
         etiquetaBienvenida.setFont(new java.awt.Font("Yu Gothic", 1, 26)); // NOI18N
         etiquetaBienvenida.setForeground(new java.awt.Color(34, 35, 34));
@@ -47,84 +123,17 @@ public class FrmAdministrador extends javax.swing.JFrame {
         etiquetaBienvenida.setMaximumSize(new java.awt.Dimension(402, 43));
         etiquetaBienvenida.setMinimumSize(new java.awt.Dimension(402, 43));
         etiquetaBienvenida.setPreferredSize(new java.awt.Dimension(402, 43));
+        Fondo.add(etiquetaBienvenida, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, 400, -1));
 
-        javax.swing.GroupLayout BienvenidaLayout = new javax.swing.GroupLayout(Bienvenida);
-        Bienvenida.setLayout(BienvenidaLayout);
-        BienvenidaLayout.setHorizontalGroup(
-            BienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BienvenidaLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(etiquetaBienvenida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        BienvenidaLayout.setVerticalGroup(
-            BienvenidaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(BienvenidaLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(etiquetaBienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
-        );
-
-        Fondo.add(Bienvenida, java.awt.BorderLayout.NORTH);
-
-        PanelOpciones.setBackground(new java.awt.Color(64, 170, 173));
-
-        jButton2.setText("Consulta de ordenes");
-
-        jButton3.setText("Historial");
-
-        jButton1.setText("Inventario de Agencia");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout FondoLayout = new javax.swing.GroupLayout(Fondo);
-        Fondo.setLayout(FondoLayout);
-        FondoLayout.setHorizontalGroup(
-            FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FondoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE)
-                .addContainerGap())
-            .addComponent(Bienvenida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(FondoLayout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, FondoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(157, 157, 157))
-        );
-        FondoLayout.setVerticalGroup(
-            FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FondoLayout.createSequentialGroup()
-                .addComponent(Bienvenida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PanelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(FondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(FondoLayout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(63, 63, 63)
-                        .addComponent(jButton2))
-                    .addGroup(FondoLayout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addGap(51, 51, 51)))
-                .addContainerGap(233, Short.MAX_VALUE))
-        );
-
-        Fondo.add(PanelOpciones, java.awt.BorderLayout.CENTER);
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondo_olva 4.0.png"))); // NOI18N
+        fondo.setText("jLabel1");
+        Fondo.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 90));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
+            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,9 +192,15 @@ public class FrmAdministrador extends javax.swing.JFrame {
     private javax.swing.JPanel PanelOpciones;
     private javax.swing.JButton botonSeguimientoEnvio;
     private javax.swing.JLabel etiquetaBienvenida;
+    private javax.swing.JLabel fondo;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JButton salir;
     // End of variables declaration//GEN-END:variables
 }

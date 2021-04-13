@@ -1,7 +1,8 @@
 
 package Sistema;
 
-import Estructura.*;
+import Estructuras.Lista;
+import Grafo.*;
 import Modelo.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,24 +10,28 @@ import java.sql.SQLException;
 
 
 public class OlvaCourier {
+    //Representa como una base de datos donde se maneja la información de todo el sistema
     
-    public static ListaCliente clientes = new ListaCliente();
+    
+    //Aquí están las listas generales que abarcaran tales y como dice su clase Lista<>
+    public static Lista<Cliente> clientes = new Lista<>();
+    public static Lista<Boleta> boletas = new Lista<>();
+    public static Lista<Persona> personas = new Lista<>();
+    public static Lista<Administrador> administradores = new Lista<>();
+    public static Lista<Agencia> agencias = new Lista<>();
+    
+    //Estos objetos auxiliares nos ayuda a trabajar en casos de creacion o uso de los objetos dados
     public static Cliente clienteActual;
-    public static ListaBoleta boletas = new ListaBoleta();
     public static Boleta boletaActual;
     public static Login usuarioActual;
-    public static ListaPersonas personas = new ListaPersonas();
-    public static ListaAdministrador administradores = new ListaAdministrador();
     public static Administrador administradorActual;
-    public static ListaRRHH rrhhs = new ListaRRHH();
-    public static RRHH rrhhActual;
-    public static ListaAgencia agencias = new ListaAgencia();
+    public static GrafoMapa miGrafo = new GrafoMapa();
     
     
     
     
-    static ResultSet res;
-    
+    //static ResultSet res;
+    /*
     public static void CargarListas(ListaUsuario l){
         
         res = Conexion.Conexion.Consulta("select * from Usuario");
@@ -38,7 +43,13 @@ public class OlvaCourier {
         }catch(SQLException e){
         }
     }
-   
+    */
     
-        
+    
+    
+    
+    
+    
+    
+            
 }

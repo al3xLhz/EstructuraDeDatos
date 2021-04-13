@@ -1,22 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Vista;
 
 import Sistema.OlvaCourier;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Alex
- */
+
 public class FrmCliente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form FrmCliente
-     */
     public FrmCliente() {
         initComponents();
         etiquetaBienvenida.setText("Bienvenido "+OlvaCourier.clienteActual.getNombres());
@@ -212,7 +202,7 @@ public class FrmCliente extends javax.swing.JFrame {
         etiquetaBienvenida.setFont(new java.awt.Font("Yu Gothic", 1, 26)); // NOI18N
         etiquetaBienvenida.setForeground(new java.awt.Color(34, 35, 34));
         etiquetaBienvenida.setText("Bienvenido Cliente.getNombre()");
-        Fondo.add(etiquetaBienvenida, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, 260, 60));
+        Fondo.add(etiquetaBienvenida, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 310, 60));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/fondo_olva 2.0.png"))); // NOI18N
         Fondo.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 110));
@@ -240,7 +230,7 @@ public class FrmCliente extends javax.swing.JFrame {
         
         try{
             int codigoABuscar = Integer.parseInt(JOptionPane.showInputDialog("Digite el código a buscar"));
-            OlvaCourier.boletaActual.actualizarDatos(OlvaCourier.clienteActual.getListaBoletas().getBoleta(codigoABuscar));
+            OlvaCourier.boletaActual = OlvaCourier.clienteActual.getListaBoletas().getBoleta(codigoABuscar);
             FrmConsultarOrden frmCO = new  FrmConsultarOrden();
             
             this.dispose();
@@ -248,9 +238,6 @@ public class FrmCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "No se encontró el código buscado");
         }
             
-        
-        
-        
     }//GEN-LAST:event_botonConsultarOrdenActionPerformed
 
     private void botonRegistroEnvioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistroEnvioActionPerformed
