@@ -19,35 +19,26 @@ public class FrmDatosCliente extends javax.swing.JFrame {
      */
     public FrmDatosCliente() {
         initComponents();
-        //tablaCompleta();
-        /*modelo= new DefaultTableModel();
-        /*modelo.addColumn("DNI");
-        modelo.addColumn("Nombre");
-        modelo.addColumn("Apellido");
-        modelo.addColumn("e-mail");
-        this.Table1.setModel(modelo);*/
+        tablaCompleta();
+        setLocationRelativeTo(null);
         setVisible(true);
     }
     
     public void tablaCompleta(){  
-        String []tablet= new String [4];
-        DefaultTableModel modelo= new DefaultTableModel();
-        modelo.setColumnIdentifiers(new Object[]{"DNI","Nombre","Apellido","e-mail"});
-        
-                tablet[0]= OlvaCourier.clienteActual.getDni();
-                tablet[1]= OlvaCourier.clienteActual.getNombres();
-                tablet[2]= OlvaCourier.clienteActual.getApellidos();
-                tablet[3]= OlvaCourier.clienteActual.getEmail();
-                modelo.addRow(tablet);
-                
-                Table1.setModel(modelo);
-    
+        String matriz[][]= new String [OlvaCourier.clientes.getTamaño()][4];
+        for(int i=0; i<OlvaCourier.clientes.getTamaño();i++){
+            matriz[i][0]=OlvaCourier.clientes.getXPos(i).getDni();
+            matriz[i][1]=OlvaCourier.clientes.getXPos(i).getNombres();
+            matriz[i][2]=OlvaCourier.clientes.getXPos(i).getApellidos();
+            matriz[i][3]=OlvaCourier.clientes.getXPos(i).getEmail();
+            Table1.setValueAt(matriz[i][0], i, 0);
+            Table1.setValueAt(matriz[i][1], i, 1);
+            Table1.setValueAt(matriz[i][2], i, 2);
+            Table1.setValueAt(matriz[i][3], i, 3);
+            
+        }
     }
-               /* tablet[0]=String.valueOf(OlvaCourier.clienteActual.getDni());
-                tablet[1]=String.valueOf(OlvaCourier.clienteActual.getNombres());
-                tablet[2]=String.valueOf(OlvaCourier.clienteActual.getApellidos());
-                tablet[3]=String.valueOf(OlvaCourier.clienteActual.getEmail());
-               
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

@@ -16,7 +16,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
  
     public FrmIniciarSesion() {
         initComponents();
-        setLocationRelativeTo(null);//Coloca la ventana en el centro
+        setLocationRelativeTo(null);//Coloca la ventana en el centro 
         setVisible(true);//Hace visible la ventana, porque por default no lo hace
     }
     
