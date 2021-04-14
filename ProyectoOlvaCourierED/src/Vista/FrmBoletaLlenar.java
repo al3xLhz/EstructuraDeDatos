@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
         respuestaOrigen.setText(OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion());
         respuestaDestino.setText(OlvaCourier.boletaActual.getAgenciaFinal().getUbicacion());
         respuestaCliente.setText(OlvaCourier.clienteActual.getNombres()+" "+OlvaCourier.clienteActual.getApellidos());
-        respuestaDNI.setText(OlvaCourier.clienteActual.getDni());
+        respuestaDNI.setText(String.valueOf(OlvaCourier.clienteActual.getCodigo()));
         respuestaFechaEmision.setText(Calendar.getInstance().getTime().toString());
         respuestaFechaLlegada.setText(OlvaCourier.boletaActual.getFechadeEntrega().getTime().toString());
         respuestaValorTotal.setText(String.valueOf(OlvaCourier.boletaActual.getImporteTotal()));
@@ -299,6 +299,14 @@ import javax.swing.JOptionPane;
        int input = JOptionPane.showConfirmDialog(null, "¿Estás seguro de los cambios establecidos?");
         // 0=yes, 1=no, 2=cancel
        if(input==0){
+
+           
+           
+           
+           
+           
+           
+           
            
            //Guarda la boleta creada al cliente que ha iniciado sesion
             OlvaCourier.clienteActual.getListaBoletas().insertarNodoPorFinal(OlvaCourier.boletaActual);

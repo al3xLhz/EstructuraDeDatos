@@ -5,11 +5,12 @@ import Estructuras.Lista;
 
 public class Cliente extends Persona{
     
-    public Cliente(String nombres, String apellidos, String dni, String email, Login usuario) {
-        super(nombres, apellidos, dni, email, usuario);
-    }
     
     private Lista<Boleta> listaBoletas = new Lista<>();
+
+    public Cliente(String nombres, String apellidos, String codigo, String email, Login usuario) {
+        super(nombres, apellidos, codigo, email, usuario);
+    }
 
 
     public Lista<Boleta> getListaBoletas() {

@@ -113,7 +113,7 @@ public class FrmElegirMapa extends javax.swing.JFrame {
         LateralDerecho.setBackground(new java.awt.Color(34, 44, 61));
 
         panelLateralDerecho.setBackground(new java.awt.Color(255, 255, 255));
-        panelLateralDerecho.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Seleccion de Agencias", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        panelLateralDerecho.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Seleccion de Agencias", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
         panelLateralDerecho.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         comboOrigen.setFont(new java.awt.Font("Yu Gothic UI", 0, 13)); // NOI18N
@@ -128,16 +128,13 @@ public class FrmElegirMapa extends javax.swing.JFrame {
         comboDestino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Amazonas", "Ancash", "Apurimac", "Arequipa", "Ayacucho", "Cajamarca", "Callao", "Cusco", "Huancavelica", "Huanuco", "Ica", "Junín", "La Libertad", "Lambayeque", "Lima", "Loreto", "Madre de Dios", "Moquegua", "Pasco", "Piura", "Puno", "San Martín", "Tacna", "Tumbes", "Ucayali" }));
 
         etiquetaDestino.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        etiquetaDestino.setForeground(new java.awt.Color(0, 0, 0));
         etiquetaDestino.setText("Agencia Destino");
 
         etiquetaAgenciaOrigen.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        etiquetaAgenciaOrigen.setForeground(new java.awt.Color(0, 0, 0));
         etiquetaAgenciaOrigen.setText("Agencia Origen");
 
         botonSiguiente.setBackground(new java.awt.Color(255, 255, 255));
         botonSiguiente.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 15)); // NOI18N
-        botonSiguiente.setForeground(new java.awt.Color(0, 0, 0));
         botonSiguiente.setText("Siguiente");
         botonSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,7 +143,6 @@ public class FrmElegirMapa extends javax.swing.JFrame {
         });
 
         botonAplicar.setBackground(new java.awt.Color(255, 255, 255));
-        botonAplicar.setForeground(new java.awt.Color(0, 0, 0));
         botonAplicar.setText("Aplicar");
         botonAplicar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

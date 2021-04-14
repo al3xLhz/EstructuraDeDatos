@@ -9,7 +9,12 @@ import Modelo.Boleta;
 import Modelo.Pedido;
 import Modelo.Producto;
 import Sistema.OlvaCourier;
+import java.sql.CallableStatement;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,11 +23,16 @@ import javax.swing.JOptionPane;
  */
 public class FrmRegistroProducto extends javax.swing.JFrame {
 
-    private Producto p1;
-    private Producto p2;
-    private Producto p3;
-    private Producto p4;
-    private Producto p5;
+    static private Producto p1;
+    static private Producto p2;
+    static private Producto p3;
+    static private Producto p4;
+    static private Producto p5;
+    Pedido pe1;
+    Pedido pe2;
+    Pedido pe3 ;
+    Pedido pe4 ;
+    Pedido pe5 ;
     
     public FrmRegistroProducto() {
         initComponents();
@@ -49,6 +59,182 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
         campoAlto.setText(String.valueOf(p.getAlto()));
         campoAncho.setText(String.valueOf(p.getAncho()));
          
+    }
+    
+    public void RegistrarPedidosBD(){
+           if(p1.getNombreProducto()!= ""){
+                try {
+                        CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaProductos(?,?,?,?,?)}");
+                        entrada.setString(1, p1.getNombreProducto());
+                        entrada.setInt(2, (int) p1.getPeso());
+                        entrada.setInt(3, (int) p1.getLargo());
+                        entrada.setInt(4, (int) p1.getAlto());
+                        entrada.setInt(5, (int) p1.getAncho());
+                        entrada.execute();
+                        
+                    } catch (SQLException ex) {
+                        Logger.getLogger(FrmRegistroProducto.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                if(p2.getNombreProducto()!= ""){
+                    try {
+                        CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaProductos(?,?,?,?,?)}");
+                        entrada.setString(1, p2.getNombreProducto());
+                        entrada.setInt(2, (int) p2.getPeso());
+                        entrada.setInt(3, (int) p2.getLargo());
+                        entrada.setInt(4, (int) p2.getAlto());
+                        entrada.setInt(5, (int) p2.getAncho());
+                        entrada.execute();
+
+                    } catch (SQLException ex) {
+                        Logger.getLogger(FrmRegistroProducto.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                if(p3.getNombreProducto()!= ""){
+                    try {
+                        CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaProductos(?,?,?,?,?)}");
+                        entrada.setString(1, p3.getNombreProducto());
+                        entrada.setInt(2, (int) p3.getPeso());
+                        entrada.setInt(3, (int) p3.getLargo());
+                        entrada.setInt(4, (int) p3.getAlto());
+                        entrada.setInt(5, (int) p3.getAncho());
+                        entrada.execute();
+
+                    } catch (SQLException ex) {
+                        Logger.getLogger(FrmRegistroProducto.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                if(p4.getNombreProducto()!= ""){
+                    try {
+                        CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaProductos(?,?,?,?,?)}");
+                        entrada.setString(1, p4.getNombreProducto());
+                        entrada.setInt(2, (int) p4.getPeso());
+                        entrada.setInt(3, (int) p4.getLargo());
+                        entrada.setInt(4, (int) p4.getAlto());
+                        entrada.setInt(5, (int) p4.getAncho());
+                        entrada.execute();
+
+                    } catch (SQLException ex) {
+                        Logger.getLogger(FrmRegistroProducto.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                if(p5.getNombreProducto()!= ""){
+                    try {
+                        CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaProductos(?,?,?,?,?)}");
+                        entrada.setString(1, p5.getNombreProducto());
+                        entrada.setInt(2, (int) p5.getPeso());
+                        entrada.setInt(3, (int) p5.getLargo());
+                        entrada.setInt(4, (int) p5.getAlto());
+                        entrada.setInt(5, (int) p5.getAncho());
+                        entrada.execute();
+
+                    } catch (SQLException ex) {
+                        Logger.getLogger(FrmRegistroProducto.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+       
+        
+                    }
+        
+    }
+    
+    public void RegistrarPedidos2(){
+        if(p1.getNombreProducto()!= ""){
+            Pedido pe = (Pedido) OlvaCourier.boletaActual.getListaPedidos().getXPos(0);
+        try {   
+                        
+                        CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaPedido(?,?)}");
+                        entrada.setInt(1,(int) pe.getCodigo());
+                        System.out.println(pe.getCodigo());
+                        entrada.setInt(2, (int) pe.getValor());
+                        entrada.execute();
+                        
+                    } catch (SQLException ex) {
+                        Logger.getLogger(FrmRegistroProducto.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+        try{
+            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Producto set CodigoPedido = " + pe.getCodigo() + "where nombrePro ='" + p1.getNombreProducto() + "'");
+            pps.executeUpdate();
+        }
+        catch(SQLException e){           
+        }
+        
+                }
+        if(p2.getNombreProducto()!= ""){
+            Pedido pe = (Pedido) OlvaCourier.boletaActual.getListaPedidos().getXPos(1);
+        try {   
+                        CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaPedido(?,?)}");
+                        entrada.setInt(1,(int) pe.getCodigo());
+                        entrada.setInt(2, (int) pe.getValor());
+                        entrada.execute();
+                        
+                    } catch (SQLException ex) {
+                        Logger.getLogger(FrmRegistroProducto.class.getName()).log(Level.SEVERE, null, ex);
+                    }    
+        try{
+            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Producto set CodigoPedido = " + pe.getCodigo() + "where nombrePro ='" + p2.getNombreProducto() + "'");
+            pps.executeUpdate();
+        }
+        catch(SQLException e){           
+        }
+                }
+        if(p3.getNombreProducto()!= ""){
+            Pedido pe = (Pedido) OlvaCourier.boletaActual.getListaPedidos().getXPos(2);
+        try {   
+                        CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaPedido(?,?)}");
+                        entrada.setInt(1,(int) pe.getCodigo());
+                        entrada.setInt(2, (int) pe.getValor());
+                        entrada.execute();
+                        
+                    } catch (SQLException ex) {
+                        Logger.getLogger(FrmRegistroProducto.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+        try{
+            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Producto set CodigoPedido = " + pe.getCodigo() + "where nombrePro ='" + p3.getNombreProducto() + "'");
+            pps.executeUpdate();
+        }
+        catch(SQLException e){           
+        }
+                }
+               
+        if(p4.getNombreProducto()!= ""){
+            Pedido pe = (Pedido) OlvaCourier.boletaActual.getListaPedidos().getXPos(3);
+        try {
+                        CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaPedido(?,?)}");
+                        entrada.setInt(1,(int) pe.getCodigo());
+                        entrada.setInt(2, (int) pe.getValor());
+                        entrada.execute();
+                        
+                    } catch (SQLException ex) {
+                        Logger.getLogger(FrmRegistroProducto.class.getName()).log(Level.SEVERE, null, ex);
+                    } 
+        try{
+            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Producto set CodigoPedido = " + pe.getCodigo() + "where nombrePro ='" + p4.getNombreProducto() + "'");
+            pps.executeUpdate();
+        }
+        catch(SQLException e){           
+        }
+                
+                }
+        if(p5.getNombreProducto()!= ""){
+            Pedido pe = (Pedido) OlvaCourier.boletaActual.getListaPedidos().getXPos(4);
+        try {
+                        CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaPedido(?,?)}");
+                        entrada.setInt(1,(int) pe.getCodigo());
+                        entrada.setInt(2, (int) pe.getValor());
+                        entrada.execute();
+                        
+                    } catch (SQLException ex) {
+                        Logger.getLogger(FrmRegistroProducto.class.getName()).log(Level.SEVERE, null, ex);
+                    }   
+        try{
+            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Producto set CodigoPedido = " + pe.getCodigo() + "where nombrePro ='" + p5.getNombreProducto() + "'");
+            pps.executeUpdate();
+        }
+        catch(SQLException e){           
+        }
+    
+    }
+    
     }
     
     public void guardarValores(Producto p){
@@ -306,15 +492,17 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
         if("".equals(p1.getNombreProducto())){
             JOptionPane.showMessageDialog(null, "No se colocó ningun producto ");
         }else{
-            
+
                 OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p1));
                 OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p2));
                 OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p3));
                 OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p4));
                 OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p5));
                 OlvaCourier.boletaActual.setPrecioTotal();
-                OlvaCourier.boletaActual.setPropietarioDNI(OlvaCourier.clienteActual.getDni());
+                OlvaCourier.boletaActual.setPropietarioDNI(String.valueOf(OlvaCourier.clienteActual.getCodigo()));
                 OlvaCourier.boletaActual.getFechadeEntrega().add(Calendar.DAY_OF_MONTH, 5);
+                RegistrarPedidosBD();
+                RegistrarPedidos2();
                 
             FrmElegirMapa mapa = new FrmElegirMapa();
             this.dispose();

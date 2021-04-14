@@ -403,7 +403,7 @@ public class Lista<E>{
         while(aux!=null){
             if(aux.objeto instanceof Cliente){
                 Cliente cl = (Cliente) aux.objeto;//Lo convierto en Cliente para que pueda compararlo con el argumento que reciba
-                if(cl.getDni().equals(c.getDni())){
+                if(cl.getCodigo() == c.getCodigo()){
                     aux.objeto=(E) c;
                 }
             }

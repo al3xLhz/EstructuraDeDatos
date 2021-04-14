@@ -7,7 +7,7 @@ public class Pedido {
     private int codigo;
     private double valor;
     private Producto producto;
-    public static int codigoPedido=1000;
+    public static int codigoPedido= (int) Math.floor(Math.random()*1000+1);
     
 
     public Pedido(Producto producto) {
