@@ -13,7 +13,7 @@ public class Boleta {
     private double importeTotal;
     private double IGV;
     private double total;
-    private static int codigoM = 1000;
+    private static int codigoM = (int) Math.floor(Math.random()*10000+1);
     private String propietarioDNI;
     private String estado;
     private Lista<Pedido> listaPedidos = new Lista<>();

@@ -66,10 +66,10 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                 try {
                         CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaProductos(?,?,?,?,?)}");
                         entrada.setString(1, p1.getNombreProducto());
-                        entrada.setInt(2, (int) p1.getPeso());
-                        entrada.setInt(3, (int) p1.getLargo());
-                        entrada.setInt(4, (int) p1.getAlto());
-                        entrada.setInt(5, (int) p1.getAncho());
+                        entrada.setDouble(2, p1.getPeso());
+                        entrada.setDouble(3, p1.getLargo());
+                        entrada.setDouble(4, p1.getAlto());
+                        entrada.setDouble(5, p1.getAncho());
                         entrada.execute();
                         
                     } catch (SQLException ex) {
@@ -80,10 +80,10 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                     try {
                         CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaProductos(?,?,?,?,?)}");
                         entrada.setString(1, p2.getNombreProducto());
-                        entrada.setInt(2, (int) p2.getPeso());
-                        entrada.setInt(3, (int) p2.getLargo());
-                        entrada.setInt(4, (int) p2.getAlto());
-                        entrada.setInt(5, (int) p2.getAncho());
+                        entrada.setDouble(2, p2.getPeso());
+                        entrada.setDouble(3, p2.getLargo());
+                        entrada.setDouble(4, p2.getAlto());
+                        entrada.setDouble(5, p2.getAncho());
                         entrada.execute();
 
                     } catch (SQLException ex) {
@@ -94,10 +94,10 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                     try {
                         CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaProductos(?,?,?,?,?)}");
                         entrada.setString(1, p3.getNombreProducto());
-                        entrada.setInt(2, (int) p3.getPeso());
-                        entrada.setInt(3, (int) p3.getLargo());
-                        entrada.setInt(4, (int) p3.getAlto());
-                        entrada.setInt(5, (int) p3.getAncho());
+                        entrada.setDouble(2, p3.getPeso());
+                        entrada.setDouble(3, p3.getLargo());
+                        entrada.setDouble(4, p3.getAlto());
+                        entrada.setDouble(5, p3.getAncho());
                         entrada.execute();
 
                     } catch (SQLException ex) {
@@ -108,10 +108,10 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                     try {
                         CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaProductos(?,?,?,?,?)}");
                         entrada.setString(1, p4.getNombreProducto());
-                        entrada.setInt(2, (int) p4.getPeso());
-                        entrada.setInt(3, (int) p4.getLargo());
-                        entrada.setInt(4, (int) p4.getAlto());
-                        entrada.setInt(5, (int) p4.getAncho());
+                        entrada.setDouble(2, p4.getPeso());
+                        entrada.setDouble(3, p4.getLargo());
+                        entrada.setDouble(4, p4.getAlto());
+                        entrada.setDouble(5, p4.getAncho());
                         entrada.execute();
 
                     } catch (SQLException ex) {
@@ -122,10 +122,10 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                     try {
                         CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaProductos(?,?,?,?,?)}");
                         entrada.setString(1, p5.getNombreProducto());
-                        entrada.setInt(2, (int) p5.getPeso());
-                        entrada.setInt(3, (int) p5.getLargo());
-                        entrada.setInt(4, (int) p5.getAlto());
-                        entrada.setInt(5, (int) p5.getAncho());
+                        entrada.setDouble(2, p5.getPeso());
+                        entrada.setDouble(3, p5.getLargo());
+                        entrada.setDouble(4, p5.getAlto());
+                        entrada.setDouble(5, p5.getAncho());
                         entrada.execute();
 
                     } catch (SQLException ex) {
@@ -144,8 +144,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                         
                         CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaPedido(?,?)}");
                         entrada.setInt(1,(int) pe.getCodigo());
-                        System.out.println(pe.getCodigo());
-                        entrada.setInt(2, (int) pe.getValor());
+                        entrada.setDouble(2, pe.getValor());
                         entrada.execute();
                         
                     } catch (SQLException ex) {
@@ -164,7 +163,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
         try {   
                         CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaPedido(?,?)}");
                         entrada.setInt(1,(int) pe.getCodigo());
-                        entrada.setInt(2, (int) pe.getValor());
+                        entrada.setDouble(2, pe.getValor());
                         entrada.execute();
                         
                     } catch (SQLException ex) {
@@ -182,7 +181,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
         try {   
                         CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaPedido(?,?)}");
                         entrada.setInt(1,(int) pe.getCodigo());
-                        entrada.setInt(2, (int) pe.getValor());
+                        entrada.setDouble(2, pe.getValor());
                         entrada.execute();
                         
                     } catch (SQLException ex) {
@@ -201,7 +200,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
         try {
                         CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaPedido(?,?)}");
                         entrada.setInt(1,(int) pe.getCodigo());
-                        entrada.setInt(2, (int) pe.getValor());
+                        entrada.setDouble(2, pe.getValor());
                         entrada.execute();
                         
                     } catch (SQLException ex) {
@@ -220,7 +219,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
         try {
                         CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaPedido(?,?)}");
                         entrada.setInt(1,(int) pe.getCodigo());
-                        entrada.setInt(2, (int) pe.getValor());
+                        entrada.setDouble(2, pe.getValor());
                         entrada.execute();
                         
                     } catch (SQLException ex) {

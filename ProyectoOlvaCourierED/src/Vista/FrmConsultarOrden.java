@@ -7,38 +7,60 @@ package Vista;
 
 import Modelo.Pedido;
 import Sistema.OlvaCourier;
+import static Vista.FrmCliente.res;
+import static Vista.FrmHistorial.res;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Alex
  */
 public class FrmConsultarOrden extends javax.swing.JFrame {
-
+    static ResultSet res;
+    public String estado;
     /**
      * Creates new form RegistroEnvio
      */
     public FrmConsultarOrden() {
         initComponents();
-        llenarTabla();
-        respuestaNroBoleta.setText(String.valueOf(OlvaCourier.boletaActual.getCodigo()));
-        respuestaEstado.setText(OlvaCourier.boletaActual.getEstado());
-        etiquetaNombre.setText(OlvaCourier.clienteActual.getNombres()+OlvaCourier.clienteActual.getApellidos());
+        LlenarTabla();
+        respuestaNroBoleta.setText(String.valueOf(FrmCliente.codigoABuscar));
+       
+        res = Conexion.Conexion.Consulta("select estadoP from Boleta where codBoleta =" + FrmCliente.codigoABuscar);
+        try {
+            while(res.next()){                
+                    estado = res.getString(1);
+            }
+            //OlvaCourier.boletaActual = OlvaCourier.clienteActual.getListaBoletas().getBoleta(codigoABuscar);
+        } catch (SQLException ex) {
+            Logger.getLogger(FrmCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        respuestaEstado.setText(estado);
+        etiquetaNombre.setText(OlvaCourier.clienteActual.getNombres());
         setVisible(true);
     }
     
-    public void llenarTabla(){
-        String matriz[][] = new String[5][2];
-        
-        for(int i=0;i<5;i++){
-            Pedido pe = (Pedido) OlvaCourier.boletaActual.getListaPedidos().getXPos(i);
-            if(pe.getProducto().getNombreProducto()!=""){
-                matriz[i][0]=String.valueOf(pe.getCodigo());
-                matriz[i][1]=String.valueOf(pe.getProducto().getNombreProducto());
-                Tabla.setValueAt(matriz[i][0], i, 0);
-                Tabla.setValueAt(matriz[i][1], i, 1);
-            }
+    
+    public void LlenarTabla(){
+        DefaultTableModel modelo = (DefaultTableModel) Tabla.getModel();
+        modelo.setRowCount(0);
+        res = Conexion.Conexion.Consulta("select Pedido.codigoP, Producto.nombrePro from Pedido INNER JOIN Producto ON Pedido.codigoP = Producto.CodigoPedido where codigoB =" + FrmCliente.codigoABuscar);
+        System.out.println(FrmCliente.codigoABuscar);
+        try{
+            while(res.next()){
+                Vector v = new Vector();
+                v.add(res.getInt(1));
+                v.add(res.getString(2));
+                modelo.addRow(v);
+                Tabla.setModel(modelo);
+            }  
+        }catch(SQLException e){
         }
-        
     }
     
     

@@ -6,8 +6,14 @@
 package Vista;
 
 import Modelo.Boleta;
+import Modelo.Cliente;
+import Modelo.Login;
 import Sistema.OlvaCourier;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.Vector;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -20,42 +26,37 @@ public class FrmHistorial extends javax.swing.JFrame {
      */
     public FrmHistorial() {
         initComponents();
-        llenarTabla();
+        LlenarTabla();
         etiquetaNombre.setText(OlvaCourier.clienteActual.getNombres()+OlvaCourier.clienteActual.getApellidos());
         etiquetaHora.setText(Calendar.getInstance().getTime().toString());
         setVisible(true);
     }
-
-    public void llenarTabla(){
-        
-        String matriz[][] = new String[OlvaCourier.clienteActual.getListaBoletas().getTamaño()][8];//Que me devulva la cantidad max de la lista de boletas
-        
-        int n=1;
-        for(int i=0;i<OlvaCourier.clienteActual.getListaBoletas().getTamaño();i++){
-            Boleta b = (Boleta) OlvaCourier.clienteActual.getListaBoletas().getXPos(i);
-            
-            if(b!=null){
-                
-                matriz[i][0]=String.valueOf(n);
-                matriz[i][1]=String.valueOf(b.getCodigo());
-                matriz[i][2]=String.valueOf(b.getAgenciaInicial().getUbicacion());
-                matriz[i][3]=String.valueOf(b.getAgenciaFinal().getUbicacion());
-                matriz[i][4]=String.valueOf(b.getEstado());
-                matriz[i][5]=String.valueOf(b.getFechaEmision().getTime().toString());
-                matriz[i][6]=String.valueOf(b.getFechadeEntrega().getTime().toString());
-                matriz[i][7]=String.valueOf(b.getTotal());
-                Tabla.setValueAt(matriz[i][0], i, 0);
-                Tabla.setValueAt(matriz[i][1], i, 1);
-                Tabla.setValueAt(matriz[i][2], i, 2);
-                Tabla.setValueAt(matriz[i][3], i, 3);
-                Tabla.setValueAt(matriz[i][4], i, 4);
-                Tabla.setValueAt(matriz[i][5], i, 5);
-                Tabla.setValueAt(matriz[i][6], i, 6);
-                Tabla.setValueAt(matriz[i][7], i, 7);
-                n++;
-            }
+    
+    static ResultSet res;
+    
+    public void LlenarTabla(){
+        DefaultTableModel modelo = (DefaultTableModel) Tabla.getModel();
+        modelo.setRowCount(0);
+        res = Conexion.Conexion.Consulta("select * from Boleta where codCliente = '" + OlvaCourier.clienteActual.getCodigo() +"'");
+        System.out.println(OlvaCourier.clienteActual.getCodigo());
+        int i = 1;
+        try{
+            while(res.next()){
+                Vector v = new Vector();
+                v.add(i);
+                v.add(res.getInt(1));
+                v.add(res.getString(4));
+                v.add(res.getString(5));
+                v.add(res.getString(9));
+                v.add(res.getString(2));
+                v.add(res.getString(3));
+                v.add(res.getFloat(8));
+                modelo.addRow(v);
+                Tabla.setModel(modelo);
+                i++;
+            }  
+        }catch(SQLException e){
         }
-        
     }
     
     @SuppressWarnings("unchecked")
@@ -166,7 +167,7 @@ public class FrmHistorial extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         fondo.add(Body, java.awt.BorderLayout.CENTER);

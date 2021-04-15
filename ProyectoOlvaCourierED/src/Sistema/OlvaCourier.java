@@ -51,7 +51,7 @@ public class OlvaCourier {
         try{
             while(res.next()){
                 OlvaCourier.administradores.insertarNodoPorFinal(new Administrador(res.getString(2), res.getString(3),res.getString(1), res.getString(4), new Login(res.getString(6),res.getString(7),res.getInt(8))));
-                OlvaCourier.personas.insertarNodoPorFinal(new Cliente(res.getString(2), res.getString(3),res.getString(1), res.getString(4), new Login(res.getString(6),res.getString(7),res.getInt(8))));
+                OlvaCourier.personas.insertarNodoPorFinal(new Administrador(res.getString(2), res.getString(3),res.getString(1), res.getString(4), new Login(res.getString(6),res.getString(7),res.getInt(8))));
             }  
         }catch(SQLException e){
         }

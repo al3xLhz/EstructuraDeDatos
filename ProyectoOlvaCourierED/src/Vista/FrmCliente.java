@@ -2,11 +2,17 @@
 package Vista;
 
 import Sistema.OlvaCourier;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
 public class FrmCliente extends javax.swing.JFrame {
-
+    static ResultSet res;
+    static int codigoABuscar;
+    static int valoraux;
     public FrmCliente() {
         initComponents();
         etiquetaBienvenida.setText("Bienvenido "+OlvaCourier.clienteActual.getNombres());
@@ -228,16 +234,26 @@ public class FrmCliente extends javax.swing.JFrame {
 
     private void botonConsultarOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarOrdenActionPerformed
         
-        try{
-            int codigoABuscar = Integer.parseInt(JOptionPane.showInputDialog("Digite el código a buscar"));
-            OlvaCourier.boletaActual = OlvaCourier.clienteActual.getListaBoletas().getBoleta(codigoABuscar);
-            FrmConsultarOrden frmCO = new  FrmConsultarOrden();
-            
-            this.dispose();
-        }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "No se encontró el código buscado");
+        
+        codigoABuscar = Integer.parseInt(JOptionPane.showInputDialog("Digite el código a buscar"));
+        res = Conexion.Conexion.Consulta("select count(codBoleta) from Boleta where codCliente = '" + OlvaCourier.clienteActual.getCodigo() + "' and codBoleta = " + codigoABuscar);
+        try {
+            while(res.next()){                
+                    valoraux = res.getInt(1);
+            }
+            //OlvaCourier.boletaActual = OlvaCourier.clienteActual.getListaBoletas().getBoleta(codigoABuscar);
+        } catch (SQLException ex) {
+            Logger.getLogger(FrmCliente.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
+        
+        if(valoraux == 1){
+            FrmConsultarOrden frmCO = new  FrmConsultarOrden();
+            this.dispose();
+        }
+        else{
+            JOptionPane.showMessageDialog(null, "No existe esa boleta , intente nuevamente");
+        }
+               
     }//GEN-LAST:event_botonConsultarOrdenActionPerformed
 
     private void botonRegistroEnvioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistroEnvioActionPerformed

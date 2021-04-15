@@ -7,7 +7,12 @@ package Vista;
 
 import Modelo.Pedido;
 import Sistema.OlvaCourier;
+import java.sql.CallableStatement;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -57,6 +62,37 @@ import javax.swing.JOptionPane;
         }
         
     }
+    
+    public void LlenarBoletaBD(){
+        try {
+                        CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaBoleta(?,?,?,?,?,?,?,?,?,?)}");
+                        entrada.setString(1, String.valueOf(OlvaCourier.boletaActual.getCodigo()));
+                        entrada.setString(2, Calendar.getInstance().getTime().toString());
+                        entrada.setString(3, OlvaCourier.boletaActual.getFechadeEntrega().getTime().toString());
+                        entrada.setString(4, OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion());
+                        entrada.setString(5, OlvaCourier.boletaActual.getAgenciaFinal().getUbicacion());
+                        entrada.setDouble(6, OlvaCourier.boletaActual.getImporteTotal());
+                        entrada.setDouble(7, OlvaCourier.boletaActual.getIGV());
+                        entrada.setDouble(8, OlvaCourier.boletaActual.getTotal());
+                        entrada.setString(9, OlvaCourier.boletaActual.getEstado());
+                        entrada.setString(10, OlvaCourier.boletaActual.getPropietarioDNI());
+                        entrada.execute();
+                        
+                    } catch (SQLException ex) {
+                        Logger.getLogger(FrmRegistroProducto.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+        
+         try{
+            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Pedido set CodigoB = " + OlvaCourier.boletaActual.getCodigo() + "where CodigoB is null" );
+            pps.executeUpdate();
+        }
+        catch(SQLException e){           
+        }
+    }
+    
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -300,13 +336,7 @@ import javax.swing.JOptionPane;
         // 0=yes, 1=no, 2=cancel
        if(input==0){
 
-           
-           
-           
-           
-           
-           
-           
+           LlenarBoletaBD();
            
            //Guarda la boleta creada al cliente que ha iniciado sesion
             OlvaCourier.clienteActual.getListaBoletas().insertarNodoPorFinal(OlvaCourier.boletaActual);
