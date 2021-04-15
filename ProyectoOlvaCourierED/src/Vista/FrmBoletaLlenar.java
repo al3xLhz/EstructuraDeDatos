@@ -26,7 +26,7 @@ import javax.swing.JOptionPane;
         respuestaCliente.setText(OlvaCourier.clienteActual.getNombres()+" "+OlvaCourier.clienteActual.getApellidos());
         respuestaDNI.setText(OlvaCourier.clienteActual.getDni());
         respuestaFechaEmision.setText(Calendar.getInstance().getTime().toString());
-        respuestaFechaLlegada.setText(OlvaCourier.boletaActual.getFechadeEntrega().toString());
+        respuestaFechaLlegada.setText(OlvaCourier.boletaActual.getFechadeEntrega().getTime().toString());
         respuestaValorTotal.setText(String.valueOf(OlvaCourier.boletaActual.getImporteTotal()));
         respuestaIGV.setText(String.valueOf(OlvaCourier.boletaActual.getIGV()));
         respuestaTotal.setText(String.valueOf(OlvaCourier.boletaActual.getTotal()));
@@ -310,6 +310,11 @@ import javax.swing.JOptionPane;
             //Ahora tenemos que guardar todo en el cliente usado, porque sigue en el borrador que es Cliente actual
             
             OlvaCourier.clientes.actualizarCliente(OlvaCourier.clienteActual);
+            
+            
+            //Estamos insertando la boleta para tenerlo en el inventario de la agencia respectiva
+            
+            OlvaCourier.agencias.getAgencia(OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion()).getListaBolestas().insertarNodoPorFinal(OlvaCourier.boletaActual);
             
          
            FrmCliente cliente = new FrmCliente();

@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="fondo" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="fondo" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="fondo">
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="header">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+              <BorderConstraints direction="North"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
+                      <Component id="etiquetaInventario" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="167" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="etiquetaInventario" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="30" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="etiquetaInventario">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Inventario"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="body">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+              <BorderConstraints direction="Center"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="etiquetaJunin" max="32767" attributes="0"/>
+                          <Component id="etiquetaIca" alignment="0" min="-2" pref="49" max="-2" attributes="0"/>
+                          <Component id="etiquetaAmazonas" max="32767" attributes="0"/>
+                          <Component id="etiquetaAncash" max="32767" attributes="0"/>
+                          <Component id="etiquetaApurimac" alignment="0" max="32767" attributes="0"/>
+                          <Component id="etiquetaArequipa" alignment="0" max="32767" attributes="0"/>
+                          <Component id="etiquetaAyacucho" alignment="0" max="32767" attributes="0"/>
+                          <Component id="etiquetaCajamarca" alignment="0" max="32767" attributes="0"/>
+                          <Component id="etiquetaCusco" alignment="0" max="32767" attributes="0"/>
+                          <Component id="etiquetaHuancavelica" alignment="0" max="32767" attributes="0"/>
+                          <Component id="etiquetaHuanuco" alignment="0" max="32767" attributes="0"/>
+                          <Component id="etiquetaLaLibertad" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="etiquetaRPTAAmazonas" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaRPTAAncash" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaRPTAApurimac" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaRPTAArequipa" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaRPTAAyacucho" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaRPTACajamarca" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaRPTACusco" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaRPTAHuancavelica" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaRPTAHuanuco" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaRPTAIca" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaRPTAJunin" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaRPTALaLibertad" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="75" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="etiquetaPasco" min="-2" pref="87" max="-2" attributes="0"/>
+                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="etiquetaTumbes" alignment="0" max="32767" attributes="0"/>
+                              <Component id="etiquetaTacna" alignment="0" min="-2" pref="49" max="-2" attributes="0"/>
+                              <Component id="etiquetaLambayeque" alignment="0" max="32767" attributes="0"/>
+                              <Component id="etiquetaLima" alignment="0" max="32767" attributes="0"/>
+                              <Component id="etiquetaLoreto" alignment="0" max="32767" attributes="0"/>
+                              <Component id="etiquetaMadredeDios" alignment="0" max="32767" attributes="0"/>
+                              <Component id="etiquetaPiura" alignment="0" max="32767" attributes="0"/>
+                              <Component id="etiquetaPuno" alignment="0" max="32767" attributes="0"/>
+                              <Component id="etiquetaSanMartin" alignment="0" max="32767" attributes="0"/>
+                              <Component id="etiquetaUcayali" alignment="0" min="-2" pref="82" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="etiquetaMoquegua" alignment="1" min="-2" pref="87" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="etiquetaRPTALambayeque" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaRPTALima" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaRPTALoreto" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaRPTAMadreDeDios" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaRPTAMoquegua" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaRPTAPasco" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaRPTAPiura" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaRPTAPuno" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaRPTASanMartin" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaRPTATacna" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaRPTATumbes" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaRPTAUcayali" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="165" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="etiquetaRPTAMoquegua" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="etiquetaMoquegua" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="etiquetaPasco" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="etiquetaRPTAPasco" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="etiquetaPiura" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="etiquetaRPTAPiura" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="etiquetaPuno" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="etiquetaRPTAPuno" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="etiquetaSanMartin" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                                  <Component id="etiquetaRPTASanMartin" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="etiquetaTacna" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="etiquetaRPTATacna" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="etiquetaTumbes" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                                  <Component id="etiquetaRPTATumbes" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="etiquetaUcayali" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="etiquetaRPTAUcayali" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="etiquetaAmazonas" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="etiquetaRPTAAmazonas" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="etiquetaLambayeque" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                                  <Component id="etiquetaRPTALambayeque" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="etiquetaAncash" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="etiquetaRPTAAncash" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="etiquetaLima" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="etiquetaRPTALima" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="etiquetaApurimac" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="etiquetaRPTAApurimac" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="etiquetaLoreto" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="etiquetaRPTALoreto" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="etiquetaArequipa" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="etiquetaRPTAArequipa" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="etiquetaMadredeDios" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="etiquetaRPTAMadreDeDios" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="etiquetaAyacucho" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="etiquetaRPTAAyacucho" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="etiquetaCajamarca" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="etiquetaRPTACajamarca" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="etiquetaCusco" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="etiquetaRPTACusco" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="etiquetaHuancavelica" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="etiquetaRPTAHuancavelica" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="etiquetaHuanuco" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                                  <Component id="etiquetaRPTAHuanuco" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="etiquetaIca" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="etiquetaRPTAIca" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="etiquetaJunin" alignment="3" min="-2" pref="16" max="-2" attributes="0"/>
+                                  <Component id="etiquetaRPTAJunin" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="etiquetaLaLibertad" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="etiquetaRPTALaLibertad" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="18" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="etiquetaAmazonas">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="Amazonas :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaAncash">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="Ancash : "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaApurimac">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="Apurimac : "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaArequipa">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="Arequipa :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaAyacucho">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="Ayacucho : "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaCajamarca">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="Cajamarca :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaCusco">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="Cusco :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaHuancavelica">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="Huancavelica :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaHuanuco">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="Huanuco :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaIca">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="Ica :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaJunin">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="Junin :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaLaLibertad">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="La Libertad :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaLambayeque">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="Lambayeque :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaLima">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="Lima :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaLoreto">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="Loreto : "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaMadredeDios">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="Madre de Dios :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaMoquegua">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="Moquegua :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaPasco">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="Pasco :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaPiura">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="Piura :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaPuno">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="Puno :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaSanMartin">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="San Martin :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaTacna">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="Tacna :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaTumbes">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="Tumbes :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaUcayali">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="Ucayali :"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaRPTAAmazonas">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaRPTAAncash">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaRPTAApurimac">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaRPTAArequipa">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaRPTAAyacucho">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaRPTACajamarca">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaRPTACusco">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaRPTAHuancavelica">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaRPTAHuanuco">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaRPTAIca">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaRPTAJunin">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaRPTALaLibertad">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaRPTALambayeque">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaRPTALima">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaRPTAPiura">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaRPTALoreto">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaRPTAMadreDeDios">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaRPTAMoquegua">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaRPTAPasco">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaRPTAPuno">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaRPTASanMartin">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaRPTATacna">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaRPTATumbes">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaRPTAUcayali">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="2"/>
+                <Property name="text" type="java.lang.String" value="0"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>

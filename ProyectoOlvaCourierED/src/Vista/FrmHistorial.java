@@ -72,7 +72,9 @@ public class FrmHistorial extends javax.swing.JFrame {
         Body = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        comboOpciones = new javax.swing.JComboBox<>();
+        botonAplicar = new javax.swing.JButton();
+        botonFinalizar = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -112,7 +114,7 @@ public class FrmHistorial extends javax.swing.JFrame {
                 .addComponent(etiquetaNombre)
                 .addGap(152, 152, 152)
                 .addComponent(etiquetaHora)
-                .addContainerGap(146, Short.MAX_VALUE))
+                .addContainerGap(268, Short.MAX_VALUE))
         );
         HeaderLayout.setVerticalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -153,10 +155,24 @@ public class FrmHistorial extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Tabla);
 
-        jButton1.setText("Ordenar por codigo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        comboOpciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N°", "Nro Boleta", "Agencia Inicial", "Agencia Final", "Estado" }));
+        comboOpciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                comboOpcionesActionPerformed(evt);
+            }
+        });
+
+        botonAplicar.setText("Aplicar");
+        botonAplicar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAplicarActionPerformed(evt);
+            }
+        });
+
+        botonFinalizar.setText("Finalizar");
+        botonFinalizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonFinalizarActionPerformed(evt);
             }
         });
 
@@ -165,23 +181,33 @@ public class FrmHistorial extends javax.swing.JFrame {
         BodyLayout.setHorizontalGroup(
             BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BodyLayout.createSequentialGroup()
-                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(23, 23, 23)
+                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(comboOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(BodyLayout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jButton1))
-                    .addGroup(BodyLayout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 769, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(55, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 769, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(BodyLayout.createSequentialGroup()
+                                .addGap(60, 60, 60)
+                                .addComponent(botonAplicar))
+                            .addGroup(BodyLayout.createSequentialGroup()
+                                .addGap(71, 71, 71)
+                                .addComponent(botonFinalizar)))))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         BodyLayout.setVerticalGroup(
             BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BodyLayout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addGap(46, 46, 46)
+                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(BodyLayout.createSequentialGroup()
+                        .addComponent(comboOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(botonAplicar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(botonFinalizar))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         fondo.add(Body, java.awt.BorderLayout.CENTER);
@@ -200,9 +226,18 @@ public class FrmHistorial extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void comboOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOpcionesActionPerformed
+
+    }//GEN-LAST:event_comboOpcionesActionPerformed
+
+    private void botonAplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAplicarActionPerformed
+        //Chapa lo que tenga el combo y depende de eso ordena la tabla
+    }//GEN-LAST:event_botonAplicarActionPerformed
+
+    private void botonFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFinalizarActionPerformed
+        FrmCliente fc = new FrmCliente();
+        this.dispose();
+    }//GEN-LAST:event_botonFinalizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -244,10 +279,12 @@ public class FrmHistorial extends javax.swing.JFrame {
     private javax.swing.JPanel Header;
     private javax.swing.JTable Tabla;
     private javax.swing.JLabel TituloRegistroEnvio;
+    private javax.swing.JButton botonAplicar;
+    private javax.swing.JButton botonFinalizar;
+    private javax.swing.JComboBox<String> comboOpciones;
     private javax.swing.JLabel etiquetaHora;
     private javax.swing.JLabel etiquetaNombre;
     private javax.swing.JPanel fondo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;

@@ -23,6 +23,7 @@ public class DijkstraMapa {
         this.grafo = grafo;        
         this.tope = grafo.getCantidadMax();
         this.nodos= new NodoGrafo[tope];
+        llenarNodos();
     }
 
     public GrafoMapa getGrafo() {
@@ -66,20 +67,12 @@ public class DijkstraMapa {
         this.tope = tope;
     }
 
-   
-
-    public void setNodos(NodoGrafo[] nodos) {
-        this.nodos = nodos;
-    }
-
     
     
     
     public void dijkstra(){
         subTope=0;
-        for (int i = 0; i < tope; i++){  // creamos el vector nodo del tamaño de tope el cual tiene el numero de nodo pintados 
-            nodos[i]= new NodoGrafo();
-        } 
+        
         if(permanente != nodoFin){
             nodos[permanente].setVisitado(true);        
             nodos[permanente].setNombre(permanente);
@@ -130,6 +123,12 @@ public class DijkstraMapa {
         }while(auxL.getNombre()!=nodoInicio);
         System.out.println(auxL.getNombre());
         pila.Apilar(nodoInicio);
+    }
+    
+    public void llenarNodos(){
+        for (int i = 0; i < tope; i++){  // creamos el vector nodo del tamaño de tope el cual tiene el numero de nodo pintados 
+            nodos[i]= new NodoGrafo();
+        } 
     }
     
     

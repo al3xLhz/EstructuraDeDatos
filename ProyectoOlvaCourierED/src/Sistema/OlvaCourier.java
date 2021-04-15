@@ -4,8 +4,6 @@ package Sistema;
 import Estructuras.Lista;
 import Grafo.*;
 import Modelo.*;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 
 
@@ -26,6 +24,7 @@ public class OlvaCourier {
     public static Login usuarioActual;
     public static Administrador administradorActual;
     public static GrafoMapa miGrafo = new GrafoMapa();
+    public static DijkstraMapa miDijkstra = new DijkstraMapa(miGrafo);
     
     
     
