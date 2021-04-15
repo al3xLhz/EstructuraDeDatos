@@ -246,32 +246,31 @@
                       <Font name="Yu Gothic UI" size="13" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="25">
+                      <StringArray count="24">
                         <StringItem index="0" value="Amazonas"/>
                         <StringItem index="1" value="Ancash"/>
                         <StringItem index="2" value="Apurimac"/>
                         <StringItem index="3" value="Arequipa"/>
                         <StringItem index="4" value="Ayacucho"/>
                         <StringItem index="5" value="Cajamarca"/>
-                        <StringItem index="6" value="Callao"/>
-                        <StringItem index="7" value="Cusco"/>
-                        <StringItem index="8" value="Huancavelica"/>
-                        <StringItem index="9" value="Huanuco"/>
-                        <StringItem index="10" value="Ica"/>
-                        <StringItem index="11" value="Jun&#xed;n"/>
-                        <StringItem index="12" value="La Libertad"/>
-                        <StringItem index="13" value="Lambayeque"/>
-                        <StringItem index="14" value="Lima"/>
-                        <StringItem index="15" value="Loreto"/>
-                        <StringItem index="16" value="Madre de Dios"/>
-                        <StringItem index="17" value="Moquegua"/>
-                        <StringItem index="18" value="Pasco"/>
-                        <StringItem index="19" value="Piura"/>
-                        <StringItem index="20" value="Puno"/>
-                        <StringItem index="21" value="San Mart&#xed;n"/>
-                        <StringItem index="22" value="Tacna"/>
-                        <StringItem index="23" value="Tumbes"/>
-                        <StringItem index="24" value="Ucayali"/>
+                        <StringItem index="6" value="Cusco"/>
+                        <StringItem index="7" value="Huancavelica"/>
+                        <StringItem index="8" value="Huanuco"/>
+                        <StringItem index="9" value="Ica"/>
+                        <StringItem index="10" value="Jun&#xed;n"/>
+                        <StringItem index="11" value="La Libertad"/>
+                        <StringItem index="12" value="Lambayeque"/>
+                        <StringItem index="13" value="Lima"/>
+                        <StringItem index="14" value="Loreto"/>
+                        <StringItem index="15" value="Madre de Dios"/>
+                        <StringItem index="16" value="Moquegua"/>
+                        <StringItem index="17" value="Pasco"/>
+                        <StringItem index="18" value="Piura"/>
+                        <StringItem index="19" value="Puno"/>
+                        <StringItem index="20" value="San Mart&#xed;n"/>
+                        <StringItem index="21" value="Tacna"/>
+                        <StringItem index="22" value="Tumbes"/>
+                        <StringItem index="23" value="Ucayali"/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -288,35 +287,37 @@
                       <Font name="Yu Gothic UI" size="13" style="0"/>
                     </Property>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="25">
+                      <StringArray count="24">
                         <StringItem index="0" value="Amazonas"/>
                         <StringItem index="1" value="Ancash"/>
                         <StringItem index="2" value="Apurimac"/>
                         <StringItem index="3" value="Arequipa"/>
                         <StringItem index="4" value="Ayacucho"/>
                         <StringItem index="5" value="Cajamarca"/>
-                        <StringItem index="6" value="Callao"/>
-                        <StringItem index="7" value="Cusco"/>
-                        <StringItem index="8" value="Huancavelica"/>
-                        <StringItem index="9" value="Huanuco"/>
-                        <StringItem index="10" value="Ica"/>
-                        <StringItem index="11" value="Jun&#xed;n"/>
-                        <StringItem index="12" value="La Libertad"/>
-                        <StringItem index="13" value="Lambayeque"/>
-                        <StringItem index="14" value="Lima"/>
-                        <StringItem index="15" value="Loreto"/>
-                        <StringItem index="16" value="Madre de Dios"/>
-                        <StringItem index="17" value="Moquegua"/>
-                        <StringItem index="18" value="Pasco"/>
-                        <StringItem index="19" value="Piura"/>
-                        <StringItem index="20" value="Puno"/>
-                        <StringItem index="21" value="San Mart&#xed;n"/>
-                        <StringItem index="22" value="Tacna"/>
-                        <StringItem index="23" value="Tumbes"/>
-                        <StringItem index="24" value="Ucayali"/>
+                        <StringItem index="6" value="Cusco"/>
+                        <StringItem index="7" value="Huancavelica"/>
+                        <StringItem index="8" value="Huanuco"/>
+                        <StringItem index="9" value="Ica"/>
+                        <StringItem index="10" value="Jun&#xed;n"/>
+                        <StringItem index="11" value="La Libertad"/>
+                        <StringItem index="12" value="Lambayeque"/>
+                        <StringItem index="13" value="Lima"/>
+                        <StringItem index="14" value="Loreto"/>
+                        <StringItem index="15" value="Madre de Dios"/>
+                        <StringItem index="16" value="Moquegua"/>
+                        <StringItem index="17" value="Pasco"/>
+                        <StringItem index="18" value="Piura"/>
+                        <StringItem index="19" value="Puno"/>
+                        <StringItem index="20" value="San Mart&#xed;n"/>
+                        <StringItem index="21" value="Tacna"/>
+                        <StringItem index="22" value="Tumbes"/>
+                        <StringItem index="23" value="Ucayali"/>
                       </StringArray>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboDestinoActionPerformed"/>
+                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>

@@ -358,6 +358,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
 
         etiquetacmL.setText("cm.");
 
+        botonGuardar.setBackground(new java.awt.Color(64, 170, 173));
         botonGuardar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         botonGuardar.setText("Guardar");
         botonGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -366,6 +367,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
             }
         });
 
+        botonSiguiente.setBackground(new java.awt.Color(64, 170, 173));
         botonSiguiente.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 15)); // NOI18N
         botonSiguiente.setText("Siguiente");
         botonSiguiente.addActionListener(new java.awt.event.ActionListener() {

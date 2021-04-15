@@ -22,12 +22,15 @@ public class App {
         OlvaCourier.CargarClientes();
         OlvaCourier.CargarAdministrador();
         //<Es un respaldode creacion de los clientes,administradores Todo debería ser un sql pero en este caso por terminos de rapidez se hace de esta manera
+
         //>
         
         
         //Inserta los objetos creados en sus respectivas listas : clientes, administradores y personas
+
         
         //De esta forma ingresa Formulario Iniciar sesion
+
         FrmIniciarSesion login = new FrmIniciarSesion();
         
         login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

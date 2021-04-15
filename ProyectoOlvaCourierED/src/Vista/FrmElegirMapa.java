@@ -6,14 +6,14 @@
 package Vista;
 
 import Grafo.DijkstraMapa;
-import Grafo.GrafoMapa;
-import Modelo.Pedido;
 import Sistema.OlvaCourier;
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.ArrayList;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.util.Calendar;
-import java.util.List;
+import javax.sound.midi.MidiEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,7 +21,9 @@ import javax.swing.JOptionPane;
  * @author Alex
  */
 public class FrmElegirMapa extends javax.swing.JFrame {
-
+    
+    DijkstraMapa miD = new DijkstraMapa(OlvaCourier.miGrafo);
+    
     int opc=0;
     int c=0;
     public FrmElegirMapa() {
@@ -29,8 +31,24 @@ public class FrmElegirMapa extends javax.swing.JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         setVisible(true);
+        botonSiguiente.setEnabled(false);
+        
     }
-
+    
+    public static void pintarLinea(Graphics g, int x1,int y1,int x2,int y2,String direccion){
+        int xAux = 0; int yAux = 0; 
+        ((Graphics2D)g).setRenderingHint(RenderingHints.KEY_ANTIALIASING,  RenderingHints.VALUE_ANTIALIAS_ON);
+        BasicStroke stroke = new BasicStroke(2);
+        ((Graphics2D)g).setStroke(stroke);
+        ((Graphics2D)g).drawLine(x1+10, y1+10, x2+10, y2+10);
+        if(x1<=x2) xAux=((x2-x1)/2)+x1;
+        if(x1>x2) xAux=((x1-x2)/2)+x2;
+        if(y1<y2) yAux=((y2-y1)/2)+y1;
+        if(y1>=y2) yAux=((y1-y2)/2)+y2;
+        //((Graphics2D)g).setColor(Color.black);
+        ((Graphics2D)g).drawString(direccion, xAux, yAux);
+    }
+    
     
     
     
@@ -117,7 +135,7 @@ public class FrmElegirMapa extends javax.swing.JFrame {
         panelLateralDerecho.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         comboOrigen.setFont(new java.awt.Font("Yu Gothic UI", 0, 13)); // NOI18N
-        comboOrigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Amazonas", "Ancash", "Apurimac", "Arequipa", "Ayacucho", "Cajamarca", "Callao", "Cusco", "Huancavelica", "Huanuco", "Ica", "Junín", "La Libertad", "Lambayeque", "Lima", "Loreto", "Madre de Dios", "Moquegua", "Pasco", "Piura", "Puno", "San Martín", "Tacna", "Tumbes", "Ucayali" }));
+        comboOrigen.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Amazonas", "Ancash", "Apurimac", "Arequipa", "Ayacucho", "Cajamarca", "Cusco", "Huancavelica", "Huanuco", "Ica", "Junín", "La Libertad", "Lambayeque", "Lima", "Loreto", "Madre de Dios", "Moquegua", "Pasco", "Piura", "Puno", "San Martín", "Tacna", "Tumbes", "Ucayali" }));
         comboOrigen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboOrigenActionPerformed(evt);
@@ -125,7 +143,12 @@ public class FrmElegirMapa extends javax.swing.JFrame {
         });
 
         comboDestino.setFont(new java.awt.Font("Yu Gothic UI", 0, 13)); // NOI18N
-        comboDestino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Amazonas", "Ancash", "Apurimac", "Arequipa", "Ayacucho", "Cajamarca", "Callao", "Cusco", "Huancavelica", "Huanuco", "Ica", "Junín", "La Libertad", "Lambayeque", "Lima", "Loreto", "Madre de Dios", "Moquegua", "Pasco", "Piura", "Puno", "San Martín", "Tacna", "Tumbes", "Ucayali" }));
+        comboDestino.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Amazonas", "Ancash", "Apurimac", "Arequipa", "Ayacucho", "Cajamarca", "Cusco", "Huancavelica", "Huanuco", "Ica", "Junín", "La Libertad", "Lambayeque", "Lima", "Loreto", "Madre de Dios", "Moquegua", "Pasco", "Piura", "Puno", "San Martín", "Tacna", "Tumbes", "Ucayali" }));
+        comboDestino.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboDestinoActionPerformed(evt);
+            }
+        });
 
         etiquetaDestino.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         etiquetaDestino.setText("Agencia Destino");
@@ -233,20 +256,17 @@ public class FrmElegirMapa extends javax.swing.JFrame {
 
     private void botonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguienteActionPerformed
 
-        if(comboDestino.getSelectedItem().equals(comboOrigen.getSelectedItem())){
-            JOptionPane.showMessageDialog(null, "No puedes colocar el mismo ORIGEN Y DESTINO ");
-        }else{
-            int input = JOptionPane.showConfirmDialog(null, "¿Estás seguro de los cambios establecidos?");
-            // 0=yes, 1=no, 2=cancel
-            if(input==0){
+        int input = JOptionPane.showConfirmDialog(null, "¿Estás seguro de los cambios establecidos?");
+        // 0=yes, 1=no, 2=cancel
+        if(input==0){
 
-                OlvaCourier.boletaActual.setAgenciaInicial(OlvaCourier.agencias.getAgencia(comboOrigen.getSelectedItem().toString()));
-                OlvaCourier.boletaActual.setAgenciaFinal(OlvaCourier.agencias.getAgencia(comboDestino.getSelectedItem().toString()));
+            OlvaCourier.boletaActual.setAgenciaInicial(OlvaCourier.agencias.getAgencia(comboOrigen.getSelectedItem().toString()));
+            OlvaCourier.boletaActual.setAgenciaFinal(OlvaCourier.agencias.getAgencia(comboDestino.getSelectedItem().toString()));
 
-                FrmBoletaLlenar boleta = new FrmBoletaLlenar();
-                this.dispose();
-            }
+            FrmBoletaLlenar boleta = new FrmBoletaLlenar();
+            this.dispose();
         }
+        
 
     }//GEN-LAST:event_botonSiguienteActionPerformed
 
@@ -257,21 +277,29 @@ public class FrmElegirMapa extends javax.swing.JFrame {
 
     private void botonAplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAplicarActionPerformed
 
-        //if(comboDestino.getSelectedItem().equals(comboOrigen.getSelectedItem())){
-        //    JOptionPane.showMessageDialog(null, "No puedes colocar el mismo ORIGEN Y DESTINO ");
-        //}else{
+        if(comboDestino.getSelectedItem().equals(comboOrigen.getSelectedItem())){
+            JOptionPane.showMessageDialog(null, "No puedes colocar el mismo ORIGEN Y DESTINO ");
+        }else{
             
-            DijkstraMapa miD = new DijkstraMapa(OlvaCourier.miGrafo, comboOrigen.getSelectedIndex(), comboDestino.getSelectedIndex());
+            miD.setNodoInicio(comboOrigen.getSelectedIndex());
+            miD.setNodoFin(comboDestino.getSelectedIndex());
             miD.dijkstra();
+            //miD.getNodos();
+            miD.empilar();
+            OlvaCourier.boletaActual.getFechadeEntrega().add(Calendar.DAY_OF_YEAR,(miD.getPila().getLongitud()-1));
             opc = 1;
             repaint();
-            miD.imprimirRuta();
-        //}
+            botonSiguiente.setEnabled(true);
+        }
     }//GEN-LAST:event_botonAplicarActionPerformed
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         
     }//GEN-LAST:event_formMousePressed
+
+    private void comboDestinoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboDestinoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboDestinoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -310,10 +338,23 @@ public class FrmElegirMapa extends javax.swing.JFrame {
     
     @Override
     public void paint(Graphics g){
+        int pos,pos2;
         super.paint(g);
         switch(opc){
             case 0: break;
-            case 1: g.drawLine(OlvaCourier.miGrafo.getCoordeX(comboOrigen.getSelectedIndex()), OlvaCourier.miGrafo.getCoordeY(comboOrigen.getSelectedIndex()), OlvaCourier.miGrafo.getCoordeX(comboDestino.getSelectedIndex()), OlvaCourier.miGrafo.getCoordeY(comboDestino.getSelectedIndex()));
+            case 1: do{
+                        pos = (int)miD.getPila().Desempilar();
+                        Graphics2D g2 = (Graphics2D) g;
+                        g2.fillOval(OlvaCourier.miGrafo.getCoordeX(pos), OlvaCourier.miGrafo.getCoordeY(pos), 15  , 15);g2.setStroke(new BasicStroke(3));
+                        g2.setColor(Color.red);
+                        if(!miD.getPila().pilaVacia()){
+                            pos2= (int)miD.getPila().getCima();
+                            g2.fillOval(OlvaCourier.miGrafo.getCoordeX(pos2), OlvaCourier.miGrafo.getCoordeY(pos2), 15  , 15);
+                            g2.setColor(Color.red);
+                            g2.drawLine(OlvaCourier.miGrafo.getCoordeX(pos)+6, OlvaCourier.miGrafo.getCoordeY(pos)+6, OlvaCourier.miGrafo.getCoordeX(pos2)+6, OlvaCourier.miGrafo.getCoordeY(pos2)+6);
+                            g2.setStroke(new BasicStroke(3));
+                        }
+                    }while(!miD.getPila().pilaVacia());
         }
         
     }
