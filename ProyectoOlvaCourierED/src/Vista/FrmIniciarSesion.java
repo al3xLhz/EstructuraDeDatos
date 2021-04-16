@@ -77,11 +77,13 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
         botonIngresar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        botonSalir = new javax.swing.JButton();
         FondoMarca = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 formKeyTyped(evt);
@@ -146,30 +148,39 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/persona.png"))); // NOI18N
 
+        botonSalir.setBackground(new java.awt.Color(64, 170, 173));
+        botonSalir.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        botonSalir.setForeground(new java.awt.Color(56, 56, 55));
+        botonSalir.setText("Salir");
+        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSalirActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout IngresoDatosLayout = new javax.swing.GroupLayout(IngresoDatos);
         IngresoDatos.setLayout(IngresoDatosLayout);
         IngresoDatosLayout.setHorizontalGroup(
             IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(IngresoDatosLayout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, IngresoDatosLayout.createSequentialGroup()
+                .addContainerGap(36, Short.MAX_VALUE)
                 .addGroup(IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, IngresoDatosLayout.createSequentialGroup()
-                        .addGroup(IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(IngresoDatosLayout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(etiquetaContraseña))
-                            .addGroup(IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(CampoUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
-                                .addComponent(etiquetaUsuario, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(CampoContraseña, javax.swing.GroupLayout.Alignment.LEADING)))
-                        .addGap(48, 48, 48))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, IngresoDatosLayout.createSequentialGroup()
-                        .addComponent(botonIngresar)
-                        .addGap(148, 148, 148))))
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(IngresoDatosLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(etiquetaContraseña))
+                    .addGroup(IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, IngresoDatosLayout.createSequentialGroup()
+                            .addComponent(botonIngresar)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(CampoUsuario, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 249, Short.MAX_VALUE)
+                        .addComponent(etiquetaUsuario, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(CampoContraseña, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addGap(48, 48, 48))
         );
         IngresoDatosLayout.setVerticalGroup(
             IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -181,14 +192,17 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(CampoUsuario))
                 .addGap(28, 28, 28)
-                .addComponent(etiquetaContraseña)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(CampoContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addComponent(botonIngresar)
-                .addGap(60, 60, 60))
+                .addGroup(IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(IngresoDatosLayout.createSequentialGroup()
+                        .addComponent(etiquetaContraseña)
+                        .addGap(30, 30, 30)
+                        .addComponent(CampoContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(IngresoDatosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botonIngresar)
+                            .addComponent(botonSalir)))
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE))
+                .addGap(105, 105, 105))
         );
 
         Fondo.add(IngresoDatos, java.awt.BorderLayout.CENTER);
@@ -240,7 +254,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
+            .addComponent(Fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -291,6 +305,10 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
             iniciarSesion();
         }
     }//GEN-LAST:event_CampoContraseñaKeyPressed
+
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_botonSalirActionPerformed
     
     /**
      * @param args the command line arguments
@@ -339,6 +357,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
     private javax.swing.JPanel FondoMarca;
     private javax.swing.JPanel IngresoDatos;
     private javax.swing.JButton botonIngresar;
+    private javax.swing.JButton botonSalir;
     private javax.swing.JLabel etiquetaContraseña;
     private javax.swing.JLabel etiquetaUsuario;
     private javax.swing.JLabel jLabel1;

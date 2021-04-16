@@ -20,12 +20,13 @@ import javax.swing.JOptionPane;
      */
     public FrmBoletaLlenar() {
         initComponents();
+        OlvaCourier.horaActual = Calendar.getInstance();
         //Uso de los atributos de la boletaActual para mostrar en el FrmBoletaLlenar
         respuestaOrigen.setText(OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion());
         respuestaDestino.setText(OlvaCourier.boletaActual.getAgenciaFinal().getUbicacion());
         respuestaCliente.setText(OlvaCourier.clienteActual.getNombres()+" "+OlvaCourier.clienteActual.getApellidos());
         respuestaDNI.setText(OlvaCourier.clienteActual.getDni());
-        respuestaFechaEmision.setText(Calendar.getInstance().getTime().toString());
+        respuestaFechaEmision.setText(OlvaCourier.horaActual.getTime().toString());
         respuestaFechaLlegada.setText(OlvaCourier.boletaActual.getFechadeEntrega().getTime().toString());
         respuestaValorTotal.setText(String.valueOf(OlvaCourier.boletaActual.getImporteTotal()));
         respuestaIGV.setText(String.valueOf(OlvaCourier.boletaActual.getIGV()));

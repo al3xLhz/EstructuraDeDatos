@@ -69,6 +69,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jLabel5.setText("jLabel5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         Fondo.setBackground(new java.awt.Color(64, 170, 173));
         Fondo.setPreferredSize(new java.awt.Dimension(650, 520));

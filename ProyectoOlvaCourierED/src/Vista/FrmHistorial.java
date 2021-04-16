@@ -20,9 +20,10 @@ public class FrmHistorial extends javax.swing.JFrame {
      */
     public FrmHistorial() {
         initComponents();
+        OlvaCourier.horaActual = Calendar.getInstance();
         llenarTabla();
         etiquetaNombre.setText(OlvaCourier.clienteActual.getNombres()+OlvaCourier.clienteActual.getApellidos());
-        etiquetaHora.setText(Calendar.getInstance().getTime().toString());
+        etiquetaHora.setText(OlvaCourier.horaActual.getTime().toLocaleString());
         setVisible(true);
     }
 
@@ -90,6 +91,7 @@ public class FrmHistorial extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         fondo.setLayout(new java.awt.BorderLayout());
 

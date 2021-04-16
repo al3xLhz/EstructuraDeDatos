@@ -7,6 +7,7 @@ package Vista;
 
 import Modelo.Pedido;
 import Sistema.OlvaCourier;
+import java.util.Calendar;
 
 /**
  *
@@ -19,10 +20,12 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
      */
     public FrmConsultarOrden() {
         initComponents();
+        OlvaCourier.horaActual = Calendar.getInstance();
         llenarTabla();
         respuestaNroBoleta.setText(String.valueOf(OlvaCourier.boletaActual.getCodigo()));
         respuestaEstado.setText(OlvaCourier.boletaActual.getEstado());
         etiquetaNombre.setText(OlvaCourier.clienteActual.getNombres()+OlvaCourier.clienteActual.getApellidos());
+        etiquetaHora.setText(OlvaCourier.horaActual.getTime().toLocaleString());
         setVisible(true);
     }
     
@@ -58,8 +61,7 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
         respuestaNroBoleta = new javax.swing.JLabel();
         respuestaEstado = new javax.swing.JLabel();
         etiquetaNroBoleta2 = new javax.swing.JLabel();
-        botonRetroceder = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
         Header = new javax.swing.JPanel();
         TituloRegistroEnvio = new javax.swing.JLabel();
@@ -67,6 +69,7 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
         etiquetaHora = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         fondo.setBackground(new java.awt.Color(64, 170, 173));
         fondo.setLayout(new java.awt.BorderLayout());
@@ -79,15 +82,9 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
 
         etiquetaNroBoleta2.setText("Estado:");
 
-        botonRetroceder.setText("Retroceder");
-        botonRetroceder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonRetrocederActionPerformed(evt);
-            }
-        });
-
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null},
                 {null, null},
                 {null, null},
                 {null, null},
@@ -98,23 +95,19 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(Tabla);
+        jScrollPane1.setViewportView(Tabla);
 
         javax.swing.GroupLayout BodyLayout = new javax.swing.GroupLayout(Body);
         Body.setLayout(BodyLayout);
         BodyLayout.setHorizontalGroup(
             BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BodyLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonRetroceder, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(243, 243, 243))
             .addGroup(BodyLayout.createSequentialGroup()
                 .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BodyLayout.createSequentialGroup()
@@ -127,9 +120,9 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
                             .addComponent(respuestaNroBoleta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(respuestaEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)))
                     .addGroup(BodyLayout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(61, 61, 61)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         BodyLayout.setVerticalGroup(
             BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -142,11 +135,9 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
                 .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(respuestaEstado)
                     .addComponent(etiquetaNroBoleta2))
-                .addGap(43, 43, 43)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(botonRetroceder)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         fondo.add(Body, java.awt.BorderLayout.CENTER);
@@ -170,7 +161,7 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
                 .addComponent(TituloRegistroEnvio)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addComponent(etiquetaNombre)
-                .addGap(89, 89, 89)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                 .addComponent(etiquetaHora)
                 .addGap(100, 100, 100))
         );
@@ -182,7 +173,7 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
                     .addComponent(etiquetaNombre)
                     .addComponent(etiquetaHora)
                     .addComponent(TituloRegistroEnvio))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         fondo.add(Header, java.awt.BorderLayout.NORTH);
@@ -261,13 +252,12 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
     private javax.swing.JPanel Header;
     private javax.swing.JTable Tabla;
     private javax.swing.JLabel TituloRegistroEnvio;
-    private javax.swing.JButton botonRetroceder;
     private javax.swing.JLabel etiquetaHora;
     private javax.swing.JLabel etiquetaNombre;
     private javax.swing.JLabel etiquetaNroBoleta;
     private javax.swing.JLabel etiquetaNroBoleta2;
     private javax.swing.JPanel fondo;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel respuestaEstado;
     private javax.swing.JLabel respuestaNroBoleta;
     // End of variables declaration//GEN-END:variables

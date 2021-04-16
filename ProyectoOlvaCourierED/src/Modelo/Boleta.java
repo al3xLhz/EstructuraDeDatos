@@ -2,6 +2,7 @@
 package Modelo;
 
 import Estructuras.Lista;
+import Sistema.OlvaCourier;
 import java.util.Calendar;
 
 public class Boleta {
@@ -19,10 +20,11 @@ public class Boleta {
     private Lista<Pedido> listaPedidos = new Lista<>();
 
     public Boleta(Agencia agenciaInicial, Agencia agenciaFinal,String propietarioDNI) {
+        OlvaCourier.horaActual = Calendar.getInstance();
         this.codigo = codigoM;
         codigoM++;
         this.propietarioDNI=propietarioDNI;
-        this.fechaEmision=Calendar.getInstance();
+        this.fechaEmision=OlvaCourier.horaActual;
         this.fechadeEntrega=fechaEmision;
         this.estado= "Sin entregar";
     }

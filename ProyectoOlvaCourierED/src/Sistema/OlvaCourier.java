@@ -4,6 +4,7 @@ package Sistema;
 import Estructuras.Lista;
 import Grafo.*;
 import Modelo.*;
+import java.util.Calendar;
 
 
 
@@ -25,6 +26,7 @@ public class OlvaCourier {
     public static Administrador administradorActual;
     public static GrafoMapa miGrafo = new GrafoMapa();
     public static DijkstraMapa miDijkstra = new DijkstraMapa(miGrafo);
+    public static Calendar horaActual=Calendar.getInstance();
     
     
     
