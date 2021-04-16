@@ -61,7 +61,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
          
     }
     
-    public void RegistrarPedidosBD(){
+    public static void RegistrarPedidosBD(){
            if(p1.getNombreProducto()!= ""){
                 try {
                         CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaProductos(?,?,?,?,?)}");
@@ -137,7 +137,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
         
     }
     
-    public void RegistrarPedidos2(){
+    public static void RegistrarPedidos2(){
         if(p1.getNombreProducto()!= ""){
             Pedido pe = (Pedido) OlvaCourier.boletaActual.getListaPedidos().getXPos(0);
         try {   
@@ -502,8 +502,6 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                 OlvaCourier.boletaActual.setPrecioTotal();
                 OlvaCourier.boletaActual.setPropietarioDNI(String.valueOf(OlvaCourier.clienteActual.getCodigo()));
                 OlvaCourier.boletaActual.getFechadeEntrega().add(Calendar.DAY_OF_MONTH, 5);
-                RegistrarPedidosBD();
-                RegistrarPedidos2();
                 
             FrmElegirMapa mapa = new FrmElegirMapa();
             this.dispose();

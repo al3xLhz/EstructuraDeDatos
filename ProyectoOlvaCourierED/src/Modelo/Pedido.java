@@ -7,13 +7,13 @@ public class Pedido {
     private int codigo;
     private double valor;
     private Producto producto;
-    public static int codigoPedido= (int) Math.floor(Math.random()*1000+1);
+    public static int codigoPedido = (int) (Math.random()*10000+1);
     
 
     public Pedido(Producto producto) {
-        this.codigo = codigoPedido;
-        this.producto=producto;
+        this.codigo = (int) (Math.random()*10000+1);
         codigoPedido++;
+        this.producto=producto;
         setPrecioPedido(producto);
     }
 

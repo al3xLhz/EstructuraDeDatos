@@ -7,6 +7,8 @@ package Vista;
 
 import Modelo.Pedido;
 import Sistema.OlvaCourier;
+import static Vista.FrmRegistroProducto.RegistrarPedidos2;
+import static Vista.FrmRegistroProducto.RegistrarPedidosBD;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -30,8 +32,8 @@ import javax.swing.JOptionPane;
         respuestaDestino.setText(OlvaCourier.boletaActual.getAgenciaFinal().getUbicacion());
         respuestaCliente.setText(OlvaCourier.clienteActual.getNombres()+" "+OlvaCourier.clienteActual.getApellidos());
         respuestaDNI.setText(String.valueOf(OlvaCourier.clienteActual.getCodigo()));
-        respuestaFechaEmision.setText(Calendar.getInstance().getTime().toString());
-        respuestaFechaLlegada.setText(OlvaCourier.boletaActual.getFechadeEntrega().toString());
+        respuestaFechaEmision.setText(Calendar.getInstance().getTime().toLocaleString());
+        respuestaFechaLlegada.setText(OlvaCourier.boletaActual.getFechadeEntrega().getTime().toLocaleString());
         respuestaValorTotal.setText(String.valueOf(OlvaCourier.boletaActual.getImporteTotal()));
         respuestaIGV.setText(String.valueOf(OlvaCourier.boletaActual.getIGV()));
         respuestaTotal.setText(String.valueOf(OlvaCourier.boletaActual.getTotal()));
@@ -84,6 +86,13 @@ import javax.swing.JOptionPane;
         
          try{
             PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Pedido set CodigoB = " + OlvaCourier.boletaActual.getCodigo() + "where CodigoB is null" );
+            pps.executeUpdate();
+        }
+        catch(SQLException e){           
+        }
+         
+          try{
+            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("Update Clientes set CodigoA = (select codigo from Administrador INNER JOIN Boleta ON Boleta.AgenciaI = Administrador.agencia where AgenciaI = '" + OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion() + "' Group by codigo) where codigo = '" + OlvaCourier.clienteActual.getCodigo() + "'");
             pps.executeUpdate();
         }
         catch(SQLException e){           
@@ -335,7 +344,8 @@ import javax.swing.JOptionPane;
        int input = JOptionPane.showConfirmDialog(null, "¿Estás seguro de los cambios establecidos?");
         // 0=yes, 1=no, 2=cancel
        if(input==0){
-
+           RegistrarPedidosBD();
+           RegistrarPedidos2();
            LlenarBoletaBD();
            
            //Guarda la boleta creada al cliente que ha iniciado sesion
