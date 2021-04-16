@@ -16,7 +16,7 @@ public class Boleta {
     private double total;
     private static int codigoM = 1000;
     private String propietarioDNI;
-    private String estado;
+    private int estado;//1=Sin entregar 2=En camino 3= Llego
     private Lista<Pedido> listaPedidos = new Lista<>();
 
     public Boleta(Agencia agenciaInicial, Agencia agenciaFinal,String propietarioDNI) {
@@ -26,7 +26,7 @@ public class Boleta {
         this.propietarioDNI=propietarioDNI;
         this.fechaEmision=OlvaCourier.horaActual;
         this.fechadeEntrega=fechaEmision;
-        this.estado= "Sin entregar";
+        this.estado= 1;
     }
 
     public String getPropietarioDNI() {
@@ -37,11 +37,11 @@ public class Boleta {
         this.propietarioDNI = propietarioDNI;
     }
 
-    public String getEstado() {
+    public int getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(int estado) {
         this.estado = estado;
     }
 

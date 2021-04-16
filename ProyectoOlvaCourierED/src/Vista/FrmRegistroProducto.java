@@ -27,7 +27,6 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
     
     public FrmRegistroProducto() {
         initComponents();
-        OlvaCourier.horaActual = Calendar.getInstance();
         etiquetaHora.setText(OlvaCourier.horaActual.getTime().toLocaleString());
         etiquetaNombre.setText("Hola, "+OlvaCourier.clienteActual.getNombres());
         p1 = new Producto("", 0, 0, 0, 0, 0);
@@ -123,6 +122,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
+        fondo.setBackground(new java.awt.Color(64, 170, 173));
         fondo.setLayout(new java.awt.BorderLayout());
 
         Header.setBackground(new java.awt.Color(64, 170, 173));

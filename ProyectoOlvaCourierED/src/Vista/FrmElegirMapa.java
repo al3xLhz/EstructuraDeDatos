@@ -79,7 +79,7 @@ public class FrmElegirMapa extends javax.swing.JFrame {
         Head.setLayout(HeadLayout);
         HeadLayout.setHorizontalGroup(
             HeadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1090, Short.MAX_VALUE)
+            .addGap(0, 1055, Short.MAX_VALUE)
         );
         HeadLayout.setVerticalGroup(
             HeadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,6 +169,8 @@ public class FrmElegirMapa extends javax.swing.JFrame {
             }
         });
 
+        botonVerInventarioAgencias.setBackground(new java.awt.Color(255, 255, 255));
+        botonVerInventarioAgencias.setForeground(new java.awt.Color(0, 0, 0));
         botonVerInventarioAgencias.setText("Ver inventario de agencias");
         botonVerInventarioAgencias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -249,7 +251,7 @@ public class FrmElegirMapa extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(fondo, javax.swing.GroupLayout.DEFAULT_SIZE, 1055, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(

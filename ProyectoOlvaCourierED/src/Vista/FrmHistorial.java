@@ -20,7 +20,6 @@ public class FrmHistorial extends javax.swing.JFrame {
      */
     public FrmHistorial() {
         initComponents();
-        OlvaCourier.horaActual = Calendar.getInstance();
         llenarTabla();
         etiquetaNombre.setText(OlvaCourier.clienteActual.getNombres()+OlvaCourier.clienteActual.getApellidos());
         etiquetaHora.setText(OlvaCourier.horaActual.getTime().toLocaleString());
