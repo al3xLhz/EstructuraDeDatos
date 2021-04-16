@@ -380,7 +380,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                 OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p4));
                 OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p5));
                 OlvaCourier.boletaActual.setPrecioTotal();
-                OlvaCourier.boletaActual.setPropietarioDNI(OlvaCourier.clienteActual.getDni());
+                OlvaCourier.boletaActual.setPropietarioDNI(OlvaCourier.clienteActual.getCodigo());
                 
                 if(OlvaCourier.clienteActual.getVersionPagada()==0){
                     OlvaCourier.boletaActual.setAgenciaInicial(OlvaCourier.agencias.getAgencia(comboOrigen.getSelectedItem().toString()));

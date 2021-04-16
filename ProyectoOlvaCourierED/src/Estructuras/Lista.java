@@ -403,13 +403,29 @@ public class Lista<E>{
         while(aux!=null){
             if(aux.objeto instanceof Cliente){
                 Cliente cl = (Cliente) aux.objeto;//Lo convierto en Cliente para que pueda compararlo con el argumento que reciba
-                if(cl.getDni().equals(c.getDni())){
+                if(cl.getCodigo().equals(c.getCodigo())){
                     aux.objeto=(E) c;
                 }
             }
             aux=aux.siguiente;
             
         }
+    }
+    
+    public Cliente buscarXCodigoCliente(String codigo){
+        Nodo<E> aux =inicio;
+        Cliente claux = null;
+        while(aux!=null){
+            if(aux.objeto instanceof Cliente){
+                Cliente cl = (Cliente) aux.objeto;//Lo convierto en Cliente para que pueda compararlo con el argumento que reciba
+                if(cl.getCodigo().equals(cl.getCodigo())){
+                    claux = cl;
+                }
+            }
+            aux=aux.siguiente;
+            
+        }
+        return claux;
     }
     
     

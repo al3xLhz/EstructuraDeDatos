@@ -201,8 +201,22 @@ public class FrmAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_ClienteActionPerformed
 
     private void botonConsularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsularActionPerformed
-        String codigo=JOptionPane.showInputDialog("Digite el codigo de la boleta");
+
         String codigoCliente = JOptionPane.showInputDialog("Digite el codigo del cliente");
+        
+        
+        if(OlvaCourier.clientes.buscarXCodigoCliente(codigoCliente)!=null){
+            OlvaCourier.clienteActual = OlvaCourier.clientes.buscarXCodigoCliente(codigoCliente);
+            String codigo=JOptionPane.showInputDialog("Digite el codigo de la boleta");
+            if(OlvaCourier.clienteActual.getListaBoletas().buscarXCodigoCliente(codigo)!=null){
+                OlvaCourier.boletaActual = OlvaCourier.clienteActual.getListaBoletas().getBoleta(Integer.valueOf(codigo));
+            }else{
+                JOptionPane.showMessageDialog(null, "No se encontro la boleta");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "No se encontro el cliente");
+        }
+        
         
         
     }//GEN-LAST:event_botonConsularActionPerformed

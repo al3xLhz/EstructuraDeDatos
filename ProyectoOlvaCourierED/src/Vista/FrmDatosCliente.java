@@ -27,7 +27,7 @@ public class FrmDatosCliente extends javax.swing.JFrame {
     public void tablaCompleta(){  
         String matriz[][]= new String [OlvaCourier.clientes.getTamaño()][4];
         for(int i=0; i<OlvaCourier.clientes.getTamaño();i++){
-            matriz[i][0]=OlvaCourier.clientes.getXPos(i).getDni();
+            matriz[i][0]=OlvaCourier.clientes.getXPos(i).getCodigo();
             matriz[i][1]=OlvaCourier.clientes.getXPos(i).getNombres();
             matriz[i][2]=OlvaCourier.clientes.getXPos(i).getApellidos();
             matriz[i][3]=OlvaCourier.clientes.getXPos(i).getEmail();

@@ -24,7 +24,7 @@ import javax.swing.JOptionPane;
         respuestaOrigen.setText(OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion());
         respuestaDestino.setText(OlvaCourier.boletaActual.getAgenciaFinal().getUbicacion());
         respuestaCliente.setText(OlvaCourier.clienteActual.getNombres()+" "+OlvaCourier.clienteActual.getApellidos());
-        respuestaDNI.setText(OlvaCourier.clienteActual.getDni());
+        respuestaDNI.setText(OlvaCourier.clienteActual.getCodigo());
         respuestaFechaEmision.setText(OlvaCourier.horaActual.getTime().toString());
         respuestaFechaLlegada.setText(OlvaCourier.boletaActual.getFechadeEntrega().getTime().toString());
         respuestaValorTotal.setText(String.valueOf(OlvaCourier.boletaActual.getImporteTotal()));

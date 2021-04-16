@@ -8,20 +8,13 @@ package Vista;
 import Modelo.Pedido;
 import Sistema.OlvaCourier;
 
-/**
- *
- * @author Alex
- */
 public class FrmConsultarOrden extends javax.swing.JFrame {
 
-    /**
-     * Creates new form RegistroEnvio
-     */
     public FrmConsultarOrden() {
         initComponents();
         llenarTabla();
         respuestaNroBoleta.setText(String.valueOf(OlvaCourier.boletaActual.getCodigo()));
-        if(OlvaCourier.boletaActual.getEstado()==1){posicion2.setVisible(false);posicion3.setVisible(false);}else if(OlvaCourier.boletaActual.getEstado()==2){posicion1.setVisible(false);posicion3.setVisible(false);}else{posicion1.setVisible(false);posicion2.setVisible(false);}
+        if(OlvaCourier.boletaActual.getEstado()==1){posicion2.setVisible(false);posicion3.setVisible(false);respuestaEstado.setText("Sin entregar");}else if(OlvaCourier.boletaActual.getEstado()==2){posicion1.setVisible(false);posicion3.setVisible(false);respuestaEstado.setText("En camino");}else{posicion1.setVisible(false);posicion2.setVisible(false);respuestaEstado.setText("Llego a su destino");}
         etiquetaNombre.setText(OlvaCourier.clienteActual.getNombres()+OlvaCourier.clienteActual.getApellidos());
         etiquetaHora.setText(OlvaCourier.horaActual.getTime().toLocaleString());
         setLocationRelativeTo(null);

@@ -11,8 +11,8 @@ public class Cliente extends Persona{
     private int versionPagada; // 1=activado 0= noactivado
 
    
-    public Cliente(int versionPagada, String nombres, String apellidos, String dni, String email, Login usuario) {
-        super(nombres, apellidos, dni, email, usuario);
+    public Cliente(int versionPagada, String nombres, String apellidos, String codigo, String email, Login usuario) {
+        super(nombres, apellidos, codigo, email, usuario);
         this.versionPagada = versionPagada;
     }
     
@@ -33,6 +33,7 @@ public class Cliente extends Persona{
     public void setVersionPagada(int versionPagada) {
         this.versionPagada = versionPagada;
     }
+    
     
     
     

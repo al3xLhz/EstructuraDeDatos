@@ -5,14 +5,14 @@ public class Persona {
     
     private final String nombres;
     private final String apellidos;
-    private final String dni;
+    private final String codigo;
     private final String email;
     private final Login usuario;
 
-    public Persona(String nombres, String apellidos, String dni, String email, Login usuario) {
+    public Persona(String nombres, String apellidos, String codigo, String email, Login usuario) {
         this.nombres = nombres;
         this.apellidos = apellidos;
-        this.dni = dni;
+        this.codigo = codigo;
         this.email = email;
         this.usuario = usuario;
         
@@ -27,10 +27,10 @@ public class Persona {
         return apellidos;
     }
 
-    public String getDni() {
-        return dni;
+    public String getCodigo() {
+        return codigo;
     }
-
+    
     public String getEmail() {
         return email;
     }
