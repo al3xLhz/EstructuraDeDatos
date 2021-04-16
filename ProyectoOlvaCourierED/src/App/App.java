@@ -24,8 +24,7 @@ public class App {
         //<Es un respaldode creacion de los clientes,administradores Todo debería ser un sql pero en este caso por terminos de rapidez se hace de esta manera
 
         //>
-        
-        
+              
         //Inserta los objetos creados en sus respectivas listas : clientes, administradores y personas
 
         

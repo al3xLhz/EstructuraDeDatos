@@ -335,7 +335,7 @@ public class Lista<E>{
         insertarNodoPorFinal((E) new Agencia("Huancavelica", 7));
         insertarNodoPorFinal((E) new Agencia("Huanuco", 8));
         insertarNodoPorFinal((E) new Agencia("Ica", 9));
-        insertarNodoPorFinal((E) new Agencia("Junín", 10));
+        insertarNodoPorFinal((E) new Agencia("Junin", 10));
         insertarNodoPorFinal((E) new Agencia("La Libertad", 11));
         insertarNodoPorFinal((E) new Agencia("Lambayeque", 12));
         insertarNodoPorFinal((E) new Agencia("Lima", 13));
@@ -345,7 +345,7 @@ public class Lista<E>{
         insertarNodoPorFinal((E) new Agencia("Pasco", 17));
         insertarNodoPorFinal((E) new Agencia("Piura", 18));
         insertarNodoPorFinal((E) new Agencia("Puno", 19));
-        insertarNodoPorFinal((E) new Agencia("San Martín", 20));
+        insertarNodoPorFinal((E) new Agencia("San Martin", 20));
         insertarNodoPorFinal((E) new Agencia("Tacna", 21));
         insertarNodoPorFinal((E) new Agencia("Tumbes", 22));
         insertarNodoPorFinal((E) new Agencia("Ucayali", 23));

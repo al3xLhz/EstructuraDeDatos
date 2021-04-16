@@ -6,6 +6,7 @@ import Grafo.*;
 import Modelo.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
 
 
 
@@ -26,6 +27,8 @@ public class OlvaCourier {
     public static Login usuarioActual;
     public static Administrador administradorActual;
     public static GrafoMapa miGrafo = new GrafoMapa();
+    public static DijkstraMapa miDijkstra = new DijkstraMapa(miGrafo);
+    public static Calendar horaActual=Calendar.getInstance();
     
 
     
@@ -37,8 +40,8 @@ public class OlvaCourier {
         
         try{
             while(res.next()){
-                OlvaCourier.clientes.insertarNodoPorFinal(new Cliente(res.getString(2), res.getString(3),res.getString(1), res.getString(4), new Login(res.getString(5),res.getString(6),res.getInt(7))));
-                OlvaCourier.personas.insertarNodoPorFinal(new Cliente(res.getString(2), res.getString(3),res.getString(1), res.getString(4), new Login(res.getString(5),res.getString(6),res.getInt(7))));
+                OlvaCourier.clientes.insertarNodoPorFinal(new Cliente(res.getInt(8), res.getString(2), res.getString(3),res.getString(1), res.getString(4), new Login(res.getString(5),res.getString(6),res.getInt(7))));
+                OlvaCourier.personas.insertarNodoPorFinal(new Cliente(res.getInt(8), res.getString(2), res.getString(3),res.getString(1), res.getString(4), new Login(res.getString(5),res.getString(6),res.getInt(7))));
             }  
         }catch(SQLException e){
         }

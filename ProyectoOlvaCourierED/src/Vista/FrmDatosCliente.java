@@ -58,6 +58,7 @@ public class FrmDatosCliente extends javax.swing.JFrame {
         descentente = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(64, 170, 173));
 
