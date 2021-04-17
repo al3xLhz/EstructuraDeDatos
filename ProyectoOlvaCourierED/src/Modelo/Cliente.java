@@ -5,8 +5,6 @@ import Estructuras.Lista;
 
 public class Cliente extends Persona{
     
-    
-    
     private Lista<Boleta> listaBoletas = new Lista<>();
     private int versionPagada; // 1=activado 0= noactivado
 

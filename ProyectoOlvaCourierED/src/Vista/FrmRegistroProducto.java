@@ -369,32 +369,38 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_ComboNProductosActionPerformed
 
     private void botonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguienteActionPerformed
-        
+    
         if("".equals(p1.getNombreProducto())){
             JOptionPane.showMessageDialog(null, "No se colocó ningun producto ");
         }else{
-                
-                OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p1));
-                OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p2));
-                OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p3));
-                OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p4));
-                OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p5));
-                OlvaCourier.boletaActual.setPrecioTotal();
-                OlvaCourier.boletaActual.setPropietarioDNI(OlvaCourier.clienteActual.getCodigo());
-                
-                if(OlvaCourier.clienteActual.getVersionPagada()==0){
-                    OlvaCourier.boletaActual.setAgenciaInicial(OlvaCourier.agencias.getAgencia(comboOrigen.getSelectedItem().toString()));
-                    OlvaCourier.boletaActual.setAgenciaFinal(OlvaCourier.agencias.getAgencia(comboDestino.getSelectedItem().toString()));
-                    OlvaCourier.boletaActual.getFechadeEntrega().add(Calendar.DAY_OF_MONTH, 5);//Falta establecer un adecuado fecha de entrega
-                    FrmBoletaLlenar frmb = new FrmBoletaLlenar();
-                }else{
-                    FrmElegirMapa mapa = new FrmElegirMapa();
-                }
-                
-            
-            this.dispose();
-            
+
+            OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p1));
+            OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p2));
+            OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p3));
+            OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p4));
+            OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p5));
+            OlvaCourier.boletaActual.setPrecioTotal();
+            OlvaCourier.boletaActual.setPropietarioDNI(OlvaCourier.clienteActual.getCodigo());
         }
+        
+        
+        if(OlvaCourier.clienteActual.getVersionPagada()==1){
+            
+            FrmElegirMapa mapa = new FrmElegirMapa();
+            this.dispose();
+        }else{
+            if(comboDestino.getSelectedItem().equals(comboOrigen.getSelectedItem())){
+                    JOptionPane.showMessageDialog(null, "No puedes colocar el mismo ORIGEN Y DESTINO ");
+            }else{
+                OlvaCourier.boletaActual.setAgenciaInicial(OlvaCourier.agencias.getAgencia(comboOrigen.getSelectedItem().toString()));
+                OlvaCourier.boletaActual.setAgenciaFinal(OlvaCourier.agencias.getAgencia(comboDestino.getSelectedItem().toString()));
+                OlvaCourier.boletaActual.getFechadeEntrega().add(Calendar.DAY_OF_MONTH, 5);//Falta establecer un adecuado fecha de entrega
+                FrmBoletaLlenar frmb = new FrmBoletaLlenar();
+                this.dispose();
+            }
+        }
+        
+        
         
         
     }//GEN-LAST:event_botonSiguienteActionPerformed

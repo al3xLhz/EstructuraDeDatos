@@ -418,7 +418,7 @@ public class Lista<E>{
         while(aux!=null){
             if(aux.objeto instanceof Cliente){
                 Cliente cl = (Cliente) aux.objeto;//Lo convierto en Cliente para que pueda compararlo con el argumento que reciba
-                if(cl.getCodigo().equals(cl.getCodigo())){
+                if(cl.getCodigo().equals(codigo)){
                     claux = cl;
                 }
             }

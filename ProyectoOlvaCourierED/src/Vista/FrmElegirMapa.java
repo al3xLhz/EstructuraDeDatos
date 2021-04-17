@@ -23,7 +23,9 @@ import javax.swing.JOptionPane;
 public class FrmElegirMapa extends javax.swing.JFrame {
     
     DijkstraMapa miD = new DijkstraMapa(OlvaCourier.miGrafo);
-    
+    int auxI;
+    int auxF;
+    int aux;
     int opc=0;
     int c=0;
     public FrmElegirMapa() {
@@ -31,12 +33,31 @@ public class FrmElegirMapa extends javax.swing.JFrame {
         setResizable(false);
         setLocationRelativeTo(null);
         setVisible(true);
+        try{
+        int auxI=OlvaCourier.boletaActual.getAgenciaInicial().getNumero();
+        int auxF=OlvaCourier.boletaActual.getAgenciaFinal().getNumero();
+        }catch(Exception e){
+        //Solo funciona en los no prime    
+        }
+        
         botonSiguiente.setEnabled(false);
         //Condicional para que aparezca cuando eres admin y no cliente
-        if(OlvaCourier.usuarioActual.getTipoFuncion()==1){
+        if(OlvaCourier.usuarioActual.getTipoFuncion()==1){ //Cliente
             botonVerInventarioAgencias.setVisible(false);
-        }else{
+            etiquetaOrigenEstablecido.setVisible(false);
+            etiquetaDestinoEstablecido.setVisible(false);
+            rptaDestinoEstablecido.setVisible(false);
+            rptaOrigenEstablecido.setVisible(false);
+        }else{ //Admin
             botonVerInventarioAgencias.setVisible(true);
+            botonAplicar.setText("Añadir");
+            etiquetaOrigenEstablecido.setVisible(true);
+            etiquetaDestinoEstablecido.setVisible(true);
+            rptaDestinoEstablecido.setVisible(true);
+            rptaOrigenEstablecido.setVisible(true);
+            botonSiguiente.setText("Finalizar");
+            rptaOrigenEstablecido.setText(OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion());
+            rptaDestinoEstablecido.setText(OlvaCourier.boletaActual.getAgenciaFinal().getUbicacion());
         }
         
     }
@@ -60,6 +81,10 @@ public class FrmElegirMapa extends javax.swing.JFrame {
         botonSiguiente = new javax.swing.JButton();
         botonAplicar = new javax.swing.JButton();
         botonVerInventarioAgencias = new javax.swing.JButton();
+        etiquetaOrigenEstablecido = new javax.swing.JLabel();
+        rptaOrigenEstablecido = new javax.swing.JLabel();
+        rptaDestinoEstablecido = new javax.swing.JLabel();
+        etiquetaDestinoEstablecido = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1000, 800));
@@ -177,10 +202,23 @@ public class FrmElegirMapa extends javax.swing.JFrame {
             }
         });
 
+        etiquetaOrigenEstablecido.setText("Origen establecido: ");
+
+        etiquetaDestinoEstablecido.setText("Destino establecido: ");
+
         javax.swing.GroupLayout panelLateralDerechoLayout = new javax.swing.GroupLayout(panelLateralDerecho);
         panelLateralDerecho.setLayout(panelLateralDerechoLayout);
         panelLateralDerechoLayout.setHorizontalGroup(
             panelLateralDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLateralDerechoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(panelLateralDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLateralDerechoLayout.createSequentialGroup()
+                        .addComponent(botonSiguiente)
+                        .addGap(91, 91, 91))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLateralDerechoLayout.createSequentialGroup()
+                        .addComponent(botonVerInventarioAgencias)
+                        .addGap(52, 52, 52))))
             .addGroup(panelLateralDerechoLayout.createSequentialGroup()
                 .addGroup(panelLateralDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelLateralDerechoLayout.createSequentialGroup()
@@ -194,17 +232,19 @@ public class FrmElegirMapa extends javax.swing.JFrame {
                             .addComponent(comboOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelLateralDerechoLayout.createSequentialGroup()
                         .addGap(129, 129, 129)
-                        .addComponent(botonAplicar)))
+                        .addComponent(botonAplicar))
+                    .addGroup(panelLateralDerechoLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(panelLateralDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelLateralDerechoLayout.createSequentialGroup()
+                                .addComponent(etiquetaDestinoEstablecido)
+                                .addGap(18, 18, 18)
+                                .addComponent(rptaDestinoEstablecido, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(panelLateralDerechoLayout.createSequentialGroup()
+                                .addComponent(etiquetaOrigenEstablecido)
+                                .addGap(18, 18, 18)
+                                .addComponent(rptaOrigenEstablecido, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLateralDerechoLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(panelLateralDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLateralDerechoLayout.createSequentialGroup()
-                        .addComponent(botonSiguiente)
-                        .addGap(91, 91, 91))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLateralDerechoLayout.createSequentialGroup()
-                        .addComponent(botonVerInventarioAgencias)
-                        .addGap(52, 52, 52))))
         );
         panelLateralDerechoLayout.setVerticalGroup(
             panelLateralDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -221,7 +261,15 @@ public class FrmElegirMapa extends javax.swing.JFrame {
                 .addComponent(botonAplicar)
                 .addGap(80, 80, 80)
                 .addComponent(botonVerInventarioAgencias)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 267, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(panelLateralDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(etiquetaOrigenEstablecido)
+                    .addComponent(rptaOrigenEstablecido, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelLateralDerechoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(etiquetaDestinoEstablecido)
+                    .addComponent(rptaDestinoEstablecido, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 199, Short.MAX_VALUE)
                 .addComponent(botonSiguiente)
                 .addGap(64, 64, 64))
         );
@@ -261,21 +309,28 @@ public class FrmElegirMapa extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void comboOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOrigenActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboOrigenActionPerformed
-
     private void botonSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSiguienteActionPerformed
 
         int input = JOptionPane.showConfirmDialog(null, "¿Estás seguro de los cambios establecidos?");
         // 0=yes, 1=no, 2=cancel
         if(input==0){
+            if(OlvaCourier.usuarioActual.getTipoFuncion()==1){
+                
+                OlvaCourier.boletaActual.setAgenciaInicial(OlvaCourier.agencias.getAgencia(comboOrigen.getSelectedItem().toString()));
+                OlvaCourier.boletaActual.setAgenciaFinal(OlvaCourier.agencias.getAgencia(comboDestino.getSelectedItem().toString()));
 
-            OlvaCourier.boletaActual.setAgenciaInicial(OlvaCourier.agencias.getAgencia(comboOrigen.getSelectedItem().toString()));
-            OlvaCourier.boletaActual.setAgenciaFinal(OlvaCourier.agencias.getAgencia(comboDestino.getSelectedItem().toString()));
-
-            FrmBoletaLlenar boleta = new FrmBoletaLlenar();
-            this.dispose();
+                FrmBoletaLlenar boleta = new FrmBoletaLlenar();
+                this.dispose();
+            }else if(OlvaCourier.usuarioActual.getTipoFuncion()==2){
+                //guardar datos
+                if((int)OlvaCourier.boletaActual.getCamino().getUltimo()==auxF){
+                    FrmAdministrador fa = new FrmAdministrador();
+                    this.dispose();
+                }
+                
+                
+            }
+            
         }
         
 
@@ -287,16 +342,19 @@ public class FrmElegirMapa extends javax.swing.JFrame {
     }//GEN-LAST:event_MapaImagenMousePressed
 
     private void botonAplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAplicarActionPerformed
-
-        if(comboDestino.getSelectedItem().equals(comboOrigen.getSelectedItem())){
+        
+        
+        if(OlvaCourier.usuarioActual.getTipoFuncion()==1){
+            if(comboDestino.getSelectedItem().equals(comboOrigen.getSelectedItem())){
             JOptionPane.showMessageDialog(null, "No puedes colocar el mismo ORIGEN Y DESTINO ");
-        }else{
+            }else{
             
             miD.setNodoInicio(comboOrigen.getSelectedIndex());
             miD.setNodoFin(comboDestino.getSelectedIndex());
             miD.dijkstra();
-            //miD.getNodos();
             miD.empilar();
+            OlvaCourier.boletaActual.setCamino(miD.getCola());
+            //OlvaCourier.boletaActual.getCamino().Recorrido();
             /*Notacion adicional cuando solo quieras ejecutar FrmEligirMapa*/
             try{
                 OlvaCourier.boletaActual.getFechadeEntrega().add(Calendar.DAY_OF_YEAR,(miD.getPila().getLongitud()-1));
@@ -307,7 +365,33 @@ public class FrmElegirMapa extends javax.swing.JFrame {
             opc = 1;
             repaint();
             botonSiguiente.setEnabled(true);
+            }
+            
+        }else{
+            System.out.println("*********entro aqui");
+            if(comboDestino.getSelectedItem().equals(comboOrigen.getSelectedItem())){
+            JOptionPane.showMessageDialog(null, "No puedes colocar el mismo ORIGEN Y DESTINO ");
+            }else{
+            if(comboOrigen.getSelectedIndex()==auxI){
+                miD.setNodoInicio(comboOrigen.getSelectedIndex());
+                miD.setNodoFin(comboDestino.getSelectedIndex());
+                auxF=comboDestino.getSelectedIndex();
+                miD.dijkstra();
+                miD.empilar();
+                OlvaCourier.boletaActual.addCamino(miD.getCola());
+                OlvaCourier.boletaActual.getCamino().Recorrido();
+                //OlvaCourier.boletaActual.getCamino().desencolar();
+                auxI=comboDestino.getSelectedIndex();
+            }else{
+                JOptionPane.showMessageDialog(null, "El punto inicial no es igual al final del tramo anterior ");
+            }
+            
+            }
+            botonSiguiente.setEnabled(true);
+            
         }
+         
+        
     }//GEN-LAST:event_botonAplicarActionPerformed
 
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
@@ -319,8 +403,13 @@ public class FrmElegirMapa extends javax.swing.JFrame {
     }//GEN-LAST:event_comboDestinoActionPerformed
 
     private void botonVerInventarioAgenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVerInventarioAgenciasActionPerformed
-        // TODO add your handling code here:
+        FrmInventarioAgencia fi = new FrmInventarioAgencia();
+        
     }//GEN-LAST:event_botonVerInventarioAgenciasActionPerformed
+
+    private void comboOrigenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOrigenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboOrigenActionPerformed
 
     /**
      * @param args the command line arguments
@@ -398,8 +487,12 @@ public class FrmElegirMapa extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboOrigen;
     private javax.swing.JLabel etiquetaAgenciaOrigen;
     private javax.swing.JLabel etiquetaDestino;
+    private javax.swing.JLabel etiquetaDestinoEstablecido;
+    private javax.swing.JLabel etiquetaOrigenEstablecido;
     private javax.swing.JPanel fondo;
     private javax.swing.JPanel panelLateralDerecho;
     private javax.swing.JPanel panelMapa;
+    private javax.swing.JLabel rptaDestinoEstablecido;
+    private javax.swing.JLabel rptaOrigenEstablecido;
     // End of variables declaration//GEN-END:variables
 }

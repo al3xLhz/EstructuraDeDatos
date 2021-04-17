@@ -72,6 +72,28 @@ public class Pila<E> {
             }
         }
     }
+    
+    public E getNodoXPos(int i){
+        
+        int contador=0;
+        if(pilaVacia()){
+            System.out.println("Error.Pila vacía");
+        }
+        else{
+            Nodo<E> aux = cima;
+            while(aux != null){
+                if(contador==i){
+                    return aux.objeto;
+                }
+                
+                aux = aux.siguiente;
+            }
+        }
+        return null;
+    }
+    
+    
+    
 }
 /*
 class ExcepcionListaVacia extends RuntimeException {

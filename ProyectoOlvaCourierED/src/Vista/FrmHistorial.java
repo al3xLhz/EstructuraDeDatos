@@ -36,11 +36,19 @@ public class FrmHistorial extends javax.swing.JFrame {
             
             if(b!=null){
                 
+                String estado="";
+                        
+                switch (b.getEstado()) {
+                    case 1:estado="Sin Entregar";break;
+                    case 2:estado="En camino";break;
+                    case 3:estado="Llego";break;
+                }
+                
                 matriz[i][0]=String.valueOf(n);
                 matriz[i][1]=String.valueOf(b.getCodigo());
                 matriz[i][2]=String.valueOf(b.getAgenciaInicial().getUbicacion());
                 matriz[i][3]=String.valueOf(b.getAgenciaFinal().getUbicacion());
-                matriz[i][4]=String.valueOf(b.getEstado());
+                matriz[i][4]=String.valueOf(estado);
                 matriz[i][5]=String.valueOf(b.getFechaEmision().getTime().toString());
                 matriz[i][6]=String.valueOf(b.getFechadeEntrega().getTime().toString());
                 matriz[i][7]=String.valueOf(b.getTotal());

@@ -191,6 +191,19 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="botonSiguiente" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="botonVerInventarioAgencias" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
@@ -209,21 +222,23 @@
                                   <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
                                   <Component id="botonAplicar" min="-2" max="-2" attributes="0"/>
                               </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="etiquetaDestinoEstablecido" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="rptaDestinoEstablecido" min="-2" pref="111" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="etiquetaOrigenEstablecido" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="rptaOrigenEstablecido" min="-2" pref="111" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="botonSiguiente" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="91" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="botonVerInventarioAgencias" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -244,7 +259,17 @@
                           <Component id="botonAplicar" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
                           <Component id="botonVerInventarioAgencias" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="267" max="32767" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="etiquetaOrigenEstablecido" min="-2" max="-2" attributes="0"/>
+                              <Component id="rptaOrigenEstablecido" min="-2" pref="16" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="etiquetaDestinoEstablecido" min="-2" max="-2" attributes="0"/>
+                              <Component id="rptaDestinoEstablecido" min="-2" pref="16" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="199" max="32767" attributes="0"/>
                           <Component id="botonSiguiente" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
                       </Group>
@@ -400,6 +425,20 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonVerInventarioAgenciasActionPerformed"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JLabel" name="etiquetaOrigenEstablecido">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Origen establecido: "/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="rptaOrigenEstablecido">
+                </Component>
+                <Component class="javax.swing.JLabel" name="rptaDestinoEstablecido">
+                </Component>
+                <Component class="javax.swing.JLabel" name="etiquetaDestinoEstablecido">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Destino establecido: "/>
+                  </Properties>
                 </Component>
               </SubComponents>
             </Container>

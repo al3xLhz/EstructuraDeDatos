@@ -1,6 +1,7 @@
 
 package Modelo;
 
+import Estructuras.Cola;
 import Estructuras.Lista;
 import Sistema.OlvaCourier;
 import java.util.Calendar;
@@ -18,7 +19,9 @@ public class Boleta {
     private String propietarioDNI;
     private int estado;//1=Sin entregar 2=En camino 3= Llego
     private Lista<Pedido> listaPedidos = new Lista<>();
+    private Cola camino = new Cola();
 
+    
     public Boleta(Agencia agenciaInicial, Agencia agenciaFinal,String propietarioDNI) {
         OlvaCourier.horaActual = Calendar.getInstance();
         this.codigo = codigoM;
@@ -45,6 +48,21 @@ public class Boleta {
         this.estado = estado;
     }
 
+    public Cola getCamino() {
+        return camino;
+    }
+
+    public void setCamino(Cola camino) {
+        this.camino = camino;
+    }
+    
+    public void addCamino(Cola tramo){
+        while(!tramo.colaVacia()){
+            this.camino.encolar(tramo.desencolar());
+        }
+    }
+
+    
     
     public void setPrecioTotal(){
         importeTotal = montoAgenciaAgencia()+sumarPedido();
