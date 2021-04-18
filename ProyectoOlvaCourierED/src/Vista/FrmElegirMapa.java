@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Estructuras.Cola;
 import Estructuras.Pila;
 import Grafo.DijkstraMapa;
 import Sistema.OlvaCourier;
@@ -35,8 +36,8 @@ public class FrmElegirMapa extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
         try{
-        int auxI=OlvaCourier.boletaActual.getAgenciaInicial().getNumero();
-        int auxF=OlvaCourier.boletaActual.getAgenciaFinal().getNumero();
+        auxI=OlvaCourier.boletaActual.getAgenciaInicial().getNumero();
+        auxF=OlvaCourier.boletaActual.getAgenciaFinal().getNumero();
         }catch(Exception e){
         //Solo funciona en los no prime    
         }
@@ -368,23 +369,25 @@ public class FrmElegirMapa extends javax.swing.JFrame {
             }
             
         }else{
-            System.out.println("*********entro aqui");
+            
             if(comboDestino.getSelectedItem().equals(comboOrigen.getSelectedItem())){
             JOptionPane.showMessageDialog(null, "No puedes colocar el mismo ORIGEN Y DESTINO ");
             }else{
-            if(comboOrigen.getSelectedIndex()==auxI){
-                miD.setNodoInicio(comboOrigen.getSelectedIndex());
-                miD.setNodoFin(comboDestino.getSelectedIndex());
-                auxF=comboDestino.getSelectedIndex();
-                miD.dijkstra();
-                miD.empilar();
-                OlvaCourier.boletaActual.addCamino(miD.getCola());
-                OlvaCourier.boletaActual.getCamino().Recorrido();
-                //OlvaCourier.boletaActual.getCamino().desencolar();
-                auxI=comboDestino.getSelectedIndex();
-            }else{
-                JOptionPane.showMessageDialog(null, "El punto inicial no es igual al final del tramo anterior ");
-            }
+                if(comboOrigen.getSelectedIndex()==auxI){
+                    miD.setNodoInicio(comboOrigen.getSelectedIndex());
+                    miD.setNodoFin(comboDestino.getSelectedIndex());
+                    auxF=comboDestino.getSelectedIndex();
+                    miD.dijkstra();
+                    miD.empilar();
+                    System.out.println(miD.getCola().colaVacia());
+                    //OlvaCourier.boletaActual.getCamino().desencolar();
+                    auxI=comboDestino.getSelectedIndex();
+                    opc = 2;
+                    repaint();
+                    botonSiguiente.setEnabled(true);
+                }else{
+                    JOptionPane.showMessageDialog(null, "El punto inicial no es igual al final del tramo anterior ");
+                }
             
             }
             botonSiguiente.setEnabled(true);
@@ -449,15 +452,13 @@ public class FrmElegirMapa extends javax.swing.JFrame {
     @Override
     public void paint(Graphics g){
         Pila p = new Pila();
-        
+        Cola c = new Cola();
         int pos,pos2;
         super.paint(g);
         switch(opc){
             case 0: break;
             case 1: p=miD.getPila();
-                    System.out.println(p.pilaVacia());
                     while(!p.pilaVacia()){
-                        p=miD.getPila();
                         pos = (int) p.Desempilar();
                         Graphics2D g2 = (Graphics2D) g;
                         g2.fillOval(OlvaCourier.miGrafo.getCoordeX(pos), OlvaCourier.miGrafo.getCoordeY(pos), 15  , 15);g2.setStroke(new BasicStroke(3));
@@ -469,10 +470,24 @@ public class FrmElegirMapa extends javax.swing.JFrame {
                             g2.drawLine(OlvaCourier.miGrafo.getCoordeX(pos)+6, OlvaCourier.miGrafo.getCoordeY(pos)+6, OlvaCourier.miGrafo.getCoordeX(pos2)+6, OlvaCourier.miGrafo.getCoordeY(pos2)+6);
                             g2.setStroke(new BasicStroke(3));
                         }
-                    };
-            case 2: if(OlvaCourier.agencias.getAgencia("Amazonas").getListaBolestas().listaVacia()){
-                    
-                    }
+                    };break;
+            case 2: c=miD.getCola();
+                    System.out.println(c.colaVacia());
+                    while(!c.colaVacia()){
+                        
+                        pos = (int) c.desencolar();
+                        Graphics2D g2 = (Graphics2D) g;
+                        g2.fillOval(OlvaCourier.miGrafo.getCoordeX(pos), OlvaCourier.miGrafo.getCoordeY(pos), 15  , 15);g2.setStroke(new BasicStroke(3));
+                        g2.setColor(Color.red);
+                        if(!c.colaVacia()){
+                            pos2= (int)c.desencolar();
+                            g2.fillOval(OlvaCourier.miGrafo.getCoordeX(pos2), OlvaCourier.miGrafo.getCoordeY(pos2), 15  , 15);
+                            g2.setColor(Color.red);
+                            g2.drawLine(OlvaCourier.miGrafo.getCoordeX(pos)+6, OlvaCourier.miGrafo.getCoordeY(pos)+6, OlvaCourier.miGrafo.getCoordeX(pos2)+6, OlvaCourier.miGrafo.getCoordeY(pos2)+6);
+                            g2.setStroke(new BasicStroke(3));
+                        }
+                    };break;
+                
                 
         }
     }

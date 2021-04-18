@@ -87,4 +87,14 @@ public class Cola<E> {
             }
         }
     }
+    
+    public void copiarDatos(Cola c){
+        Nodo<E> aux = c.primero;
+        while(aux !=null){
+            encolar(aux.objeto);
+            aux = aux.siguiente;
+        }
+        
+    }
+    
 }
