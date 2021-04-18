@@ -13,9 +13,7 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.util.Calendar;
-import javax.sound.midi.MidiEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -24,7 +22,8 @@ import javax.swing.JOptionPane;
  */
 public class FrmElegirMapa extends javax.swing.JFrame {
     
-    DijkstraMapa miD;
+    DijkstraMapa miD = new DijkstraMapa(OlvaCourier.miGrafo);
+    Cola colaAcumuladora= new Cola();
     int auxI;
     int auxF;
     int aux;
@@ -330,7 +329,6 @@ public class FrmElegirMapa extends javax.swing.JFrame {
                     this.dispose();
                 }
                 
-                
             }
             
         }
@@ -345,8 +343,9 @@ public class FrmElegirMapa extends javax.swing.JFrame {
 
     private void botonAplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAplicarActionPerformed
         
-        miD = new DijkstraMapa(OlvaCourier.miGrafo);
+        
         if(OlvaCourier.usuarioActual.getTipoFuncion()==1){
+            miD = new DijkstraMapa(OlvaCourier.miGrafo);
             if(comboDestino.getSelectedItem().equals(comboOrigen.getSelectedItem())){
             JOptionPane.showMessageDialog(null, "No puedes colocar el mismo ORIGEN Y DESTINO ");
             }else{
@@ -379,11 +378,12 @@ public class FrmElegirMapa extends javax.swing.JFrame {
                     auxF=comboDestino.getSelectedIndex();
                     miD.dijkstra();
                     miD.empilar();
-                    System.out.println(miD.getCola().colaVacia());
+                    colaAcumuladora.acumularCola(miD.getCola());
                     //OlvaCourier.boletaActual.getCamino().desencolar();
                     auxI=comboDestino.getSelectedIndex();
                     opc = 2;
                     repaint();
+                    miD.getCola().eliminarUltimoIngreso();
                     botonSiguiente.setEnabled(true);
                 }else{
                     JOptionPane.showMessageDialog(null, "El punto inicial no es igual al final del tramo anterior ");
@@ -471,8 +471,8 @@ public class FrmElegirMapa extends javax.swing.JFrame {
                             g2.setStroke(new BasicStroke(3));
                         }
                     };break;
-            case 2: c=miD.getCola();
-                    System.out.println(c.colaVacia());
+            case 2: c=colaAcumuladora;
+                    c.Recorrido();
                     while(!c.colaVacia()){
                         
                         pos = (int) c.desencolar();
@@ -480,7 +480,7 @@ public class FrmElegirMapa extends javax.swing.JFrame {
                         g2.fillOval(OlvaCourier.miGrafo.getCoordeX(pos), OlvaCourier.miGrafo.getCoordeY(pos), 15  , 15);g2.setStroke(new BasicStroke(3));
                         g2.setColor(Color.red);
                         if(!c.colaVacia()){
-                            pos2= (int)c.desencolar();
+                            pos2= (int)c.getPrimero().objeto;
                             g2.fillOval(OlvaCourier.miGrafo.getCoordeX(pos2), OlvaCourier.miGrafo.getCoordeY(pos2), 15  , 15);
                             g2.setColor(Color.red);
                             g2.drawLine(OlvaCourier.miGrafo.getCoordeX(pos)+6, OlvaCourier.miGrafo.getCoordeY(pos)+6, OlvaCourier.miGrafo.getCoordeX(pos2)+6, OlvaCourier.miGrafo.getCoordeY(pos2)+6);

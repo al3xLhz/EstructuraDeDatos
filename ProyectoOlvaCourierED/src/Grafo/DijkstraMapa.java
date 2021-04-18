@@ -17,8 +17,8 @@ public class DijkstraMapa {
     private int permanente;
     private int nodoFin;
     private int nodoInicio;
-    private Pila pila = new Pila();
-    private Cola cola = new Cola();
+    private Pila pila;
+    private Cola cola;
     
     public DijkstraMapa(GrafoMapa grafo){//Tope numero de vertices
         this.grafo = grafo;        
@@ -78,7 +78,7 @@ public class DijkstraMapa {
   
     public void dijkstra(){
         subTope=0;
-        
+        llenarNodos();
         if(permanente != nodoFin){
             nodos[permanente].setVisitado(true);        
             nodos[permanente].setNombre(permanente);
@@ -119,7 +119,7 @@ public class DijkstraMapa {
     
     public void empilar(){
         
-        
+        pila = new Pila();
         NodoGrafo auxL = nodos[nodoFin];
         
         while(auxL.getNombre()!=nodoInicio){
@@ -138,7 +138,7 @@ public class DijkstraMapa {
     }
     
     private void pasarPilaACola(){
-        
+        cola = new Cola();
         Pila aux= new Pila();
         aux.copiarDatos(pila);
         
