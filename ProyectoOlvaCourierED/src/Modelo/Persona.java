@@ -17,7 +17,16 @@ public class Persona {
         this.usuario = usuario;
         
     }
-
+   /* public String RetornAtrib(int n){
+	String Atrib =null;
+	switch(n){
+	   case 0 : Atrib= getDni();break;
+	   case 1 : Atrib= getNombres();break;
+	   case 2 : Atrib= getApellidos();break;
+	   case 3 : Atrib= getEmail();break;
+        }
+        return Atrib;
+}*/
     
     public String getNombres() {
         return nombres;

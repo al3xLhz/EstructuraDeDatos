@@ -46,7 +46,77 @@ public class Lista<E>{
         }
         tamaño++;
     }
-    
+    //creando insertarnodo por "posicion"
+   /* public void insertarPos(int pos, E nuevo ){
+        //try{
+            E ob=null;
+            Nodo<E> aux = inicio;
+            Nodo<E> aux2=new Nodo<>(nuevo);
+            int contador = 0;
+            while(aux!=null){
+                if(contador==pos){
+                    aux2.siguiente= aux.siguiente;
+                    aux2.anterior=aux.anterior;
+                    aux.anterior.siguiente=aux2;
+                    aux.siguiente.anterior=aux2;
+                    
+                    break;
+                   // ob=aux.objeto;
+                }
+                aux=aux.siguiente;
+                contador++;
+            }
+            /*return ob;
+        
+        catch(NullPointerException e){
+            System.out.println("Error.Lista vacía");
+        }
+    }
+    public void insertarPos(int posicion, E valor){
+        // Verifica si la posición ingresada se encuentre en el rango
+        // >= 0 y <= que el numero de elementos del la lista.
+        if(posicion>=0 && posicion<=tamaño){
+            Nodo<E> nuevo = new Nodo<>(null);
+            nuevo.setInformacion(valor);
+            // Consulta si el nuevo nodo a ingresar va al inicio de la lista.
+            if(posicion == 0){
+                // Inserta el nuevo nodo al inicio de la lista.
+                nuevo.setSiguiente(inicio);
+                inicio = nuevo;
+            }
+            else{
+                // Si el nodo a inserta va al final de la lista.
+                if(posicion == tamaño){
+                    Nodo aux = inicio;
+                    // Recorre la lista hasta llegar al ultimo nodo.
+                    while(aux.siguiente != null){
+                        aux = aux.siguiente;
+                    }
+                    // Inserta el nuevo nodo despues de del ultimo.
+                    aux.objeto=nuevo;              
+                }
+                else{
+                    // Si el nodo a insertar va en el medio de la lista.
+                    Nodo aux = inicio;
+                    // Recorre la lista hasta llegar al nodo anterior
+                    // a la posicion en la cual se insertara el nuevo nodo.
+                    for (int i = 0; i < (posicion-1); i++) {
+                        aux = aux.getSiguiente();
+                    }
+                    // Guarda el nodo siguiente al nodo en la posición
+                    // en la cual va a insertar el nevo nodo.
+                    Nodo siguiente = aux.getSiguiente();
+                    // Inserta el nuevo nodo en la posición indicada.
+                    aux.setSiguiente(nuevo);
+                    // Une el nuevo nodo con el resto de la lista.
+                    nuevo.setSiguiente(siguiente);
+                }
+            }
+            // Incrementa el contador de tamaño de la lista.
+            tamaño++;
+        }
+    }
+    */
     public void insertarNodoAntesDe(E objeto,E dato)throws NullPointerException{
         //"objeto" es el que irá en el nuevo Nodo que insertarás.
         //"dato" es el objeto que buscará dentro de la lista
