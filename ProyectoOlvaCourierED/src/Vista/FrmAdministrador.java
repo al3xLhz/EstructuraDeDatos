@@ -197,8 +197,11 @@ public class FrmAdministrador extends javax.swing.JFrame {
                 int codigoABuscar = Integer.parseInt(JOptionPane.showInputDialog("Digite el código a buscar"));
                 if(OlvaCourier.clienteActual.getListaBoletas().getBoleta(codigoABuscar)!=null){
                     OlvaCourier.boletaActual = OlvaCourier.clienteActual.getListaBoletas().getBoleta(codigoABuscar);
-                    FrmElegirMapa fm = new FrmElegirMapa();
-                    this.dispose();
+                    if(OlvaCourier.boletaActual.getCamino()==""){
+                        FrmElegirMapa fm = new FrmElegirMapa();
+                        this.dispose();
+                    }
+                    
                 }else{
                     JOptionPane.showMessageDialog(null, "No se encontro la boleta");
                 }

@@ -97,8 +97,25 @@ public class Pila<E> {
             e.cima.siguiente.anterior=aux2;
         }
         
-        
     }
+    
+    public String ConvertirAString(){
+        String ruta = "";
+        
+        if(pilaVacia()){
+            System.out.println("Error.Pila vacía");
+        }
+        else{
+            Nodo<E> aux = cima;
+            while(aux != null){
+                ruta+=aux.objeto.toString()+"-";
+                aux = aux.siguiente;
+            }
+        }        
+        
+        return ruta;
+    }
+    
     
 }
 /*
