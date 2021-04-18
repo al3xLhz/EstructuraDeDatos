@@ -26,6 +26,22 @@ public class Boleta {
         this.fechadeEntrega=fechaEmision;
         this.estado= "Sin entregar";
     }
+    
+    public Boleta(int codigo ,String fechaEmision, String FechaEntrega , String AgenciaI , String AgenciaFinal , double importeTotal , double IGV , double total , String estado , String propietarioDNI){
+        this.codigo = codigo;
+        Calendar cal = Calendar.getInstance();
+        cal.set(Integer.valueOf(fechaEmision.substring(24, 28)), getIntMes(fechaEmision.substring(4, 7)), Integer.valueOf(fechaEmision.substring(8, 10)), Integer.valueOf(fechaEmision.substring(11, 13)), Integer.valueOf(fechaEmision.substring(14, 16)), Integer.valueOf(fechaEmision.substring(17, 19)));
+        this.fechaEmision = cal;
+        cal.set(Integer.valueOf(FechaEntrega.substring(24, 28)), getIntMes(FechaEntrega.substring(4, 7)), Integer.valueOf(FechaEntrega.substring(8, 10)), Integer.valueOf(FechaEntrega.substring(11, 13)), Integer.valueOf(FechaEntrega.substring(14, 16)), Integer.valueOf(FechaEntrega.substring(17, 19))); 
+        this.fechadeEntrega = cal;
+        this.agenciaInicial = new Agencia(AgenciaI);
+        this.agenciaFinal = new Agencia(AgenciaFinal);
+        this.importeTotal = importeTotal;
+        this.IGV = IGV;
+        this.total = total;
+        this.estado = estado;
+        this.propietarioDNI = propietarioDNI;
+    }
 
     public String getPropietarioDNI() {
         return propietarioDNI;
@@ -171,7 +187,15 @@ public class Boleta {
         listaPedidos=b.getListaPedidos();
     }
     
-  
+    private int getIntMes(String mes){
+        int nMes=0;
+        
+        switch (mes){
+            case "apr" : nMes = 3;break;
+            
+        }
+        return nMes;
+    }
     
     
     

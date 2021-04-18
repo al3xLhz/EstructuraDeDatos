@@ -34,11 +34,9 @@ public class FrmDatosCliente extends javax.swing.JFrame {
             Table1.setValueAt(matriz[i][0], i, 0);
             Table1.setValueAt(matriz[i][1], i, 1);
             Table1.setValueAt(matriz[i][2], i, 2);
-            Table1.setValueAt(matriz[i][3], i, 3);
-            
+            Table1.setValueAt(matriz[i][3], i, 3);      
         }
     }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

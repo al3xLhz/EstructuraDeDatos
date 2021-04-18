@@ -11,14 +11,15 @@ import java.sql.SQLException;
 
 public class OlvaCourier {
     //Representa como una base de datos donde se maneja la información de todo el sistema
-    
-    
+
     //Aquí están las listas generales que abarcaran tales y como dice su clase Lista<>
     public static Lista<Cliente> clientes = new Lista<>();
     public static Lista<Boleta> boletas = new Lista<>();
     public static Lista<Persona> personas = new Lista<>();
     public static Lista<Administrador> administradores = new Lista<>();
     public static Lista<Agencia> agencias = new Lista<>();
+    public static Lista<Pedido> pedidos = new Lista<>();
+    public static Lista<Producto> productos = new Lista<>();
     
     //Estos objetos auxiliares nos ayuda a trabajar en casos de creacion o uso de los objetos dados
     public static Cliente clienteActual;
@@ -57,7 +58,38 @@ public class OlvaCourier {
         }
     }
     
+    public static void CargarBoleta(){
+        res = Conexion.Conexion.Consulta("select * from Boleta");
+        
+        try{
+           while(res.next()){
+                OlvaCourier.boletas.insertarNodoPorFinal(new Boleta(res.getInt(1), res.getString(2),res.getString(3),res.getString(4),res.getString(5),res.getDouble(6),res.getDouble(7),res.getDouble(8),res.getString(9),res.getString(10)));         
+            }  
+        }catch(SQLException e){
+        }
+    }
     
+        public static void CargarPedido(){
+        res = Conexion.Conexion.Consulta("select * from Pedido");
+        
+        try{
+           while(res.next()){
+                OlvaCourier.pedidos.insertarNodoPorFinal(new Pedido(res.getInt(1), res.getDouble(2),res.getInt(3)));         
+            }  
+        }catch(SQLException e){
+        }
+    }
+    
+        public static void CargarProducto(){
+        res = Conexion.Conexion.Consulta("select * from Producto");
+        
+        try{
+           while(res.next()){
+                OlvaCourier.productos.insertarNodoPorFinal(new Producto(res.getInt(1), res.getString(2),res.getDouble(3),res.getDouble(4),res.getDouble(5),res.getDouble(6),res.getInt(7)));         
+            }  
+        }catch(SQLException e){
+        }
+    }
 }   
     
     

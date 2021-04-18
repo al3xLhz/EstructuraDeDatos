@@ -11,6 +11,7 @@ import Modelo.Login;
 import Sistema.OlvaCourier;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -20,7 +21,9 @@ import javax.swing.table.DefaultTableModel;
  * @author Alex
  */
 public class FrmHistorial extends javax.swing.JFrame {
-
+    
+    public ArrayList<Object> lista = new ArrayList<Object>();
+    public ArrayList<Object> aux = new ArrayList<Object>();
     /**
      * Creates new form FrmHistorial
      */
@@ -43,7 +46,6 @@ public class FrmHistorial extends javax.swing.JFrame {
         try{
             while(res.next()){
                 Vector v = new Vector();
-                v.add(i);
                 v.add(res.getInt(1));
                 v.add(res.getString(4));
                 v.add(res.getString(5));
@@ -51,12 +53,23 @@ public class FrmHistorial extends javax.swing.JFrame {
                 v.add(res.getString(2));
                 v.add(res.getString(3));
                 v.add(res.getFloat(8));
+                lista.add(v);
                 modelo.addRow(v);
                 Tabla.setModel(modelo);
-                i++;
-            }  
+            }
+            System.out.println(lista);
+            Ordenamiento();
         }catch(SQLException e){
         }
+    }
+    
+    public void Ordenamiento(){
+      Boleta bol = (Boleta) lista.get(0);
+      System.out.println(bol.getCodigo());
+      aux.add(lista.get(0));
+      lista.set(0,lista.get(1));
+      lista.set(1,aux.get(0));
+        System.out.println(lista);
     }
     
     @SuppressWarnings("unchecked")

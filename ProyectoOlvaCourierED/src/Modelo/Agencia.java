@@ -3,8 +3,8 @@ package Modelo;
 
 public class Agencia {
     
-    private final String ubicacion; //Departamento
-    private final int telefono;
+    private String ubicacion; //Departamento
+    private int telefono;
     //private final Empleado empleado;
 
     public Agencia(String ubicacion, int telefono) {
@@ -13,6 +13,10 @@ public class Agencia {
         //this.empleado = empleado;
     }
 
+    public Agencia(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+    
     
 
     public String getUbicacion() {
