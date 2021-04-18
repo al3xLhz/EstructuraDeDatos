@@ -5,38 +5,108 @@
  */
 package Vista;
 
+import Estructuras.Lista;
+import Modelo.Cliente;
 import Sistema.OlvaCourier;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
-/**
- *
- * @author laura
- */
+
 public class FrmDatosCliente extends javax.swing.JFrame {
     
+    String titulos[]={"DNI","Nombres","Apellidos","e-mail"};
+    DefaultTableModel dtm = new DefaultTableModel();
+    TableRowSorter trs;
+    boolean orden=true;
+    int numeroAtributo=0;
+    String matriz[][]=new String [OlvaCourier.clientes.getTamaño()][4];
+    static Lista<Cliente> auxclientes = OlvaCourier.clientes;
+
     /**
      * Creates new form FrmDatosCliente
      */
+public static String[][] metodoShell(String x[][], int n, boolean opc){//true: ascendente - false:descendente
+        int in, i;
+        String []aux=null;
+        Cliente aux2=null;
+        boolean band;
+        in= OlvaCourier.clientes.getTamaño();
+
+        if(in>0){
+            while(in>0){
+                in = in/2;
+                band = true;
+                while(band==true){
+                    band = false;
+                    i = 0;
+                    while((i+in)<OlvaCourier.clientes.getTamaño()){
+                        if(opc == true){
+                            if(x[i][n].compareTo(x[i+in][n])>0){
+                                    aux = x[i];
+                                    x[i]= x[i+in];
+                                    x[i+in]= aux;
+                                    band = true;
+                                }
+                        }else{
+                            if(x[i][n].compareTo(x[i+in][n])<0){
+                                    aux = x[i];
+                                    x[i]= x[i+in];
+                                    x[i+in]= aux;
+                                    band = true;
+                                }     
+                        }
+                    i++;
+                }
+            }
+        }
+        }else{
+            System.out.println("Vector vacio...\n");
+        }
+            return x;
+    }
+        public void tablaCompleta(){  
+        for(int i=0; i<auxclientes.getTamaño();i++){
+            /*matriz[i][0]=OlvaCourier.clientes.getXPos(i).getDni();
+            matriz[i][1]=OlvaCourier.clientes.getXPos(i).getNombres();
+            matriz[i][2]=OlvaCourier.clientes.getXPos(i).getApellidos();
+            matriz[i][3]=OlvaCourier.clientes.getXPos(i).getEmail();*/
+            Table1.setValueAt(matriz[i][0], i, 0);
+            Table1.setValueAt(matriz[i][1], i, 1);
+            Table1.setValueAt(matriz[i][2], i, 2);
+            Table1.setValueAt(matriz[i][3], i, 3);
+        }
+            dtm = new DefaultTableModel(matriz,titulos);
+            Table1.setModel(dtm);
+            
+            trs= new TableRowSorter(dtm);
+            Table1.setRowSorter(trs);
+    }
+        public void pasartabla(){
+            for(int i=0; i<auxclientes.getTamaño();i++){
+            matriz[i][0]=auxclientes.getXPos(i).getDni();
+            matriz[i][1]=auxclientes.getXPos(i).getNombres();
+            matriz[i][2]=auxclientes.getXPos(i).getApellidos();
+            matriz[i][3]=auxclientes.getXPos(i).getEmail();
+            }
+        }
     public FrmDatosCliente() {
         initComponents();
+        pasartabla();
         tablaCompleta();
         setLocationRelativeTo(null);
         setVisible(true);
     }
     
-    public void tablaCompleta(){  
-        String matriz[][]= new String [OlvaCourier.clientes.getTamaño()][4];
-        for(int i=0; i<OlvaCourier.clientes.getTamaño();i++){
-            matriz[i][0]=OlvaCourier.clientes.getXPos(i).getDni();
-            matriz[i][1]=OlvaCourier.clientes.getXPos(i).getNombres();
-            matriz[i][2]=OlvaCourier.clientes.getXPos(i).getApellidos();
-            matriz[i][3]=OlvaCourier.clientes.getXPos(i).getEmail();
-            Table1.setValueAt(matriz[i][0], i, 0);
-            Table1.setValueAt(matriz[i][1], i, 1);
-            Table1.setValueAt(matriz[i][2], i, 2);
-            Table1.setValueAt(matriz[i][3], i, 3);
-            
-        }
+    public void filtrarcombobox(int numero){
+            jTextFiltro.addKeyListener(new KeyAdapter(){
+            @Override
+            public void keyReleased(final KeyEvent evt){
+                trs.setRowFilter(RowFilter.regexFilter("(?i)"+jTextFiltro.getText(), numero));
+            }
+        });
     }
     
     /**
@@ -54,8 +124,11 @@ public class FrmDatosCliente extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         Table1 = new javax.swing.JTable();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jTextFiltro = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
         ascendente = new javax.swing.JButton();
-        descentente = new javax.swing.JButton();
+        descendente = new javax.swing.JButton();
+        jComboBox2 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,7 +144,7 @@ public class FrmDatosCliente extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 108, Short.MAX_VALUE)
+            .addGap(0, 111, Short.MAX_VALUE)
         );
 
         jPanel3.setBackground(new java.awt.Color(64, 170, 173));
@@ -106,78 +179,183 @@ public class FrmDatosCliente extends javax.swing.JFrame {
         jScrollPane1.setViewportView(Table1);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "Nombres", "Apellidos", "e-mail" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jTextFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFiltroActionPerformed(evt);
+            }
+        });
+        jTextFiltro.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFiltroKeyTyped(evt);
+            }
+        });
+
+        jLabel1.setText("Buscar por:");
 
         ascendente.setText("Ascendente");
+        ascendente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ascendenteMouseClicked(evt);
+            }
+        });
         ascendente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ascendenteActionPerformed(evt);
             }
         });
 
-        descentente.setText("Descendente");
+        descendente.setText("Descendente");
+        descendente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                descendenteMouseClicked(evt);
+            }
+        });
+        descendente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                descendenteActionPerformed(evt);
+            }
+        });
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "Nombres", "Apellidos", "e-mail" }));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(81, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(descentente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ascendente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(80, 80, 80)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54)
+                        .addComponent(jTextFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ascendente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(descendente, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(46, 46, 46))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64))))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(49, 49, 49)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addComponent(ascendente)
-                        .addGap(18, 18, 18)
-                        .addComponent(descentente))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 26, Short.MAX_VALUE))
+                        .addGap(73, 73, 73)
+                        .addComponent(descendente)))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 442, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFiltroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFiltroActionPerformed
+
+    private void jTextFiltroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFiltroKeyTyped
+        String opc= (String) jComboBox1.getSelectedItem();
+        
+        switch(opc){
+            case "DNI":filtrarcombobox(0);break;
+            case "Nombres":filtrarcombobox(1);break;
+            case "Apellidos":filtrarcombobox(2);break;
+            case "e-mail":filtrarcombobox(3);break;
+        }
+    }//GEN-LAST:event_jTextFiltroKeyTyped
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        //String opc= 
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
     private void ascendenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ascendenteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ascendenteActionPerformed
+
+    private void descendenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descendenteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_descendenteActionPerformed
+
+    private void ascendenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ascendenteMouseClicked
+        // TODO add your handling code here:
+        //this.orden=true;
+        String opc= (String) jComboBox2.getSelectedItem();
+       
+        switch(opc){
+            case "DNI":this.numeroAtributo=0;break;
+            case "Nombres":this.numeroAtributo=1;break;
+            case "Apellidos":this.numeroAtributo=2;break;
+            case "e-mail":this.numeroAtributo=3;break;
+        }
+       matriz= this.metodoShell(matriz, numeroAtributo, true);
+       tablaCompleta();
+    }//GEN-LAST:event_ascendenteMouseClicked
+
+    private void descendenteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_descendenteMouseClicked
+        // TODO add your handling code here:
+        //this.orden=false;
+        String opc= (String) jComboBox2.getSelectedItem();
+       
+        switch(opc){
+            case "DNI":this.numeroAtributo=0;break;
+            case "Nombres":this.numeroAtributo=1;break;
+            case "Apellidos":this.numeroAtributo=2;break;
+            case "e-mail":this.numeroAtributo=3;break;
+        }
+       matriz= this.metodoShell(matriz, numeroAtributo, false);
+        tablaCompleta();
+    }//GEN-LAST:event_descendenteMouseClicked
 
     /**
      * @param args the command line arguments
@@ -217,11 +395,14 @@ public class FrmDatosCliente extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable Table1;
     private javax.swing.JButton ascendente;
-    private javax.swing.JButton descentente;
+    private javax.swing.JButton descendente;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextFiltro;
     // End of variables declaration//GEN-END:variables
 }
