@@ -82,8 +82,23 @@ public class Pila<E> {
         
     }
     
-    
-    
+    public void agregarPilaDebajoDeLaPila(Pila e){
+        Nodo<E> aux = this.cima;
+        Nodo<E> aux2 = aux;
+        if(pilaVacia()){
+            cima=e.cima;
+        }else{
+            while(aux!=null){
+            aux2 = aux;
+            aux = aux.siguiente;
+            }
+        
+            aux2.siguiente=e.cima.siguiente;
+            e.cima.siguiente.anterior=aux2;
+        }
+        
+        
+    }
     
 }
 /*

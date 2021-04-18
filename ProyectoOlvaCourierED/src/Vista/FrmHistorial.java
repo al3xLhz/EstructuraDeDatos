@@ -23,6 +23,7 @@ public class FrmHistorial extends javax.swing.JFrame {
         llenarTabla();
         etiquetaNombre.setText(OlvaCourier.clienteActual.getNombres()+OlvaCourier.clienteActual.getApellidos());
         etiquetaHora.setText(OlvaCourier.horaActual.getTime().toLocaleString());
+                
         setVisible(true);
     }
 

@@ -23,7 +23,8 @@ import javax.swing.JOptionPane;
 public class FrmElegirMapa extends javax.swing.JFrame {
     
     DijkstraMapa miD = new DijkstraMapa(OlvaCourier.miGrafo);
-    Cola colaAcumuladora= new Cola();
+    Pila pilaGeneral;
+    
     int auxI;
     int auxF;
     int aux;
@@ -31,6 +32,7 @@ public class FrmElegirMapa extends javax.swing.JFrame {
     int c=0;
     public FrmElegirMapa() {
         initComponents();
+        pilaGeneral = new Pila();
         setResizable(false);
         setLocationRelativeTo(null);
         setVisible(true);
@@ -324,10 +326,10 @@ public class FrmElegirMapa extends javax.swing.JFrame {
                 this.dispose();
             }else if(OlvaCourier.usuarioActual.getTipoFuncion()==2){
                 //guardar datos
-                if((int)OlvaCourier.boletaActual.getCamino().getUltimo()==auxF){
+                //if((int)OlvaCourier.boletaActual.getCamino().getUltimo()==auxF){
                     FrmAdministrador fa = new FrmAdministrador();
                     this.dispose();
-                }
+                //}
                 
             }
             
@@ -337,8 +339,8 @@ public class FrmElegirMapa extends javax.swing.JFrame {
     }//GEN-LAST:event_botonSiguienteActionPerformed
 
     private void MapaImagenMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MapaImagenMousePressed
-        System.out.println(evt.getX());
-        System.out.println(evt.getY());
+        //System.out.println(evt.getX());
+        //System.out.println(evt.getY());
     }//GEN-LAST:event_MapaImagenMousePressed
 
     private void botonAplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAplicarActionPerformed
@@ -354,7 +356,9 @@ public class FrmElegirMapa extends javax.swing.JFrame {
             miD.setNodoFin(comboDestino.getSelectedIndex());
             miD.dijkstra();
             miD.empilar();
-            OlvaCourier.boletaActual.setCamino(miD.getCola());
+            miD.getPila().Recorrido();
+            
+                                //OlvaCourier.boletaActual.setCamino(miD.getCola());
             /*Notacion adicional cuando solo quieras ejecutar FrmEligirMapa*/
             try{
                 OlvaCourier.boletaActual.getFechadeEntrega().add(Calendar.DAY_OF_YEAR,(miD.getPila().getLongitud()-1));
@@ -367,7 +371,7 @@ public class FrmElegirMapa extends javax.swing.JFrame {
             botonSiguiente.setEnabled(true);
             }
             
-        }else{
+        }else if(OlvaCourier.usuarioActual.getTipoFuncion()==2){
             
             if(comboDestino.getSelectedItem().equals(comboOrigen.getSelectedItem())){
             JOptionPane.showMessageDialog(null, "No puedes colocar el mismo ORIGEN Y DESTINO ");
@@ -378,12 +382,11 @@ public class FrmElegirMapa extends javax.swing.JFrame {
                     auxF=comboDestino.getSelectedIndex();
                     miD.dijkstra();
                     miD.empilar();
-                    colaAcumuladora.acumularCola(miD.getCola());
-                    //OlvaCourier.boletaActual.getCamino().desencolar();
+                    pilaGeneral.agregarPilaDebajoDeLaPila(miD.getPila());
+                    System.out.println("AQUI");pilaGeneral.Recorrido();
                     auxI=comboDestino.getSelectedIndex();
                     opc = 2;
                     repaint();
-                    miD.getCola().eliminarUltimoIngreso();
                     botonSiguiente.setEnabled(true);
                 }else{
                     JOptionPane.showMessageDialog(null, "El punto inicial no es igual al final del tramo anterior ");
@@ -471,16 +474,14 @@ public class FrmElegirMapa extends javax.swing.JFrame {
                             g2.setStroke(new BasicStroke(3));
                         }
                     };break;
-            case 2: c=colaAcumuladora;
-                    c.Recorrido();
-                    while(!c.colaVacia()){
-                        
-                        pos = (int) c.desencolar();
+            case 2: p.copiarDatos(pilaGeneral);
+                    while(!p.pilaVacia()){
+                        pos = (int) p.Desempilar();
                         Graphics2D g2 = (Graphics2D) g;
                         g2.fillOval(OlvaCourier.miGrafo.getCoordeX(pos), OlvaCourier.miGrafo.getCoordeY(pos), 15  , 15);g2.setStroke(new BasicStroke(3));
                         g2.setColor(Color.red);
-                        if(!c.colaVacia()){
-                            pos2= (int)c.getPrimero().objeto;
+                        if(!p.pilaVacia()){
+                            pos2= (int)p.getCima();
                             g2.fillOval(OlvaCourier.miGrafo.getCoordeX(pos2), OlvaCourier.miGrafo.getCoordeY(pos2), 15  , 15);
                             g2.setColor(Color.red);
                             g2.drawLine(OlvaCourier.miGrafo.getCoordeX(pos)+6, OlvaCourier.miGrafo.getCoordeY(pos)+6, OlvaCourier.miGrafo.getCoordeX(pos2)+6, OlvaCourier.miGrafo.getCoordeY(pos2)+6);

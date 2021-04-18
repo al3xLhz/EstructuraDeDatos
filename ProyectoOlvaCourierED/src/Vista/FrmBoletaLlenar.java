@@ -20,19 +20,25 @@ import javax.swing.JOptionPane;
      */
     public FrmBoletaLlenar() {
         initComponents();
-        //Uso de los atributos de la boletaActual para mostrar en el FrmBoletaLlenar
-        respuestaOrigen.setText(OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion());
-        respuestaDestino.setText(OlvaCourier.boletaActual.getAgenciaFinal().getUbicacion());
-        respuestaCliente.setText(OlvaCourier.clienteActual.getNombres()+" "+OlvaCourier.clienteActual.getApellidos());
-        respuestaCodigo.setText(OlvaCourier.clienteActual.getCodigo());
-        respuestaFechaEmision.setText(OlvaCourier.horaActual.getTime().toLocaleString());
-        respuestaFechaLlegada.setText(OlvaCourier.boletaActual.getFechadeEntrega().getTime().toLocaleString());
-        respuestaValorTotal.setText(String.valueOf(OlvaCourier.boletaActual.getImporteTotal()));
-        respuestaIGV.setText(String.valueOf(OlvaCourier.boletaActual.getIGV()));
-        respuestaTotal.setText(String.valueOf(OlvaCourier.boletaActual.getTotal()));
-        respuestaNroBoleta.setText(String.valueOf(OlvaCourier.boletaActual.getCodigo()));
         
-        llenarTabla();
+        
+            //Uso de los atributos de la boletaActual para mostrar en el FrmBoletaLlenar
+            respuestaOrigen.setText(OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion());
+            respuestaDestino.setText(OlvaCourier.boletaActual.getAgenciaFinal().getUbicacion());
+            respuestaCliente.setText(OlvaCourier.clienteActual.getNombres()+" "+OlvaCourier.clienteActual.getApellidos());
+            respuestaCodigo.setText(OlvaCourier.clienteActual.getCodigo());
+            respuestaFechaEmision.setText(OlvaCourier.horaActual.getTime().toLocaleString());
+            respuestaFechaLlegada.setText(OlvaCourier.boletaActual.getFechadeEntrega().getTime().toLocaleString());
+            respuestaValorTotal.setText(String.valueOf(OlvaCourier.boletaActual.getImporteTotal()));
+            respuestaIGV.setText(String.valueOf(OlvaCourier.boletaActual.getIGV()));
+            respuestaTotal.setText(String.valueOf(OlvaCourier.boletaActual.getTotal()));
+            respuestaNroBoleta.setText(String.valueOf(OlvaCourier.boletaActual.getCodigo()));
+            
+            llenarTabla();
+        
+        
+        
+        
         
         setLocationRelativeTo(null);
         setVisible(true);

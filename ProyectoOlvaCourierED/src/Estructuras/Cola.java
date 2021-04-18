@@ -88,7 +88,7 @@ public class Cola<E> {
         }
     }
     
-    public void copiarDatos(Cola c){
+    public void copiarDatosA(Cola c){
         Nodo<E> aux = c.primero;
         while(aux !=null){
             encolar(aux.objeto);
@@ -111,6 +111,17 @@ public class Cola<E> {
         encolar(aux.objeto);
         aux = aux.siguiente;
         }
+    }
+    
+    public Pila copiarAPila(){
+        Pila p= new Pila();
+        Nodo<E> aux = primero;
+        while(aux !=null){
+        p.Apilar(aux.objeto);
+        aux = aux.siguiente;
+        }
+        
+        return p;
     }
     
 }
