@@ -19,6 +19,9 @@ public class FrmInventarioAgencia extends javax.swing.JFrame {
     public FrmInventarioAgencia() {
         initComponents();
         llenarDatos();
+        setLocationRelativeTo(null);
+        setVisible(true);
+        
         
     }
 
@@ -56,6 +59,7 @@ public class FrmInventarioAgencia extends javax.swing.JFrame {
         fondo = new javax.swing.JPanel();
         header = new javax.swing.JPanel();
         etiquetaInventario = new javax.swing.JLabel();
+        botonSalir = new javax.swing.JButton();
         body = new javax.swing.JPanel();
         etiquetaAmazonas = new javax.swing.JLabel();
         etiquetaAncash = new javax.swing.JLabel();
@@ -107,10 +111,18 @@ public class FrmInventarioAgencia extends javax.swing.JFrame {
         etiquetaRPTAUcayali = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         fondo.setLayout(new java.awt.BorderLayout());
 
         etiquetaInventario.setText("Inventario");
+
+        botonSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/exit.png"))); // NOI18N
+        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
         header.setLayout(headerLayout);
@@ -119,14 +131,21 @@ public class FrmInventarioAgencia extends javax.swing.JFrame {
             .addGroup(headerLayout.createSequentialGroup()
                 .addGap(146, 146, 146)
                 .addComponent(etiquetaInventario)
-                .addContainerGap(167, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
         );
         headerLayout.setVerticalGroup(
             headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(headerLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(etiquetaInventario)
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addGroup(headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(headerLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(etiquetaInventario))
+                    .addGroup(headerLayout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         fondo.add(header, java.awt.BorderLayout.NORTH);
@@ -308,7 +327,7 @@ public class FrmInventarioAgencia extends javax.swing.JFrame {
                     .addComponent(etiquetaRPTAIca)
                     .addComponent(etiquetaRPTAJunin)
                     .addComponent(etiquetaRPTALaLibertad))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                 .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(etiquetaPasco, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -433,7 +452,7 @@ public class FrmInventarioAgencia extends javax.swing.JFrame {
                         .addGroup(bodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(etiquetaLaLibertad)
                             .addComponent(etiquetaRPTALaLibertad))))
-                .addContainerGap(18, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         fondo.add(body, java.awt.BorderLayout.CENTER);
@@ -451,6 +470,10 @@ public class FrmInventarioAgencia extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+       this.dispose();
+    }//GEN-LAST:event_botonSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -490,6 +513,7 @@ public class FrmInventarioAgencia extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel body;
+    private javax.swing.JButton botonSalir;
     private javax.swing.JLabel etiquetaAmazonas;
     private javax.swing.JLabel etiquetaAncash;
     private javax.swing.JLabel etiquetaApurimac;

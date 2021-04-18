@@ -72,6 +72,19 @@ public class Pila<E> {
             }
         }
     }
+    
+    public void copiarDatos(Pila p){
+        Nodo<E> aux = p.cima;
+        while(aux !=null){
+            Apilar(aux.objeto);
+            aux = aux.siguiente;
+        }
+        
+    }
+    
+    
+    
+    
 }
 /*
 class ExcepcionListaVacia extends RuntimeException {

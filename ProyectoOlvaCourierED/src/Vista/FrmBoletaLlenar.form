@@ -55,7 +55,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="287" max="-2" attributes="0"/>
                       <Component id="TituloBoleta" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="306" max="32767" attributes="0"/>
+                      <EmptySpace pref="226" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -83,7 +83,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="etiquetaFechaLlegada">
+        <Container class="javax.swing.JPanel" name="Body">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ad" green="aa" red="40" type="rgb"/>
@@ -91,7 +91,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
-              <BorderConstraints direction="Last"/>
+              <BorderConstraints direction="Center"/>
             </Constraint>
           </Constraints>
 
@@ -99,64 +99,74 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="botonAceptar" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="etiquetaValorTotal" max="32767" attributes="0"/>
-                                  <Component id="etiquetaIGV" max="32767" attributes="0"/>
-                                  <Component id="etiquetaTotal" alignment="1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="respuestaValorTotal" max="32767" attributes="0"/>
-                                  <Component id="respuestaIGV" max="32767" attributes="0"/>
-                                  <Component id="respuestaTotal" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="etiquetaFechaEmision" min="-2" max="-2" attributes="0"/>
+                                  <Component id="etiquetaFechaLlegad" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane2" min="-2" pref="596" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="etiquetaFechaEmision" min="-2" max="-2" attributes="0"/>
-                                              <Component id="etiquetaFechaLlegad" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <Component id="etiquetaOrigen" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="etiquetaDestino" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaOrigen" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="etiquetaDestino" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="respuestaDestino" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="respuestaFechaEmision" min="-2" pref="172" max="-2" attributes="0"/>
+                                  <Component id="respuestaFechaLlegada" min="-2" pref="163" max="-2" attributes="0"/>
+                                  <Component id="respuestaOrigen" alignment="0" min="-2" pref="147" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="etiquetaCodigo" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="respuestaCodigo" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="respuestaFechaLlegada" min="-2" pref="91" max="-2" attributes="0"/>
-                                              <Component id="respuestaFechaEmision" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="etiquetaCliente" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="respuestaCliente" min="-2" pref="191" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Group type="102" attributes="0">
-                                                  <Component id="etiquetaCliente" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="respuestaCliente" min="-2" pref="91" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" attributes="0">
-                                                  <Component id="etiquetaDNI" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="32767" attributes="0"/>
-                                                  <Component id="respuestaDNI" min="-2" pref="91" max="-2" attributes="0"/>
-                                              </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="etiquetaNroBoleta" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="respuestaNroBoleta" min="-2" pref="161" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Component id="respuestaOrigen" min="-2" pref="91" max="-2" attributes="0"/>
-                                      <Component id="respuestaDestino" min="-2" pref="91" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="40" max="32767" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="etiquetaValorTotal" min="-2" pref="78" max="-2" attributes="0"/>
+                                  <Component id="etiquetaIGV" min="-2" pref="78" max="-2" attributes="0"/>
+                                  <Component id="etiquetaTotal" alignment="1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="respuestaValorTotal" min="-2" pref="91" max="-2" attributes="0"/>
+                                  <Component id="respuestaIGV" min="-2" pref="91" max="-2" attributes="0"/>
+                                  <Component id="respuestaTotal" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
+                                  <Component id="botonAceptar" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="jScrollPane2" min="-2" pref="482" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -164,47 +174,47 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="etiquetaCliente" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="etiquetaFechaEmision" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="respuestaCliente" min="-2" pref="16" max="-2" attributes="0"/>
                               </Group>
+                              <Component id="respuestaCliente" alignment="1" min="-2" pref="16" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="respuestaFechaEmision" min="-2" pref="16" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="respuestaFechaEmision" alignment="1" min="-2" pref="16" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="etiquetaDNI" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="etiquetaCodigo" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="etiquetaFechaLlegad" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="respuestaFechaLlegada" min="-2" pref="16" max="-2" attributes="0"/>
-                          <Component id="respuestaDNI" min="-2" pref="16" max="-2" attributes="0"/>
+                          <Component id="respuestaCodigo" min="-2" pref="16" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="etiquetaOrigen" min="-2" max="-2" attributes="0"/>
-                          <Component id="respuestaOrigen" min="-2" pref="16" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="respuestaNroBoleta" max="32767" attributes="0"/>
+                          <Component id="etiquetaOrigen" max="32767" attributes="0"/>
+                          <Component id="respuestaOrigen" max="32767" attributes="0"/>
+                          <Component id="etiquetaNroBoleta" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="etiquetaDestino" min="-2" max="-2" attributes="0"/>
                           <Component id="respuestaDestino" min="-2" pref="16" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" min="-2" pref="134" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" pref="146" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="respuestaTotal" min="-2" pref="16" max="-2" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="respuestaIGV" min="-2" pref="16" max="-2" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="etiquetaValorTotal" min="-2" max="-2" attributes="0"/>
@@ -213,15 +223,14 @@
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="etiquetaIGV" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="respuestaIGV" min="-2" pref="16" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="etiquetaTotal" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="40" max="32767" attributes="0"/>
+                      <EmptySpace pref="33" max="32767" attributes="0"/>
                       <Component id="botonAceptar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -262,12 +271,19 @@
             </Component>
             <Component class="javax.swing.JLabel" name="respuestaCliente">
             </Component>
-            <Component class="javax.swing.JLabel" name="etiquetaDNI">
+            <Component class="javax.swing.JLabel" name="etiquetaCodigo">
               <Properties>
-                <Property name="text" type="java.lang.String" value="DNI:"/>
+                <Property name="text" type="java.lang.String" value="Codigo"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="respuestaDNI">
+            <Component class="javax.swing.JLabel" name="respuestaCodigo">
+            </Component>
+            <Component class="javax.swing.JLabel" name="etiquetaNroBoleta">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Nro Boleta: "/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="respuestaNroBoleta">
             </Component>
             <Component class="javax.swing.JLabel" name="etiquetaValorTotal">
               <Properties>
@@ -310,13 +326,6 @@
                       </Table>
                     </Property>
                   </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="etiquetaNroBoleta">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Nro Boleta: "/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="respuestaNroBoleta">
                 </Component>
               </SubComponents>
             </Container>

@@ -18,6 +18,7 @@ public class DijkstraMapa {
     private int nodoFin;
     private int nodoInicio;
     private Pila pila;
+    private Cola cola;
     
     public DijkstraMapa(GrafoMapa grafo){//Tope numero de vertices
         this.grafo = grafo;        
@@ -59,6 +60,14 @@ public class DijkstraMapa {
         this.pila = pila;
     }
 
+    public Cola getCola() {
+        return cola;
+    }
+
+    public void setCola(Cola cola) {
+        this.cola = cola;
+    }
+    
     public int getTope() {
         return tope;
     }
@@ -66,13 +75,10 @@ public class DijkstraMapa {
     public void setTope(int tope) {
         this.tope = tope;
     }
-
-    
-    
-    
+  
     public void dijkstra(){
         subTope=0;
-        
+        llenarNodos();
         if(permanente != nodoFin){
             nodos[permanente].setVisitado(true);        
             nodos[permanente].setNombre(permanente);
@@ -112,23 +118,35 @@ public class DijkstraMapa {
     }
     
     public void empilar(){
+        
         pila = new Pila();
         NodoGrafo auxL = nodos[nodoFin];
         
-        do{
-            System.out.println(auxL.getNombre());
-            
+        while(auxL.getNombre()!=nodoInicio){
             pila.Apilar(auxL.getNombre());
             auxL=auxL.getPredecesor();  
-        }while(auxL.getNombre()!=nodoInicio);
-        System.out.println(auxL.getNombre());
+        }
+        
         pila.Apilar(nodoInicio);
+        pasarPilaACola();
     }
     
     public void llenarNodos(){
         for (int i = 0; i < tope; i++){  // creamos el vector nodo del tamaño de tope el cual tiene el numero de nodo pintados 
             nodos[i]= new NodoGrafo();
         } 
+    }
+    
+    private void pasarPilaACola(){
+        cola = new Cola();
+        Pila aux= new Pila();
+        aux.copiarDatos(pila);
+        
+        while(!aux.pilaVacia()){
+            cola.encolar(aux.Desempilar());
+        }
+        
+        
     }
     
     
