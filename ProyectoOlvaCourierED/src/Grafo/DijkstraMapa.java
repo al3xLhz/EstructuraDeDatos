@@ -17,8 +17,8 @@ public class DijkstraMapa {
     private int permanente;
     private int nodoFin;
     private int nodoInicio;
-    private Pila pila;
-    private Cola cola;
+    private Pila pila = new Pila();
+    private Cola cola = new Cola();
     
     public DijkstraMapa(GrafoMapa grafo){//Tope numero de vertices
         this.grafo = grafo;        
@@ -118,21 +118,17 @@ public class DijkstraMapa {
     }
     
     public void empilar(){
-        pila = new Pila();
+        
         
         NodoGrafo auxL = nodos[nodoFin];
         
-        do{
-            //System.out.println(auxL.getNombre());
-            
+        while(auxL.getNombre()!=nodoInicio){
             pila.Apilar(auxL.getNombre());
             auxL=auxL.getPredecesor();  
-        }while(auxL.getNombre()!=nodoInicio);
-        //System.out.println(auxL.getNombre());
+        }
+        
         pila.Apilar(nodoInicio);
-        //System.out.println("n: "+pila.getLongitud());
-        //pasarPilaACola();
-        //cola.Recorrido();
+        pasarPilaACola();
     }
     
     public void llenarNodos(){
@@ -143,14 +139,11 @@ public class DijkstraMapa {
     
     private void pasarPilaACola(){
         
-        Pila pilaaux= new Pila();
-        pilaaux = pila;
-        cola = new Cola();
-        int c=0;
- 
-        while(c!=pilaaux.getLongitud()){
-            cola.encolar(pilaaux.Desempilar());
-            c++;
+        Pila aux= new Pila();
+        aux.copiarDatos(pila);
+        
+        while(!aux.pilaVacia()){
+            cola.encolar(aux.Desempilar());
         }
         
         

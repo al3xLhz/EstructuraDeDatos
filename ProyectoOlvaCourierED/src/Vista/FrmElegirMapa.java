@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Estructuras.Pila;
 import Grafo.DijkstraMapa;
 import Sistema.OlvaCourier;
 import java.awt.BasicStroke;
@@ -22,7 +23,7 @@ import javax.swing.JOptionPane;
  */
 public class FrmElegirMapa extends javax.swing.JFrame {
     
-    DijkstraMapa miD = new DijkstraMapa(OlvaCourier.miGrafo);
+    DijkstraMapa miD;
     int auxI;
     int auxF;
     int aux;
@@ -343,7 +344,7 @@ public class FrmElegirMapa extends javax.swing.JFrame {
 
     private void botonAplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAplicarActionPerformed
         
-        
+        miD = new DijkstraMapa(OlvaCourier.miGrafo);
         if(OlvaCourier.usuarioActual.getTipoFuncion()==1){
             if(comboDestino.getSelectedItem().equals(comboOrigen.getSelectedItem())){
             JOptionPane.showMessageDialog(null, "No puedes colocar el mismo ORIGEN Y DESTINO ");
@@ -354,7 +355,6 @@ public class FrmElegirMapa extends javax.swing.JFrame {
             miD.dijkstra();
             miD.empilar();
             OlvaCourier.boletaActual.setCamino(miD.getCola());
-            //OlvaCourier.boletaActual.getCamino().Recorrido();
             /*Notacion adicional cuando solo quieras ejecutar FrmEligirMapa*/
             try{
                 OlvaCourier.boletaActual.getFechadeEntrega().add(Calendar.DAY_OF_YEAR,(miD.getPila().getLongitud()-1));
@@ -448,23 +448,28 @@ public class FrmElegirMapa extends javax.swing.JFrame {
     
     @Override
     public void paint(Graphics g){
+        Pila p = new Pila();
+        
         int pos,pos2;
         super.paint(g);
         switch(opc){
             case 0: break;
-            case 1: do{
-                        pos = (int)miD.getPila().Desempilar();
+            case 1: p=miD.getPila();
+                    System.out.println(p.pilaVacia());
+                    while(!p.pilaVacia()){
+                        p=miD.getPila();
+                        pos = (int) p.Desempilar();
                         Graphics2D g2 = (Graphics2D) g;
                         g2.fillOval(OlvaCourier.miGrafo.getCoordeX(pos), OlvaCourier.miGrafo.getCoordeY(pos), 15  , 15);g2.setStroke(new BasicStroke(3));
                         g2.setColor(Color.red);
-                        if(!miD.getPila().pilaVacia()){
-                            pos2= (int)miD.getPila().getCima();
+                        if(!p.pilaVacia()){
+                            pos2= (int)p.getCima();
                             g2.fillOval(OlvaCourier.miGrafo.getCoordeX(pos2), OlvaCourier.miGrafo.getCoordeY(pos2), 15  , 15);
                             g2.setColor(Color.red);
                             g2.drawLine(OlvaCourier.miGrafo.getCoordeX(pos)+6, OlvaCourier.miGrafo.getCoordeY(pos)+6, OlvaCourier.miGrafo.getCoordeX(pos2)+6, OlvaCourier.miGrafo.getCoordeY(pos2)+6);
                             g2.setStroke(new BasicStroke(3));
                         }
-                    }while(!miD.getPila().pilaVacia());
+                    };
             case 2: if(OlvaCourier.agencias.getAgencia("Amazonas").getListaBolestas().listaVacia()){
                     
                     }

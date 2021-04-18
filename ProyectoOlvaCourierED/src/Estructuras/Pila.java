@@ -73,24 +73,15 @@ public class Pila<E> {
         }
     }
     
-    public E getNodoXPos(int i){
+    public void copiarDatos(Pila p){
+        Nodo<E> aux = p.cima;
+        while(aux !=null){
+            Apilar(aux.objeto);
+            aux = aux.siguiente;
+        }
         
-        int contador=0;
-        if(pilaVacia()){
-            System.out.println("Error.Pila vacía");
-        }
-        else{
-            Nodo<E> aux = cima;
-            while(aux != null){
-                if(contador==i){
-                    return aux.objeto;
-                }
-                
-                aux = aux.siguiente;
-            }
-        }
-        return null;
     }
+    
     
     
     
