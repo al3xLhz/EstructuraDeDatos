@@ -132,7 +132,22 @@ public class ArbolAVL<E> {
 
      mostrarArbol(nodo.izq, n+1);
     }
-    
+    /*
+    public void mostrarArbolOtracosa(NodoArbol<E> nodo,int n){
+        if(nodo== null)
+          return;
+        mostrarArbol(nodo.der, n+1);
+
+     for(int i=0; i<n; i++)
+	  System.out.println("     ");
+           numNodos++;
+           Boleta bolAux = (Boleta) nodo.objeto;
+        System.out.println(bolAux.ge);
+   	System.out.println("");
+
+     mostrarArbol(nodo.izq, n+1);
+    }
+    */
     public void creacionArbolXLista(Lista Boletas){ 
         
         Nodo<E> aux = Boletas.inicio;

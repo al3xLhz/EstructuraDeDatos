@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Vista;
 
 import Estructuras.ArbolAVL;
@@ -10,21 +6,16 @@ import Modelo.Boleta;
 import Sistema.OlvaCourier;
 import java.util.Calendar;
 
-/**
- *
- * @author Alex
- */
 public class FrmHistorial extends javax.swing.JFrame {
-
-    /**
-     * Creates new form FrmHistorial
-     */
+    
+    ArbolAVL miArbol;
+    
     public FrmHistorial() {
         initComponents();
         llenarTabla();
         etiquetaNombre.setText(OlvaCourier.clienteActual.getNombres()+OlvaCourier.clienteActual.getApellidos());
         etiquetaHora.setText(OlvaCourier.horaActual.getTime().toLocaleString());
-        ArbolAVL miArbol = new ArbolAVL();
+        ArbolAVL miArbol = new ArbolAVL();//Creo mi arbol
         miArbol.creacionArbolXLista(OlvaCourier.clienteActual.getListaBoletas());//Va a generar un arbol AVL mediante la entrega de Argumento Lista de boletas
         System.out.println("Mostrando Arbol ");miArbol.mostrarArbol(miArbol.getRaiz(), 0);
         setLocationRelativeTo(null);
