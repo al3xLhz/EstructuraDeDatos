@@ -2,13 +2,13 @@
 package Modelo;
 
 public class Producto {
-    private int codigoP;
     private String nombreProducto;
     private double peso;
     private double alto;
     private double ancho;
     private double largo;
-    private int CodigoP;
+    private int codigoPro;
+    private int codigoPe;
     
     public Producto(String nombreProducto, double peso, double alto, double ancho, double largo, int valor) {
         this.nombreProducto = nombreProducto;
@@ -18,17 +18,16 @@ public class Producto {
         this.largo = largo;
     }
 
-    public Producto(int codigoP, String nombreProducto, double peso, double alto, double ancho, double largo, int CodigoP) {
-        this.codigoP = codigoP;
+    public Producto(int codigoPro, String nombreProducto, double peso, double alto, double ancho, double largo, int codigoPe) {
+        this.codigoPro = codigoPro;
         this.nombreProducto = nombreProducto;
         this.peso = peso;
         this.alto = alto;
         this.ancho = ancho;
         this.largo = largo;
-        this.CodigoP = CodigoP;
+        this.codigoPe = codigoPe;
     }
-    
-   
+        
     public String getNombreProducto() {
         return nombreProducto;
     }

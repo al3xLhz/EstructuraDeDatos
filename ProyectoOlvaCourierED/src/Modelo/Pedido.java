@@ -8,16 +8,17 @@ public class Pedido {
     private double valor;
     private int codigoB;
     private Producto producto;
-    public static int codigoPedido = (int) (Math.random()*10000+1);
+    public static int codigoPedido=(int) (Math.random()*10000+1);
     
 
     public Pedido(Producto producto) {
         this.codigo = (int) (Math.random()*10000+1);
-        codigoPedido++;
+        this.codigoB = codigoB;
         this.producto=producto;
+        codigoPedido++;
         setPrecioPedido(producto);
     }
-
+    
     public Pedido(int codigo, double valor , int codigoB) {
         this.codigo = codigo;
         this.valor = valor;

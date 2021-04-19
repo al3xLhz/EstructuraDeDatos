@@ -1,8 +1,7 @@
 
 package App;
 
-import Estructuras.Grafo;
-import Grafo.DijkstraMapa;
+import Estructuras.ArbolAVL;
 import Modelo.*;
 import Sistema.OlvaCourier;
 import Vista.FrmIniciarSesion;
@@ -26,20 +25,18 @@ public class App {
         OlvaCourier.CargarBoleta();
         System.out.println(OlvaCourier.boletas.getTamaño());
         
-        
         //<Es un respaldode creacion de los clientes,administradores Todo debería ser un sql pero en este caso por terminos de rapidez se hace de esta manera
-
+        
         //>
-        
-        
+ 
         //Inserta los objetos creados en sus respectivas listas : clientes, administradores y personas
-
         
         //De esta forma ingresa Formulario Iniciar sesion
-
         FrmIniciarSesion login = new FrmIniciarSesion();
         
         login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        
         
     }
     

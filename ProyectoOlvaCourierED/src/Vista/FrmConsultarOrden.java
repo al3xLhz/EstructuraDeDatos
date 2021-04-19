@@ -7,60 +7,33 @@ package Vista;
 
 import Modelo.Pedido;
 import Sistema.OlvaCourier;
-import static Vista.FrmCliente.res;
-import static Vista.FrmHistorial.res;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Alex
- */
 public class FrmConsultarOrden extends javax.swing.JFrame {
-    static ResultSet res;
-    public String estado;
-    /**
-     * Creates new form RegistroEnvio
-     */
+
     public FrmConsultarOrden() {
         initComponents();
-        LlenarTabla();
-        respuestaNroBoleta.setText(String.valueOf(FrmCliente.codigoABuscar));
-       
-        res = Conexion.Conexion.Consulta("select estadoP from Boleta where codBoleta =" + FrmCliente.codigoABuscar);
-        try {
-            while(res.next()){                
-                    estado = res.getString(1);
-            }
-            //OlvaCourier.boletaActual = OlvaCourier.clienteActual.getListaBoletas().getBoleta(codigoABuscar);
-        } catch (SQLException ex) {
-            Logger.getLogger(FrmCliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        respuestaEstado.setText(estado);
-        etiquetaNombre.setText(OlvaCourier.clienteActual.getNombres());
+        llenarTabla();
+        respuestaNroBoleta.setText(String.valueOf(OlvaCourier.boletaActual.getCodigo()));
+        if(OlvaCourier.boletaActual.getEstado()==1){posicion2.setVisible(false);posicion3.setVisible(false);respuestaEstado.setText("Sin entregar");}else if(OlvaCourier.boletaActual.getEstado()==2){posicion1.setVisible(false);posicion3.setVisible(false);respuestaEstado.setText("En camino");}else{posicion1.setVisible(false);posicion2.setVisible(false);respuestaEstado.setText("Llego a su destino");}
+        etiquetaNombre.setText(OlvaCourier.clienteActual.getNombres()+OlvaCourier.clienteActual.getApellidos());
+        etiquetaHora.setText(OlvaCourier.horaActual.getTime().toLocaleString());
+        setLocationRelativeTo(null);
         setVisible(true);
     }
     
-    
-    public void LlenarTabla(){
-        DefaultTableModel modelo = (DefaultTableModel) Tabla.getModel();
-        modelo.setRowCount(0);
-        res = Conexion.Conexion.Consulta("select Pedido.codigoP, Producto.nombrePro from Pedido INNER JOIN Producto ON Pedido.codigoP = Producto.CodigoPedido where codigoB =" + FrmCliente.codigoABuscar);
-        System.out.println(FrmCliente.codigoABuscar);
-        try{
-            while(res.next()){
-                Vector v = new Vector();
-                v.add(res.getInt(1));
-                v.add(res.getString(2));
-                modelo.addRow(v);
-                Tabla.setModel(modelo);
-            }  
-        }catch(SQLException e){
+    public void llenarTabla(){
+        String matriz[][] = new String[5][2];
+        
+        for(int i=0;i<5;i++){
+            Pedido pe = (Pedido) OlvaCourier.boletaActual.getListaPedidos().getXPos(i);
+            if(pe.getProducto().getNombreProducto()!=""){
+                matriz[i][0]=String.valueOf(pe.getCodigo());
+                matriz[i][1]=String.valueOf(pe.getProducto().getNombreProducto());
+                Tabla.setValueAt(matriz[i][0], i, 0);
+                Tabla.setValueAt(matriz[i][1], i, 1);
+            }
         }
+        
     }
     
     
@@ -80,15 +53,21 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
         respuestaNroBoleta = new javax.swing.JLabel();
         respuestaEstado = new javax.swing.JLabel();
         etiquetaNroBoleta2 = new javax.swing.JLabel();
-        botonRetroceder = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
         Tabla = new javax.swing.JTable();
+        panelBarra = new javax.swing.JPanel();
+        posicion1 = new javax.swing.JLabel();
+        posicion2 = new javax.swing.JLabel();
+        posicion3 = new javax.swing.JLabel();
+        Barra = new javax.swing.JLabel();
+        botonSalir = new javax.swing.JButton();
         Header = new javax.swing.JPanel();
         TituloRegistroEnvio = new javax.swing.JLabel();
         etiquetaNombre = new javax.swing.JLabel();
         etiquetaHora = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         fondo.setBackground(new java.awt.Color(64, 170, 173));
         fondo.setLayout(new java.awt.BorderLayout());
@@ -101,15 +80,9 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
 
         etiquetaNroBoleta2.setText("Estado:");
 
-        botonRetroceder.setText("Retroceder");
-        botonRetroceder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonRetrocederActionPerformed(evt);
-            }
-        });
-
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null},
                 {null, null},
                 {null, null},
                 {null, null},
@@ -120,23 +93,42 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(Tabla);
+        jScrollPane1.setViewportView(Tabla);
+
+        panelBarra.setBackground(new java.awt.Color(64, 170, 173));
+        panelBarra.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        posicion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Truck.png"))); // NOI18N
+        panelBarra.add(posicion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 20, -1, -1));
+
+        posicion2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Truck.png"))); // NOI18N
+        panelBarra.add(posicion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
+
+        posicion3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Truck.png"))); // NOI18N
+        panelBarra.add(posicion3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, -1, -1));
+
+        Barra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Barra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/barra.png"))); // NOI18N
+        panelBarra.add(Barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 433, 73));
+
+        botonSalir.setText("Salir");
+        botonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout BodyLayout = new javax.swing.GroupLayout(Body);
         Body.setLayout(BodyLayout);
         BodyLayout.setHorizontalGroup(
             BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BodyLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(botonRetroceder, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(243, 243, 243))
             .addGroup(BodyLayout.createSequentialGroup()
                 .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(BodyLayout.createSequentialGroup()
@@ -149,9 +141,14 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
                             .addComponent(respuestaNroBoleta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(respuestaEstado, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)))
                     .addGroup(BodyLayout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(71, 71, 71)
+                        .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelBarra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(BodyLayout.createSequentialGroup()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                                .addComponent(botonSalir)))))
+                .addGap(29, 29, 29))
         );
         BodyLayout.setVerticalGroup(
             BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,11 +161,16 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
                 .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(respuestaEstado)
                     .addComponent(etiquetaNroBoleta2))
-                .addGap(43, 43, 43)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(botonRetroceder)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(panelBarra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BodyLayout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(54, 54, 54))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BodyLayout.createSequentialGroup()
+                        .addComponent(botonSalir)
+                        .addGap(26, 26, 26))))
         );
 
         fondo.add(Body, java.awt.BorderLayout.CENTER);
@@ -190,9 +192,9 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
             .addGroup(HeaderLayout.createSequentialGroup()
                 .addGap(76, 76, 76)
                 .addComponent(TituloRegistroEnvio)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
                 .addComponent(etiquetaNombre)
-                .addGap(89, 89, 89)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
                 .addComponent(etiquetaHora)
                 .addGap(100, 100, 100))
         );
@@ -204,7 +206,7 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
                     .addComponent(etiquetaNombre)
                     .addComponent(etiquetaHora)
                     .addComponent(TituloRegistroEnvio))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         fondo.add(Header, java.awt.BorderLayout.NORTH);
@@ -224,9 +226,13 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonRetrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRetrocederActionPerformed
-        FrmCliente frmc= new FrmCliente();
-        this.dispose();
+        
     }//GEN-LAST:event_botonRetrocederActionPerformed
+
+    private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
+        FrmAdministrador frmc= new FrmAdministrador();
+        this.dispose(); 
+    }//GEN-LAST:event_botonSalirActionPerformed
 
     /**
      * @param args the command line arguments
@@ -279,17 +285,22 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Barra;
     private javax.swing.JPanel Body;
     private javax.swing.JPanel Header;
     private javax.swing.JTable Tabla;
     private javax.swing.JLabel TituloRegistroEnvio;
-    private javax.swing.JButton botonRetroceder;
+    private javax.swing.JButton botonSalir;
     private javax.swing.JLabel etiquetaHora;
     private javax.swing.JLabel etiquetaNombre;
     private javax.swing.JLabel etiquetaNroBoleta;
     private javax.swing.JLabel etiquetaNroBoleta2;
     private javax.swing.JPanel fondo;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel panelBarra;
+    private javax.swing.JLabel posicion1;
+    private javax.swing.JLabel posicion2;
+    private javax.swing.JLabel posicion3;
     private javax.swing.JLabel respuestaEstado;
     private javax.swing.JLabel respuestaNroBoleta;
     // End of variables declaration//GEN-END:variables

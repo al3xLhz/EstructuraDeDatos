@@ -2,22 +2,23 @@
 package Vista;
 
 import Sistema.OlvaCourier;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 
 public class FrmCliente extends javax.swing.JFrame {
-    static ResultSet res;
-    static int codigoABuscar;
-    static int valoraux;
+
     public FrmCliente() {
         initComponents();
         etiquetaBienvenida.setText("Bienvenido "+OlvaCourier.clienteActual.getNombres());
         setLocationRelativeTo(null);
         setVisible(true);
+        if(OlvaCourier.clienteActual.getVersionPagada()==1){
+            etiquetaUpgrade.setVisible(false);
+            botonUpgrade.setVisible(false);
+        }else{
+            etiquetaUpgrade.setVisible(true);
+            botonUpgrade.setVisible(true);
+        }
     }
 
     /**
@@ -38,13 +39,13 @@ public class FrmCliente extends javax.swing.JFrame {
         botonConsultarOrden = new javax.swing.JButton();
         botonRegistroEnvio = new javax.swing.JButton();
         botonHistorial = new javax.swing.JButton();
-        botonCalcularEnvio = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        botonUpgrade = new javax.swing.JButton();
+        etiquetaUpgrade = new javax.swing.JLabel();
         etiquetaBienvenida = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
 
@@ -69,12 +70,14 @@ public class FrmCliente extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         Fondo.setBackground(new java.awt.Color(87, 86, 86));
         Fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PanelOpciones.setBackground(new java.awt.Color(64, 170, 173));
 
+        botonConsultarOrden.setBackground(new java.awt.Color(64, 170, 173));
         botonConsultarOrden.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         botonConsultarOrden.setText("Consultar orden");
         botonConsultarOrden.addActionListener(new java.awt.event.ActionListener() {
@@ -83,6 +86,7 @@ public class FrmCliente extends javax.swing.JFrame {
             }
         });
 
+        botonRegistroEnvio.setBackground(new java.awt.Color(64, 170, 173));
         botonRegistroEnvio.setFont(new java.awt.Font("Yu Gothic UI Semilight", 1, 14)); // NOI18N
         botonRegistroEnvio.setText("Registro de productos");
         botonRegistroEnvio.addActionListener(new java.awt.event.ActionListener() {
@@ -91,6 +95,7 @@ public class FrmCliente extends javax.swing.JFrame {
             }
         });
 
+        botonHistorial.setBackground(new java.awt.Color(64, 170, 173));
         botonHistorial.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         botonHistorial.setText("Historial");
         botonHistorial.addActionListener(new java.awt.event.ActionListener() {
@@ -99,9 +104,7 @@ public class FrmCliente extends javax.swing.JFrame {
             }
         });
 
-        botonCalcularEnvio.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        botonCalcularEnvio.setText("Calcular envio");
-
+        botonSalir.setBackground(new java.awt.Color(64, 170, 173));
         botonSalir.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         botonSalir.setText("Salir");
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -119,88 +122,93 @@ public class FrmCliente extends javax.swing.JFrame {
         jLabel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel5.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/pago.png"))); // NOI18N
-
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/salir.png"))); // NOI18N
         jLabel7.setToolTipText("");
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/registro.png"))); // NOI18N
 
+        botonUpgrade.setBackground(new java.awt.Color(64, 170, 173));
+        botonUpgrade.setForeground(new java.awt.Color(64, 170, 173));
+        botonUpgrade.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/iconoUpgrade.png"))); // NOI18N
+        botonUpgrade.setBorder(null);
+        botonUpgrade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonUpgradeActionPerformed(evt);
+            }
+        });
+
+        etiquetaUpgrade.setText("Adquirir Servicio Mejorado");
+
         javax.swing.GroupLayout PanelOpcionesLayout = new javax.swing.GroupLayout(PanelOpciones);
         PanelOpciones.setLayout(PanelOpcionesLayout);
         PanelOpcionesLayout.setHorizontalGroup(
             PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelOpcionesLayout.createSequentialGroup()
+                .addGap(66, 66, 66)
                 .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                                .addGap(31, 31, 31)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(botonRegistroEnvio))
-                        .addGap(42, 42, 42)
-                        .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                                .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                                        .addGap(30, 30, 30)
-                                        .addComponent(jLabel5))
-                                    .addComponent(botonConsultarOrden))
-                                .addGap(62, 62, 62)
-                                .addComponent(botonHistorial)
-                                .addGap(20, 20, 20))))
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(botonRegistroEnvio))
+                .addGap(42, 42, 42)
+                .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(PanelOpcionesLayout.createSequentialGroup()
+                            .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(336, 336, 336))
+                        .addGroup(PanelOpcionesLayout.createSequentialGroup()
+                            .addComponent(jLabel7)
+                            .addGap(130, 130, 130)
+                            .addComponent(botonUpgrade)
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                        .addGap(170, 170, 170)
                         .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botonCalcularEnvio, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                                .addGap(17, 17, 17)
-                                .addComponent(jLabel4)
-                                .addGap(60, 60, 60)
-                                .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7))))))
-                .addContainerGap(63, Short.MAX_VALUE))
+                                .addGap(30, 30, 30)
+                                .addComponent(jLabel5))
+                            .addComponent(botonConsultarOrden))
+                        .addGap(76, 76, 76)
+                        .addComponent(botonHistorial))))
+            .addGroup(PanelOpcionesLayout.createSequentialGroup()
+                .addGap(470, 470, 470)
+                .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(etiquetaUpgrade)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelOpcionesLayout.setVerticalGroup(
             PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
                 .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonConsultarOrden))
-                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
+                        .addGap(41, 41, 41)
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(botonRegistroEnvio)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(botonRegistroEnvio))
                     .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(botonSalir))
-                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                        .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addGroup(PanelOpcionesLayout.createSequentialGroup()
-                                .addGap(33, 33, 33)
-                                .addComponent(jLabel7)))
-                        .addGap(18, 18, 18)
-                        .addComponent(botonCalcularEnvio)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelOpcionesLayout.createSequentialGroup()
-                .addGap(0, 19, Short.MAX_VALUE)
+                        .addGap(26, 26, 26)
+                        .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel8))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(botonConsultarOrden)
+                            .addComponent(botonHistorial))))
                 .addGroup(PanelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelOpcionesLayout.createSequentialGroup()
-                        .addComponent(botonHistorial)
-                        .addGap(235, 235, 235))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelOpcionesLayout.createSequentialGroup()
-                        .addComponent(jLabel8)
-                        .addGap(271, 271, 271))))
+                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(PanelOpcionesLayout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(botonUpgrade)
+                        .addGap(18, 18, 18)
+                        .addComponent(etiquetaUpgrade)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)))
+                .addComponent(botonSalir)
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         Fondo.add(PanelOpciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 650, 410));
@@ -234,26 +242,16 @@ public class FrmCliente extends javax.swing.JFrame {
 
     private void botonConsultarOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarOrdenActionPerformed
         
-        
-        codigoABuscar = Integer.parseInt(JOptionPane.showInputDialog("Digite el código a buscar"));
-        res = Conexion.Conexion.Consulta("select count(codBoleta) from Boleta where codCliente = '" + OlvaCourier.clienteActual.getCodigo() + "' and codBoleta = " + codigoABuscar);
-        try {
-            while(res.next()){                
-                    valoraux = res.getInt(1);
-            }
-            //OlvaCourier.boletaActual = OlvaCourier.clienteActual.getListaBoletas().getBoleta(codigoABuscar);
-        } catch (SQLException ex) {
-            Logger.getLogger(FrmCliente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        if(valoraux == 1){
+        try{
+            int codigoABuscar = Integer.parseInt(JOptionPane.showInputDialog("Digite el código a buscar"));
+            OlvaCourier.boletaActual = OlvaCourier.clienteActual.getListaBoletas().getBoleta(codigoABuscar);
             FrmConsultarOrden frmCO = new  FrmConsultarOrden();
+            
             this.dispose();
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "No se encontró el código buscado");
         }
-        else{
-            JOptionPane.showMessageDialog(null, "No existe esa boleta , intente nuevamente");
-        }
-               
+            
     }//GEN-LAST:event_botonConsultarOrdenActionPerformed
 
     private void botonRegistroEnvioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonRegistroEnvioActionPerformed
@@ -267,6 +265,10 @@ public class FrmCliente extends javax.swing.JFrame {
         FrmHistorial frmh = new FrmHistorial();
         this.dispose();
     }//GEN-LAST:event_botonHistorialActionPerformed
+
+    private void botonUpgradeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonUpgradeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonUpgradeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -307,17 +309,17 @@ public class FrmCliente extends javax.swing.JFrame {
     private javax.swing.JPanel Bienvenida;
     private javax.swing.JPanel Fondo;
     private javax.swing.JPanel PanelOpciones;
-    private javax.swing.JButton botonCalcularEnvio;
     private javax.swing.JButton botonConsultarOrden;
     private javax.swing.JButton botonHistorial;
     private javax.swing.JButton botonRegistroEnvio;
     private javax.swing.JButton botonSalir;
+    private javax.swing.JButton botonUpgrade;
     private javax.swing.JLabel etiquetaBienvenida;
+    private javax.swing.JLabel etiquetaUpgrade;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

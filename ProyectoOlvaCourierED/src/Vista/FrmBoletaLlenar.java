@@ -7,8 +7,8 @@ package Vista;
 
 import Modelo.Pedido;
 import Sistema.OlvaCourier;
-import static Vista.FrmRegistroProducto.RegistrarPedidos2;
 import static Vista.FrmRegistroProducto.RegistrarPedidosBD;
+import static Vista.FrmRegistroProducto.RegistrarProductosBD;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -27,19 +27,25 @@ import javax.swing.JOptionPane;
      */
     public FrmBoletaLlenar() {
         initComponents();
-        //Uso de los atributos de la boletaActual para mostrar en el FrmBoletaLlenar
-        respuestaOrigen.setText(OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion());
-        respuestaDestino.setText(OlvaCourier.boletaActual.getAgenciaFinal().getUbicacion());
-        respuestaCliente.setText(OlvaCourier.clienteActual.getNombres()+" "+OlvaCourier.clienteActual.getApellidos());
-        respuestaDNI.setText(String.valueOf(OlvaCourier.clienteActual.getCodigo()));
-        respuestaFechaEmision.setText(Calendar.getInstance().getTime().toLocaleString());
-        respuestaFechaLlegada.setText(OlvaCourier.boletaActual.getFechadeEntrega().getTime().toLocaleString());
-        respuestaValorTotal.setText(String.valueOf(OlvaCourier.boletaActual.getImporteTotal()));
-        respuestaIGV.setText(String.valueOf(OlvaCourier.boletaActual.getIGV()));
-        respuestaTotal.setText(String.valueOf(OlvaCourier.boletaActual.getTotal()));
-        respuestaNroBoleta.setText(String.valueOf(OlvaCourier.boletaActual.getCodigo()));
         
-        llenarTabla();
+        
+            //Uso de los atributos de la boletaActual para mostrar en el FrmBoletaLlenar
+            respuestaOrigen.setText(OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion());
+            respuestaDestino.setText(OlvaCourier.boletaActual.getAgenciaFinal().getUbicacion());
+            respuestaCliente.setText(OlvaCourier.clienteActual.getNombres()+" "+OlvaCourier.clienteActual.getApellidos());
+            respuestaCodigo.setText(OlvaCourier.clienteActual.getCodigo());
+            respuestaFechaEmision.setText(OlvaCourier.horaActual.getTime().toLocaleString());
+            respuestaFechaLlegada.setText(OlvaCourier.boletaActual.getFechadeEntrega().getTime().toLocaleString());
+            respuestaValorTotal.setText(String.valueOf(OlvaCourier.boletaActual.getImporteTotal()));
+            respuestaIGV.setText(String.valueOf(OlvaCourier.boletaActual.getIGV()));
+            respuestaTotal.setText(String.valueOf(OlvaCourier.boletaActual.getTotal()));
+            respuestaNroBoleta.setText(String.valueOf(OlvaCourier.boletaActual.getCodigo()));
+            
+            llenarTabla();
+        
+        
+        
+        
         
         setLocationRelativeTo(null);
         setVisible(true);
@@ -76,7 +82,7 @@ import javax.swing.JOptionPane;
                         entrada.setDouble(6, OlvaCourier.boletaActual.getImporteTotal());
                         entrada.setDouble(7, OlvaCourier.boletaActual.getIGV());
                         entrada.setDouble(8, OlvaCourier.boletaActual.getTotal());
-                        entrada.setString(9, OlvaCourier.boletaActual.getEstado());
+                        entrada.setInt(9, OlvaCourier.boletaActual.getEstado());
                         entrada.setString(10, OlvaCourier.boletaActual.getPropietarioDNI());
                         entrada.execute();
                         
@@ -102,7 +108,8 @@ import javax.swing.JOptionPane;
     
     
     
-
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -115,7 +122,7 @@ import javax.swing.JOptionPane;
         Fondo = new javax.swing.JPanel();
         Header = new javax.swing.JPanel();
         TituloBoleta = new javax.swing.JLabel();
-        etiquetaFechaLlegada = new javax.swing.JPanel();
+        Body = new javax.swing.JPanel();
         etiquetaFechaEmision = new javax.swing.JLabel();
         respuestaFechaEmision = new javax.swing.JLabel();
         etiquetaFechaLlegad = new javax.swing.JLabel();
@@ -126,8 +133,10 @@ import javax.swing.JOptionPane;
         respuestaDestino = new javax.swing.JLabel();
         etiquetaCliente = new javax.swing.JLabel();
         respuestaCliente = new javax.swing.JLabel();
-        etiquetaDNI = new javax.swing.JLabel();
-        respuestaDNI = new javax.swing.JLabel();
+        etiquetaCodigo = new javax.swing.JLabel();
+        respuestaCodigo = new javax.swing.JLabel();
+        etiquetaNroBoleta = new javax.swing.JLabel();
+        respuestaNroBoleta = new javax.swing.JLabel();
         etiquetaValorTotal = new javax.swing.JLabel();
         respuestaValorTotal = new javax.swing.JLabel();
         etiquetaIGV = new javax.swing.JLabel();
@@ -137,8 +146,6 @@ import javax.swing.JOptionPane;
         jScrollPane2 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         botonAceptar = new javax.swing.JButton();
-        etiquetaNroBoleta = new javax.swing.JLabel();
-        respuestaNroBoleta = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -157,7 +164,7 @@ import javax.swing.JOptionPane;
             .addGroup(HeaderLayout.createSequentialGroup()
                 .addGap(287, 287, 287)
                 .addComponent(TituloBoleta)
-                .addContainerGap(306, Short.MAX_VALUE))
+                .addContainerGap(226, Short.MAX_VALUE))
         );
         HeaderLayout.setVerticalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,7 +176,7 @@ import javax.swing.JOptionPane;
 
         Fondo.add(Header, java.awt.BorderLayout.NORTH);
 
-        etiquetaFechaLlegada.setBackground(new java.awt.Color(64, 170, 173));
+        Body.setBackground(new java.awt.Color(64, 170, 173));
 
         etiquetaFechaEmision.setText("Fecha Emision:  ");
 
@@ -181,7 +188,9 @@ import javax.swing.JOptionPane;
 
         etiquetaCliente.setText("Cliente:");
 
-        etiquetaDNI.setText("DNI:");
+        etiquetaCodigo.setText("Codigo");
+
+        etiquetaNroBoleta.setText("Nro Boleta: ");
 
         etiquetaValorTotal.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         etiquetaValorTotal.setText("Valor Total:");
@@ -213,118 +222,114 @@ import javax.swing.JOptionPane;
             }
         });
 
-        etiquetaNroBoleta.setText("Nro Boleta: ");
-
-        javax.swing.GroupLayout etiquetaFechaLlegadaLayout = new javax.swing.GroupLayout(etiquetaFechaLlegada);
-        etiquetaFechaLlegada.setLayout(etiquetaFechaLlegadaLayout);
-        etiquetaFechaLlegadaLayout.setHorizontalGroup(
-            etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(etiquetaFechaLlegadaLayout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(botonAceptar)
-                    .addGroup(etiquetaFechaLlegadaLayout.createSequentialGroup()
-                        .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(etiquetaValorTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(etiquetaIGV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        javax.swing.GroupLayout BodyLayout = new javax.swing.GroupLayout(Body);
+        Body.setLayout(BodyLayout);
+        BodyLayout.setHorizontalGroup(
+            BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BodyLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BodyLayout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(etiquetaFechaEmision)
+                            .addComponent(etiquetaFechaLlegad)))
+                    .addComponent(etiquetaOrigen)
+                    .addComponent(etiquetaDestino))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(respuestaDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(BodyLayout.createSequentialGroup()
+                        .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(respuestaFechaEmision, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(respuestaFechaLlegada, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(respuestaOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(42, 42, 42)
+                        .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(BodyLayout.createSequentialGroup()
+                                .addComponent(etiquetaCodigo)
+                                .addGap(18, 18, 18)
+                                .addComponent(respuestaCodigo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(BodyLayout.createSequentialGroup()
+                                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(BodyLayout.createSequentialGroup()
+                                        .addComponent(etiquetaCliente)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(respuestaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(BodyLayout.createSequentialGroup()
+                                        .addComponent(etiquetaNroBoleta)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(respuestaNroBoleta, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(BodyLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BodyLayout.createSequentialGroup()
+                        .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(etiquetaValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(etiquetaIGV, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(etiquetaTotal, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addGap(18, 18, 18)
-                        .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(respuestaValorTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(respuestaIGV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(respuestaTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(etiquetaFechaLlegadaLayout.createSequentialGroup()
-                            .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(etiquetaFechaLlegadaLayout.createSequentialGroup()
-                                    .addGap(2, 2, 2)
-                                    .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(etiquetaFechaEmision)
-                                        .addComponent(etiquetaFechaLlegad)))
-                                .addComponent(etiquetaOrigen)
-                                .addComponent(etiquetaDestino))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(respuestaDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(etiquetaFechaLlegadaLayout.createSequentialGroup()
-                                    .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(respuestaFechaLlegada, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                            .addComponent(respuestaFechaEmision, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addComponent(respuestaOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(64, 64, 64)
-                                    .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(etiquetaFechaLlegadaLayout.createSequentialGroup()
-                                            .addComponent(etiquetaNroBoleta)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(respuestaNroBoleta, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(etiquetaFechaLlegadaLayout.createSequentialGroup()
-                                            .addComponent(etiquetaCliente)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(respuestaCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(etiquetaFechaLlegadaLayout.createSequentialGroup()
-                                            .addComponent(etiquetaDNI)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(respuestaDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addComponent(respuestaOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(respuestaDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(40, Short.MAX_VALUE))
+                        .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(respuestaValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(respuestaIGV, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(respuestaTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(botonAceptar)))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
-        etiquetaFechaLlegadaLayout.setVerticalGroup(
-            etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(etiquetaFechaLlegadaLayout.createSequentialGroup()
-                .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(etiquetaFechaLlegadaLayout.createSequentialGroup()
+        BodyLayout.setVerticalGroup(
+            BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(BodyLayout.createSequentialGroup()
+                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(BodyLayout.createSequentialGroup()
                             .addGap(19, 19, 19)
-                            .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(etiquetaCliente)
                                 .addComponent(etiquetaFechaEmision)))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, etiquetaFechaLlegadaLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(respuestaFechaEmision, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(respuestaCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(respuestaCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(respuestaFechaEmision, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(etiquetaDNI)
+                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(etiquetaCodigo)
                         .addComponent(etiquetaFechaLlegad))
                     .addComponent(respuestaFechaLlegada, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(respuestaDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(etiquetaOrigen)
-                    .addComponent(respuestaOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(etiquetaNroBoleta)
-                        .addComponent(respuestaNroBoleta, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(respuestaCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(respuestaNroBoleta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(etiquetaOrigen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(respuestaOrigen, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(etiquetaNroBoleta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(etiquetaDestino)
                     .addComponent(respuestaDestino, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(45, 45, 45)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(30, 30, 30)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(respuestaTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(etiquetaFechaLlegadaLayout.createSequentialGroup()
-                        .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(etiquetaFechaLlegadaLayout.createSequentialGroup()
-                                .addGroup(etiquetaFechaLlegadaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BodyLayout.createSequentialGroup()
+                        .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(respuestaIGV, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(BodyLayout.createSequentialGroup()
+                                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(etiquetaValorTotal)
                                     .addComponent(respuestaValorTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(etiquetaIGV))
-                            .addComponent(respuestaIGV, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(etiquetaIGV)))
                         .addGap(18, 18, 18)
                         .addComponent(etiquetaTotal)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(botonAceptar)
-                .addGap(68, 68, 68))
+                .addGap(59, 59, 59))
         );
 
-        Fondo.add(etiquetaFechaLlegada, java.awt.BorderLayout.PAGE_END);
+        Fondo.add(Body, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -341,28 +346,36 @@ import javax.swing.JOptionPane;
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
-       int input = JOptionPane.showConfirmDialog(null, "¿Estás seguro de los cambios establecidos?");
+        int input = JOptionPane.showConfirmDialog(null, "¿Estás seguro de los cambios establecidos?");
         // 0=yes, 1=no, 2=cancel
-       if(input==0){
+        if(input==0){
+            
+           RegistrarProductosBD();
            RegistrarPedidosBD();
-           RegistrarPedidos2();
            LlenarBoletaBD();
-           
-           //Guarda la boleta creada al cliente que ha iniciado sesion
-            OlvaCourier.clienteActual.getListaBoletas().insertarNodoPorFinal(OlvaCourier.boletaActual);
 
+            //Guarda la boleta creada al cliente que ha iniciado sesion
+            //OlvaCourier.clientes.buscar(OlvaCourier.clienteActual).getListaBoletas().insertarNodoPorFinal(OlvaCourier.boletaActual);
+            OlvaCourier.clientes.buscarXCodigoCliente(OlvaCourier.clienteActual.getCodigo()).getListaBoletas().insertarNodoPorFinal(OlvaCourier.boletaActual);
             //System.out.println(OlvaCourier.clienteActual.getListaBoletas().getBoletaXPos(0).getListaPedidos().getPedidoXPos(0).getProducto().getNombreProducto()); Funciona
             //asegurar que el cliente actual guarde la informacion donde se comenzo
             OlvaCourier.boletas.insertarNodoPorFinal(OlvaCourier.boletaActual);
-            
+
             //Ahora tenemos que guardar todo en el cliente usado, porque sigue en el borrador que es Cliente actual
-            
+
             OlvaCourier.clientes.actualizarCliente(OlvaCourier.clienteActual);
+
+            //Estamos insertando la boleta para tenerlo en el inventario de la agencia respectiva
+
+            OlvaCourier.agencias.getAgencia(OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion()).getListaBolestas().insertarNodoPorFinal(OlvaCourier.boletaActual);
             
-         
-           FrmCliente cliente = new FrmCliente();
-           this.dispose();
-       }
+            if(OlvaCourier.clienteActual.getVersionPagada()==0){
+                JOptionPane.showMessageDialog(null, "Su pedido está en cola de envio");
+            }
+            
+            FrmCliente cliente = new FrmCliente();
+            this.dispose();
+        }
     }//GEN-LAST:event_botonAceptarActionPerformed
 
     /**
@@ -402,16 +415,16 @@ import javax.swing.JOptionPane;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel Body;
     private javax.swing.JPanel Fondo;
     private javax.swing.JPanel Header;
     private javax.swing.JLabel TituloBoleta;
     private javax.swing.JButton botonAceptar;
     private javax.swing.JLabel etiquetaCliente;
-    private javax.swing.JLabel etiquetaDNI;
+    private javax.swing.JLabel etiquetaCodigo;
     private javax.swing.JLabel etiquetaDestino;
     private javax.swing.JLabel etiquetaFechaEmision;
     private javax.swing.JLabel etiquetaFechaLlegad;
-    private javax.swing.JPanel etiquetaFechaLlegada;
     private javax.swing.JLabel etiquetaIGV;
     private javax.swing.JLabel etiquetaNroBoleta;
     private javax.swing.JLabel etiquetaOrigen;
@@ -419,7 +432,7 @@ import javax.swing.JOptionPane;
     private javax.swing.JLabel etiquetaValorTotal;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel respuestaCliente;
-    private javax.swing.JLabel respuestaDNI;
+    private javax.swing.JLabel respuestaCodigo;
     private javax.swing.JLabel respuestaDestino;
     private javax.swing.JLabel respuestaFechaEmision;
     private javax.swing.JLabel respuestaFechaLlegada;

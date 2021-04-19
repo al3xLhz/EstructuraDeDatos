@@ -7,6 +7,7 @@ package Vista;
 
 import Sistema.OlvaCourier;
 import java.io.IOException;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -37,17 +38,17 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         Fondo = new javax.swing.JPanel();
         PanelOpciones = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
+        botonInventarioAgencia = new javax.swing.JButton();
+        botonConsular = new javax.swing.JButton();
+        botonHistorial = new javax.swing.JButton();
         botonSeguimientoEnvio = new javax.swing.JButton();
         salir = new javax.swing.JButton();
+        Cliente = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
         inventario = new javax.swing.JLabel();
         consulta = new javax.swing.JLabel();
         historial = new javax.swing.JLabel();
         exit = new javax.swing.JLabel();
-        Cliente = new javax.swing.JButton();
         cliente = new javax.swing.JLabel();
         etiquetaBienvenida = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
@@ -68,6 +69,7 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jLabel5.setText("jLabel5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
 
         Fondo.setBackground(new java.awt.Color(64, 170, 173));
         Fondo.setPreferredSize(new java.awt.Dimension(650, 520));
@@ -76,36 +78,34 @@ public class FrmAdministrador extends javax.swing.JFrame {
         PanelOpciones.setBackground(new java.awt.Color(64, 170, 173));
         PanelOpciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jButton1.setText("Inventario de Agencia");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonInventarioAgencia.setBackground(new java.awt.Color(64, 170, 173));
+        botonInventarioAgencia.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        botonInventarioAgencia.setText("Inventario de Agencia");
+        botonInventarioAgencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonInventarioAgenciaActionPerformed(evt);
             }
         });
-        PanelOpciones.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
+        PanelOpciones.add(botonInventarioAgencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
-        jButton2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jButton2.setText("Consulta de ordenes");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        botonConsular.setBackground(new java.awt.Color(64, 170, 173));
+        botonConsular.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        botonConsular.setText("Consultar de orden");
+        botonConsular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                botonConsularActionPerformed(evt);
             }
         });
-        PanelOpciones.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, -1, -1));
+        PanelOpciones.add(botonConsular, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, -1, -1));
 
-        jButton3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        jButton3.setText("Historial");
-        PanelOpciones.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, -1, -1));
+        botonHistorial.setBackground(new java.awt.Color(64, 170, 173));
+        botonHistorial.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
+        botonHistorial.setText("Historial");
+        PanelOpciones.add(botonHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, -1, -1));
 
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/camioneta.png"))); // NOI18N
-        jLabel6.setFocusable(false);
-        jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        PanelOpciones.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, 102));
-
+        botonSeguimientoEnvio.setBackground(new java.awt.Color(64, 170, 173));
         botonSeguimientoEnvio.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        botonSeguimientoEnvio.setText("Seguimiento de envios");
+        botonSeguimientoEnvio.setText("Seleccion de Rutas");
         botonSeguimientoEnvio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonSeguimientoEnvioActionPerformed(evt);
@@ -113,14 +113,30 @@ public class FrmAdministrador extends javax.swing.JFrame {
         });
         PanelOpciones.add(botonSeguimientoEnvio, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 187, -1));
 
+        salir.setBackground(new java.awt.Color(64, 170, 173));
         salir.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        salir.setText("salir");
+        salir.setText("Salir");
         salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salirActionPerformed(evt);
             }
         });
         PanelOpciones.add(salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, -1, -1));
+
+        Cliente.setBackground(new java.awt.Color(64, 170, 173));
+        Cliente.setText("Clientes");
+        Cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ClienteActionPerformed(evt);
+            }
+        });
+        PanelOpciones.add(Cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, -1, -1));
+
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/camioneta.png"))); // NOI18N
+        jLabel6.setFocusable(false);
+        jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        PanelOpciones.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, 102));
 
         inventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/inventario_agencia.png"))); // NOI18N
         PanelOpciones.add(inventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
@@ -134,14 +150,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
         exit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/salir.png"))); // NOI18N
         exit.setToolTipText("");
         PanelOpciones.add(exit, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, -1, -1));
-
-        Cliente.setText("Clientes");
-        Cliente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ClienteActionPerformed(evt);
-            }
-        });
-        PanelOpciones.add(Cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 160, -1, -1));
 
         cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/clientes.png"))); // NOI18N
         PanelOpciones.add(cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 40, 120, -1));
@@ -174,12 +182,35 @@ public class FrmAdministrador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void botonInventarioAgenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonInventarioAgenciaActionPerformed
+        FrmInventarioAgencia fi = new FrmInventarioAgencia();
+        
+    }//GEN-LAST:event_botonInventarioAgenciaActionPerformed
 
     private void botonSeguimientoEnvioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSeguimientoEnvioActionPerformed
-        // TODO add your handling code here:
+        
+        String codigoCliente = JOptionPane.showInputDialog("Digite el codigo del cliente");
+        
+        if(OlvaCourier.clientes.buscarXCodigoCliente(codigoCliente)!=null){
+            OlvaCourier.clienteActual = OlvaCourier.clientes.buscarXCodigoCliente(codigoCliente);
+            
+                int codigoABuscar = Integer.parseInt(JOptionPane.showInputDialog("Digite el código a buscar"));
+                if(OlvaCourier.clienteActual.getListaBoletas().getBoleta(codigoABuscar)!=null){
+                    OlvaCourier.boletaActual = OlvaCourier.clienteActual.getListaBoletas().getBoleta(codigoABuscar);
+                    if(OlvaCourier.boletaActual.getCamino()==""){
+                        FrmElegirMapa fm = new FrmElegirMapa();
+                        this.dispose();
+                    }
+                    
+                }else{
+                    JOptionPane.showMessageDialog(null, "No se encontro la boleta");
+                }
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "No se encontro el cliente");
+        }
+        
+       
     }//GEN-LAST:event_botonSeguimientoEnvioActionPerformed
 
     private void ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClienteActionPerformed
@@ -191,12 +222,31 @@ public class FrmAdministrador extends javax.swing.JFrame {
         //this.dispose();
     }//GEN-LAST:event_ClienteActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void botonConsularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsularActionPerformed
+
+        String codigoCliente = JOptionPane.showInputDialog("Digite el codigo del cliente");
+        
+        if(OlvaCourier.clientes.buscarXCodigoCliente(codigoCliente)!=null){
+            OlvaCourier.clienteActual = OlvaCourier.clientes.buscarXCodigoCliente(codigoCliente);
+            try {
+                int codigoABuscar = Integer.parseInt(JOptionPane.showInputDialog("Digite el código a buscar"));
+                OlvaCourier.boletaActual = OlvaCourier.clienteActual.getListaBoletas().getBoleta(codigoABuscar);
+                FrmConsultarOrden frmCO = new  FrmConsultarOrden();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "No se encontro la boleta");
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "No se encontro el cliente");
+        }
+        
+        
+        
+    }//GEN-LAST:event_botonConsularActionPerformed
 
     private void salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirActionPerformed
-        System.exit(0);
+        FrmIniciarSesion fi = new FrmIniciarSesion();
+        this.dispose();
     }//GEN-LAST:event_salirActionPerformed
 
     /**
@@ -239,6 +289,9 @@ public class FrmAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton Cliente;
     private javax.swing.JPanel Fondo;
     private javax.swing.JPanel PanelOpciones;
+    private javax.swing.JButton botonConsular;
+    private javax.swing.JButton botonHistorial;
+    private javax.swing.JButton botonInventarioAgencia;
     private javax.swing.JButton botonSeguimientoEnvio;
     private javax.swing.JLabel cliente;
     private javax.swing.JLabel consulta;
@@ -247,9 +300,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel historial;
     private javax.swing.JLabel inventario;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JButton salir;

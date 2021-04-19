@@ -22,6 +22,10 @@ public class Nodo<E> {
         this.anterior = null; //Constructores para NodoSimple,siempre null a "anterior"
     }
     
+    public Nodo(){
+        this.siguiente = null;
+        this.anterior = null; //Constructores para NodoSimple,siempre null a "anterior"
+    }
     //NodoDoble
     //Para LISTADOBLE
     //Constructor para nodo si no hay nodos previos

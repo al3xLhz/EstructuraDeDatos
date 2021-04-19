@@ -72,6 +72,51 @@ public class Pila<E> {
             }
         }
     }
+    
+    public void copiarDatos(Pila p){
+        Nodo<E> aux = p.cima;
+        while(aux !=null){
+            Apilar(aux.objeto);
+            aux = aux.siguiente;
+        }
+        
+    }
+    
+    public void agregarPilaDebajoDeLaPila(Pila e){
+        Nodo<E> aux = this.cima;
+        Nodo<E> aux2 = aux;
+        if(pilaVacia()){
+            cima=e.cima;
+        }else{
+            while(aux!=null){
+            aux2 = aux;
+            aux = aux.siguiente;
+            }
+        
+            aux2.siguiente=e.cima.siguiente;
+            e.cima.siguiente.anterior=aux2;
+        }
+        
+    }
+    
+    public String ConvertirAString(){
+        String ruta = "";
+        
+        if(pilaVacia()){
+            System.out.println("Error.Pila vacía");
+        }
+        else{
+            Nodo<E> aux = cima;
+            while(aux != null){
+                ruta+=aux.objeto.toString()+"-";
+                aux = aux.siguiente;
+            }
+        }        
+        
+        return ruta;
+    }
+    
+    
 }
 /*
 class ExcepcionListaVacia extends RuntimeException {

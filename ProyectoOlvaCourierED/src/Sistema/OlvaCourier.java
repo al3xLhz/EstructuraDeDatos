@@ -6,12 +6,14 @@ import Grafo.*;
 import Modelo.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Calendar;
 
 
 
 public class OlvaCourier {
     //Representa como una base de datos donde se maneja la información de todo el sistema
-
+    
+    
     //Aquí están las listas generales que abarcaran tales y como dice su clase Lista<>
     public static Lista<Cliente> clientes = new Lista<>();
     public static Lista<Boleta> boletas = new Lista<>();
@@ -27,10 +29,11 @@ public class OlvaCourier {
     public static Login usuarioActual;
     public static Administrador administradorActual;
     public static GrafoMapa miGrafo = new GrafoMapa();
+    public static DijkstraMapa miDijkstra = new DijkstraMapa(miGrafo);
+    public static Calendar horaActual=Calendar.getInstance();
+    
     
 
-    
-    
     static ResultSet res;
     public static void CargarClientes(){
         
@@ -38,8 +41,8 @@ public class OlvaCourier {
         
         try{
             while(res.next()){
-                OlvaCourier.clientes.insertarNodoPorFinal(new Cliente(res.getString(2), res.getString(3),res.getString(1), res.getString(4), new Login(res.getString(5),res.getString(6),res.getInt(7))));
-                OlvaCourier.personas.insertarNodoPorFinal(new Cliente(res.getString(2), res.getString(3),res.getString(1), res.getString(4), new Login(res.getString(5),res.getString(6),res.getInt(7))));
+                OlvaCourier.clientes.insertarNodoPorFinal(new Cliente(res.getInt(8), res.getString(2), res.getString(3),res.getString(1), res.getString(4), new Login(res.getString(5),res.getString(6),res.getInt(7))));
+                OlvaCourier.personas.insertarNodoPorFinal(new Cliente(res.getInt(8), res.getString(2), res.getString(3),res.getString(1), res.getString(4), new Login(res.getString(5),res.getString(6),res.getInt(7))));
             }  
         }catch(SQLException e){
         }
@@ -63,7 +66,7 @@ public class OlvaCourier {
         
         try{
            while(res.next()){
-                OlvaCourier.boletas.insertarNodoPorFinal(new Boleta(res.getInt(1), res.getString(2),res.getString(3),res.getString(4),res.getString(5),res.getDouble(6),res.getDouble(7),res.getDouble(8),res.getString(9),res.getString(10)));         
+                OlvaCourier.boletas.insertarNodoPorFinal(new Boleta(res.getInt(1), res.getString(2),res.getString(3),res.getString(4),res.getString(5),res.getDouble(6),res.getDouble(7),res.getDouble(8),res.getInt(9),res.getString(10)));         
             }  
         }catch(SQLException e){
         }

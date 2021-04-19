@@ -1,7 +1,9 @@
 
 package Modelo;
 
+import Estructuras.Pila;
 import Estructuras.Lista;
+import Sistema.OlvaCourier;
 import java.util.Calendar;
 
 public class Boleta {
@@ -15,19 +17,22 @@ public class Boleta {
     private double total;
     private static int codigoM = (int) Math.floor(Math.random()*10000+1);
     private String propietarioDNI;
-    private String estado;
+    private int estado;//1=Sin entregar 2=En camino 3= Llego
     private Lista<Pedido> listaPedidos = new Lista<>();
+    private String camino = "";
 
+    
     public Boleta(Agencia agenciaInicial, Agencia agenciaFinal,String propietarioDNI) {
+        OlvaCourier.horaActual = Calendar.getInstance();
         this.codigo = codigoM;
         codigoM++;
         this.propietarioDNI=propietarioDNI;
-        this.fechaEmision=Calendar.getInstance();
+        this.fechaEmision=OlvaCourier.horaActual;
         this.fechadeEntrega=fechaEmision;
-        this.estado= "Sin entregar";
+        this.estado= 1;
     }
     
-    public Boleta(int codigo ,String fechaEmision, String FechaEntrega , String AgenciaI , String AgenciaFinal , double importeTotal , double IGV , double total , String estado , String propietarioDNI){
+    public Boleta(int codigo ,String fechaEmision, String FechaEntrega , String AgenciaI , String AgenciaFinal , double importeTotal , double IGV , double total , int estado , String propietarioDNI){
         this.codigo = codigo;
         Calendar cal = Calendar.getInstance();
         cal.set(Integer.valueOf(fechaEmision.substring(24, 28)), getIntMes(fechaEmision.substring(4, 7)), Integer.valueOf(fechaEmision.substring(8, 10)), Integer.valueOf(fechaEmision.substring(11, 13)), Integer.valueOf(fechaEmision.substring(14, 16)), Integer.valueOf(fechaEmision.substring(17, 19)));
@@ -42,7 +47,7 @@ public class Boleta {
         this.estado = estado;
         this.propietarioDNI = propietarioDNI;
     }
-
+    
     public String getPropietarioDNI() {
         return propietarioDNI;
     }
@@ -51,14 +56,23 @@ public class Boleta {
         this.propietarioDNI = propietarioDNI;
     }
 
-    public String getEstado() {
+    public int getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(int estado) {
         this.estado = estado;
     }
 
+    public String getCamino() {
+        return camino;
+    }
+
+    public void setCamino(String camino) {
+        this.camino = camino;
+    }
+    
+    
     
     public void setPrecioTotal(){
         importeTotal = montoAgenciaAgencia()+sumarPedido();
@@ -187,11 +201,12 @@ public class Boleta {
         listaPedidos=b.getListaPedidos();
     }
     
-    private int getIntMes(String mes){
+    
+      private int getIntMes(String mes){
         int nMes=0;
         
         switch (mes){
-            case "apr" : nMes = 3;break;
+            case "Apr" : nMes = 3;break;
             
         }
         return nMes;
