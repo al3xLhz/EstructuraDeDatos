@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Estructuras.ArbolAVL;
 import Modelo.Boleta;
 import Sistema.OlvaCourier;
 import java.util.Calendar;
@@ -23,7 +24,10 @@ public class FrmHistorial extends javax.swing.JFrame {
         llenarTabla();
         etiquetaNombre.setText(OlvaCourier.clienteActual.getNombres()+OlvaCourier.clienteActual.getApellidos());
         etiquetaHora.setText(OlvaCourier.horaActual.getTime().toLocaleString());
-                
+        ArbolAVL miArbol = new ArbolAVL();
+        miArbol.creacionArbolXLista(OlvaCourier.clienteActual.getListaBoletas());//Va a generar un arbol AVL mediante la entrega de Argumento Lista de boletas
+        System.out.println("Mostrando Arbol ");miArbol.mostrarArbol(miArbol.getRaiz(), 0);
+        setLocationRelativeTo(null);
         setVisible(true);
     }
 

@@ -318,12 +318,14 @@ public class FrmElegirMapa extends javax.swing.JFrame {
         // 0=yes, 1=no, 2=cancel
         if(input==0){
             if(OlvaCourier.usuarioActual.getTipoFuncion()==1){
-                
-                OlvaCourier.boletaActual.setAgenciaInicial(OlvaCourier.agencias.getAgencia(comboOrigen.getSelectedItem().toString()));
-                OlvaCourier.boletaActual.setAgenciaFinal(OlvaCourier.agencias.getAgencia(comboDestino.getSelectedItem().toString()));
+                try{
+                    OlvaCourier.boletaActual.setAgenciaInicial(OlvaCourier.agencias.getAgencia(comboOrigen.getSelectedItem().toString()));
+                    OlvaCourier.boletaActual.setAgenciaFinal(OlvaCourier.agencias.getAgencia(comboDestino.getSelectedItem().toString()));
 
-                FrmBoletaLlenar boleta = new FrmBoletaLlenar();
-                this.dispose();
+                    FrmBoletaLlenar boleta = new FrmBoletaLlenar();
+                    this.dispose();
+                }catch(Exception e){}
+                
             }else if(OlvaCourier.usuarioActual.getTipoFuncion()==2){
                 //guardar datos
                 if(OlvaCourier.boletaActual.getAgenciaFinal().getNumero() == auxF){
@@ -363,7 +365,7 @@ public class FrmElegirMapa extends javax.swing.JFrame {
             miD.empilar();
             pilaGeneral.agregarPilaDebajoDeLaPila(miD.getPila());
             
-            miD.getPila().Recorrido();
+            System.out.println("Mostrando Recorrido ");miD.getPila().Recorrido();
             opc = 1;
             repaint();
             /*Notacion adicional cuando solo quieras ejecutar FrmEligirMapa*/
