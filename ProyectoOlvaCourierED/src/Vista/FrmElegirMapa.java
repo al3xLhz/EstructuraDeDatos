@@ -23,7 +23,8 @@ import javax.swing.JOptionPane;
 public class FrmElegirMapa extends javax.swing.JFrame {
     
     DijkstraMapa miD = new DijkstraMapa(OlvaCourier.miGrafo);
-    Cola colaAcumuladora= new Cola();
+    Pila pilaGeneral;
+    
     int auxI;
     int auxF;
     int aux;
@@ -31,6 +32,7 @@ public class FrmElegirMapa extends javax.swing.JFrame {
     int c=0;
     public FrmElegirMapa() {
         initComponents();
+        pilaGeneral = new Pila();
         setResizable(false);
         setLocationRelativeTo(null);
         setVisible(true);
@@ -312,17 +314,24 @@ public class FrmElegirMapa extends javax.swing.JFrame {
         // 0=yes, 1=no, 2=cancel
         if(input==0){
             if(OlvaCourier.usuarioActual.getTipoFuncion()==1){
-                
-                OlvaCourier.boletaActual.setAgenciaInicial(OlvaCourier.agencias.getAgencia(comboOrigen.getSelectedItem().toString()));
-                OlvaCourier.boletaActual.setAgenciaFinal(OlvaCourier.agencias.getAgencia(comboDestino.getSelectedItem().toString()));
+                try{
+                    OlvaCourier.boletaActual.setAgenciaInicial(OlvaCourier.agencias.getAgencia(comboOrigen.getSelectedItem().toString()));
+                    OlvaCourier.boletaActual.setAgenciaFinal(OlvaCourier.agencias.getAgencia(comboDestino.getSelectedItem().toString()));
 
-                FrmBoletaLlenar boleta = new FrmBoletaLlenar();
-                this.dispose();
+                    FrmBoletaLlenar boleta = new FrmBoletaLlenar();
+                    this.dispose();
+                }catch(Exception e){}
+                
             }else if(OlvaCourier.usuarioActual.getTipoFuncion()==2){
                 //guardar datos
-                if((int)OlvaCourier.boletaActual.getCamino().getUltimo()==auxF){
+                if(OlvaCourier.boletaActual.getAgenciaFinal().getNumero() == auxF){
+                    OlvaCourier.boletaActual.setCamino(pilaGeneral.ConvertirAString());
+                    OlvaCourier.clientes.buscar(OlvaCourier.clienteActual).getListaBoletas().getBoleta(OlvaCourier.boletaActual.getCodigo()).actualizarDatos(OlvaCourier.boletaActual);
+                    System.out.println(OlvaCourier.boletaActual.getCamino());
                     FrmAdministrador fa = new FrmAdministrador();
                     this.dispose();
+                }else{
+                    JOptionPane.showMessageDialog(null,"Todavia no llegas al destino final establecido");
                 }
                 
             }
@@ -333,8 +342,8 @@ public class FrmElegirMapa extends javax.swing.JFrame {
     }//GEN-LAST:event_botonSiguienteActionPerformed
 
     private void MapaImagenMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MapaImagenMousePressed
-        System.out.println(evt.getX());
-        System.out.println(evt.getY());
+        //System.out.println(evt.getX());
+        //System.out.println(evt.getY());
     }//GEN-LAST:event_MapaImagenMousePressed
 
     private void botonAplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAplicarActionPerformed
@@ -350,7 +359,11 @@ public class FrmElegirMapa extends javax.swing.JFrame {
             miD.setNodoFin(comboDestino.getSelectedIndex());
             miD.dijkstra();
             miD.empilar();
-            OlvaCourier.boletaActual.setCamino(miD.getCola());
+            pilaGeneral.agregarPilaDebajoDeLaPila(miD.getPila());
+            
+            System.out.println("Mostrando Recorrido ");miD.getPila().Recorrido();
+            opc = 1;
+            repaint();
             /*Notacion adicional cuando solo quieras ejecutar FrmEligirMapa*/
             try{
                 OlvaCourier.boletaActual.getFechadeEntrega().add(Calendar.DAY_OF_YEAR,(miD.getPila().getLongitud()-1));
@@ -358,12 +371,11 @@ public class FrmElegirMapa extends javax.swing.JFrame {
                 System.out.println("Para que funcione tiene que ejecutarse desde la app, porque no se declaro la boleta");
             }
             
-            opc = 1;
-            repaint();
+            
             botonSiguiente.setEnabled(true);
             }
             
-        }else{
+        }else if(OlvaCourier.usuarioActual.getTipoFuncion()==2){
             
             if(comboDestino.getSelectedItem().equals(comboOrigen.getSelectedItem())){
             JOptionPane.showMessageDialog(null, "No puedes colocar el mismo ORIGEN Y DESTINO ");
@@ -374,12 +386,10 @@ public class FrmElegirMapa extends javax.swing.JFrame {
                     auxF=comboDestino.getSelectedIndex();
                     miD.dijkstra();
                     miD.empilar();
-                    colaAcumuladora.acumularCola(miD.getCola());
-                    //OlvaCourier.boletaActual.getCamino().desencolar();
+                    pilaGeneral.agregarPilaDebajoDeLaPila(miD.getPila());
                     auxI=comboDestino.getSelectedIndex();
-                    opc = 2;
+                    opc = 1;
                     repaint();
-                    miD.getCola().eliminarUltimoIngreso();
                     botonSiguiente.setEnabled(true);
                 }else{
                     JOptionPane.showMessageDialog(null, "El punto inicial no es igual al final del tramo anterior ");
@@ -448,12 +458,11 @@ public class FrmElegirMapa extends javax.swing.JFrame {
     @Override
     public void paint(Graphics g){
         Pila p = new Pila();
-        Cola c = new Cola();
         int pos,pos2;
         super.paint(g);
         switch(opc){
             case 0: break;
-            case 1: p=miD.getPila();
+            case 1: p.copiarDatos(pilaGeneral);
                     while(!p.pilaVacia()){
                         pos = (int) p.Desempilar();
                         Graphics2D g2 = (Graphics2D) g;
@@ -467,24 +476,6 @@ public class FrmElegirMapa extends javax.swing.JFrame {
                             g2.setStroke(new BasicStroke(3));
                         }
                     };break;
-            case 2: c=colaAcumuladora;
-                    c.Recorrido();
-                    while(!c.colaVacia()){
-                        
-                        pos = (int) c.desencolar();
-                        Graphics2D g2 = (Graphics2D) g;
-                        g2.fillOval(OlvaCourier.miGrafo.getCoordeX(pos), OlvaCourier.miGrafo.getCoordeY(pos), 15  , 15);g2.setStroke(new BasicStroke(3));
-                        g2.setColor(Color.red);
-                        if(!c.colaVacia()){
-                            pos2= (int)c.getPrimero().objeto;
-                            g2.fillOval(OlvaCourier.miGrafo.getCoordeX(pos2), OlvaCourier.miGrafo.getCoordeY(pos2), 15  , 15);
-                            g2.setColor(Color.red);
-                            g2.drawLine(OlvaCourier.miGrafo.getCoordeX(pos)+6, OlvaCourier.miGrafo.getCoordeY(pos)+6, OlvaCourier.miGrafo.getCoordeX(pos2)+6, OlvaCourier.miGrafo.getCoordeY(pos2)+6);
-                            g2.setStroke(new BasicStroke(3));
-                        }
-                    };break;
-                
-                
         }
     }
         

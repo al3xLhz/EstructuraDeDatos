@@ -468,7 +468,7 @@ public class Lista<E>{
     
     /*<<<Esto es para Clientes*/
     
-    /*public void actualizarCliente(Cliente c){
+    public void actualizarCliente(Cliente c){
         Nodo<E> aux =inicio;
         while(aux!=null){
             if(aux.objeto instanceof Cliente){
@@ -481,7 +481,7 @@ public class Lista<E>{
             aux=aux.siguiente;
             
         }
-    }*/
+    }
     
     public Cliente buscarXCodigoCliente(String codigo){
         Nodo<E> aux =inicio;

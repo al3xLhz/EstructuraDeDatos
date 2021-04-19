@@ -37,8 +37,26 @@ import javax.swing.JOptionPane;
         respuestaIGV.setText(String.valueOf(OlvaCourier.boletaActual.getIGV()));
         respuestaTotal.setText(String.valueOf(OlvaCourier.boletaActual.getTotal()));
         respuestaNroBoleta.setText(String.valueOf(OlvaCourier.boletaActual.getCodigo()));
+
         
-        llenarTabla();
+        
+            //Uso de los atributos de la boletaActual para mostrar en el FrmBoletaLlenar
+            respuestaOrigen.setText(OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion());
+            respuestaDestino.setText(OlvaCourier.boletaActual.getAgenciaFinal().getUbicacion());
+            respuestaCliente.setText(OlvaCourier.clienteActual.getNombres()+" "+OlvaCourier.clienteActual.getApellidos());
+            respuestaCodigo.setText(OlvaCourier.clienteActual.getCodigo());
+            respuestaFechaEmision.setText(OlvaCourier.horaActual.getTime().toLocaleString());
+            respuestaFechaLlegada.setText(OlvaCourier.boletaActual.getFechadeEntrega().getTime().toLocaleString());
+            respuestaValorTotal.setText(String.valueOf(OlvaCourier.boletaActual.getImporteTotal()));
+            respuestaIGV.setText(String.valueOf(OlvaCourier.boletaActual.getIGV()));
+            respuestaTotal.setText(String.valueOf(OlvaCourier.boletaActual.getTotal()));
+            respuestaNroBoleta.setText(String.valueOf(OlvaCourier.boletaActual.getCodigo()));
+            
+            llenarTabla();
+        
+        
+        
+        
         
         setLocationRelativeTo(null);
         setVisible(true);
@@ -333,19 +351,13 @@ import javax.swing.JOptionPane;
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         int input = JOptionPane.showConfirmDialog(null, "¿Estás seguro de los cambios establecidos?");
         // 0=yes, 1=no, 2=cancel
-<<<<<<< HEAD
+
        if(input==0){
 
            LlenarBoletaBD();
            
            //Guarda la boleta creada al cliente que ha iniciado sesion
             OlvaCourier.clienteActual.getListaBoletas().insertarNodoPorFinal(OlvaCourier.boletaActual);
-=======
-        if(input==0){
-
-            //Guarda la boleta creada al cliente que ha iniciado sesion
-            OlvaCourier.clientes.buscar(OlvaCourier.clienteActual).getListaBoletas().insertarNodoPorFinal(OlvaCourier.boletaActual);
->>>>>>> e1e20c1dbec22c337388d70f804d3371ff19da9b
 
             //System.out.println(OlvaCourier.clienteActual.getListaBoletas().getBoletaXPos(0).getListaPedidos().getPedidoXPos(0).getProducto().getNombreProducto()); Funciona
             //asegurar que el cliente actual guarde la informacion donde se comenzo

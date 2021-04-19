@@ -126,9 +126,8 @@ public class DijkstraMapa {
             pila.Apilar(auxL.getNombre());
             auxL=auxL.getPredecesor();  
         }
-        
         pila.Apilar(nodoInicio);
-        pasarPilaACola();
+        //pasarPilaACola();
     }
     
     public void llenarNodos(){
@@ -139,11 +138,13 @@ public class DijkstraMapa {
     
     private void pasarPilaACola(){
         cola = new Cola();
-        Pila aux= new Pila();
-        aux.copiarDatos(pila);
+        Nodo aux = new Nodo();
+        aux.objeto = pila.getCima();
         
-        while(!aux.pilaVacia()){
-            cola.encolar(aux.Desempilar());
+        
+        while(aux!=null){
+            cola.encolar(aux.objeto);
+            aux=aux.siguiente;
         }
         
         

@@ -2,7 +2,7 @@
 package Estructuras;
 
 public class Cola<E> {
-    //Atributos
+    
     int tamaño;
     Nodo<E> primero,ultimo;
     
@@ -17,59 +17,42 @@ public class Cola<E> {
         return tamaño;
     }
 
-    public Nodo<E> getPrimero() {//Devuelven un objeto tipo NODO.
-        //Cambiando Nodo por "E"
-        //Cambiando "primero" por "primero.objeto"
-        //Se cambia el objeto de retorno
+    public Nodo<E> getPrimero(){//Devuelve el nodo de la primera posicion
         return primero;
     }
 
-    public E getUltimo() {
+    public E getUltimo() {//Devuelve el nodo de la ultima posicion
         return ultimo.objeto;
     }
     
-    public boolean colaVacia(){
+    public boolean colaVacia(){ //Determina si la cola esta vacia
         return primero == null;
     }    
     
-    public void encolar(E informacion){
-       Nodo<E> nuevo = new Nodo<>(informacion);
+    public void encolar(E informacion){// Ingresa un nodo en la ultima posicion
+       Nodo<E> nuevo = new Nodo<>(informacion); //Crea un nodo
         if(colaVacia()){
-            primero = nuevo; //c.prim=nuevoNodo
+            primero = nuevo;
         }
         else{
-            ultimo.siguiente = nuevo; //Hace que el ultimo elemento apunte al nuevo creado
+            ultimo.siguiente = nuevo; //El ultimo elemento apunta al nuevo nodo creado
         }
         ultimo = nuevo;
-        tamaño+=1; 
+        tamaño++;
     }
       
-    public E desencolar()throws NullPointerException{//NullPointerException
+    public E desencolar()throws NullPointerException{ // Saca el nodo de la primera posicion
         try{    
             E objeto = null;
             objeto = primero.objeto;
             primero = primero.siguiente;
-
+            tamaño--;
             return objeto;
         }
         catch(NullPointerException e){
             System.out.println("Error.Cola vacía");
         }
         return null;
-    }
-    
-    public void borrar(){//NullPointerException
-    //Elimina el nodo de primera posición.Sin retornar
-        Nodo<E> auxiliar;
-        if(colaVacia()){
-            System.out.println("Error.Cola vacía");
-        }
-        else{
-            auxiliar = primero;
-            primero = primero.siguiente;
-            auxiliar.siguiente = null;
-            auxiliar = null;
-        }
     }
     
     public void Recorrido(){//NullPointerException
@@ -88,7 +71,7 @@ public class Cola<E> {
         }
     }
     
-    public void copiarDatos(Cola c){
+    public void copiarDatosA(Cola c){
         Nodo<E> aux = c.primero;
         while(aux !=null){
             encolar(aux.objeto);
@@ -111,6 +94,17 @@ public class Cola<E> {
         encolar(aux.objeto);
         aux = aux.siguiente;
         }
+    }
+    
+    public Pila copiarAPila(){
+        Pila p= new Pila();
+        Nodo<E> aux = primero;
+        while(aux !=null){
+        p.Apilar(aux.objeto);
+        aux = aux.siguiente;
+        }
+        
+        return p;
     }
     
 }
