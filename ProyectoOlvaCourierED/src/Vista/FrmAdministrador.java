@@ -101,6 +101,11 @@ public class FrmAdministrador extends javax.swing.JFrame {
         botonHistorial.setBackground(new java.awt.Color(64, 170, 173));
         botonHistorial.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
         botonHistorial.setText("Historial");
+        botonHistorial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonHistorialActionPerformed(evt);
+            }
+        });
         PanelOpciones.add(botonHistorial, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 330, -1, -1));
 
         botonSeguimientoEnvio.setBackground(new java.awt.Color(64, 170, 173));
@@ -248,6 +253,10 @@ public class FrmAdministrador extends javax.swing.JFrame {
         FrmIniciarSesion fi = new FrmIniciarSesion();
         this.dispose();
     }//GEN-LAST:event_salirActionPerformed
+
+    private void botonHistorialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonHistorialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonHistorialActionPerformed
 
     /**
      * @param args the command line arguments
