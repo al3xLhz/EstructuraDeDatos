@@ -18,12 +18,13 @@ public class App {
         //Guarda todas las agencias existentes en el objeto agencias
         OlvaCourier.agencias.setAgencias();
         Conexion.Conexion.getConexion();
-        OlvaCourier.CargarClientes();
-        OlvaCourier.CargarAdministrador();
         OlvaCourier.CargarProducto();
         OlvaCourier.CargarPedido();
         OlvaCourier.CargarBoleta();
-        System.out.println(OlvaCourier.boletas.getTamaño());
+        OlvaCourier.CargarClientes();
+        OlvaCourier.CargarAdministrador();
+        
+       // System.out.println(OlvaCourier.boletas.getTamaño());
         
         //<Es un respaldode creacion de los clientes,administradores Todo debería ser un sql pero en este caso por terminos de rapidez se hace de esta manera
         

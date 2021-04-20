@@ -7,6 +7,7 @@ import Modelo.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
+import sun.util.locale.provider.AuxLocaleProviderAdapter;
 
 
 
@@ -77,7 +78,14 @@ public class OlvaCourier {
         
         try{
            while(res.next()){
-                OlvaCourier.pedidos.insertarNodoPorFinal(new Pedido(res.getInt(1), res.getDouble(2),res.getInt(3)));         
+                Pedido aux = new Pedido(res.getInt(1), res.getDouble(2),res.getInt(3));
+                
+                //Producto auxProducto= OlvaCourier.productos.buscar(aux.getCodigo());
+                
+                        
+                //aux.setProducto(producto);
+                OlvaCourier.pedidos.insertarNodoPorFinal(aux);
+                
             }  
         }catch(SQLException e){
         }
@@ -88,7 +96,8 @@ public class OlvaCourier {
         
         try{
            while(res.next()){
-                OlvaCourier.productos.insertarNodoPorFinal(new Producto(res.getInt(1), res.getString(2),res.getDouble(3),res.getDouble(4),res.getDouble(5),res.getDouble(6),res.getInt(7)));         
+                OlvaCourier.productos.insertarNodoPorFinal(new Producto(res.getInt(1), res.getString(2),res.getDouble(3),res.getDouble(4),res.getDouble(5),res.getDouble(6),res.getInt(7)));
+                
             }  
         }catch(SQLException e){
         }

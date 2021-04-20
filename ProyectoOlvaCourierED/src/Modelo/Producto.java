@@ -68,6 +68,18 @@ public class Producto {
         this.nombreProducto = nombreProducto;
     }
 
+    public int getCodigoPe() {
+        return codigoPe;
+    }
+
+    public void setCodigoPe(int codigoPe) {
+        this.codigoPe = codigoPe;
+    }
+
+    public int getCodigoPro() {
+        return codigoPro;
+    }
+
     
     
     

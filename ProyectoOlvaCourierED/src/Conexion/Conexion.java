@@ -21,6 +21,7 @@ public class Conexion {
     static Connection contacto = null;
     
     public static Connection getConexion(){
+        
         int error = 0;
         String url = "jdbc:sqlserver://localhost:1433;databaseName=OlvaCourier";
         try{
@@ -39,7 +40,7 @@ public class Conexion {
             error = 1;
         }
         if(error == 0){
-            System.out.println("La conexion fue exitosa");
+           // System.out.println("La conexion fue exitosa");
         }
         
         return contacto;

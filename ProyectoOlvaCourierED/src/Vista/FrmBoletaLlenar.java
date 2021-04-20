@@ -46,6 +46,7 @@ import javax.swing.JOptionPane;
         
         
         
+
         
         setLocationRelativeTo(null);
         setVisible(true);
@@ -348,6 +349,7 @@ import javax.swing.JOptionPane;
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         int input = JOptionPane.showConfirmDialog(null, "¿Estás seguro de los cambios establecidos?");
         // 0=yes, 1=no, 2=cancel
+
         if(input==0){
             
            RegistrarProductosBD();
@@ -356,7 +358,8 @@ import javax.swing.JOptionPane;
 
             //Guarda la boleta creada al cliente que ha iniciado sesion
             //OlvaCourier.clientes.buscar(OlvaCourier.clienteActual).getListaBoletas().insertarNodoPorFinal(OlvaCourier.boletaActual);
-            OlvaCourier.clientes.buscarXCodigoCliente(OlvaCourier.clienteActual.getCodigo()).getListaBoletas().insertarNodoPorFinal(OlvaCourier.boletaActual);
+            OlvaCourier.clienteActual.getListaBoletas().insertarNodoPorFinal(OlvaCourier.boletaActual);
+            System.out.println(OlvaCourier.clienteActual.getListaBoletas().getXPos(0));
             //System.out.println(OlvaCourier.clienteActual.getListaBoletas().getBoletaXPos(0).getListaPedidos().getPedidoXPos(0).getProducto().getNombreProducto()); Funciona
             //asegurar que el cliente actual guarde la informacion donde se comenzo
             OlvaCourier.boletas.insertarNodoPorFinal(OlvaCourier.boletaActual);
