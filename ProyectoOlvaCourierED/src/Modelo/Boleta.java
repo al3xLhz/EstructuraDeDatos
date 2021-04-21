@@ -8,7 +8,7 @@ import Sistema.OlvaCourier;
 import java.util.Calendar;
 
 public class Boleta {
-    private int codigo;
+    private int codigoBoleta;
     private Calendar fechadeEntrega=null;
     private Calendar fechaEmision;
     private Agencia agenciaInicial;
@@ -16,7 +16,7 @@ public class Boleta {
     private double importeTotal;
     private double IGV;
     private double total;
-    private static int codigoM = (int) Math.floor(Math.random()*10000+1);
+    private static int codigoBoletaGeneral = (int) Math.floor(Math.random()*10000+1);
     private String propietarioDNI;
     private int estado;//1=Sin entregar 2=En camino 3= Llego
     private Lista<Pedido> listaPedidos = new Lista<>();
@@ -25,8 +25,8 @@ public class Boleta {
     
     public Boleta(Agencia agenciaInicial, Agencia agenciaFinal,String propietarioDNI) {
         OlvaCourier.horaActual = Calendar.getInstance();
-        this.codigo = codigoM;
-        codigoM++;
+        this.codigoBoleta = codigoBoletaGeneral;
+        codigoBoletaGeneral++;
         this.propietarioDNI=propietarioDNI;
         this.fechaEmision=OlvaCourier.horaActual;
         this.fechadeEntrega=fechaEmision;
@@ -34,7 +34,7 @@ public class Boleta {
     }
     
     public Boleta(int codigo ,String fechaEmision, String FechaEntrega , String AgenciaI , String AgenciaFinal , double importeTotal , double IGV , double total , int estado , String propietarioDNI){
-        this.codigo = codigo;
+        this.codigoBoleta = codigo;
         Calendar cal = Calendar.getInstance();
         cal.set(Integer.valueOf(fechaEmision.substring(24, 28)), getIntMes(fechaEmision.substring(4, 7)), Integer.valueOf(fechaEmision.substring(8, 10)), Integer.valueOf(fechaEmision.substring(11, 13)), Integer.valueOf(fechaEmision.substring(14, 16)), Integer.valueOf(fechaEmision.substring(17, 19)));
         this.fechaEmision = cal;
@@ -90,12 +90,12 @@ public class Boleta {
         total=importeTotal+IGV;
     }
     
-    public int getCodigo() {
-        return codigo;
+    public int getCodigoBoleta() {
+        return codigoBoleta;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setCodigoBoleta(int codigoBoleta) {
+        this.codigoBoleta = codigoBoleta;
     }
 
     public Calendar getFechadeEntrega() {
@@ -140,14 +140,15 @@ public class Boleta {
         this.total = total;
     }
 
-
-    public static int getCodigoM() {
-        return codigoM;
+    public static int getCodigoBoletaGeneral() {
+        return codigoBoletaGeneral;
     }
 
-    public static void setCodigoM(int codigoM) {
-        Boleta.codigoM = codigoM;
+    public static void setCodigoBoletaGeneral(int codigoBoletaGeneral) {
+        Boleta.codigoBoletaGeneral = codigoBoletaGeneral;
     }
+
+    
 
     public Agencia getAgenciaInicial() {
         return agenciaInicial;
@@ -190,7 +191,7 @@ public class Boleta {
     }
     
     public void actualizarDatos(Boleta b){
-        codigo=b.getCodigo();
+        codigoBoleta=b.getCodigoBoleta();
         fechadeEntrega=b.getFechadeEntrega();
         fechaEmision=b.getFechaEmision();
         agenciaInicial=b.getAgenciaInicial();
@@ -214,12 +215,13 @@ public class Boleta {
     }
 
     public void setPedidos(Lista Pedidos) {
+        
         if(!Pedidos.listaVacia()){
             Nodo aux = Pedidos.getInicioNodo();
             while(aux!=null){
-            Pedido pe = (Pedido) aux.objeto;
-            if(codigo==pe.getCodigoBoleta()){
-                listaPedidos.insertarNodoPorFinal(pe);
+                Pedido pe = (Pedido) aux.objeto;
+                if(codigoBoleta==pe.getCodigoBoleta()){
+                    listaPedidos.insertarNodoPorFinal(pe);
             }
             
             aux=aux.siguiente;
@@ -229,10 +231,7 @@ public class Boleta {
         
     }
 
-    @Override
-    public String toString() {
-        return "Boleta{" + "codigo=" + codigo + ", fechadeEntrega=" + fechadeEntrega + ", fechaEmision=" + fechaEmision + ", agenciaInicial=" + agenciaInicial + ", agenciaFinal=" + agenciaFinal + ", importeTotal=" + importeTotal + ", IGV=" + IGV + ", total=" + total + ", propietarioDNI=" + propietarioDNI + ", estado=" + estado + ", listaPedidos=" + listaPedidos + ", camino=" + camino + '}';
-    }
+    
     
     
 }

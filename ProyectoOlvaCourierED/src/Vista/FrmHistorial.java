@@ -41,7 +41,7 @@ public class FrmHistorial extends javax.swing.JFrame {
                 }
                 
                 matriz[i][0]=String.valueOf(n);
-                matriz[i][1]=String.valueOf(b.getCodigo());
+                matriz[i][1]=String.valueOf(b.getCodigoBoleta());
                 matriz[i][2]=String.valueOf(b.getAgenciaInicial().getUbicacion());
                 matriz[i][3]=String.valueOf(b.getAgenciaFinal().getUbicacion());
                 matriz[i][4]=String.valueOf(estado);

@@ -39,7 +39,7 @@ import javax.swing.JOptionPane;
             respuestaValorTotal.setText(String.valueOf(OlvaCourier.boletaActual.getImporteTotal()));
             respuestaIGV.setText(String.valueOf(OlvaCourier.boletaActual.getIGV()));
             respuestaTotal.setText(String.valueOf(OlvaCourier.boletaActual.getTotal()));
-            respuestaNroBoleta.setText(String.valueOf(OlvaCourier.boletaActual.getCodigo()));
+            respuestaNroBoleta.setText(String.valueOf(OlvaCourier.boletaActual.getCodigoBoleta()));
             
             llenarTabla();
         
@@ -58,14 +58,14 @@ import javax.swing.JOptionPane;
         for(int i=0;i<5;i++){
             Pedido pe = (Pedido) OlvaCourier.boletaActual.getListaPedidos().getXPos(i);
             if(pe.getProducto().getNombreProducto()!=""){
-                matriz[i][0]=String.valueOf(pe.getCodigo());
+                matriz[i][0]=String.valueOf(pe.getCodigoPedido());
                 matriz[i][1]=String.valueOf(pe.getProducto().getNombreProducto());
                 matriz[i][2]=String.valueOf(pe.getValor());
                 tabla.setValueAt(matriz[i][0], i, 0);
                 tabla.setValueAt(matriz[i][1], i, 1);
                 tabla.setValueAt(matriz[i][2], i, 2);
             }else{
-                Pedido.codigoPedido--;
+                Pedido.codigoPedidoGeneral--;
             }
             
         }
@@ -75,7 +75,7 @@ import javax.swing.JOptionPane;
     public void LlenarBoletaBD(){
         try {
                         CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaBoleta(?,?,?,?,?,?,?,?,?,?)}");
-                        entrada.setString(1, String.valueOf(OlvaCourier.boletaActual.getCodigo()));
+                        entrada.setString(1, String.valueOf(OlvaCourier.boletaActual.getCodigoBoleta()));
                         entrada.setString(2, Calendar.getInstance().getTime().toString());
                         entrada.setString(3, OlvaCourier.boletaActual.getFechadeEntrega().getTime().toString());
                         entrada.setString(4, OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion());
@@ -92,7 +92,7 @@ import javax.swing.JOptionPane;
                     }
         
          try{
-            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Pedido set CodigoB = " + OlvaCourier.boletaActual.getCodigo() + "where CodigoB is null" );
+            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Pedido set CodigoB = " + OlvaCourier.boletaActual.getCodigoBoleta()+ "where CodigoB is null" );
             pps.executeUpdate();
         }
         catch(SQLException e){           

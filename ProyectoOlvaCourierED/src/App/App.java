@@ -26,9 +26,7 @@ public class App {
         OlvaCourier.CargarClientes();
         OlvaCourier.CargarAdministrador();
         
-        Calendar cal = Calendar.getInstance();
-        System.out.println(cal.toString());
-       
+        System.out.println(OlvaCourier.clientes.getXPos(1).getListaBoletas().getTamaño());
         
         //<Es un respaldode creacion de los clientes,administradores Todo debería ser un sql pero en este caso por terminos de rapidez se hace de esta manera
         

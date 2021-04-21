@@ -453,7 +453,7 @@ public class Lista<E>{
         while(aux!=null){
             if(aux.objeto instanceof Boleta){
                 Boleta b = (Boleta) aux.objeto;
-                if(b.getCodigo()==nroBoleta){
+                if(b.getCodigoBoleta()==nroBoleta){
                     boletaR=b;
                 }
             }
@@ -470,7 +470,7 @@ public class Lista<E>{
             if(aux.objeto instanceof Pedido){
                 Pedido peAux = (Pedido) aux.objeto;
                 
-                if(peAux.getCodigo()==codigo){
+                if(peAux.getCodigoPedido()==codigo){
                     pe=peAux;
                 }
             }

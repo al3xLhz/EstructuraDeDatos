@@ -34,7 +34,8 @@ public class OlvaCourier {
     
     
 
-    static ResultSet res;
+    private static ResultSet res;
+    
     public static void CargarClientes(){
         
         res = Conexion.Conexion.Consulta("select * from Clientes");
@@ -85,8 +86,7 @@ public class OlvaCourier {
            while(res.next()){
                 Pedido aux = new Pedido(res.getInt(1), res.getDouble(2),res.getInt(3));
                 
-                Producto auxProducto= OlvaCourier.productos.buscarProductoxCodigoPedido(aux.getCodigo());
-                aux.setProducto(auxProducto);
+                aux.setProductos(OlvaCourier.productos);
                 OlvaCourier.pedidos.insertarNodoPorFinal(aux);
                 
             }  
@@ -98,7 +98,8 @@ public class OlvaCourier {
         res = Conexion.Conexion.Consulta("select * from Producto");
         
         try{
-           while(res.next()){
+            while(res.next()){
+            
                 OlvaCourier.productos.insertarNodoPorFinal(new Producto(res.getInt(1), res.getString(2),res.getDouble(3),res.getDouble(4),res.getDouble(5),res.getDouble(6),res.getInt(7)));
                 
             }  

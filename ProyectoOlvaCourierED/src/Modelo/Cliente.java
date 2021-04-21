@@ -27,6 +27,8 @@ public class Cliente extends Persona{
         return versionPagada;
     }
     
+    
+    
     public void setVersionPagada(int versionPagada) {
         this.versionPagada = versionPagada;
     }
@@ -35,11 +37,11 @@ public class Cliente extends Persona{
         if(!Boletas.listaVacia()){
             Nodo aux=Boletas.getInicioNodo();
             while(aux!=null){
-            Boleta bo = (Boleta) aux.objeto;
-            if(this.getCodigo().equals(bo.getPropietarioDNI())){
-                listaBoletas.insertarNodoPorFinal(bo);
-                System.out.println(listaBoletas.buscar(bo).toString());
                 
+                Boleta bo = (Boleta) aux.objeto;
+                if(getCodigo().equals(bo.getPropietarioDNI())){
+                    listaBoletas.insertarNodoPorFinal(bo);
+                    
             }
             
             aux=aux.siguiente;

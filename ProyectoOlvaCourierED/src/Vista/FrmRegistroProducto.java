@@ -138,7 +138,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
         try {   
                         
                         CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaPedido(?,?)}");
-                        entrada.setInt(1,(int) pe.getCodigo());
+                        entrada.setInt(1,(int) pe.getCodigoPedido());
                         entrada.setDouble(2, pe.getValor());
                         entrada.execute();
                         
@@ -146,7 +146,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                         Logger.getLogger(FrmRegistroProducto.class.getName()).log(Level.SEVERE, null, ex);
                     }
         try{
-            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Producto set CodigoPedido = " + pe.getCodigo() + "where nombrePro ='" + p1.getNombreProducto() + "'");
+            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Producto set CodigoPedido = " + pe.getCodigoPedido()+ "where nombrePro ='" + p1.getNombreProducto() + "'");
             pps.executeUpdate();
         }
         catch(SQLException e){           
@@ -157,7 +157,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
             Pedido pe = (Pedido) OlvaCourier.boletaActual.getListaPedidos().getXPos(1);
         try {   
                         CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaPedido(?,?)}");
-                        entrada.setInt(1,(int) pe.getCodigo());
+                        entrada.setInt(1,(int) pe.getCodigoPedido());
                         entrada.setDouble(2, pe.getValor());
                         entrada.execute();
                         
@@ -165,7 +165,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                         Logger.getLogger(FrmRegistroProducto.class.getName()).log(Level.SEVERE, null, ex);
                     }    
         try{
-            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Producto set CodigoPedido = " + pe.getCodigo() + "where nombrePro ='" + p2.getNombreProducto() + "'");
+            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Producto set CodigoPedido = " + pe.getCodigoPedido()+ "where nombrePro ='" + p2.getNombreProducto() + "'");
             pps.executeUpdate();
         }
         catch(SQLException e){           
@@ -175,7 +175,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
             Pedido pe = (Pedido) OlvaCourier.boletaActual.getListaPedidos().getXPos(2);
         try {   
                         CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaPedido(?,?)}");
-                        entrada.setInt(1,(int) pe.getCodigo());
+                        entrada.setInt(1,(int) pe.getCodigoPedido());
                         entrada.setDouble(2, pe.getValor());
                         entrada.execute();
                         
@@ -183,7 +183,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                         Logger.getLogger(FrmRegistroProducto.class.getName()).log(Level.SEVERE, null, ex);
                     }
         try{
-            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Producto set CodigoPedido = " + pe.getCodigo() + "where nombrePro ='" + p3.getNombreProducto() + "'");
+            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Producto set CodigoPedido = " + pe.getCodigoPedido()+ "where nombrePro ='" + p3.getNombreProducto() + "'");
             pps.executeUpdate();
         }
         catch(SQLException e){           
@@ -194,7 +194,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
             Pedido pe = (Pedido) OlvaCourier.boletaActual.getListaPedidos().getXPos(3);
         try {
                         CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaPedido(?,?)}");
-                        entrada.setInt(1,(int) pe.getCodigo());
+                        entrada.setInt(1,(int) pe.getCodigoPedido());
                         entrada.setDouble(2, pe.getValor());
                         entrada.execute();
                         
@@ -202,7 +202,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                         Logger.getLogger(FrmRegistroProducto.class.getName()).log(Level.SEVERE, null, ex);
                     } 
         try{
-            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Producto set CodigoPedido = " + pe.getCodigo() + "where nombrePro ='" + p4.getNombreProducto() + "'");
+            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Producto set CodigoPedido = " + pe.getCodigoPedido()+ "where nombrePro ='" + p4.getNombreProducto() + "'");
             pps.executeUpdate();
         }
         catch(SQLException e){           
@@ -213,7 +213,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
             Pedido pe = (Pedido) OlvaCourier.boletaActual.getListaPedidos().getXPos(4);
         try {
                         CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaPedido(?,?)}");
-                        entrada.setInt(1,(int) pe.getCodigo());
+                        entrada.setInt(1,(int) pe.getCodigoPedido());
                         entrada.setDouble(2, pe.getValor());
                         entrada.execute();
                         
@@ -221,7 +221,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                         Logger.getLogger(FrmRegistroProducto.class.getName()).log(Level.SEVERE, null, ex);
                     }   
         try{
-            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Producto set CodigoPedido = " + pe.getCodigo() + "where nombrePro ='" + p5.getNombreProducto() + "'");
+            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Producto set CodigoPedido = " + pe.getCodigoPedido()+ "where nombrePro ='" + p5.getNombreProducto() + "'");
             pps.executeUpdate();
         }
         catch(SQLException e){           
