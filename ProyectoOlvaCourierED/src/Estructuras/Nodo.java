@@ -5,12 +5,9 @@ public class Nodo<E> {
     //Atributos
     public E objeto;
     public Nodo<E> siguiente;
-    public Nodo<E> anterior; //Pertenece al NodoDoble para ListaDoble
+    public Nodo<E> anterior;
     
-    //NodoSimple
-    //Para LISTA,PILA,COLA
-    //Constructor para insertar al final
-    public Nodo(E objeto){
+    public Nodo(E objeto){//Constructr
         this.objeto = objeto;
         this.siguiente = null;
         this.anterior = null; //Constructores para NodoSimple,siempre null a "anterior"
@@ -26,24 +23,9 @@ public class Nodo<E> {
         this.siguiente = null;
         this.anterior = null; //Constructores para NodoSimple,siempre null a "anterior"
     }
-    //NodoDoble
-    //Para LISTADOBLE
-    //Constructor para nodo si no hay nodos previos
-    /*public Nodo(E objeto){
-        this.objeto = objeto;
-        this.siguiente = null;
-        this.anterior = null;
-    */
-    //Es igual al constructor para insertar al final.Usar ese
-    //Constructor para nodoDoble si no hay nodos previos
-    //             izquierda       objeto       derecha
-    public Nodo(Nodo anterior,E objeto,Nodo siguiente){
-        this.objeto = objeto;
-        this.siguiente = siguiente;
-        this.anterior = anterior;   
-    }
-    //objeto,derecha,izquierda
-    public E getInformacion() {
+    
+    
+    public E getInformacion() {//Devuelve el objeto, luego con cast podras acceder a las funcion de la clase casteada
         return objeto;
     }
 

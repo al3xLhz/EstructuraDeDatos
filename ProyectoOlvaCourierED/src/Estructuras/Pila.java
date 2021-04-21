@@ -8,27 +8,16 @@ public class Pila<E> {
     
     
     public Pila() {
-    //Constructor = Método CrearPila()
         this.longitud = 0; //por defecto tiene que ser 0
         this.cima = null; //por defecto null
     }
 
     public int getLongitud() {
-    //Obtiene el tamaño actual de la pila
         return longitud;
     }
 
-    public E getCima() {
-    //Devuelve la dirección del objeto dentro del NODO que se encuentre en la cima
+    public E getCima() {//Retorna la direccion del objeto que está primero o en la cima
         return cima.objeto;
-    }
-    
-    //Métodos de Pila
-    
-    public void vaciarPila(){ //Borrará la conexión con los nodos.Asegurarse de usar 
-    //algún similar a destructor para eliminar posible uso de memoria principal.
-        cima = null;
-        longitud = 0;
     }
     
     public boolean pilaVacia(){//También "return longitud == 0;"
@@ -60,7 +49,7 @@ public class Pila<E> {
         return null;
     }
     
-    public void Recorrido(){
+    public void Recorrido(){//Corroborar la existencia y los valores que tiene
         if(pilaVacia()){
             System.out.println("Error.Pila vacía");
         }
@@ -73,7 +62,7 @@ public class Pila<E> {
         }
     }
     
-    public void copiarDatos(Pila p){
+    public void copiarDatos(Pila p){// Lo usamos para copiar en una Pila auxiliar para que no afecte a la principal
         Nodo<E> aux = p.cima;
         while(aux !=null){
             Apilar(aux.objeto);
@@ -82,7 +71,7 @@ public class Pila<E> {
         
     }
     
-    public void agregarPilaDebajoDeLaPila(Pila e){
+    public void agregarPilaDebajoDeLaPila(Pila e){ //Cuando quieres concatenar una Pila a otra Pila
         Nodo<E> aux = this.cima;
         Nodo<E> aux2 = aux;
         if(pilaVacia()){
@@ -99,7 +88,7 @@ public class Pila<E> {
         
     }
     
-    public String ConvertirAString(){
+    public String ConvertirAString(){//Convierte la pila en un string conectado por guiones
         String ruta = "";
         
         if(pilaVacia()){
@@ -118,14 +107,3 @@ public class Pila<E> {
     
     
 }
-/*
-class ExcepcionListaVacia extends RuntimeException {
-
-    ExcepcionListaVacia() {
-        this ("La Pila está vacía");
-    }
-
-    ExcepcionListaVacia(String excepcion) {
-        super (excepcion);
-    }
-}*/

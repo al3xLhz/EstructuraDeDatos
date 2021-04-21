@@ -75,7 +75,7 @@ public class Boleta {
     
     
     
-    public void setPrecioTotal(){
+    public void setPrecioTotal(){//Los precios en realidad son randoms por el hecho de no tener una area especializada 
         importeTotal = montoAgenciaAgencia()+sumarPedido();
         IGV=importeTotal*0.18;
         //REDONDEO DE IGV E IMPORTE TOTAL//////////////
@@ -214,7 +214,7 @@ public class Boleta {
         return nMes;
     }
 
-    public void setPedidos(Lista Pedidos) {
+    public void setPedidos(Lista Pedidos) {//Usamos la lista general de de Pedidos para filtrar y colocar en su respectiva Boleta
         
         if(!Pedidos.listaVacia()){
             Nodo aux = Pedidos.getInicioNodo();
@@ -229,11 +229,6 @@ public class Boleta {
         }
         
         
-    }
-
-    @Override
-    public String toString() {
-        return "Boleta{" + "codigoBoleta=" + codigoBoleta+ ", agenciaInicial=" + agenciaInicial + ", agenciaFinal=" + agenciaFinal + ", importeTotal=" + importeTotal + ", IGV=" + IGV + ", total=" + total + ", propietarioDNI=" + propietarioDNI + ", estado=" + estado + ", listaPedidos=" + listaPedidos + ", camino=" + camino + '}';
     }
     
     

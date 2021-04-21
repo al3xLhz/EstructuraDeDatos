@@ -561,12 +561,22 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
         if("".equals(p1.getNombreProducto())){
             JOptionPane.showMessageDialog(null, "No se colocó ningun producto ");
         }else{
-
-            OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p1));
-            OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p2));
-            OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p3));
-            OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p4));
-            OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p5));
+            
+            if(!"".equals(p1.getNombreProducto())){
+                OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p1));    
+            }
+            if(!"".equals(p2.getNombreProducto())){
+                OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p2));    
+            }
+            if(!"".equals(p3.getNombreProducto())){
+                OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p3));    
+            }
+            if(!"".equals(p4.getNombreProducto())){
+                OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p4));    
+            }
+            if(!"".equals(p5.getNombreProducto())){
+                OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p5));    
+            }
             OlvaCourier.boletaActual.setPrecioTotal();
             OlvaCourier.boletaActual.setPropietarioDNI(OlvaCourier.clienteActual.getCodigo());
         }

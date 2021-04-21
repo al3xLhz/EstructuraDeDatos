@@ -17,16 +17,6 @@ public class Persona {
         this.login = login;
         
     }
-   /* public String RetornAtrib(int n){
-	String Atrib =null;
-	switch(n){
-	   case 0 : Atrib= getDni();break;
-	   case 1 : Atrib= getNombres();break;
-	   case 2 : Atrib= getApellidos();break;
-	   case 3 : Atrib= getEmail();break;
-        }
-        return Atrib;
-}*/
     
     public String getNombres() {
         return nombres;
@@ -47,8 +37,6 @@ public class Persona {
     public Login getLogin() {
         return login;
     }
-
-    
 
     public void setNombres(String nombres) {
         this.nombres = nombres;

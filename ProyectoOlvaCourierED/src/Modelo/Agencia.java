@@ -7,13 +7,11 @@ public class Agencia {
     
     private String ubicacion; //Departamento
     private int numero;
-    //private final Empleado empleado;
     private Lista<Boleta> listaBoletas = new Lista<>();
 
     public Agencia(String ubicacion,int numero ) {
         this.ubicacion = ubicacion;
         this.numero = numero;
-        //this.empleado = empleado;
     }
 
     public Agencia(String ubicacion) {

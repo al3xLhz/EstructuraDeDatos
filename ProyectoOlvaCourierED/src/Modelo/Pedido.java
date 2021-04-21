@@ -3,7 +3,6 @@ package Modelo;
 
 import Estructuras.Lista;
 import Estructuras.Nodo;
-import java.util.Calendar;
 
 public class Pedido {
     private int codigoPedido;
@@ -23,7 +22,6 @@ public class Pedido {
     public Pedido(int codigo, double valor , int codigoB) {
         this.codigoPedido = codigo;
         this.valor = valor;
-        this.codigoBoleta = codigoBoleta; 
     }
 
     public int getCodigoPedido() {

@@ -25,7 +25,7 @@ public class FrmHistorial extends javax.swing.JFrame {
     public void llenarTabla(){
         
         String matriz[][] = new String[OlvaCourier.clienteActual.getListaBoletas().getTamaño()][8];//Que me devulva la cantidad max de la lista de boletas
-        System.out.println(OlvaCourier.clienteActual.getListaBoletas().getTamaño()+" RAAAAAAAA");
+        
         int n=1;
         for(int i=0;i<OlvaCourier.clienteActual.getListaBoletas().getTamaño();i++){
             Boleta b = (Boleta) OlvaCourier.clienteActual.getListaBoletas().getXPos(i);

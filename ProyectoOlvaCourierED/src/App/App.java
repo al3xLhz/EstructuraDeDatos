@@ -20,19 +20,14 @@ public class App {
         OlvaCourier.agencias.setAgencias();
         //Conexion.Conexion.getConexion();
 
+        
+        //Cargar los datos de la base de datos, es necesario ese orden porque depende uno del otro, en cadena
         OlvaCourier.CargarProducto();
         OlvaCourier.CargarPedido();
         OlvaCourier.CargarBoleta();
         OlvaCourier.CargarClientes();
         OlvaCourier.CargarAdministrador();
         
-        System.out.println(OlvaCourier.clientes.getXPos(1).getListaBoletas().getInicio().toString());
-        
-        //<Es un respaldode creacion de los clientes,administradores Todo debería ser un sql pero en este caso por terminos de rapidez se hace de esta manera
-        
-        //>
- 
-        //Inserta los objetos creados en sus respectivas listas : clientes, administradores y personas
         
         //De esta forma ingresa Formulario Iniciar sesion
         FrmIniciarSesion login = new FrmIniciarSesion();

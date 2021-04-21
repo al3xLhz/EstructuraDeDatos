@@ -62,16 +62,13 @@ public class Cola<E> {
         else{
             Nodo<E> aux = primero;
             while(aux != null){
-            //Se pueden agregar instrucciones
                 System.out.println(aux.objeto.toString());//"aux.objeto"
-            //es la dirección que se puede retornar a cada momento.
-            //Modificando la cantidad de llamadas usando variable "tamaño"
                 aux = aux.siguiente;
             }
         }
     }
     
-    public void copiarDatosA(Cola c){
+    public void copiarDatosA(Cola c){// Lo usamos para copiar en una Cola auxiliar para que no afecte a la principal
         Nodo<E> aux = c.primero;
         while(aux !=null){
             encolar(aux.objeto);
@@ -80,7 +77,7 @@ public class Cola<E> {
         
     }
     
-    public void eliminarUltimoIngreso(){
+    public void eliminarUltimoIngreso(){// Se elimina el ultimo nodo ingresado
         Nodo<E> aux=ultimo;
         ultimo = ultimo.anterior;
         aux = null;
@@ -88,7 +85,7 @@ public class Cola<E> {
         tamaño--;
     }
     
-    public void acumularCola(Cola c){
+    public void acumularCola(Cola c){ //Cuando quieres concatenar un cola a otra cola
         Nodo<E> aux = c.primero;
         while(aux !=null){
         encolar(aux.objeto);
@@ -96,15 +93,6 @@ public class Cola<E> {
         }
     }
     
-    public Pila copiarAPila(){
-        Pila p= new Pila();
-        Nodo<E> aux = primero;
-        while(aux !=null){
-        p.Apilar(aux.objeto);
-        aux = aux.siguiente;
-        }
-        
-        return p;
-    }
+    
     
 }

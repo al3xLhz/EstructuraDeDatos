@@ -9,13 +9,7 @@ package Estructuras;
  *
  * @author Junior Jose
  */
-import Estructuras.NodoArbol;
-import Modelo.Agencia;
-import Modelo.Boleta;
-import Modelo.Cliente;
-import Modelo.Login;
-import Modelo.Persona;
-import Estructuras.Lista;
+import Modelo.*;
 
 public class ArbolAVL<E> {
     //Atributos

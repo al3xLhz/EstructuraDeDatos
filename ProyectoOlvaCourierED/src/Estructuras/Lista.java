@@ -42,250 +42,8 @@ public class Lista<E>{
         }
         tamaño++;
     }
-    //creando insertarnodo por "posicion"
-   /* public void insertarPos(int pos, E nuevo ){
-        //try{
-            E ob=null;
-            Nodo<E> aux = inicio;
-            Nodo<E> aux2=new Nodo<>(nuevo);
-            int contador = 0;
-            while(aux!=null){
-                if(contador==pos){
-                    aux2.siguiente= aux.siguiente;
-                    aux2.anterior=aux.anterior;
-                    aux.anterior.siguiente=aux2;
-                    aux.siguiente.anterior=aux2;
-                    
-                    break;
-                   // ob=aux.objeto;
-                }
-                aux=aux.siguiente;
-                contador++;
-            }
-            /*return ob;
-        
-        catch(NullPointerException e){
-            System.out.println("Error.Lista vacía");
-        }
-    }
-    public void insertarPos(int posicion, E valor){
-        // Verifica si la posición ingresada se encuentre en el rango
-        // >= 0 y <= que el numero de elementos del la lista.
-        if(posicion>=0 && posicion<=tamaño){
-            Nodo<E> nuevo = new Nodo<>(null);
-            nuevo.setInformacion(valor);
-            // Consulta si el nuevo nodo a ingresar va al inicio de la lista.
-            if(posicion == 0){
-                // Inserta el nuevo nodo al inicio de la lista.
-                nuevo.setSiguiente(inicio);
-                inicio = nuevo;
-            }
-            else{
-                // Si el nodo a inserta va al final de la lista.
-                if(posicion == tamaño){
-                    Nodo aux = inicio;
-                    // Recorre la lista hasta llegar al ultimo nodo.
-                    while(aux.siguiente != null){
-                        aux = aux.siguiente;
-                    }
-                    // Inserta el nuevo nodo despues de del ultimo.
-                    aux.objeto=nuevo;              
-                }
-                else{
-                    // Si el nodo a insertar va en el medio de la lista.
-                    Nodo aux = inicio;
-                    // Recorre la lista hasta llegar al nodo anterior
-                    // a la posicion en la cual se insertara el nuevo nodo.
-                    for (int i = 0; i < (posicion-1); i++) {
-                        aux = aux.getSiguiente();
-                    }
-                    // Guarda el nodo siguiente al nodo en la posición
-                    // en la cual va a insertar el nevo nodo.
-                    Nodo siguiente = aux.getSiguiente();
-                    // Inserta el nuevo nodo en la posición indicada.
-                    aux.setSiguiente(nuevo);
-                    // Une el nuevo nodo con el resto de la lista.
-                    nuevo.setSiguiente(siguiente);
-                }
-            }
-            // Incrementa el contador de tamaño de la lista.
-            tamaño++;
-        }
-    }
-    */
-    public void insertarNodoAntesDe(E objeto,E dato)throws NullPointerException{
-        //"objeto" es el que irá en el nuevo Nodo que insertarás.
-        //"dato" es el objeto que buscará dentro de la lista
-        //Nodos Q, T y R son nodos auxiliares
-        try{
-            Nodo<E> Q = inicio;
-            Nodo<E> T = new Nodo<>(null);
-            int BAND = 1;
-            while(Q.objeto != dato && BAND == 1){
-                if(Q.siguiente != null){
-                    T = Q;
-                    Q = Q.siguiente;
-                }
-                else{
-                    BAND = 0;
-                }
-            }
-            if(BAND == 0){ 
-                System.out.println("No existe el nodo que contiene el valor buscado");                
-            }
-            else{
-                Nodo<E> R = new Nodo<>(objeto); //Creación del nuevo Nodo
-                if(Q==inicio){ //Si solo hay un nodo
-                    R.siguiente = inicio;
-                    inicio = R;
-                }
-                else{
-                    T.siguiente = R;
-                    R.siguiente = Q;
-                }
-                tamaño++;
-            }
-        }
-        catch(NullPointerException e){
-                System.out.println("Error.Lista vacía");
-        }
-    }
     
-    public void insertarNodoDespuesDe(E objeto, E dato)throws NullPointerException{
-        //"objeto" es el que irá en el nuevo Nodo que insertarás.
-        //"dato" es el objeto que buscará dentro de la lista
-        //Nodos Q, T y R son nodos auxiliares
-        try{
-            Nodo<E> Q = inicio;
-            int BAND = 1;
-            while(Q.objeto != dato && BAND ==1){
-                if(Q.siguiente != null){
-                    Q = Q.siguiente;
-                }
-                else{
-                    BAND = 0;
-                }
-            }
-            if(BAND == 0){
-                System.out.println("No existe el nodo que contiene el valor buscado");                                
-            }
-            else{
-                Nodo<E> T = new Nodo<>(objeto); //Creación del nuevo Nodo
-                T.siguiente = Q.siguiente;
-                Q.siguiente = T;
-                tamaño += 1;
-            }
-        }
-        catch(NullPointerException e){
-            System.out.println("Error.Lista vacía");
-        }
-    }
-    
-    public E extraerNodoPorInicio()throws NullPointerException{ //Agregar excepción NullPointer
-        try{
-            E objeto = inicio.objeto; //Enlace
-            if(inicio == fin){ //Lista tiene un nodo 
-                inicio = fin = null;
-            }
-            else{
-                inicio = inicio.siguiente;
-            }
-            tamaño--;
-            return objeto;//ExceptionNullPointer-Agregar
-        }
-        catch(NullPointerException e){
-            System.out.println("Error.Lista Vacía");
-        }
-        return null;
-    }
-    
-    public E extraerNodoPorFinal()throws NullPointerException{
-        try{
-            
-            Nodo<E> Q = inicio;
-            Nodo<E> T = null;
-            for(int i=0;i<tamaño-1;i++){
-                Q = Q.siguiente;
-            }
-            fin = Q;
-            T = Q.siguiente; //T contiene la dirección del último nodo
-            tamaño -= 1;
-            return T.objeto;
-            
-        }
-        catch(NullPointerException e){
-            System.out.println("Error.Lista Vacía");
-        }
-        return null;
-    }
-    
-    public E extraerNodo(E dato) throws NullPointerException{
-        try{
-            Nodo<E> Q = inicio;
-            Nodo<E> T = new Nodo<>(null);
-            int BAND = 1;
-            while(Q.objeto!=dato && BAND == 1){
-                if(Q.siguiente!=null){
-                    T = Q;
-                    Q=Q.siguiente;
-                }
-                else{
-                    BAND = 0;
-                }
-            }
-            if(BAND == 0){
-                System.out.println("No existe el nodo que contiene el valor buscado");
-            }
-            else{
-                if(inicio == Q){//Unico nodo
-                    inicio = Q.siguiente;
-                }
-                else{
-                    T.siguiente = Q.siguiente;
-                }
-                tamaño -= 1;
-            }
-            return Q.objeto;
-        }
-        catch(NullPointerException e){
-             System.out.println("Error.Lista Vacia");
-        }
-        return null;
-    }
-    
-    public void eliminarNodo(E dato) throws NullPointerException{
-        try{
-            Nodo<E> Q = inicio;
-            Nodo<E> T = new Nodo<>(null);
-            int BAND = 1;
-            while(Q.objeto!=dato && BAND == 1){
-                if(Q.siguiente!=null){
-                    T = Q;
-                    Q=Q.siguiente;
-                }
-                else{
-                    BAND = 0;
-                }
-            }
-            if(BAND == 0){
-                System.out.println("No existe el nodo que contiene el valor buscado");                    
-            }
-            else{
-                if(inicio == Q){//Unico nodo
-                    inicio = Q.siguiente;
-                }
-                else{
-                    T.siguiente = Q.siguiente;
-                }
-                tamaño -=1;
-            }
-        }
-        catch(NullPointerException e){
-            System.out.println("Error. Lista vacía");
-        }
-    }
-    
-    public void recorrido(){
+    public void recorrido(){//Nos sirve para cuando queremos comprobar de la existencia de la lista
         if(listaVacia()){
             System.out.println("Lista Vacia");
         }
@@ -358,7 +116,7 @@ public class Lista<E>{
         Nodo<E> aux = inicio;
         
         while(aux!=null){
-            if(aux.objeto instanceof Persona){
+            if(aux.objeto instanceof Persona){//Necesario para ser exclusivo a las clases personas
                 Persona p = (Persona) aux.objeto;
                 
                 if((p.getLogin().getUsuario().equals(usuario)) && (p.getLogin().getContraseña().equals(contraseña))){
@@ -376,7 +134,7 @@ public class Lista<E>{
         Persona p = null;
         Nodo<E> aux=inicio;
         while(aux!=null){
-            if(aux.objeto instanceof Persona){
+            if(aux.objeto instanceof Persona){//Necesario para ser exclusivo a las clases personas
                 Persona np = (Persona) aux.objeto;
                 
                 if(np.getLogin()==usuario){
@@ -428,7 +186,7 @@ public class Lista<E>{
         Agencia aR=null;
         
         while(aux!=null){
-            if(aux.objeto instanceof Agencia){
+            if(aux.objeto instanceof Agencia){//Necesario para ser exclusivo a las clases Agencia
                 Agencia a = (Agencia) aux.objeto;
                 if(name.equals(a.getUbicacion())){
                     aR=a;
@@ -451,7 +209,7 @@ public class Lista<E>{
         Boleta boletaR = null;
         
         while(aux!=null){
-            if(aux.objeto instanceof Boleta){
+            if(aux.objeto instanceof Boleta){//Necesario para ser exclusivo a las clases Boleta
                 Boleta b = (Boleta) aux.objeto;
                 if(b.getCodigoBoleta()==nroBoleta){
                     boletaR=b;
@@ -467,7 +225,7 @@ public class Lista<E>{
         Pedido pe = null;
         Nodo<E> aux=inicio;
         while(aux!=null){
-            if(aux.objeto instanceof Pedido){
+            if(aux.objeto instanceof Pedido){//Necesario para ser exclusivo a las clases Pedido
                 Pedido peAux = (Pedido) aux.objeto;
                 
                 if(peAux.getCodigoPedido()==codigo){
@@ -488,7 +246,7 @@ public class Lista<E>{
     public void actualizarCliente(Cliente c){
         Nodo<E> aux =inicio;
         while(aux!=null){
-            if(aux.objeto instanceof Cliente){
+            if(aux.objeto instanceof Cliente){//Necesario para ser exclusivo a las clases Cliente
                 Cliente cl = (Cliente) aux.objeto;//Lo convierto en Cliente para que pueda compararlo con el argumento que reciba
                 if(cl.getCodigo().equals(c.getCodigo())){
                     aux.objeto=(E) c;
@@ -503,7 +261,7 @@ public class Lista<E>{
         Nodo<E> aux =inicio;
         Cliente claux = null;
         while(aux!=null){
-            if(aux.objeto instanceof Cliente){
+            if(aux.objeto instanceof Cliente){//Necesario para ser exclusivo a las clases Cliente
                 Cliente cl = (Cliente) aux.objeto;//Lo convierto en Cliente para que pueda compararlo con el argumento que reciba
                 if(cl.getCodigo().equals(codigo)){
                     claux = cl;
@@ -524,7 +282,7 @@ public class Lista<E>{
         Producto p = null;
         Nodo<E> aux=inicio;
         while(aux!=null){
-            if(aux.objeto instanceof Producto){
+            if(aux.objeto instanceof Producto){//Necesario para ser exclusivo a las clases Producto
                 Producto pAux = (Producto) aux.objeto;
                 
                 if(pAux.getCodigoPe()==codigo){
@@ -538,34 +296,6 @@ public class Lista<E>{
     
     /*>>>*/
     
-    
-    
-    
-    
-    /*ignora de aqui para abajo*/
-    
-    /*//Primera Forma con interfaz
-    @Override
-    public Cliente getFoco() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    //Segunda Forna mediante instanceof
-    //Si "Cliente" es padre ... debería ser Object
-    public Cliente getHaceralgo(){
-        
-        if(inicio.objeto instanceof Cliente){
-            Object r;
-        }
-        return null;
-    }
-    
-
-    @Override
-    public Cliente getFoco() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    */
-
     
 }
 
