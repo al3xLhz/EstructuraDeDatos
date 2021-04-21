@@ -32,15 +32,20 @@ public class Cliente extends Persona{
     }
     
     public void setBoletas(Lista Boletas) {
-        Nodo aux = (Nodo) Boletas.getInicio();
-        while(aux!=null){
+        if(!Boletas.listaVacia()){
+            Nodo aux=Boletas.getInicioNodo();
+            while(aux!=null){
             Boleta bo = (Boleta) aux.objeto;
             if(this.getCodigo().equals(bo.getPropietarioDNI())){
                 listaBoletas.insertarNodoPorFinal(bo);
+                System.out.println(listaBoletas.buscar(bo).toString());
+                
             }
             
             aux=aux.siguiente;
+            }
         }
+        
         
     }
     

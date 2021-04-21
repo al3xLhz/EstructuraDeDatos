@@ -329,6 +329,10 @@ public class Lista<E>{
     public E getInicio() {//Permite obtener el objeto inicial de la lista,sin eliminarlo de esta
         return inicio.objeto;
     }
+    
+    public Nodo<E> getInicioNodo(){
+        return inicio;
+    }
 
     public E getFin() {//Permite obtener el objeto final de la lista,sin eliminarlo de esta
         return fin.objeto;

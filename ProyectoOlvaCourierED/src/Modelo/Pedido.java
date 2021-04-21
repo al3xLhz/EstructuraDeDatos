@@ -6,14 +6,14 @@ import java.util.Calendar;
 public class Pedido {
     private int codigo;
     private double valor;
-    private int codigoB;
+    private int codigoBoleta;
     private Producto producto;
     public static int codigoPedido=(int) (Math.random()*10000+1);
     
 
     public Pedido(Producto producto) {
         this.codigo = (int) (Math.random()*10000+1);
-        this.codigoB = codigoB;
+        this.codigoBoleta = codigoBoleta;
         this.producto=producto;
         codigoPedido++;
         setPrecioPedido(producto);
@@ -22,7 +22,7 @@ public class Pedido {
     public Pedido(int codigo, double valor , int codigoB) {
         this.codigo = codigo;
         this.valor = valor;
-        this.codigoB = codigoB; 
+        this.codigoBoleta = codigoBoleta; 
     }
 
     public int getCodigo() {
@@ -45,6 +45,13 @@ public class Pedido {
         return producto;
     }
 
+    public int getCodigoBoleta() {
+        return codigoBoleta;
+    }
+
+    
+
+    
     public void setProducto(Producto producto) {
         this.producto = producto;
     }

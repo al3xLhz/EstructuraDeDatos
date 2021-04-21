@@ -214,20 +214,25 @@ public class Boleta {
     }
 
     public void setPedidos(Lista Pedidos) {
-        Nodo aux = (Nodo) Pedidos.getInicio();
-        while(aux!=null){
+        if(!Pedidos.listaVacia()){
+            Nodo aux = Pedidos.getInicioNodo();
+            while(aux!=null){
             Pedido pe = (Pedido) aux.objeto;
-            if(codigo==pe.getCodigo()){
+            if(codigo==pe.getCodigoBoleta()){
                 listaPedidos.insertarNodoPorFinal(pe);
             }
             
             aux=aux.siguiente;
+            }
         }
         
+        
     }
-    
-    
-    
+
+    @Override
+    public String toString() {
+        return "Boleta{" + "codigo=" + codigo + ", fechadeEntrega=" + fechadeEntrega + ", fechaEmision=" + fechaEmision + ", agenciaInicial=" + agenciaInicial + ", agenciaFinal=" + agenciaFinal + ", importeTotal=" + importeTotal + ", IGV=" + IGV + ", total=" + total + ", propietarioDNI=" + propietarioDNI + ", estado=" + estado + ", listaPedidos=" + listaPedidos + ", camino=" + camino + '}';
+    }
     
     
 }
