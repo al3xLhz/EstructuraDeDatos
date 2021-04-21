@@ -7,14 +7,14 @@ public class Persona {
     private String apellidos;
     private String codigo;
     private String email;
-    private Login usuario;
+    private Login login;
 
-    public Persona(String nombres, String apellidos, String codigo, String email, Login usuario) {
+    public Persona(String nombres, String apellidos, String codigo, String email, Login login) {
         this.nombres = nombres;
         this.apellidos = apellidos;
         this.codigo = codigo;
         this.email = email;
-        this.usuario = usuario;
+        this.login = login;
         
     }
    /* public String RetornAtrib(int n){
@@ -44,9 +44,11 @@ public class Persona {
         return email;
     }
 
-    public Login getUsuario() {
-        return usuario;
+    public Login getLogin() {
+        return login;
     }
+
+    
 
     public void setNombres(String nombres) {
         this.nombres = nombres;
@@ -64,9 +66,11 @@ public class Persona {
         this.email = email;
     }
 
-    public void setUsuario(Login usuario) {
-        this.usuario = usuario;
+    public void setLogin(Login login) {
+        this.login = login;
     }
+
+    
     
     
     

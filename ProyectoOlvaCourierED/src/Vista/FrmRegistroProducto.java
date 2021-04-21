@@ -46,7 +46,6 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
         
     }
     
-    
     public void instanciarValores(Producto p){
         campoNombreProducto.setText(p.getNombreProducto());
         campoPeso.setText(String.valueOf(p.getPeso()));

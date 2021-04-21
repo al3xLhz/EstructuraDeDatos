@@ -352,14 +352,13 @@ import javax.swing.JOptionPane;
 
         if(input==0){
             
-           RegistrarProductosBD();
-           RegistrarPedidosBD();
-           LlenarBoletaBD();
+            RegistrarProductosBD();
+            RegistrarPedidosBD();
+            LlenarBoletaBD();
 
             //Guarda la boleta creada al cliente que ha iniciado sesion
             //OlvaCourier.clientes.buscar(OlvaCourier.clienteActual).getListaBoletas().insertarNodoPorFinal(OlvaCourier.boletaActual);
             OlvaCourier.clienteActual.getListaBoletas().insertarNodoPorFinal(OlvaCourier.boletaActual);
-            System.out.println(OlvaCourier.clienteActual.getListaBoletas().getXPos(0));
             //System.out.println(OlvaCourier.clienteActual.getListaBoletas().getBoletaXPos(0).getListaPedidos().getPedidoXPos(0).getProducto().getNombreProducto()); Funciona
             //asegurar que el cliente actual guarde la informacion donde se comenzo
             OlvaCourier.boletas.insertarNodoPorFinal(OlvaCourier.boletaActual);

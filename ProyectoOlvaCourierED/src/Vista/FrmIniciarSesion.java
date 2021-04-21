@@ -51,7 +51,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame {
             }
 
         }else{//datos erroneos
-            JOptionPane.showMessageDialog(null,"ERROR");
+            JOptionPane.showMessageDialog(null,"ERROR");//No se encontro el usuario y/o contraseña introducida
 
             this.CampoUsuario.setText("");
             this.CampoContraseña.setText("");

@@ -361,8 +361,8 @@ public class Lista<E>{
             if(aux.objeto instanceof Persona){
                 Persona p = (Persona) aux.objeto;
                 
-                if((p.getUsuario().getUsuario().equals(usuario)) && (p.getUsuario().getContraseña().equals(contraseña))){
-                result=p.getUsuario();
+                if((p.getLogin().getUsuario().equals(usuario)) && (p.getLogin().getContraseña().equals(contraseña))){
+                result=p.getLogin();
                 }
             }
             aux=aux.siguiente;
@@ -379,7 +379,7 @@ public class Lista<E>{
             if(aux.objeto instanceof Persona){
                 Persona np = (Persona) aux.objeto;
                 
-                if(np.getUsuario()==usuario){
+                if(np.getLogin()==usuario){
                     p=np;
                 }
             }
