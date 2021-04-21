@@ -26,7 +26,7 @@ public class App {
         OlvaCourier.CargarClientes();
         OlvaCourier.CargarAdministrador();
         
-        //System.out.println(OlvaCourier.clientes.getXPos(1).getListaBoletas().getTamaño());
+        System.out.println(OlvaCourier.clientes.getXPos(1).getListaBoletas().getInicio().toString());
         
         //<Es un respaldode creacion de los clientes,administradores Todo debería ser un sql pero en este caso por terminos de rapidez se hace de esta manera
         

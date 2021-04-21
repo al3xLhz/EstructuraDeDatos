@@ -8,17 +8,16 @@ import Estructuras.*;
 
 
 public class DijkstraMapa {
-    private GrafoMapa grafo;
+    private GrafoMapa grafo; //Grafo creado manualmente
     private int subTope;
     private int auxAcumulado;
     private int subAcumulado;
-    private NodoGrafo nodos[];
-    private int tope;
+    private NodoGrafo nodos[]; //Se guarda el camino que será minimo
+    private int tope; // Cantidad de nodos que tiene el grafo
     private int permanente;
     private int nodoFin;
     private int nodoInicio;
     private Pila pila;
-    private Cola cola;
     
     public DijkstraMapa(GrafoMapa grafo){//Tope numero de vertices
         this.grafo = grafo;        
@@ -27,55 +26,6 @@ public class DijkstraMapa {
         llenarNodos();
     }
 
-    public GrafoMapa getGrafo() {
-        return grafo;
-    }
-
-    public void setGrafo(GrafoMapa grafo) {
-        this.grafo = grafo;
-    }
-
-    public int getNodoFin() {
-        return nodoFin;
-    }
-
-    public void setNodoFin(int nodoFin) {
-        this.nodoFin = nodoFin;
-    }
-
-    public int getNodoInicio() {
-        return nodoInicio;
-    }
-
-    public void setNodoInicio(int nodoInicio) {
-        this.permanente = nodoInicio;
-        this.nodoInicio= nodoInicio;
-    }
-
-    public Pila getPila() {
-        return pila;
-    }
-
-    public void setPila(Pila pila) {
-        this.pila = pila;
-    }
-
-    public Cola getCola() {
-        return cola;
-    }
-
-    public void setCola(Cola cola) {
-        this.cola = cola;
-    }
-    
-    public int getTope() {
-        return tope;
-    }
-
-    public void setTope(int tope) {
-        this.tope = tope;
-    }
-  
     public void dijkstra(){
         subTope=0;
         llenarNodos();
@@ -136,19 +86,48 @@ public class DijkstraMapa {
         } 
     }
     
-    private void pasarPilaACola(){
-        cola = new Cola();
-        Nodo aux = new Nodo();
-        aux.objeto = pila.getCima();
-        
-        
-        while(aux!=null){
-            cola.encolar(aux.objeto);
-            aux=aux.siguiente;
-        }
-        
-        
+    public GrafoMapa getGrafo() {
+        return grafo;
     }
+
+    public void setGrafo(GrafoMapa grafo) {
+        this.grafo = grafo;
+    }
+
+    public int getNodoFin() {
+        return nodoFin;
+    }
+
+    public void setNodoFin(int nodoFin) {
+        this.nodoFin = nodoFin;
+    }
+
+    public int getNodoInicio() {
+        return nodoInicio;
+    }
+
+    public void setNodoInicio(int nodoInicio) {
+        this.permanente = nodoInicio;
+        this.nodoInicio= nodoInicio;
+    }
+
+    public Pila getPila() {
+        return pila;
+    }
+
+    public void setPila(Pila pila) {
+        this.pila = pila;
+    }
+    
+    public int getTope() {
+        return tope;
+    }
+
+    public void setTope(int tope) {
+        this.tope = tope;
+    }
+    
+    
     
     
    

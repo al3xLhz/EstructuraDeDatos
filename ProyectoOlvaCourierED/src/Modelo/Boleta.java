@@ -231,6 +231,13 @@ public class Boleta {
         
     }
 
+    @Override
+    public String toString() {
+        return "Boleta{" + "codigoBoleta=" + codigoBoleta+ ", agenciaInicial=" + agenciaInicial + ", agenciaFinal=" + agenciaFinal + ", importeTotal=" + importeTotal + ", IGV=" + IGV + ", total=" + total + ", propietarioDNI=" + propietarioDNI + ", estado=" + estado + ", listaPedidos=" + listaPedidos + ", camino=" + camino + '}';
+    }
+    
+    
+
     
     
     

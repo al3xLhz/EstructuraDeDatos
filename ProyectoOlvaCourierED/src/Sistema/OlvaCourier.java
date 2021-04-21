@@ -46,7 +46,7 @@ public class OlvaCourier {
                 cAux.setBoletas(OlvaCourier.boletas);
                 
                 OlvaCourier.clientes.insertarNodoPorFinal(cAux);
-                OlvaCourier.personas.insertarNodoPorFinal(new Cliente(res.getInt(8), res.getString(2), res.getString(3),res.getString(1), res.getString(4), new Login(res.getString(5),res.getString(6),res.getInt(7))));
+                OlvaCourier.personas.insertarNodoPorFinal(cAux);
             }  
         }catch(SQLException e){
         }
