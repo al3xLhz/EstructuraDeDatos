@@ -578,6 +578,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                 OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p5));    
             }
             OlvaCourier.boletaActual.setPrecioTotal();
+            System.out.println("aqui");
             OlvaCourier.boletaActual.setPropietarioDNI(OlvaCourier.clienteActual.getCodigo());
         }
         
@@ -593,10 +594,10 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                 OlvaCourier.boletaActual.setAgenciaInicial(OlvaCourier.agencias.getAgencia(comboOrigen.getSelectedItem().toString()));
                 OlvaCourier.boletaActual.setAgenciaFinal(OlvaCourier.agencias.getAgencia(comboDestino.getSelectedItem().toString()));
                 OlvaCourier.boletaActual.getFechadeEntrega().add(Calendar.DAY_OF_MONTH, 5);//Falta establecer un adecuado fecha de entrega
-                try{
+                //try{
                     FrmBoletaLlenar frmb = new FrmBoletaLlenar();
                     this.dispose();
-                }catch(Exception e){}
+                //}catch(Exception e){}
             }
         }
         

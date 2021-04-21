@@ -4,20 +4,17 @@ package Vista;
 import Estructuras.ArbolAVL;
 import Modelo.Boleta;
 import Sistema.OlvaCourier;
-import java.util.Calendar;
 
 public class FrmHistorial extends javax.swing.JFrame {
     
     ArbolAVL miArbol;
-    
+    int opc;
     public FrmHistorial() {
         initComponents();
         llenarTabla();
         etiquetaNombre.setText(OlvaCourier.clienteActual.getNombres()+OlvaCourier.clienteActual.getApellidos());
         etiquetaHora.setText(OlvaCourier.horaActual.getTime().toLocaleString());
-        ArbolAVL miArbol = new ArbolAVL();//Creo mi arbol
-        miArbol.creacionArbolXLista(OlvaCourier.clienteActual.getListaBoletas());//Va a generar un arbol AVL mediante la entrega de Argumento Lista de boletas
-        System.out.println("Mostrando Arbol ");miArbol.mostrarArbol(miArbol.getRaiz(), 0);
+
         setLocationRelativeTo(null);
         setVisible(true);
     }
@@ -45,8 +42,8 @@ public class FrmHistorial extends javax.swing.JFrame {
                 matriz[i][2]=String.valueOf(b.getAgenciaInicial().getUbicacion());
                 matriz[i][3]=String.valueOf(b.getAgenciaFinal().getUbicacion());
                 matriz[i][4]=String.valueOf(estado);
-                matriz[i][5]=String.valueOf(b.getFechaEmision().getTime().toString());
-                matriz[i][6]=String.valueOf(b.getFechadeEntrega().getTime().toString());
+                matriz[i][5]=String.valueOf(b.getFechaEmision().getTime().toLocaleString());
+                matriz[i][6]=String.valueOf(b.getFechadeEntrega().getTime().toLocaleString());
                 matriz[i][7]=String.valueOf(b.getTotal());
                 Tabla.setValueAt(matriz[i][0], i, 0);
                 Tabla.setValueAt(matriz[i][1], i, 1);
@@ -144,6 +141,9 @@ public class FrmHistorial extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
@@ -151,7 +151,7 @@ public class FrmHistorial extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -160,7 +160,7 @@ public class FrmHistorial extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Tabla);
 
-        comboOpciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "N°", "Nro Boleta", "Agencia Inicial", "Agencia Final", "Estado" }));
+        comboOpciones.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nro Boleta", "Agencia Inicial", "Agencia Final", "Fecha Entrega", "Fecha Final", "Total" }));
         comboOpciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboOpcionesActionPerformed(evt);
@@ -186,33 +186,34 @@ public class FrmHistorial extends javax.swing.JFrame {
         BodyLayout.setHorizontalGroup(
             BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BodyLayout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(comboOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(BodyLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 769, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(BodyLayout.createSequentialGroup()
-                                .addGap(60, 60, 60)
-                                .addComponent(botonAplicar))
-                            .addGroup(BodyLayout.createSequentialGroup()
-                                .addGap(71, 71, 71)
-                                .addComponent(botonFinalizar)))))
+                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BodyLayout.createSequentialGroup()
+                        .addGap(792, 792, 792)
+                        .addComponent(comboOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(BodyLayout.createSequentialGroup()
+                            .addGap(23, 23, 23)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 769, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(60, 60, 60)
+                            .addComponent(botonAplicar))
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BodyLayout.createSequentialGroup()
+                            .addGap(863, 863, 863)
+                            .addComponent(botonFinalizar))))
                 .addContainerGap(62, Short.MAX_VALUE))
         );
         BodyLayout.setVerticalGroup(
             BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BodyLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(BodyLayout.createSequentialGroup()
                         .addComponent(comboOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(botonAplicar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(botonFinalizar))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(70, Short.MAX_VALUE))
+                        .addGap(355, 355, 355)
+                        .addComponent(botonFinalizar)))
+                .addContainerGap(13, Short.MAX_VALUE))
         );
 
         fondo.add(Body, java.awt.BorderLayout.CENTER);
@@ -225,18 +226,22 @@ public class FrmHistorial extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOpcionesActionPerformed
-
+        
     }//GEN-LAST:event_comboOpcionesActionPerformed
 
     private void botonAplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAplicarActionPerformed
         //Chapa lo que tenga el combo y depende de eso ordena la tabla
+        opc = comboOpciones.getSelectedIndex();
+        FrmArbolLienzo fl = new FrmArbolLienzo(opc);
     }//GEN-LAST:event_botonAplicarActionPerformed
 
     private void botonFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFinalizarActionPerformed

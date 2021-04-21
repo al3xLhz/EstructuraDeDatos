@@ -178,11 +178,13 @@ public class Boleta {
 
     private double sumarPedido() {
         double sumaTotalPedido=0;
-        for(int i=0;i<5;i++){
-            Pedido pe = (Pedido) listaPedidos.getXPos(i);
-            sumaTotalPedido+=pe.getValor();
-        }
+        Nodo aux = listaPedidos.getInicioNodo();
         
+        while(aux!=null){
+            Pedido pe = (Pedido) aux.objeto;
+            sumaTotalPedido+=pe.getValor();
+            aux=aux.siguiente;
+        }
         return sumaTotalPedido;
     }
 

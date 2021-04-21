@@ -53,20 +53,17 @@ import javax.swing.JOptionPane;
     }
     
     public void llenarTabla(){
-        String matriz[][] = new String[5][3];
+        String matriz[][] = new String[OlvaCourier.boletaActual.getListaPedidos().getTamaño()][3];
         
-        for(int i=0;i<5;i++){
+        for(int i=0;i<OlvaCourier.boletaActual.getListaPedidos().getTamaño();i++){
             Pedido pe = (Pedido) OlvaCourier.boletaActual.getListaPedidos().getXPos(i);
-            if(pe.getProducto().getNombreProducto()!=""){
                 matriz[i][0]=String.valueOf(pe.getCodigoPedido());
                 matriz[i][1]=String.valueOf(pe.getProducto().getNombreProducto());
                 matriz[i][2]=String.valueOf(pe.getValor());
                 tabla.setValueAt(matriz[i][0], i, 0);
                 tabla.setValueAt(matriz[i][1], i, 1);
                 tabla.setValueAt(matriz[i][2], i, 2);
-            }else{
-                Pedido.codigoPedidoGeneral--;
-            }
+            
             
         }
         

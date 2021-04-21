@@ -9,7 +9,7 @@ package Estructuras;
  *
  * @author Junior Jose
  */
-import Modelo.*;
+import Modelo.Boleta;
 
 public class ArbolAVL<E> {
     //Atributos
@@ -112,7 +112,7 @@ public class ArbolAVL<E> {
             }
         }
     }
-    
+
     public void mostrarArbol (NodoArbol<E> nodo,int n){
         if(nodo== null)
           return;
@@ -127,7 +127,7 @@ public class ArbolAVL<E> {
      mostrarArbol(nodo.izq, n+1);
     }
     /*
-    public void mostrarArbolOtracosa(NodoArbol<E> nodo,int n){
+    public void mostrarArbolOtrocampo(NodoArbol<E> nodo,int n){
         if(nodo== null)
           return;
         mostrarArbol(nodo.der, n+1);
@@ -135,28 +135,69 @@ public class ArbolAVL<E> {
      for(int i=0; i<n; i++)
 	  System.out.println("     ");
            numNodos++;
-           Boleta bolAux = (Boleta) nodo.objeto;
-        System.out.println(bolAux.ge);
+        Boleta bolAux = (Boleta) nodo.objeto;
+        
+        //codigo de boletaBoleta bolAux = (Boleta) nodo.objeto;
+        System.out.println(bolAux.getCodigo());
+        //agencia inicial
+        System.out.println(bolAux.getAgenciaInicial());
+        //agencia final
+        System.out.println(bolAux.getAgenciaFinal());
+        //estado 1 o 0
+        System.out.println(bolAux.getEstado());
+        //segun IGV
+        System.out.println(bolAux.getIGV());
+        //DNI del cliente
+        System.out.println(bolAux.getPropietarioDNI());
+        
    	System.out.println("");
 
      mostrarArbol(nodo.izq, n+1);
     }
     */
-    public void creacionArbolXLista(Lista Boletas){ 
+    public void creacionArbolXLista(Lista Boletas, int opc){ 
         
         Nodo<E> aux = Boletas.inicio;
         Boleta boletaAux;
+        
         while(aux!=null){
             boletaAux = (Boleta) aux.objeto;
-            insertar((E) boletaAux, boletaAux.getCodigoBoleta());
+            switch(opc){
+                case 0:
+                    insertar((E) boletaAux, boletaAux.getCodigoBoleta());
+                    break;
+                    
+                case 1:
+                    insertar((E) boletaAux, boletaAux.getAgenciaInicial().getNumero());
+                    break;
+                
+                case 2:
+                    insertar((E) boletaAux, boletaAux.getAgenciaFinal().getNumero());
+                    break;
+                case 3:
+                    String fechaAux= String.valueOf(boletaAux.getFechaEmision().getTime().getYear())+String.valueOf(boletaAux.getFechaEmision().getTime().getMonth()+String.valueOf(boletaAux.getFechaEmision().getTime().getDay()));
+                    int fecha = Integer.valueOf(fechaAux);
+                    insertar((E) boletaAux, fecha);
+                    break;
+                case 4:
+                    String fechaAuxFinal = String.valueOf(boletaAux.getFechadeEntrega().getTime().getYear())+String.valueOf(boletaAux.getFechadeEntrega().getTime().getMonth()+String.valueOf(boletaAux.getFechadeEntrega().getTime().getDay()));
+                    int fecha2 = Integer.valueOf(fechaAuxFinal);
+                    insertar((E) boletaAux, fecha2);
+                    break;
+                case 5:
+                    double dnum = boletaAux.getImporteTotal();
+                    int num = (int)dnum;
+                    insertar((E) boletaAux,num);
+                    break;
+            }
+
             aux=aux.siguiente;
-        }
-        
+        }     
     }
 
     public NodoArbol<E> getRaiz() {
         return raiz;
     }
-    
-    
+   
+ 
 }
