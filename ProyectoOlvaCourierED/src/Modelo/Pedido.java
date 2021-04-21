@@ -1,48 +1,47 @@
 
 package Modelo;
 
+import Estructuras.Lista;
+import Estructuras.Nodo;
 import java.util.Calendar;
 
 public class Pedido {
-    private int codigo;
+    private int codigoPedido;
     private double valor;
-    private int codigoB;
+    private int codigoBoleta;
     private Producto producto;
-    public static int codigoPedido=(int) (Math.random()*10000+1);
+    public static int codigoPedidoGeneral=(int) (Math.random()*10000+1);
     
 
     public Pedido(Producto producto) {
-        this.codigo = (int) (Math.random()*10000+1);
-        this.codigoB = codigoB;
+        this.codigoPedido = (int) (Math.random()*10000+1);
         this.producto=producto;
         codigoPedido++;
         setPrecioPedido(producto);
     }
     
     public Pedido(int codigo, double valor , int codigoB) {
-        this.codigo = codigo;
+        this.codigoPedido = codigo;
         this.valor = valor;
-        this.codigoB = codigoB; 
+        this.codigoBoleta = codigoBoleta; 
     }
 
-    public int getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
-
-    public static int getCodigoPedido() {
+    public int getCodigoPedido() {
         return codigoPedido;
     }
 
-    public static void setCodigoPedido(int codigoPedido) {
-        Pedido.codigoPedido = codigoPedido;
+    public void setCodigoPedido(int codigoPedido) {
+        this.codigoPedido = codigoPedido;
     }
+
+    
 
     public Producto getProducto() {
         return producto;
+    }
+
+    public int getCodigoBoleta() {
+        return codigoBoleta;
     }
 
     public void setProducto(Producto producto) {
@@ -71,6 +70,25 @@ public class Pedido {
        valor=Math.round(valor);
        valor=valor/1000;
        
+    }
+
+    public void setProductos(Lista productos) {
+        
+        if(!productos.listaVacia()){
+            
+            Nodo aux = productos.getInicioNodo();
+            
+            while(aux!=null){
+                Producto pro = (Producto) aux.objeto;
+                
+            if(pro.getCodigoPe()==codigoPedido){
+                setProducto(pro);
+            }
+            
+            aux=aux.siguiente;
+            }
+        }
+        
     }
     
     

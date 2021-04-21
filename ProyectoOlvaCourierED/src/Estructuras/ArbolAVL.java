@@ -154,7 +154,7 @@ public class ArbolAVL<E> {
         Boleta boletaAux;
         while(aux!=null){
             boletaAux = (Boleta) aux.objeto;
-            insertar((E) boletaAux, boletaAux.getCodigo());
+            insertar((E) boletaAux, boletaAux.getCodigoBoleta());
             aux=aux.siguiente;
         }
         

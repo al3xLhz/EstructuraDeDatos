@@ -138,7 +138,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
         try {   
                         
                         CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaPedido(?,?)}");
-                        entrada.setInt(1,(int) pe.getCodigo());
+                        entrada.setInt(1,(int) pe.getCodigoPedido());
                         entrada.setDouble(2, pe.getValor());
                         entrada.execute();
                         
@@ -146,7 +146,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                         Logger.getLogger(FrmRegistroProducto.class.getName()).log(Level.SEVERE, null, ex);
                     }
         try{
-            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Producto set CodigoPedido = " + pe.getCodigo() + "where nombrePro ='" + p1.getNombreProducto() + "'");
+            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Producto set CodigoPedido = " + pe.getCodigoPedido()+ "where nombrePro ='" + p1.getNombreProducto() + "'");
             pps.executeUpdate();
         }
         catch(SQLException e){           
@@ -157,7 +157,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
             Pedido pe = (Pedido) OlvaCourier.boletaActual.getListaPedidos().getXPos(1);
         try {   
                         CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaPedido(?,?)}");
-                        entrada.setInt(1,(int) pe.getCodigo());
+                        entrada.setInt(1,(int) pe.getCodigoPedido());
                         entrada.setDouble(2, pe.getValor());
                         entrada.execute();
                         
@@ -165,7 +165,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                         Logger.getLogger(FrmRegistroProducto.class.getName()).log(Level.SEVERE, null, ex);
                     }    
         try{
-            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Producto set CodigoPedido = " + pe.getCodigo() + "where nombrePro ='" + p2.getNombreProducto() + "'");
+            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Producto set CodigoPedido = " + pe.getCodigoPedido()+ "where nombrePro ='" + p2.getNombreProducto() + "'");
             pps.executeUpdate();
         }
         catch(SQLException e){           
@@ -175,7 +175,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
             Pedido pe = (Pedido) OlvaCourier.boletaActual.getListaPedidos().getXPos(2);
         try {   
                         CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaPedido(?,?)}");
-                        entrada.setInt(1,(int) pe.getCodigo());
+                        entrada.setInt(1,(int) pe.getCodigoPedido());
                         entrada.setDouble(2, pe.getValor());
                         entrada.execute();
                         
@@ -183,7 +183,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                         Logger.getLogger(FrmRegistroProducto.class.getName()).log(Level.SEVERE, null, ex);
                     }
         try{
-            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Producto set CodigoPedido = " + pe.getCodigo() + "where nombrePro ='" + p3.getNombreProducto() + "'");
+            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Producto set CodigoPedido = " + pe.getCodigoPedido()+ "where nombrePro ='" + p3.getNombreProducto() + "'");
             pps.executeUpdate();
         }
         catch(SQLException e){           
@@ -194,7 +194,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
             Pedido pe = (Pedido) OlvaCourier.boletaActual.getListaPedidos().getXPos(3);
         try {
                         CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaPedido(?,?)}");
-                        entrada.setInt(1,(int) pe.getCodigo());
+                        entrada.setInt(1,(int) pe.getCodigoPedido());
                         entrada.setDouble(2, pe.getValor());
                         entrada.execute();
                         
@@ -202,7 +202,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                         Logger.getLogger(FrmRegistroProducto.class.getName()).log(Level.SEVERE, null, ex);
                     } 
         try{
-            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Producto set CodigoPedido = " + pe.getCodigo() + "where nombrePro ='" + p4.getNombreProducto() + "'");
+            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Producto set CodigoPedido = " + pe.getCodigoPedido()+ "where nombrePro ='" + p4.getNombreProducto() + "'");
             pps.executeUpdate();
         }
         catch(SQLException e){           
@@ -213,7 +213,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
             Pedido pe = (Pedido) OlvaCourier.boletaActual.getListaPedidos().getXPos(4);
         try {
                         CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaPedido(?,?)}");
-                        entrada.setInt(1,(int) pe.getCodigo());
+                        entrada.setInt(1,(int) pe.getCodigoPedido());
                         entrada.setDouble(2, pe.getValor());
                         entrada.execute();
                         
@@ -221,7 +221,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                         Logger.getLogger(FrmRegistroProducto.class.getName()).log(Level.SEVERE, null, ex);
                     }   
         try{
-            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Producto set CodigoPedido = " + pe.getCodigo() + "where nombrePro ='" + p5.getNombreProducto() + "'");
+            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Producto set CodigoPedido = " + pe.getCodigoPedido()+ "where nombrePro ='" + p5.getNombreProducto() + "'");
             pps.executeUpdate();
         }
         catch(SQLException e){           
@@ -305,7 +305,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
         fondo.setBackground(new java.awt.Color(64, 170, 173));
         fondo.setLayout(new java.awt.BorderLayout());
 
-        Header.setBackground(new java.awt.Color(64, 170, 173));
+        Header.setBackground(new java.awt.Color(138, 196, 208));
 
         etiquetaNombre.setText("Nombre del cliente");
 
@@ -340,7 +340,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
 
         fondo.add(Header, java.awt.BorderLayout.NORTH);
 
-        Body.setBackground(new java.awt.Color(64, 170, 173));
+        Body.setBackground(new java.awt.Color(255, 211, 105));
 
         ComboNProductos.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         ComboNProductos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
@@ -378,7 +378,9 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
 
         botonGuardar.setBackground(new java.awt.Color(64, 170, 173));
         botonGuardar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        botonGuardar.setText("Guardar");
+        botonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/disquete.png"))); // NOI18N
+        botonGuardar.setBorderPainted(false);
+        botonGuardar.setContentAreaFilled(false);
         botonGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonGuardarActionPerformed(evt);
@@ -387,7 +389,9 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
 
         botonSiguiente.setBackground(new java.awt.Color(64, 170, 173));
         botonSiguiente.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 15)); // NOI18N
-        botonSiguiente.setText("Siguiente");
+        botonSiguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/FlechaSiguiente.png"))); // NOI18N
+        botonSiguiente.setBorderPainted(false);
+        botonSiguiente.setContentAreaFilled(false);
         botonSiguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonSiguienteActionPerformed(evt);
@@ -395,7 +399,6 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
         });
 
         etiquetaAgenciaOrigen.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        etiquetaAgenciaOrigen.setForeground(new java.awt.Color(0, 0, 0));
         etiquetaAgenciaOrigen.setText("Agencia Origen");
 
         comboOrigen.setFont(new java.awt.Font("Yu Gothic UI", 0, 13)); // NOI18N
@@ -415,7 +418,6 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
         });
 
         etiquetaDestino.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        etiquetaDestino.setForeground(new java.awt.Color(0, 0, 0));
         etiquetaDestino.setText("Agencia Destino");
 
         javax.swing.GroupLayout BodyLayout = new javax.swing.GroupLayout(Body);
@@ -423,70 +425,77 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
         BodyLayout.setHorizontalGroup(
             BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BodyLayout.createSequentialGroup()
-                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(BodyLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(BodyLayout.createSequentialGroup()
-                                    .addComponent(etiquetaNompreProducto)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(campoNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(BodyLayout.createSequentialGroup()
-                                    .addComponent(N)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(ComboNProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(26, 26, 26)
-                                    .addComponent(botonGuardar)))
-                            .addGroup(BodyLayout.createSequentialGroup()
-                                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, BodyLayout.createSequentialGroup()
-                                        .addComponent(etiquetaLargo)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(campoLargo))
+                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(botonSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(BodyLayout.createSequentialGroup()
+                            .addGap(18, 18, 18)
+                            .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(BodyLayout.createSequentialGroup()
-                                        .addComponent(etiquetaPeso)
+                                        .addComponent(etiquetaNompreProducto)
                                         .addGap(18, 18, 18)
-                                        .addComponent(campoPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(etiquetaKg)
+                                        .addComponent(campoNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(BodyLayout.createSequentialGroup()
-                                        .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(etiquetaDestino)
-                                            .addGroup(BodyLayout.createSequentialGroup()
-                                                .addComponent(etiquetacmL)
-                                                .addGap(32, 32, 32)
-                                                .addComponent(etiquetaAlto)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(campoAlto, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(etiquetacmAl)
-                                                .addGap(7, 7, 7)
-                                                .addComponent(etiquetaAncho)))
+                                        .addComponent(N)
                                         .addGap(18, 18, 18)
-                                        .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(campoAncho, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(comboDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addComponent(botonSiguiente, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(etiquetacmAn))
-                    .addGroup(BodyLayout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(etiquetaAgenciaOrigen)
-                        .addGap(39, 39, 39)
-                        .addComponent(comboOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(51, Short.MAX_VALUE))
+                                        .addComponent(ComboNProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(botonGuardar)
+                                        .addGap(21, 21, 21)))
+                                .addGroup(BodyLayout.createSequentialGroup()
+                                    .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, BodyLayout.createSequentialGroup()
+                                            .addComponent(etiquetaLargo)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(campoLargo))
+                                        .addGroup(BodyLayout.createSequentialGroup()
+                                            .addComponent(etiquetaPeso)
+                                            .addGap(18, 18, 18)
+                                            .addComponent(campoPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(etiquetaKg)
+                                        .addGroup(BodyLayout.createSequentialGroup()
+                                            .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(etiquetaDestino)
+                                                .addGroup(BodyLayout.createSequentialGroup()
+                                                    .addComponent(etiquetacmL)
+                                                    .addGap(32, 32, 32)
+                                                    .addComponent(etiquetaAlto)
+                                                    .addGap(18, 18, 18)
+                                                    .addComponent(campoAlto, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                    .addComponent(etiquetacmAl)
+                                                    .addGap(7, 7, 7)
+                                                    .addComponent(etiquetaAncho)))
+                                            .addGap(18, 18, 18)
+                                            .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(campoAncho, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(comboDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(etiquetacmAn))
+                        .addGroup(BodyLayout.createSequentialGroup()
+                            .addGap(32, 32, 32)
+                            .addComponent(etiquetaAgenciaOrigen)
+                            .addGap(39, 39, 39)
+                            .addComponent(comboOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         BodyLayout.setVerticalGroup(
             BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(BodyLayout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(N)
-                    .addComponent(ComboNProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botonGuardar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(BodyLayout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ComboNProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(N))
+                        .addGap(21, 21, 21))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, BodyLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(botonGuardar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                 .addGroup(BodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etiquetaNompreProducto)
                     .addComponent(campoNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -512,9 +521,9 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                     .addComponent(comboOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(etiquetaDestino)
                     .addComponent(comboDestino, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(50, 50, 50)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(botonSiguiente)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addGap(26, 26, 26))
         );
 
         fondo.add(Body, java.awt.BorderLayout.CENTER);

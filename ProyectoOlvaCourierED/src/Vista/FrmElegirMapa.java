@@ -330,7 +330,7 @@ public class FrmElegirMapa extends javax.swing.JFrame {
                 //guardar datos
                 if(OlvaCourier.boletaActual.getAgenciaFinal().getNumero() == auxF){
                     OlvaCourier.boletaActual.setCamino(pilaGeneral.ConvertirAString());
-                    OlvaCourier.clientes.buscar(OlvaCourier.clienteActual).getListaBoletas().getBoleta(OlvaCourier.boletaActual.getCodigo()).actualizarDatos(OlvaCourier.boletaActual);
+                    OlvaCourier.clientes.buscar(OlvaCourier.clienteActual).getListaBoletas().getBoleta(OlvaCourier.boletaActual.getCodigoBoleta()).actualizarDatos(OlvaCourier.boletaActual);
                     System.out.println(OlvaCourier.boletaActual.getCamino());
                     FrmAdministrador fa = new FrmAdministrador();
                     this.dispose();

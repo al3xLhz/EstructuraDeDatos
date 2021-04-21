@@ -13,7 +13,7 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
     public FrmConsultarOrden() {
         initComponents();
         llenarTabla();
-        respuestaNroBoleta.setText(String.valueOf(OlvaCourier.boletaActual.getCodigo()));
+        respuestaNroBoleta.setText(String.valueOf(OlvaCourier.boletaActual.getCodigoBoleta()));
         if(OlvaCourier.boletaActual.getEstado()==1){posicion2.setVisible(false);posicion3.setVisible(false);respuestaEstado.setText("Sin entregar");}else if(OlvaCourier.boletaActual.getEstado()==2){posicion1.setVisible(false);posicion3.setVisible(false);respuestaEstado.setText("En camino");}else{posicion1.setVisible(false);posicion2.setVisible(false);respuestaEstado.setText("Llego a su destino");}
         etiquetaNombre.setText(OlvaCourier.clienteActual.getNombres()+OlvaCourier.clienteActual.getApellidos());
         etiquetaHora.setText(OlvaCourier.horaActual.getTime().toLocaleString());
@@ -27,7 +27,7 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
         for(int i=0;i<5;i++){
             Pedido pe = (Pedido) OlvaCourier.boletaActual.getListaPedidos().getXPos(i);
             if(pe.getProducto().getNombreProducto()!=""){
-                matriz[i][0]=String.valueOf(pe.getCodigo());
+                matriz[i][0]=String.valueOf(pe.getCodigoPedido());
                 matriz[i][1]=String.valueOf(pe.getProducto().getNombreProducto());
                 Tabla.setValueAt(matriz[i][0], i, 0);
                 Tabla.setValueAt(matriz[i][1], i, 1);
@@ -230,8 +230,15 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
     }//GEN-LAST:event_botonRetrocederActionPerformed
 
     private void botonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonSalirActionPerformed
-        FrmAdministrador frmc= new FrmAdministrador();
-        this.dispose(); 
+        if(OlvaCourier.usuarioActual.getTipoFuncion()==1){
+            FrmCliente frmc = new FrmCliente();
+            this.dispose();
+        }else if(OlvaCourier.usuarioActual.getTipoFuncion()==2){
+            FrmAdministrador frmc= new FrmAdministrador();
+            this.dispose();
+        }
+        
+         
     }//GEN-LAST:event_botonSalirActionPerformed
 
     /**

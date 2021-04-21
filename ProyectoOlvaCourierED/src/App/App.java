@@ -5,6 +5,7 @@ import Estructuras.ArbolAVL;
 import Modelo.*;
 import Sistema.OlvaCourier;
 import Vista.FrmIniciarSesion;
+import java.util.Calendar;
 import javax.swing.JFrame;
 
 
@@ -12,19 +13,20 @@ public class App {
     
     public static void main(String[] args) {
         
-        //Conexion.Conexion.getConexion();
+        Conexion.Conexion.getConexion();
         /*Primero Ingresemos a la carpeta Sistema-OlvaCourier.java*/
         
         //Guarda todas las agencias existentes en el objeto agencias
         OlvaCourier.agencias.setAgencias();
-        Conexion.Conexion.getConexion();
+        //Conexion.Conexion.getConexion();
+
         OlvaCourier.CargarProducto();
         OlvaCourier.CargarPedido();
         OlvaCourier.CargarBoleta();
         OlvaCourier.CargarClientes();
         OlvaCourier.CargarAdministrador();
         
-       // System.out.println(OlvaCourier.boletas.getTamaño());
+        System.out.println(OlvaCourier.clientes.getXPos(1).getListaBoletas().getTamaño());
         
         //<Es un respaldode creacion de los clientes,administradores Todo debería ser un sql pero en este caso por terminos de rapidez se hace de esta manera
         

@@ -7,7 +7,6 @@ import Modelo.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Calendar;
-import sun.util.locale.provider.AuxLocaleProviderAdapter;
 
 
 
@@ -35,14 +34,17 @@ public class OlvaCourier {
     
     
 
-    static ResultSet res;
+    private static ResultSet res;
+    
     public static void CargarClientes(){
         
         res = Conexion.Conexion.Consulta("select * from Clientes");
         
         try{
             while(res.next()){
-                OlvaCourier.clientes.insertarNodoPorFinal(new Cliente(res.getInt(8), res.getString(2), res.getString(3),res.getString(1), res.getString(4), new Login(res.getString(5),res.getString(6),res.getInt(7))));
+                Cliente cAux = new Cliente(res.getInt(8), res.getString(2), res.getString(3),res.getString(1), res.getString(4), new Login(res.getString(5),res.getString(6),res.getInt(7)));
+                cAux.setBoletas(OlvaCourier.boletas);
+                OlvaCourier.clientes.insertarNodoPorFinal(cAux);
                 OlvaCourier.personas.insertarNodoPorFinal(new Cliente(res.getInt(8), res.getString(2), res.getString(3),res.getString(1), res.getString(4), new Login(res.getString(5),res.getString(6),res.getInt(7))));
             }  
         }catch(SQLException e){
@@ -67,7 +69,11 @@ public class OlvaCourier {
         
         try{
            while(res.next()){
-                OlvaCourier.boletas.insertarNodoPorFinal(new Boleta(res.getInt(1), res.getString(2),res.getString(3),res.getString(4),res.getString(5),res.getDouble(6),res.getDouble(7),res.getDouble(8),res.getInt(9),res.getString(10)));         
+                Boleta aux = new Boleta(res.getInt(1), res.getString(2),res.getString(3),res.getString(4),res.getString(5),res.getDouble(6),res.getDouble(7),res.getDouble(8),res.getInt(9),res.getString(10));
+                aux.setPedidos(OlvaCourier.pedidos);
+               
+                OlvaCourier.boletas.insertarNodoPorFinal(aux);         
+                
             }  
         }catch(SQLException e){
         }
@@ -80,10 +86,7 @@ public class OlvaCourier {
            while(res.next()){
                 Pedido aux = new Pedido(res.getInt(1), res.getDouble(2),res.getInt(3));
                 
-                //Producto auxProducto= OlvaCourier.productos.buscar(aux.getCodigo());
-                
-                        
-                //aux.setProducto(producto);
+                aux.setProductos(OlvaCourier.productos);
                 OlvaCourier.pedidos.insertarNodoPorFinal(aux);
                 
             }  
@@ -95,7 +98,8 @@ public class OlvaCourier {
         res = Conexion.Conexion.Consulta("select * from Producto");
         
         try{
-           while(res.next()){
+            while(res.next()){
+            
                 OlvaCourier.productos.insertarNodoPorFinal(new Producto(res.getInt(1), res.getString(2),res.getDouble(3),res.getDouble(4),res.getDouble(5),res.getDouble(6),res.getInt(7)));
                 
             }  
