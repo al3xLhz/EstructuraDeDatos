@@ -1,11 +1,7 @@
 
 package Estructuras;
 
-import Modelo.Agencia;
-import Modelo.Boleta;
-import Modelo.Cliente;
-import Modelo.Login;
-import Modelo.Persona;
+import Modelo.*;
 
 
 public class Lista<E>{
@@ -463,6 +459,23 @@ public class Lista<E>{
         return boletaR;
     }
     
+    public Pedido buscarBoletaxCodigoPedido(int codigo){
+        Pedido pe = null;
+        Nodo<E> aux=inicio;
+        while(aux!=null){
+            if(aux.objeto instanceof Pedido){
+                Pedido peAux = (Pedido) aux.objeto;
+                
+                if(peAux.getCodigo()==codigo){
+                    pe=peAux;
+                }
+            }
+            aux=aux.siguiente;
+        }
+        return pe;
+    }
+    
+    
     /*>>>*/
     
     
@@ -501,9 +514,25 @@ public class Lista<E>{
     
     /*>>>*/
     
+    /*<<<Esto es para Productos*/
     
+    public Producto buscarProductoxCodigoPedido(int codigo){
+        Producto p = null;
+        Nodo<E> aux=inicio;
+        while(aux!=null){
+            if(aux.objeto instanceof Producto){
+                Producto pAux = (Producto) aux.objeto;
+                
+                if(pAux.getCodigoPe()==codigo){
+                    p=pAux;
+                }
+            }
+            aux=aux.siguiente;
+        }
+        return p;
+    }
     
-    
+    /*>>>*/
     
     
     
@@ -533,9 +562,7 @@ public class Lista<E>{
     }
     */
 
-    public void buscarXCodigoCliente(Cliente clienteActual) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    
 }
 
 
