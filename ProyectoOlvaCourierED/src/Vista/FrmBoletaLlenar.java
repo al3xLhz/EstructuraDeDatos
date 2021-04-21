@@ -363,6 +363,7 @@ import javax.swing.JOptionPane;
             //Ahora tenemos que guardar todo en el cliente usado, porque sigue en el borrador que es Cliente actual
 
             OlvaCourier.clientes.actualizarCliente(OlvaCourier.clienteActual);
+            OlvaCourier.personas.actualizarCliente(OlvaCourier.clienteActual);
 
             //Estamos insertando la boleta para tenerlo en el inventario de la agencia respectiva
 

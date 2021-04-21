@@ -126,35 +126,7 @@ public class ArbolAVL<E> {
 
      mostrarArbol(nodo.izq, n+1);
     }
-    /*
-    public void mostrarArbolOtrocampo(NodoArbol<E> nodo,int n){
-        if(nodo== null)
-          return;
-        mostrarArbol(nodo.der, n+1);
-
-     for(int i=0; i<n; i++)
-	  System.out.println("     ");
-           numNodos++;
-        Boleta bolAux = (Boleta) nodo.objeto;
-        
-        //codigo de boletaBoleta bolAux = (Boleta) nodo.objeto;
-        System.out.println(bolAux.getCodigo());
-        //agencia inicial
-        System.out.println(bolAux.getAgenciaInicial());
-        //agencia final
-        System.out.println(bolAux.getAgenciaFinal());
-        //estado 1 o 0
-        System.out.println(bolAux.getEstado());
-        //segun IGV
-        System.out.println(bolAux.getIGV());
-        //DNI del cliente
-        System.out.println(bolAux.getPropietarioDNI());
-        
-   	System.out.println("");
-
-     mostrarArbol(nodo.izq, n+1);
-    }
-    */
+    
     public void creacionArbolXLista(Lista Boletas, int opc){ 
         
         Nodo<E> aux = Boletas.inicio;
