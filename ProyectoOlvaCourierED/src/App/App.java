@@ -17,12 +17,12 @@ public class App {
         
         //Guarda todas las agencias existentes en el objeto agencias
         OlvaCourier.agencias.setAgencias();
-        Conexion.Conexion.getConexion();
-        OlvaCourier.CargarProducto();
+        //Conexion.Conexion.getConexion();
+        /*OlvaCourier.CargarProducto();
         OlvaCourier.CargarPedido();
         OlvaCourier.CargarBoleta();
         OlvaCourier.CargarClientes();
-        OlvaCourier.CargarAdministrador();
+        OlvaCourier.CargarAdministrador();*/
         
        // System.out.println(OlvaCourier.boletas.getTamaño());
         

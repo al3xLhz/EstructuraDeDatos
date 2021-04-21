@@ -2,6 +2,7 @@
 package Modelo;
 
 import Estructuras.Lista;
+import Estructuras.Nodo;
 
 public class Cliente extends Persona{
     
@@ -25,12 +26,23 @@ public class Cliente extends Persona{
     public int getVersionPagada() {
         return versionPagada;
     }
-
+    
     public void setVersionPagada(int versionPagada) {
         this.versionPagada = versionPagada;
     }
     
-    
+    public void setBoletas(Lista Boletas) {
+        Nodo aux = (Nodo) Boletas.getInicio();
+        while(aux!=null){
+            Boleta bo = (Boleta) aux.objeto;
+            if(this.getCodigo().equals(bo.getPropietarioDNI())){
+                listaBoletas.insertarNodoPorFinal(bo);
+            }
+            
+            aux=aux.siguiente;
+        }
+        
+    }
     
     
 }

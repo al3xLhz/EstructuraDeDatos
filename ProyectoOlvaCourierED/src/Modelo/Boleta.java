@@ -3,6 +3,7 @@ package Modelo;
 
 import Estructuras.Pila;
 import Estructuras.Lista;
+import Estructuras.Nodo;
 import Sistema.OlvaCourier;
 import java.util.Calendar;
 
@@ -210,6 +211,19 @@ public class Boleta {
             
         }
         return nMes;
+    }
+
+    public void setPedidos(Lista Pedidos) {
+        Nodo aux = (Nodo) Pedidos.getInicio();
+        while(aux!=null){
+            Pedido pe = (Pedido) aux.objeto;
+            if(codigo==pe.getCodigo()){
+                listaPedidos.insertarNodoPorFinal(pe);
+            }
+            
+            aux=aux.siguiente;
+        }
+        
     }
     
     
