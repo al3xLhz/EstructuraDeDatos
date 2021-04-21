@@ -6,13 +6,14 @@ import Estructuras.Nodo;
 
 public class Cliente extends Persona{
     
-    private Lista<Boleta> listaBoletas = new Lista<>();
+    private Lista<Boleta> listaBoletas;
     private int versionPagada; // 1=activado 0= noactivado
 
    
     public Cliente(int versionPagada, String nombres, String apellidos, String codigo, String email, Login usuario) {
         super(nombres, apellidos, codigo, email, usuario);
         this.versionPagada = versionPagada;
+        listaBoletas = new Lista<>();
     }
     
     public Lista<Boleta> getListaBoletas() {
@@ -39,7 +40,7 @@ public class Cliente extends Persona{
             while(aux!=null){
                 
                 Boleta bo = (Boleta) aux.objeto;
-                if(getCodigo().equals(bo.getPropietarioDNI())){
+                if(getCodigo().equals(bo.getPropietarioCodigo())){
                     listaBoletas.insertarNodoPorFinal(bo);
                     
             }

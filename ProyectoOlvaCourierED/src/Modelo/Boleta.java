@@ -17,24 +17,25 @@ public class Boleta {
     private double IGV;
     private double total;
     private static int codigoBoletaGeneral = (int) Math.floor(Math.random()*10000+1);
-    private String propietarioDNI;
+    private String propietarioCodigo;
     private int estado;//1=Sin entregar 2=En camino 3= Llego
-    private Lista<Pedido> listaPedidos = new Lista<>();
+    private Lista<Pedido> listaPedidos;
     private String camino = "";
 
     
-    public Boleta(Agencia agenciaInicial, Agencia agenciaFinal,String propietarioDNI) {
+    public Boleta(Agencia agenciaInicial, Agencia agenciaFinal,String propietarioCodigo) {
         OlvaCourier.horaActual = Calendar.getInstance();
         this.codigoBoleta = codigoBoletaGeneral;
         codigoBoletaGeneral++;
-        this.propietarioDNI=propietarioDNI;
+        this.propietarioCodigo=propietarioCodigo;
         this.fechaEmision=OlvaCourier.horaActual;
         this.fechadeEntrega=fechaEmision;
         this.estado= 1;
+        listaPedidos = new Lista<>();
     }
     
-    public Boleta(int codigo ,String fechaEmision, String FechaEntrega , String AgenciaI , String AgenciaFinal , double importeTotal , double IGV , double total , int estado , String propietarioDNI){
-        this.codigoBoleta = codigo;
+    public Boleta(int codigoBoleta ,String fechaEmision, String FechaEntrega , String AgenciaI , String AgenciaFinal , double importeTotal , double IGV , double total , int estado , String propietarioCodigo){
+        this.codigoBoleta = codigoBoleta;
         Calendar cal = Calendar.getInstance();
         cal.set(Integer.valueOf(fechaEmision.substring(24, 28)), getIntMes(fechaEmision.substring(4, 7)), Integer.valueOf(fechaEmision.substring(8, 10)), Integer.valueOf(fechaEmision.substring(11, 13)), Integer.valueOf(fechaEmision.substring(14, 16)), Integer.valueOf(fechaEmision.substring(17, 19)));
         this.fechaEmision = cal;
@@ -46,16 +47,19 @@ public class Boleta {
         this.IGV = IGV;
         this.total = total;
         this.estado = estado;
-        this.propietarioDNI = propietarioDNI;
-    }
-    
-    public String getPropietarioDNI() {
-        return propietarioDNI;
+        this.propietarioCodigo = propietarioCodigo;
+        listaPedidos = new Lista<>();
     }
 
-    public void setPropietarioDNI(String propietarioDNI) {
-        this.propietarioDNI = propietarioDNI;
+    public String getPropietarioCodigo() {
+        return propietarioCodigo;
     }
+
+    public void setPropietarioCodigo(String propietarioCodigo) {
+        this.propietarioCodigo = propietarioCodigo;
+    }
+    
+    
 
     public int getEstado() {
         return estado;
@@ -201,7 +205,7 @@ public class Boleta {
         importeTotal=b.getImporteTotal();
         IGV=b.getIGV();
         total=b.getTotal();
-        propietarioDNI=b.getPropietarioDNI();
+        propietarioCodigo=b.getPropietarioCodigo();
         listaPedidos=b.getListaPedidos();
     }
     

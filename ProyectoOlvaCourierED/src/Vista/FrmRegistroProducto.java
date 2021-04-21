@@ -578,8 +578,7 @@ public class FrmRegistroProducto extends javax.swing.JFrame {
                 OlvaCourier.boletaActual.getListaPedidos().insertarNodoPorFinal(new Pedido(p5));    
             }
             OlvaCourier.boletaActual.setPrecioTotal();
-            System.out.println("aqui");
-            OlvaCourier.boletaActual.setPropietarioDNI(OlvaCourier.clienteActual.getCodigo());
+            OlvaCourier.boletaActual.setPropietarioCodigo(OlvaCourier.clienteActual.getCodigo());
         }
         
         

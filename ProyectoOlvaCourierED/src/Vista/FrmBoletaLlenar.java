@@ -81,7 +81,7 @@ import javax.swing.JOptionPane;
                         entrada.setDouble(7, OlvaCourier.boletaActual.getIGV());
                         entrada.setDouble(8, OlvaCourier.boletaActual.getTotal());
                         entrada.setInt(9, OlvaCourier.boletaActual.getEstado());
-                        entrada.setString(10, OlvaCourier.boletaActual.getPropietarioDNI());
+                        entrada.setString(10, OlvaCourier.boletaActual.getPropietarioCodigo());
                         entrada.execute();
                         
                     } catch (SQLException ex) {

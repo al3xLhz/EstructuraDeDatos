@@ -246,15 +246,20 @@ public class Lista<E>{
     public void actualizarCliente(Cliente c){
         Nodo<E> aux =inicio;
         while(aux!=null){
-            if(aux.objeto instanceof Cliente ){
-                if(aux.objeto instanceof Persona){
+            if(aux.objeto instanceof Cliente ){ //Necesario para ser exclusivo a las clases Cliente
+                Cliente cl = (Cliente) aux.objeto;//Lo convierto en Cliente para que pueda compararlo con el argumento que reciba
+                if(cl.getCodigo().equals(c.getCodigo())){
+                    aux.objeto=(E) c;
+                }
+                
+            }
+            if(aux.objeto instanceof Persona){
                                                     //Necesario para ser exclusivo a las clases Cliente
-                    Cliente cl = (Cliente) aux.objeto;//Lo convierto en Cliente para que pueda compararlo con el argumento que reciba
-                    if(cl.getCodigo().equals(c.getCodigo())){
+                    Persona pl = (Persona) aux.objeto;//Lo convierto en Cliente para que pueda compararlo con el argumento que reciba
+                    if(pl.getCodigo().equals(c.getCodigo())){
                         aux.objeto=(E) c;
                     }
                 }
-            }
             aux=aux.siguiente;
             
         }

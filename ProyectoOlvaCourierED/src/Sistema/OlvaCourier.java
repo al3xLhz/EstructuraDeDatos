@@ -13,7 +13,6 @@ import java.util.Calendar;
 public class OlvaCourier {
                                         //Representa como una base de datos donde se maneja la información de todo el sistema
     
-    
     //Aquí están las listas generales que abarcaran tales y como dice su clase Lista<>
     public static Lista<Cliente> clientes = new Lista<>();
     public static Lista<Boleta> boletas = new Lista<>();
@@ -86,8 +85,8 @@ public class OlvaCourier {
         try{
            while(res.next()){
                 Pedido aux = new Pedido(res.getInt(1), res.getDouble(2),res.getInt(3));
-                
-                aux.setProductos(OlvaCourier.productos);
+                Producto auxP = OlvaCourier.productos.buscarProductoxCodigoPedido(aux.getCodigoPedido());
+                aux.setProducto(auxP);
                 OlvaCourier.pedidos.insertarNodoPorFinal(aux);
                 
             }  
@@ -100,8 +99,11 @@ public class OlvaCourier {
         
         try{
             while(res.next()){
-            
-                OlvaCourier.productos.insertarNodoPorFinal(new Producto(res.getInt(1), res.getString(2),res.getDouble(3),res.getDouble(4),res.getDouble(5),res.getDouble(6),res.getInt(7)));
+                Producto auxP = new Producto(res.getInt(1), res.getString(2),res.getDouble(3),res.getDouble(4),res.getDouble(5),res.getDouble(6),res.getInt(7));
+                
+                
+                OlvaCourier.productos.insertarNodoPorFinal(auxP);
+                
                 
             }  
         }catch(SQLException e){

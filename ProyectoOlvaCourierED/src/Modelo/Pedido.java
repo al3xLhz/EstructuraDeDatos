@@ -19,9 +19,11 @@ public class Pedido {
         setPrecioPedido(producto);
     }
     
-    public Pedido(int codigo, double valor , int codigoB) {
-        this.codigoPedido = codigo;
+    public Pedido(int codigoPedido, double valor , int codigoBoleta) {
+        this.codigoPedido = codigoPedido;
         this.valor = valor;
+        this.codigoBoleta = codigoBoleta;
+        producto = null;
     }
 
     public int getCodigoPedido() {
@@ -31,8 +33,6 @@ public class Pedido {
     public void setCodigoPedido(int codigoPedido) {
         this.codigoPedido = codigoPedido;
     }
-
-    
 
     public Producto getProducto() {
         return producto;
@@ -79,9 +79,9 @@ public class Pedido {
             while(aux!=null){
                 Producto pro = (Producto) aux.objeto;
                 
-            if(pro.getCodigoPe()==codigoPedido){
-                setProducto(pro);
-            }
+                if(pro.getCodigoPe()==codigoPedido){
+                    setProducto(pro);
+                }
             
             aux=aux.siguiente;
             }
