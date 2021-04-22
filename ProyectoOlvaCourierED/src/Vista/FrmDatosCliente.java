@@ -137,7 +137,7 @@ public static String[][] metodoShell(String x[][], int n, boolean opc){//true: a
 
         jPanel1.setBackground(new java.awt.Color(64, 170, 173));
 
-        jPanel2.setBackground(new java.awt.Color(64, 170, 173));
+        jPanel2.setBackground(new java.awt.Color(138, 196, 208));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -150,7 +150,7 @@ public static String[][] metodoShell(String x[][], int n, boolean opc){//true: a
             .addGap(0, 111, Short.MAX_VALUE)
         );
 
-        jPanel3.setBackground(new java.awt.Color(64, 170, 173));
+        jPanel3.setBackground(new java.awt.Color(138, 196, 208));
         jPanel3.setForeground(new java.awt.Color(64, 170, 173));
 
         Table1.setModel(new javax.swing.table.DefaultTableModel(

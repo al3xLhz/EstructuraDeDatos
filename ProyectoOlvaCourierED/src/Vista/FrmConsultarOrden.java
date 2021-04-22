@@ -72,7 +72,7 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
         fondo.setBackground(new java.awt.Color(64, 170, 173));
         fondo.setLayout(new java.awt.BorderLayout());
 
-        Body.setBackground(new java.awt.Color(64, 170, 173));
+        Body.setBackground(new java.awt.Color(138, 196, 208));
 
         etiquetaNroBoleta.setText("Nro Boleta:");
 
@@ -102,7 +102,7 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(Tabla);
 
-        panelBarra.setBackground(new java.awt.Color(64, 170, 173));
+        panelBarra.setBackground(new java.awt.Color(138, 196, 208));
         panelBarra.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         posicion1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Truck.png"))); // NOI18N
@@ -114,6 +114,7 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
         posicion3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Truck.png"))); // NOI18N
         panelBarra.add(posicion3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 20, -1, -1));
 
+        Barra.setBackground(new java.awt.Color(153, 255, 204));
         Barra.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Barra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/barra.png"))); // NOI18N
         panelBarra.add(Barra, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 433, 73));
@@ -175,7 +176,7 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
 
         fondo.add(Body, java.awt.BorderLayout.CENTER);
 
-        Header.setBackground(new java.awt.Color(64, 170, 173));
+        Header.setBackground(new java.awt.Color(255, 211, 105));
 
         TituloRegistroEnvio.setFont(new java.awt.Font("Yu Gothic UI", 1, 26)); // NOI18N
         TituloRegistroEnvio.setForeground(new java.awt.Color(34, 35, 34));
