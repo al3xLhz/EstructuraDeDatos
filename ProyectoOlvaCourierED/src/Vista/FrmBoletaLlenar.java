@@ -72,7 +72,7 @@ import javax.swing.JOptionPane;
     public void LlenarBoletaBD(){
         try {
                         CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaBoleta(?,?,?,?,?,?,?,?,?,?,?)}");
-                        entrada.setString(1, String.valueOf(OlvaCourier.boletaActual.getCodigoBoleta()));
+                        entrada.setInt(1, OlvaCourier.boletaActual.getCodigoBoleta());
                         entrada.setString(2, Calendar.getInstance().getTime().toString());
                         entrada.setString(3, OlvaCourier.boletaActual.getFechadeEntrega().getTime().toString());
                         entrada.setString(4, OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion());
@@ -86,9 +86,9 @@ import javax.swing.JOptionPane;
 
                         entrada.execute();
                         
-                    } catch (SQLException ex) {
+        } catch (SQLException ex) {
                         Logger.getLogger(FrmRegistroProducto.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+        }
         //Actualizamos el CodigoBoleta del pedido respectivo
          try{
             PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Pedido set CodigoB = " + OlvaCourier.boletaActual.getCodigoBoleta()+ "where CodigoB is null" );
