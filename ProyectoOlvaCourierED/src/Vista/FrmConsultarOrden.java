@@ -22,9 +22,9 @@ public class FrmConsultarOrden extends javax.swing.JFrame {
     }
     
     public void llenarTabla(){
-        String matriz[][] = new String[5][2];
+        String matriz[][] = new String[OlvaCourier.boletaActual.getListaPedidos().getTamaño()][2];
         
-        for(int i=0;i<5;i++){
+        for(int i=0;i<OlvaCourier.boletaActual.getListaPedidos().getTamaño();i++){
             Pedido pe = (Pedido) OlvaCourier.boletaActual.getListaPedidos().getXPos(i);
             if(pe.getProducto().getNombreProducto()!=""){
                 matriz[i][0]=String.valueOf(pe.getCodigoPedido());
