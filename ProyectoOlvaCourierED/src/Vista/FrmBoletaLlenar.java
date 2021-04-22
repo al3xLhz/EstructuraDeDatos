@@ -72,7 +72,7 @@ import javax.swing.JOptionPane;
     public void LlenarBoletaBD(){
         try {
                         CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaBoleta(?,?,?,?,?,?,?,?,?,?,?)}");
-                        entrada.setString(1, String.valueOf(OlvaCourier.boletaActual.getCodigoBoleta()));
+                        entrada.setInt(1, OlvaCourier.boletaActual.getCodigoBoleta());
                         entrada.setString(2, Calendar.getInstance().getTime().toString());
                         entrada.setString(3, OlvaCourier.boletaActual.getFechadeEntrega().getTime().toString());
                         entrada.setString(4, OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion());
@@ -144,7 +144,7 @@ import javax.swing.JOptionPane;
 
         Fondo.setLayout(new java.awt.BorderLayout());
 
-        Header.setBackground(new java.awt.Color(64, 170, 173));
+        Header.setBackground(new java.awt.Color(255, 211, 105));
 
         TituloBoleta.setFont(new java.awt.Font("Yu Gothic", 1, 26)); // NOI18N
         TituloBoleta.setForeground(new java.awt.Color(34, 35, 34));
@@ -154,22 +154,22 @@ import javax.swing.JOptionPane;
         Header.setLayout(HeaderLayout);
         HeaderLayout.setHorizontalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(HeaderLayout.createSequentialGroup()
-                .addGap(287, 287, 287)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HeaderLayout.createSequentialGroup()
+                .addContainerGap(260, Short.MAX_VALUE)
                 .addComponent(TituloBoleta)
-                .addContainerGap(226, Short.MAX_VALUE))
+                .addGap(253, 253, 253))
         );
         HeaderLayout.setVerticalGroup(
             HeaderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(HeaderLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(23, 23, 23)
                 .addComponent(TituloBoleta)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         Fondo.add(Header, java.awt.BorderLayout.NORTH);
 
-        Body.setBackground(new java.awt.Color(64, 170, 173));
+        Body.setBackground(new java.awt.Color(138, 196, 208));
 
         etiquetaFechaEmision.setText("Fecha Emision:  ");
 
