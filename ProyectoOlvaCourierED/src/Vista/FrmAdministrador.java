@@ -219,12 +219,11 @@ public class FrmAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_botonSeguimientoEnvioActionPerformed
 
     private void ClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClienteActionPerformed
-        //FrmDatosCliente tablaClientes= new FrmDatosCliente();
-        //tablaClientes.setVisible(true);
+        FrmDatosCliente tablaClientes= new FrmDatosCliente();
+        tablaClientes.setVisible(true);
        
-            new FrmDatosCliente().setVisible(true);
         
-        //this.dispose();
+        this.dispose();
     }//GEN-LAST:event_ClienteActionPerformed
 
     private void botonConsularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsularActionPerformed

@@ -367,7 +367,7 @@ import javax.swing.JOptionPane;
 
             //Estamos insertando la boleta para tenerlo en el inventario de la agencia respectiva
 
-            OlvaCourier.agencias.getAgencia(OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion()).getListaBolestas().insertarNodoPorFinal(OlvaCourier.boletaActual);
+            OlvaCourier.agencias.getAgencia(OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion()).getListaBoletas().insertarNodoPorFinal(OlvaCourier.boletaActual);
             
             if(OlvaCourier.clienteActual.getVersionPagada()==0){
                 JOptionPane.showMessageDialog(null, "Su pedido está en cola de envio");

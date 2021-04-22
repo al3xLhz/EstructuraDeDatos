@@ -17,11 +17,6 @@ public class Agencia {
     public Agencia(String ubicacion) {
         this.ubicacion = ubicacion;
     }
-    
-
-    public Lista<Boleta> getListaBolestas() {
-        return listaBoletas;
-    }
 
     public void setListaBolestas(Lista<Boleta> listaBolestas) {
         this.listaBoletas = listaBolestas;

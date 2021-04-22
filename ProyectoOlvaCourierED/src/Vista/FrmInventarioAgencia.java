@@ -26,30 +26,30 @@ public class FrmInventarioAgencia extends javax.swing.JFrame {
     }
 
     public void llenarDatos(){
-        etiquetaRPTAAmazonas.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Amazonas").getListaBolestas().getTamaño()));
-        etiquetaRPTAAncash.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Ancash").getListaBolestas().getTamaño()));
-        etiquetaRPTAApurimac.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Apurimac").getListaBolestas().getTamaño()));
-        etiquetaRPTAArequipa.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Arequipa").getListaBolestas().getTamaño()));
-        etiquetaRPTAAyacucho.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Ayacucho").getListaBolestas().getTamaño()));
-        etiquetaRPTACajamarca.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Cajamarca").getListaBolestas().getTamaño()));
-        etiquetaRPTACusco.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Cusco").getListaBolestas().getTamaño()));
-        etiquetaRPTAHuancavelica.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Huancavelica").getListaBolestas().getTamaño()));
-        etiquetaRPTAHuanuco.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Huanuco").getListaBolestas().getTamaño()));
-        etiquetaRPTAIca.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Ica").getListaBolestas().getTamaño()));
-        etiquetaRPTAJunin.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Junin").getListaBolestas().getTamaño()));
-        etiquetaRPTALaLibertad.setText(String.valueOf(OlvaCourier.agencias.getAgencia("La Libertad").getListaBolestas().getTamaño()));
-        etiquetaRPTALambayeque.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Lambayeque").getListaBolestas().getTamaño()));
-        etiquetaRPTALima.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Lima").getListaBolestas().getTamaño()));
-        etiquetaRPTALoreto.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Loreto").getListaBolestas().getTamaño()));
-        etiquetaRPTAMadreDeDios.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Madre de Dios").getListaBolestas().getTamaño()));
-        etiquetaRPTAMoquegua.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Moquegua").getListaBolestas().getTamaño()));
-        etiquetaRPTAPasco.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Pasco").getListaBolestas().getTamaño()));
-        etiquetaRPTAPiura.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Piura").getListaBolestas().getTamaño()));
-        etiquetaRPTAPuno.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Puno").getListaBolestas().getTamaño()));
-        etiquetaRPTASanMartin.setText(String.valueOf(OlvaCourier.agencias.getAgencia("San Martin").getListaBolestas().getTamaño()));
-        etiquetaRPTATacna.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Tacna").getListaBolestas().getTamaño()));
-        etiquetaRPTATumbes.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Tumbes").getListaBolestas().getTamaño()));
-        etiquetaRPTAUcayali.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Ucayali").getListaBolestas().getTamaño()));
+        etiquetaRPTAAmazonas.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Amazonas").getListaBoletas().getTamaño()));
+        etiquetaRPTAAncash.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Ancash").getListaBoletas().getTamaño()));
+        etiquetaRPTAApurimac.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Apurimac").getListaBoletas().getTamaño()));
+        etiquetaRPTAArequipa.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Arequipa").getListaBoletas().getTamaño()));
+        etiquetaRPTAAyacucho.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Ayacucho").getListaBoletas().getTamaño()));
+        etiquetaRPTACajamarca.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Cajamarca").getListaBoletas().getTamaño()));
+        etiquetaRPTACusco.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Cusco").getListaBoletas().getTamaño()));
+        etiquetaRPTAHuancavelica.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Huancavelica").getListaBoletas().getTamaño()));
+        etiquetaRPTAHuanuco.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Huanuco").getListaBoletas().getTamaño()));
+        etiquetaRPTAIca.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Ica").getListaBoletas().getTamaño()));
+        etiquetaRPTAJunin.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Junin").getListaBoletas().getTamaño()));
+        etiquetaRPTALaLibertad.setText(String.valueOf(OlvaCourier.agencias.getAgencia("La Libertad").getListaBoletas().getTamaño()));
+        etiquetaRPTALambayeque.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Lambayeque").getListaBoletas().getTamaño()));
+        etiquetaRPTALima.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Lima").getListaBoletas().getTamaño()));
+        etiquetaRPTALoreto.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Loreto").getListaBoletas().getTamaño()));
+        etiquetaRPTAMadreDeDios.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Madre de Dios").getListaBoletas().getTamaño()));
+        etiquetaRPTAMoquegua.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Moquegua").getListaBoletas().getTamaño()));
+        etiquetaRPTAPasco.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Pasco").getListaBoletas().getTamaño()));
+        etiquetaRPTAPiura.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Piura").getListaBoletas().getTamaño()));
+        etiquetaRPTAPuno.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Puno").getListaBoletas().getTamaño()));
+        etiquetaRPTASanMartin.setText(String.valueOf(OlvaCourier.agencias.getAgencia("San Martin").getListaBoletas().getTamaño()));
+        etiquetaRPTATacna.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Tacna").getListaBoletas().getTamaño()));
+        etiquetaRPTATumbes.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Tumbes").getListaBoletas().getTamaño()));
+        etiquetaRPTAUcayali.setText(String.valueOf(OlvaCourier.agencias.getAgencia("Ucayali").getListaBoletas().getTamaño()));
         
     }
     @SuppressWarnings("unchecked")

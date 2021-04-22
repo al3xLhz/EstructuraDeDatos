@@ -30,12 +30,12 @@ public class DijkstraMapa {
         subTope=0;
         llenarNodos();
         if(permanente != nodoFin){
-            nodos[permanente].setVisitado(true);        
+            nodos[permanente].setVisitado(true);//Se puede acceder a ello        
             nodos[permanente].setNombre(permanente);
             do{            
                 subAcumulado=0;
                 auxAcumulado=9999; // lo igualamos a esta cifra ya q el acomulado de los nodos, supuestamente  nunca sera mayor 
-                nodos[permanente].setEtiqueta(true); 
+                nodos[permanente].setEtiqueta(true); //No se puede acceder a ello
                 for (int j = 0; j < tope; j++) {
                     if(grafo.getmAdyacencia(permanente, j)>=1){
                         subAcumulado= nodos[permanente].getAcumulado()+grafo.getmAdyacencia(permanente,j);                                
@@ -49,7 +49,7 @@ public class DijkstraMapa {
                             nodos[j].setAcumulado(subAcumulado);
                             nodos[j].setVisitado(true);
                             nodos[j].setNombre(j);
-                            nodos[j].setPredecesor(nodos[permanente]); 
+                            nodos[j].setPredecesor(nodos[permanente]);
                         }
                     }
                 }

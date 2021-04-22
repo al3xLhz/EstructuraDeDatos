@@ -32,7 +32,7 @@ public class FrmElegirMapa extends javax.swing.JFrame {
     int c=0;
     public FrmElegirMapa() {
         initComponents();
-        pilaGeneral = new Pila();
+        pilaGeneral = new Pila();//Solo al admin le sirve. Cliente no
         setResizable(false);
         setLocationRelativeTo(null);
         setVisible(true);
@@ -353,7 +353,7 @@ public class FrmElegirMapa extends javax.swing.JFrame {
     private void botonAplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAplicarActionPerformed
         
         
-        if(OlvaCourier.usuarioActual.getTipoFuncion()==1){
+        if(OlvaCourier.usuarioActual.getTipoFuncion()==1){//Clientes
             miD = new DijkstraMapa(OlvaCourier.miGrafo);
             if(comboDestino.getSelectedItem().equals(comboOrigen.getSelectedItem())){
             JOptionPane.showMessageDialog(null, "No puedes colocar el mismo ORIGEN Y DESTINO ");
