@@ -45,7 +45,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
         salir = new javax.swing.JButton();
         Cliente = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        inventario = new javax.swing.JLabel();
         consulta = new javax.swing.JLabel();
         historial = new javax.swing.JLabel();
         exit = new javax.swing.JLabel();
@@ -71,22 +70,24 @@ public class FrmAdministrador extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        Fondo.setBackground(new java.awt.Color(64, 170, 173));
+        Fondo.setBackground(new java.awt.Color(138, 196, 208));
         Fondo.setPreferredSize(new java.awt.Dimension(650, 520));
         Fondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        PanelOpciones.setBackground(new java.awt.Color(64, 170, 173));
+        PanelOpciones.setBackground(new java.awt.Color(138, 196, 208));
         PanelOpciones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         botonInventarioAgencia.setBackground(new java.awt.Color(64, 170, 173));
         botonInventarioAgencia.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
-        botonInventarioAgencia.setText("Inventario de Agencia");
+        botonInventarioAgencia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/inventario_agencia.png"))); // NOI18N
+        botonInventarioAgencia.setBorderPainted(false);
+        botonInventarioAgencia.setContentAreaFilled(false);
         botonInventarioAgencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonInventarioAgenciaActionPerformed(evt);
             }
         });
-        PanelOpciones.add(botonInventarioAgencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
+        PanelOpciones.add(botonInventarioAgencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, -1, -1));
 
         botonConsular.setBackground(new java.awt.Color(64, 170, 173));
         botonConsular.setFont(new java.awt.Font("Yu Gothic UI Semibold", 1, 14)); // NOI18N
@@ -142,9 +143,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
         jLabel6.setFocusable(false);
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         PanelOpciones.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, 102));
-
-        inventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/inventario_agencia.png"))); // NOI18N
-        PanelOpciones.add(inventario, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
 
         consulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/consulta_orden.png"))); // NOI18N
         PanelOpciones.add(consulta, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 210, -1, -1));
@@ -308,7 +306,6 @@ public class FrmAdministrador extends javax.swing.JFrame {
     private javax.swing.JLabel exit;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel historial;
-    private javax.swing.JLabel inventario;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JButton salir;

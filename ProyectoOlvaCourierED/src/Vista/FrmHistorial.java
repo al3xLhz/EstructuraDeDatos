@@ -95,7 +95,7 @@ public class FrmHistorial extends javax.swing.JFrame {
 
         fondo.setLayout(new java.awt.BorderLayout());
 
-        Header.setBackground(new java.awt.Color(64, 170, 173));
+        Header.setBackground(new java.awt.Color(138, 196, 208));
 
         TituloRegistroEnvio.setFont(new java.awt.Font("Yu Gothic UI", 1, 26)); // NOI18N
         TituloRegistroEnvio.setForeground(new java.awt.Color(34, 35, 34));
@@ -131,7 +131,7 @@ public class FrmHistorial extends javax.swing.JFrame {
 
         fondo.add(Header, java.awt.BorderLayout.NORTH);
 
-        Body.setBackground(new java.awt.Color(64, 170, 173));
+        Body.setBackground(new java.awt.Color(255, 211, 105));
 
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
