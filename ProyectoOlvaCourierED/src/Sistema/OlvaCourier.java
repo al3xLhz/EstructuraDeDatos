@@ -69,7 +69,7 @@ public class OlvaCourier {
         
         try{
            while(res.next()){
-                Boleta aux = new Boleta(res.getInt(1), res.getString(2),res.getString(3),res.getString(4),res.getString(5),res.getDouble(6),res.getDouble(7),res.getDouble(8),res.getInt(9),res.getString(10));
+                Boleta aux = new Boleta(res.getInt(1), res.getString(2),res.getString(3),res.getString(4),res.getString(5),res.getDouble(6),res.getDouble(7),res.getDouble(8),res.getInt(9),res.getString(10), res.getString(11));
                 aux.setPedidos(OlvaCourier.pedidos);
                
                 OlvaCourier.boletas.insertarNodoPorFinal(aux);         

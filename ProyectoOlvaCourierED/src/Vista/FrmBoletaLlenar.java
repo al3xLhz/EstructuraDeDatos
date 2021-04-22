@@ -71,7 +71,7 @@ import javax.swing.JOptionPane;
     
     public void LlenarBoletaBD(){
         try {
-                        CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaBoleta(?,?,?,?,?,?,?,?,?,?)}");
+                        CallableStatement entrada = Conexion.Conexion.getConexion().prepareCall("{Call EntradaBoleta(?,?,?,?,?,?,?,?,?,?,?)}");
                         entrada.setString(1, String.valueOf(OlvaCourier.boletaActual.getCodigoBoleta()));
                         entrada.setString(2, Calendar.getInstance().getTime().toString());
                         entrada.setString(3, OlvaCourier.boletaActual.getFechadeEntrega().getTime().toString());
@@ -82,12 +82,14 @@ import javax.swing.JOptionPane;
                         entrada.setDouble(8, OlvaCourier.boletaActual.getTotal());
                         entrada.setInt(9, OlvaCourier.boletaActual.getEstado());
                         entrada.setString(10, OlvaCourier.boletaActual.getPropietarioCodigo());
+                        entrada.setString(11, OlvaCourier.boletaActual.getCamino());
+
                         entrada.execute();
                         
                     } catch (SQLException ex) {
                         Logger.getLogger(FrmRegistroProducto.class.getName()).log(Level.SEVERE, null, ex);
                     }
-        
+        //Actualizamos el CodigoBoleta del pedido respectivo
          try{
             PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("update Pedido set CodigoB = " + OlvaCourier.boletaActual.getCodigoBoleta()+ "where CodigoB is null" );
             pps.executeUpdate();
@@ -95,12 +97,6 @@ import javax.swing.JOptionPane;
         catch(SQLException e){           
         }
          
-          try{
-            PreparedStatement pps = Conexion.Conexion.getConexion().prepareStatement("Update Clientes set CodigoA = (select codigo from Administrador INNER JOIN Boleta ON Boleta.AgenciaI = Administrador.agencia where AgenciaI = '" + OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion() + "' Group by codigo) where codigo = '" + OlvaCourier.clienteActual.getCodigo() + "'");
-            pps.executeUpdate();
-        }
-        catch(SQLException e){           
-        }
     }
     
     

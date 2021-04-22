@@ -34,8 +34,10 @@ public class Boleta {
         listaPedidos = new Lista<>();
     }
     
-    public Boleta(int codigoBoleta ,String fechaEmision, String FechaEntrega , String AgenciaI , String AgenciaFinal , double importeTotal , double IGV , double total , int estado , String propietarioCodigo){
-        this.codigoBoleta = codigoBoleta;
+
+    public Boleta(int codigo ,String fechaEmision, String FechaEntrega , String AgenciaI , String AgenciaFinal , double importeTotal , double IGV , double total , int estado , String propietarioCodigo , String camino){
+       this.codigoBoleta = codigo;
+
         Calendar cal = Calendar.getInstance();
         cal.set(Integer.valueOf(fechaEmision.substring(24, 28)), getIntMes(fechaEmision.substring(4, 7)), Integer.valueOf(fechaEmision.substring(8, 10)), Integer.valueOf(fechaEmision.substring(11, 13)), Integer.valueOf(fechaEmision.substring(14, 16)), Integer.valueOf(fechaEmision.substring(17, 19)));
         this.fechaEmision = cal;
@@ -48,7 +50,7 @@ public class Boleta {
         this.total = total;
         this.estado = estado;
         this.propietarioCodigo = propietarioCodigo;
-        listaPedidos = new Lista<>();
+        this.camino = camino;
     }
 
     public String getPropietarioCodigo() {
@@ -215,6 +217,8 @@ public class Boleta {
         
         switch (mes){
             case "Apr" : nMes = 3;break;
+            case "May" : nMes = 4;break;
+            case "Jun" : nMes = 5;break;
             
         }
         return nMes;
