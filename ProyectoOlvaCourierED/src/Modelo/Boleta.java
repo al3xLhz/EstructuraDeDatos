@@ -33,7 +33,7 @@ public class Boleta {
         this.estado= 1;
     }
     
-    public Boleta(int codigo ,String fechaEmision, String FechaEntrega , String AgenciaI , String AgenciaFinal , double importeTotal , double IGV , double total , int estado , String propietarioDNI){
+    public Boleta(int codigo ,String fechaEmision, String FechaEntrega , String AgenciaI , String AgenciaFinal , double importeTotal , double IGV , double total , int estado , String propietarioDNI , String camino){
         this.codigoBoleta = codigo;
         Calendar cal = Calendar.getInstance();
         cal.set(Integer.valueOf(fechaEmision.substring(24, 28)), getIntMes(fechaEmision.substring(4, 7)), Integer.valueOf(fechaEmision.substring(8, 10)), Integer.valueOf(fechaEmision.substring(11, 13)), Integer.valueOf(fechaEmision.substring(14, 16)), Integer.valueOf(fechaEmision.substring(17, 19)));
@@ -47,6 +47,7 @@ public class Boleta {
         this.total = total;
         this.estado = estado;
         this.propietarioDNI = propietarioDNI;
+        this.camino = camino;
     }
     
     public String getPropietarioDNI() {
@@ -211,6 +212,8 @@ public class Boleta {
         
         switch (mes){
             case "Apr" : nMes = 3;break;
+            case "May" : nMes = 4;break;
+            case "Jun" : nMes = 5;break;
             
         }
         return nMes;
