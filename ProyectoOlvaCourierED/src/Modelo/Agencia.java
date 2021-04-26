@@ -42,6 +42,10 @@ public class Agencia {
         this.listaBoletas = listaBoletas;
     }
 
+    public void setUbicacion(String ubicacion) {
+        this.ubicacion = ubicacion;
+    }
+
     
     
     

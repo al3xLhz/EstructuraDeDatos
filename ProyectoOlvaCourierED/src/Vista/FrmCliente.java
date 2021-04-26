@@ -260,7 +260,7 @@ public class FrmCliente extends javax.swing.JFrame {
 
     private void botonConsultarOrdenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarOrdenActionPerformed
         
-        //try{
+        try{
             int codigoABuscar = Integer.parseInt(JOptionPane.showInputDialog("Digite el código a buscar"));
             System.out.println(OlvaCourier.clienteActual.getListaBoletas().getTamaño());
             OlvaCourier.boletaActual = OlvaCourier.clienteActual.getListaBoletas().getBoleta(codigoABuscar);
@@ -268,9 +268,9 @@ public class FrmCliente extends javax.swing.JFrame {
             FrmConsultarOrden frmCO = new  FrmConsultarOrden();
             
             this.dispose();
-        //}catch(Exception e){
-            //JOptionPane.showMessageDialog(null, "No se encontró el código buscado");
-        //}
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "No se encontró el código buscado");
+        }
             
     }//GEN-LAST:event_botonConsultarOrdenActionPerformed
 

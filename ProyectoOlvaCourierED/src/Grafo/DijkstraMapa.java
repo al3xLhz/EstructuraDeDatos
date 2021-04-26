@@ -9,7 +9,7 @@ import Estructuras.*;
 
 public class DijkstraMapa {
     private GrafoMapa grafo; //Grafo creado manualmente
-    private int subTope;
+    private int subTope;//determina las iteraciones
     private int auxAcumulado;
     private int subAcumulado;
     private NodoGrafo nodos[]; //Se guarda el camino que será minimo
@@ -36,6 +36,7 @@ public class DijkstraMapa {
                 subAcumulado=0;
                 auxAcumulado=9999; // lo igualamos a esta cifra ya q el acomulado de los nodos, supuestamente  nunca sera mayor 
                 nodos[permanente].setEtiqueta(true); //No se puede acceder a ello
+
                 for (int j = 0; j < tope; j++) {
                     if(grafo.getmAdyacencia(permanente, j)>=1){
                         subAcumulado= nodos[permanente].getAcumulado()+grafo.getmAdyacencia(permanente,j);                                
@@ -77,7 +78,6 @@ public class DijkstraMapa {
             auxL=auxL.getPredecesor();  
         }
         pila.Apilar(nodoInicio);
-        //pasarPilaACola();
     }
     
     public void llenarNodos(){

@@ -30,7 +30,7 @@ import javax.swing.JOptionPane;
         
         
             //Uso de los atributos de la boletaActual para mostrar en el FrmBoletaLlenar
-            respuestaOrigen.setText(OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion());
+            try{respuestaOrigen.setText(OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion());}catch(Exception e){};
             respuestaDestino.setText(OlvaCourier.boletaActual.getAgenciaFinal().getUbicacion());
             respuestaCliente.setText(OlvaCourier.clienteActual.getNombres()+" "+OlvaCourier.clienteActual.getApellidos());
             respuestaCodigo.setText(OlvaCourier.clienteActual.getCodigo());
@@ -75,6 +75,7 @@ import javax.swing.JOptionPane;
                         entrada.setInt(1, OlvaCourier.boletaActual.getCodigoBoleta());
                         entrada.setString(2, Calendar.getInstance().getTime().toString());
                         entrada.setString(3, OlvaCourier.boletaActual.getFechadeEntrega().getTime().toString());
+                        if(OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion()==null){OlvaCourier.boletaActual.getAgenciaInicial().setUbicacion("Amazonas");};
                         entrada.setString(4, OlvaCourier.boletaActual.getAgenciaInicial().getUbicacion());
                         entrada.setString(5, OlvaCourier.boletaActual.getAgenciaFinal().getUbicacion());
                         entrada.setDouble(6, OlvaCourier.boletaActual.getImporteTotal());

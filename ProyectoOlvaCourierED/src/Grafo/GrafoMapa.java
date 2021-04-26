@@ -7,8 +7,7 @@ public class GrafoMapa{
     private int mAdyacencia[][];
     private int coordeX[];
     private int coordeY[];
-    private int nombre[];
-    private int enGrafo[];
+    private int nombre[];;
     
     public GrafoMapa(){
         crearMapa();
@@ -38,14 +37,6 @@ public class GrafoMapa{
     public int getNombre(int i) {
         return nombre[i];
     }
-    
-    public int getDireccion(int i) {
-        return nombre[i];
-    }
-    public int getEnGrafo(int i) {
-        return enGrafo[i];
-    }
-
 
     public void setmAdyacencia(int i,int j ,int mAdyacencia) {
         this.mAdyacencia[i][j] = mAdyacencia;
@@ -63,9 +54,6 @@ public class GrafoMapa{
         this.nombre[i] = nombre;
     }
     
-    public void setEnGrafo(int i,int enArbol) {
-        this.enGrafo[i] = enArbol;
-    }  
     
     
     void crearMapa(){
